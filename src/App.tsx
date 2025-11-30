@@ -4,7 +4,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { AuthProvider } from "@/hooks/useAuth";
 import { Layout } from "@/components/layout/Layout";
+import { AdminLayout } from "@/components/layout/AdminLayout";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { SkipToContent } from "@/components/ui/SkipToContent";
 import { LoadingFallback } from "@/components/ui/LoadingFallback";
 import { PageTransition } from "@/components/ui/PageTransition";
@@ -19,6 +22,13 @@ const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+
+// Admin pages
+const Login = lazy(() => import("./pages/admin/Login"));
+const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
+const ProjectsManager = lazy(() => import("./pages/admin/ProjectsManager"));
+const ProjectForm = lazy(() => import("./pages/admin/ProjectForm"));
+const Settings = lazy(() => import("./pages/admin/Settings"));
 
 const queryClient = new QueryClient();
 
@@ -81,25 +91,61 @@ function AnimatedRoutes() {
   );
 }
 
+function AdminRoutes() {
+  return (
+    <Routes>
+      <Route path="/admin/login" element={<Login />} />
+      <Route
+        path="/admin/*"
+        element={
+          <ProtectedRoute>
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="projects" element={<ProjectsManager />} />
+        <Route path="projects/new" element={<ProjectForm />} />
+        <Route path="projects/:id/edit" element={<ProjectForm />} />
+        <Route path="settings" element={<Settings />} />
+      </Route>
+    </Routes>
+  );
+}
+
 const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <SkipToContent />
-            <Layout>
+        <AuthProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <SkipToContent />
               <Suspense fallback={<LoadingFallback />}>
-                <AnimatedRoutes />
+                <Routes>
+                  {/* Admin Routes */}
+                  <Route path="/admin/*" element={<AdminRoutes />} />
+                  
+                  {/* Public Routes */}
+                  <Route
+                    path="/*"
+                    element={
+                      <Layout>
+                        <AnimatedRoutes />
+                      </Layout>
+                    }
+                  />
+                </Routes>
               </Suspense>
-            </Layout>
-          </BrowserRouter>
-        </TooltipProvider>
+            </BrowserRouter>
+          </TooltipProvider>
+        </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>
   </ErrorBoundary>
 );
 
 export default App;
+

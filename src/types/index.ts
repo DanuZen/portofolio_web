@@ -57,3 +57,35 @@ export interface ContactSubmission {
   message: string;
   timestamp: Date;
 }
+
+// Admin Dashboard Types
+export interface User {
+  id: string;
+  email: string;
+  role: 'admin' | 'editor';
+  created_at?: string;
+}
+
+export interface AuthState {
+  user: User | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+}
+
+export interface AdminStats {
+  totalProjects: number;
+  projectsByCategory: Record<ProjectCategory, number>;
+  recentProjects: number;
+  totalImages: number;
+}
+
+export interface ProjectFormData extends Omit<Project, 'id'> {
+  id?: string;
+}
+
+export interface DatabaseProject extends Project {
+  created_at: string;
+  updated_at: string;
+  user_id: string;
+}
+
