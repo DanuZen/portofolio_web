@@ -6,12 +6,12 @@ import { motion } from 'framer-motion';
 import { CategoryFilter } from '@/components/portfolio/CategoryFilter';
 
 const categories = [
-  { id: 'all', label: 'All Works' },
-  { id: 'portraits', label: 'Portraits' },
-  { id: 'landscapes', label: 'Landscapes' },
+  { id: 'all', label: 'Semua Karya' },
+  { id: 'portraits', label: 'Potret' },
+  { id: 'landscapes', label: 'Pemandangan' },
   { id: 'editorial', label: 'Editorial' },
-  { id: 'architecture', label: 'Architecture' },
-  { id: 'documentary', label: 'Documentary' }
+  { id: 'architecture', label: 'Arsitektur' },
+  { id: 'documentary', label: 'Dokumenter' }
 ];
 
 /**
@@ -26,7 +26,7 @@ export default function Portfolio() {
     <>
       <SEOHead 
         title="Portfolio"
-        description="Browse my complete photography portfolio featuring portraits, landscapes, editorial work, architecture, and documentary projects."
+        description="Jelajahi portfolio fotografi lengkap saya yang menampilkan potret, pemandangan, karya editorial, arsitektur, dan proyek dokumenter."
       />
       
       <div className="min-h-screen">
@@ -43,7 +43,7 @@ export default function Portfolio() {
                 Portfolio
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide max-w-2xl mx-auto">
-                A curated collection of photography spanning diverse subjects and styles
+                Koleksi kurasi fotografi yang mencakup berbagai subjek dan gaya
               </p>
             </motion.div>
 
