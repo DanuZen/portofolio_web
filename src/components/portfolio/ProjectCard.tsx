@@ -41,7 +41,7 @@ export function ProjectCard({
     >
       <Link
         to={`/project/${project.slug}`}
-        className="group block relative overflow-hidden h-full shadow-none hover:shadow-2xl transition-shadow duration-500"
+        className="group block relative overflow-hidden rounded-2xl h-full shadow-lg hover:shadow-2xl transition-shadow duration-500"
       >
         {/* Image Container */}
         <div className="relative overflow-hidden bg-muted h-full">
