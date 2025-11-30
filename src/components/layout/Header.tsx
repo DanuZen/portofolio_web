@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, User } from 'lucide-react';
+import { Menu, User, Languages } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
@@ -105,6 +105,25 @@ export function Header() {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.45 }}
+            >
+              <Button
+                variant="ghost"
+                size="icon"
+                className={cn(
+                  "size-9 transition-colors",
+                  isTransparent 
+                    ? "text-white hover:bg-white/10" 
+                    : "text-foreground hover:bg-accent"
+                )}
+                aria-label="Change language"
+              >
+                <Languages className="size-5" />
+              </Button>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.5 }}
             >
               <Button
@@ -125,6 +144,19 @@ export function Header() {
 
           {/* Mobile Menu */}
           <div className="md:hidden flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn(
+                "size-9 transition-colors",
+                isTransparent 
+                  ? "text-white hover:bg-white/10" 
+                  : "text-foreground hover:bg-accent"
+              )}
+              aria-label="Change language"
+            >
+              <Languages className="size-5" />
+            </Button>
             <Button
               variant="ghost"
               size="icon"
