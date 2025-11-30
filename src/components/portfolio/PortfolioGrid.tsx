@@ -12,18 +12,18 @@ interface PortfolioGridProps {
  * Cards arranged in flexible rows with different widths
  */
 export function PortfolioGrid({ projects }: PortfolioGridProps) {
-  // Dynamic widths for creative horizontal layout - smaller sizes
+  // Dynamic widths for creative horizontal layout - narrow and tall
   const getCardStyle = (index: number) => {
-    // Pattern: varied widths for visual interest - compact sizes
+    // Pattern: varied widths for visual interest - narrow and tall portrait cards
     const patterns = [
-      { width: 'w-[180px]', height: 'h-[380px]' }, // Narrow portrait
-      { width: 'w-[220px]', height: 'h-[380px]' }, // Medium
-      { width: 'w-[200px]', height: 'h-[380px]' }, // Medium-narrow
-      { width: 'w-[190px]', height: 'h-[380px]' }, // Narrow-medium
-      { width: 'w-[210px]', height: 'h-[380px]' }, // Medium
-      { width: 'w-[195px]', height: 'h-[380px]' }, // Medium-narrow
-      { width: 'w-[225px]', height: 'h-[380px]' }, // Medium-large
-      { width: 'w-[185px]', height: 'h-[380px]' }, // Narrow
+      { width: 'w-[140px]', height: 'h-[450px]' }, // Narrow tall
+      { width: 'w-[160px]', height: 'h-[450px]' }, // Medium narrow
+      { width: 'w-[145px]', height: 'h-[450px]' }, // Narrow
+      { width: 'w-[155px]', height: 'h-[450px]' }, // Medium narrow
+      { width: 'w-[150px]', height: 'h-[450px]' }, // Medium
+      { width: 'w-[165px]', height: 'h-[450px]' }, // Medium-wide
+      { width: 'w-[148px]', height: 'h-[450px]' }, // Narrow
+      { width: 'w-[158px]', height: 'h-[450px]' }, // Medium narrow
     ];
     return patterns[index % patterns.length];
   };
@@ -32,7 +32,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
     <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar">
       <motion.div
         layout
-        className="flex gap-3 md:gap-4 px-4 md:px-6 lg:px-8"
+        className="flex gap-3 px-4 md:px-6 lg:px-8"
       >
         <AnimatePresence mode="popLayout">
           {projects.map((project, index) => {
