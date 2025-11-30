@@ -19,14 +19,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    // Check active sessions and sets the user
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    // Listen for changes on auth state (logged in, signed out, etc.)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
         setAuthState({
           user: {
             id: session.user.id,
             email: session.user.email || '',
-            role: 'admin', // Default role, can be fetched from user metadata
+            role: 'admin',
           },
           isAuthenticated: true,
           isLoading: false,
@@ -40,8 +40,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     });
 
-    // Listen for changes on auth state (logged in, signed out, etc.)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    // Check active sessions and sets the user
+    supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
         setAuthState({
           user: {
@@ -93,9 +93,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signup = async (email: string, password: string) => {
     try {
+      const redirectUrl = `${window.location.origin}/admin/dashboard`;
+      
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          emailRedirectTo: redirectUrl,
+        },
       });
 
       if (error) throw error;

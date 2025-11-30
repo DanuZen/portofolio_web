@@ -13,7 +13,8 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
+  const [isSignup, setIsSignup] = useState(false);
+  const { login, signup } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -24,13 +25,26 @@ export default function Login() {
     setError('');
     setIsLoading(true);
 
-    const { error: loginError } = await login(email, password);
-
-    if (loginError) {
-      setError(loginError.message || 'Login gagal. Periksa email dan password Anda.');
-      setIsLoading(false);
+    if (isSignup) {
+      const { error: signupError } = await signup(email, password);
+      
+      if (signupError) {
+        setError(signupError.message || 'Pendaftaran gagal. Coba lagi.');
+        setIsLoading(false);
+      } else {
+        setError('');
+        setIsLoading(false);
+        navigate(from, { replace: true });
+      }
     } else {
-      navigate(from, { replace: true });
+      const { error: loginError } = await login(email, password);
+
+      if (loginError) {
+        setError(loginError.message || 'Login gagal. Periksa email dan password Anda.');
+        setIsLoading(false);
+      } else {
+        navigate(from, { replace: true });
+      }
     }
   };
 
@@ -44,10 +58,10 @@ export default function Login() {
             </div>
           </div>
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 dark:from-purple-400 dark:to-purple-600 bg-clip-text text-transparent">
-            Admin Dashboard
+            {isSignup ? 'Daftar Admin' : 'Admin Dashboard'}
           </CardTitle>
           <CardDescription className="text-base">
-            Masuk untuk mengelola portfolio Anda
+            {isSignup ? 'Buat akun admin baru' : 'Masuk untuk mengelola portfolio Anda'}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -97,12 +111,21 @@ export default function Login() {
                   Memproses...
                 </>
               ) : (
-                'Masuk'
+                isSignup ? 'Daftar' : 'Masuk'
               )}
             </Button>
 
             <div className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
-              <p>Gunakan akun Supabase Anda untuk login</p>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsSignup(!isSignup);
+                  setError('');
+                }}
+                className="text-purple-600 dark:text-purple-400 hover:underline font-medium"
+              >
+                {isSignup ? 'Sudah punya akun? Masuk' : 'Belum punya akun? Daftar'}
+              </button>
             </div>
           </form>
         </CardContent>
