@@ -62,14 +62,12 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Portfolio Grid */}
-        <section className="px-4 md:px-6 lg:px-8 pb-24">
-          <div className="max-w-7xl mx-auto">
-            <PortfolioGrid 
-              projects={filteredProjects}
-              key={activeCategory}
-            />
-          </div>
+        {/* Portfolio Grid - Full Width Horizontal Scroll */}
+        <section className="pb-24">
+          <PortfolioGrid 
+            projects={filteredProjects}
+            key={activeCategory}
+          />
         </section>
       </div>
     </>

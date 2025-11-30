@@ -132,15 +132,16 @@ export default function Home() {
           </ScrollReveal>
 
           {/* Projects Grid - Edge to edge with minimal gaps */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
+          {/* Projects Grid - Responsive with aspect ratios */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {featuredProjects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                aspectRatio="landscape"
-                showCategory={true}
-                index={index}
-              />
+              <div key={project.id} className="aspect-[3/2]">
+                <ProjectCard
+                  project={project}
+                  showCategory={true}
+                  index={index}
+                />
+              </div>
             ))}
           </div>
 
