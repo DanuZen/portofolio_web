@@ -12,8 +12,8 @@ export default function About() {
   return (
     <>
       <SEOHead
-        title="About"
-        description={`Learn about ${photographerInfo.name}, ${photographerInfo.tagline}. ${photographerInfo.biography.split('\n\n')[0]}`}
+        title="Tentang"
+        description={`Pelajari tentang ${photographerInfo.name}, ${photographerInfo.tagline}. ${photographerInfo.biography.split('\n\n')[0]}`}
         image={photographerInfo.portraitImage}
       />
       
@@ -27,10 +27,10 @@ export default function About() {
             transition={{ duration: 0.4 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide mb-4">
-              About
+              Tentang
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide">
-              Photographer & Visual Storyteller
+              Fotografer & Pencerita Visual
             </p>
           </motion.div>
         </div>
@@ -163,7 +163,7 @@ export default function About() {
                   </a>
                 </div>
                 <div className="text-sm font-light tracking-wide">
-                  <span className="text-muted-foreground">Location: </span>
+                  <span className="text-muted-foreground">Lokasi: </span>
                   <span className="text-foreground">{photographerInfo.location}</span>
                 </div>
               </div>

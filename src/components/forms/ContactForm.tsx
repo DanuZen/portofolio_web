@@ -28,21 +28,21 @@ const contactFormSchema = z.object({
   name: z
     .string()
     .trim()
-    .min(2, { message: 'Name must be at least 2 characters' })
-    .max(100, { message: 'Name must be less than 100 characters' }),
+    .min(2, { message: 'Nama harus minimal 2 karakter' })
+    .max(100, { message: 'Nama harus kurang dari 100 karakter' }),
   email: z
     .string()
     .trim()
-    .email({ message: 'Please enter a valid email address' })
-    .max(255, { message: 'Email must be less than 255 characters' }),
+    .email({ message: 'Masukkan alamat email yang valid' })
+    .max(255, { message: 'Email harus kurang dari 255 karakter' }),
   projectType: z.enum(['editorial', 'commercial', 'personal'], {
-    required_error: 'Please select a project type',
+    required_error: 'Pilih jenis proyek',
   }),
   message: z
     .string()
     .trim()
-    .min(10, { message: 'Message must be at least 10 characters' })
-    .max(1000, { message: 'Message must be less than 1000 characters' }),
+    .min(10, { message: 'Pesan harus minimal 10 karakter' })
+    .max(1000, { message: 'Pesan harus kurang dari 1000 karakter' }),
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
@@ -98,7 +98,7 @@ export function ContactForm() {
       }, 5000);
     } catch (error) {
       form.setError('root', {
-        message: 'Failed to send message. Please try again.',
+        message: 'Gagal mengirim pesan. Silakan coba lagi.',
       });
     } finally {
       setIsSubmitting(false);
@@ -121,9 +121,9 @@ export function ContactForm() {
         >
           <CheckCircle2 className="size-16 mx-auto text-green-600 dark:text-green-400" />
         </motion.div>
-        <h3 className="text-2xl font-light tracking-wide">Message Sent!</h3>
+        <h3 className="text-2xl font-light tracking-wide">Pesan Terkirim!</h3>
         <p className="text-muted-foreground font-light leading-relaxed">
-          Thank you for reaching out. I'll get back to you as soon as possible.
+          Terima kasih telah menghubungi. Saya akan segera menghubungi Anda kembali.
         </p>
       </motion.div>
     );
@@ -139,11 +139,11 @@ export function ContactForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-sm font-light tracking-wide">
-                Name
+                Nama
               </FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Your full name"
+                  placeholder="Nama lengkap Anda"
                   className="font-light"
                   {...field}
                 />
@@ -165,7 +165,7 @@ export function ContactForm() {
               <FormControl>
                 <Input
                   type="email"
-                  placeholder="your.email@example.com"
+                  placeholder="email.anda@contoh.com"
                   className="font-light"
                   {...field}
                 />
@@ -182,12 +182,12 @@ export function ContactForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-sm font-light tracking-wide">
-                Project Type
+                Jenis Proyek
               </FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger className="font-light">
-                    <SelectValue placeholder="Select project type" />
+                    <SelectValue placeholder="Pilih jenis proyek" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent className="bg-popover z-50">
@@ -195,7 +195,7 @@ export function ContactForm() {
                     Editorial
                   </SelectItem>
                   <SelectItem value="commercial" className="font-light">
-                    Commercial
+                    Komersial
                   </SelectItem>
                   <SelectItem value="personal" className="font-light">
                     Personal
@@ -214,11 +214,11 @@ export function ContactForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-sm font-light tracking-wide">
-                Message
+                Pesan
               </FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Tell me about your project..."
+                  placeholder="Ceritakan tentang proyek Anda..."
                   className="min-h-32 font-light resize-none"
                   {...field}
                 />
@@ -244,10 +244,10 @@ export function ContactForm() {
           {isSubmitting ? (
             <>
               <Loader2 className="mr-2 size-5 animate-spin" />
-              Sending...
+              Mengirim...
             </>
           ) : (
-            'Send Message'
+            'Kirim Pesan'
           )}
         </Button>
       </form>

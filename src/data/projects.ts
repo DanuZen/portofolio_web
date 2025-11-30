@@ -3,13 +3,13 @@ import type { Project } from '@/types';
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'Desert Solitude',
+    title: 'Kesendirian Gurun',
     category: 'landscapes',
     year: '2024',
     slug: 'desert-solitude',
     // Photo by Zain Creations on Unsplash
     coverImage: 'https://images.unsplash.com/photo-1733496637708-9470e9c8cfe2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjB8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'An exploration of the stark beauty and quiet majesty of the American Southwest. This series captures the interplay of light, shadow, and ancient geological formations that define the desert landscape.',
+    description: 'Eksplorasi keindahan keras dan keagungan tenang Amerika Barat Daya. Seri ini menangkap permainan cahaya, bayangan, dan formasi geologis kuno yang mendefinisikan lanskap gurun.',
     client: 'National Geographic',
     camera: 'Hasselblad X2D 100C',
     location: 'Arizona & Utah',
@@ -46,13 +46,13 @@ export const projects: Project[] = [
   },
   {
     id: '2',
-    title: 'Urban Portraits',
+    title: 'Potret Perkotaan',
     category: 'portraits',
     year: '2024',
     slug: 'urban-portraits',
     // Photo by Bradley Andrews on Unsplash
     coverImage: 'https://images.unsplash.com/photo-1761069234906-a7c77124f641?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjJ8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'A portrait series celebrating the diversity and character of city dwellers. Each subject was photographed in their favorite urban location, revealing the intimate connection between people and their environment.',
+    description: 'Seri potret yang merayakan keberagaman dan karakter penduduk kota. Setiap subjek difoto di lokasi perkotaan favorit mereka, mengungkapkan hubungan intim antara manusia dan lingkungan mereka.',
     client: 'The New York Times Magazine',
     camera: 'Canon EOS R5',
     location: 'New York City',
@@ -89,13 +89,13 @@ export const projects: Project[] = [
   },
   {
     id: '3',
-    title: 'Architectural Visions',
+    title: 'Visi Arsitektur',
     category: 'architecture',
     year: '2023',
     slug: 'architectural-visions',
     // Photo by E Vos on Unsplash
     coverImage: 'https://images.unsplash.com/photo-1758543437543-6d61ca0fd530?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjR8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'Modern architecture captured through a minimalist lens. This series focuses on geometric forms, materiality, and the interplay of structure with natural light.',
+    description: 'Arsitektur modern ditangkap melalui lensa minimalis. Seri ini berfokus pada bentuk geometris, materialitas, dan permainan struktur dengan cahaya alami.',
     client: 'Architectural Digest',
     camera: 'Sony A7R V',
     location: 'International',
@@ -138,7 +138,7 @@ export const projects: Project[] = [
     slug: 'fashion-forward',
     // Photo by Yigit ARISOY on Unsplash
     coverImage: 'https://images.unsplash.com/photo-1682232568244-edbb92614c2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjZ8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'An editorial series exploring contemporary fashion through bold compositions and dramatic lighting. Shot on location and in studio.',
+    description: 'Seri editorial yang mengeksplorasi fashion kontemporer melalui komposisi berani dan pencahayaan dramatis. Difoto di lokasi dan studio.',
     client: 'Vogue',
     camera: 'Phase One XF IQ4',
     location: 'New York & Paris',
@@ -175,16 +175,16 @@ export const projects: Project[] = [
   },
   {
     id: '5',
-    title: 'Mountain Stories',
+    title: 'Kisah Pegunungan',
     category: 'documentary',
     year: '2023',
     slug: 'mountain-stories',
     // Photo by Eva Šumah on Unsplash
     coverImage: 'https://images.unsplash.com/photo-1742260765447-239ed006350a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1Njh8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'Documentary series following mountain communities and their relationship with the changing alpine environment. A year-long project documenting life at altitude.',
-    client: 'Personal Project',
+    description: 'Seri dokumenter mengikuti komunitas pegunungan dan hubungan mereka dengan lingkungan alpine yang berubah. Proyek satu tahun mendokumentasikan kehidupan di ketinggian.',
+    client: 'Proyek Personal',
     camera: 'Fujifilm GFX 100 II',
-    location: 'Swiss Alps',
+    location: 'Pegunungan Alpen Swiss',
     images: [
       {
         id: '5-1',
@@ -218,13 +218,13 @@ export const projects: Project[] = [
   },
   {
     id: '6',
-    title: 'Coastal Light',
+    title: 'Cahaya Pantai',
     category: 'landscapes',
     year: '2022',
     slug: 'coastal-light',
     // Photo by Max Kukurudziak on Unsplash
     coverImage: 'https://images.unsplash.com/photo-1669908752972-e04c3b65e855?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1Njl8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'The ever-changing mood of the coastline captured through different seasons and weather conditions. A meditation on light, water, and time.',
+    description: 'Suasana garis pantai yang selalu berubah ditangkap melalui berbagai musim dan kondisi cuaca. Meditasi tentang cahaya, air, dan waktu.',
     location: 'Pacific Northwest',
     camera: 'Nikon Z9',
     images: [
@@ -260,16 +260,16 @@ export const projects: Project[] = [
   },
   {
     id: '7',
-    title: 'Studio Sessions',
+    title: 'Sesi Studio',
     category: 'portraits',
     year: '2022',
     slug: 'studio-sessions',
     // Photo by Kyle Loftus on Unsplash
     coverImage: 'https://images.unsplash.com/photo-1616267624976-b45d3a7bac73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzF8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'Controlled studio portraiture emphasizing form, light, and expression. Classic approach to contemporary subjects.',
-    client: 'Various Editorial',
+    description: 'Potret studio terkontrol yang menekankan bentuk, cahaya, dan ekspresi. Pendekatan klasik untuk subjek kontemporer.',
+    client: 'Berbagai Editorial',
     camera: 'Hasselblad H6D-100c',
-    location: 'New York Studio',
+    location: 'Studio New York',
     images: [
       {
         id: '7-1',
@@ -303,13 +303,13 @@ export const projects: Project[] = [
   },
   {
     id: '8',
-    title: 'City Lights',
+    title: 'Cahaya Kota',
     category: 'editorial',
     year: '2022',
     slug: 'city-lights',
     // Photo by Michael Wu on Unsplash
     coverImage: 'https://images.unsplash.com/photo-1582210413269-f0bf6d13f58f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzN8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'Urban nightscapes and the electric energy of city life after dark. Long exposures and ambient light create a dreamlike quality.',
+    description: 'Pemandangan malam perkotaan dan energi listrik kehidupan kota setelah gelap. Eksposur panjang dan cahaya ambient menciptakan kualitas seperti mimpi.',
     client: 'Adobe Creative Cloud',
     camera: 'Sony A7S III',
     location: 'Tokyo & New York',

@@ -2,14 +2,14 @@ import type { PhotographerInfo } from '@/types';
 
 export const photographerInfo: PhotographerInfo = {
   name: 'Sarah Mitchell',
-  tagline: 'Editorial & Commercial Photographer',
-  heroIntroduction: 'Creating visual narratives that capture authentic moments and timeless stories.',
-  biography: `Sarah Mitchell is an award-winning photographer specializing in editorial and commercial work, with recognition including the International Photography Awards Editorial Photographer of the Year 2023 and PDN Photo Annual Winner 2022. With over a decade of experience, her work has been featured in numerous international publications and exhibitions, collaborating with clients such as Vogue, The New York Times, National Geographic, Adobe, Apple, Nike, and Architectural Digest.
+  tagline: 'Fotografer Editorial & Komersial',
+  heroIntroduction: 'Menciptakan narasi visual yang menangkap momen autentik dan cerita abadi.',
+  biography: `Sarah Mitchell adalah fotografer pemenang penghargaan yang mengkhususkan diri dalam pekerjaan editorial dan komersial, dengan pengakuan termasuk International Photography Awards Editorial Photographer of the Year 2023 dan PDN Photo Annual Winner 2022. Dengan pengalaman lebih dari satu dekade, karyanya telah ditampilkan dalam berbagai publikasi dan pameran internasional, berkolaborasi dengan klien seperti Vogue, The New York Times, National Geographic, Adobe, Apple, Nike, dan Architectural Digest.
 
-Based in New York with an MFA in Photography from the School of Visual Arts, Sarah brings a unique perspective to every project, combining technical excellence with artistic vision. Her approach to photography is deeply rooted in storytelling, believing that every image should convey emotion and meaning beyond its visual appeal.`,
-  approach: `My photography is guided by three principles: authenticity, composition, and light. I believe the best images emerge when subjects feel comfortable and genuine, when composition guides the viewer's eye naturally, and when light reveals the essence of the moment.
+Berbasis di New York dengan gelar MFA dalam Fotografi dari School of Visual Arts, Sarah membawa perspektif unik ke setiap proyek, menggabungkan keunggulan teknis dengan visi artistik. Pendekatannya terhadap fotografi berakar kuat pada penceritaan, percaya bahwa setiap gambar harus menyampaikan emosi dan makna di luar daya tarik visualnya.`,
+  approach: `Fotografi saya dipandu oleh tiga prinsip: keaslian, komposisi, dan cahaya. Saya percaya gambar terbaik muncul ketika subjek merasa nyaman dan asli, ketika komposisi memandu mata penonton secara alami, dan ketika cahaya mengungkapkan esensi dari momen tersebut.
 
-Whether working on editorial assignments or commercial projects, I strive to create images that transcend their immediate purpose and become lasting visual statements.`,
+Baik mengerjakan tugas editorial atau proyek komersial, saya berusaha untuk menciptakan gambar yang melampaui tujuan langsung mereka dan menjadi pernyataan visual yang abadi.`,
   awards: [
     'International Photography Awards - Editorial Photographer of the Year 2023',
     'PDN Photo Annual - Winner 2022',
@@ -26,11 +26,11 @@ Whether working on editorial assignments or commercial projects, I strive to cre
     'Patagonia',
     'Architectural Digest'
   ],
-  education: 'MFA Photography, School of Visual Arts, New York',
+  education: 'MFA Fotografi, School of Visual Arts, New York',
   location: 'New York, NY',
   email: 'hello@sarahmitchell.com',
   phone: '+1 (555) 123-4567',
-  availability: 'Currently booking for Q2 2025',
+  availability: 'Saat ini menerima booking untuk Q2 2025',
   socialLinks: {
     instagram: 'https://instagram.com/sarahmitchellphoto',
     linkedin: 'https://linkedin.com/in/sarahmitchell',

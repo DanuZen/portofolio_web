@@ -13,8 +13,8 @@ export default function Contact() {
   return (
     <>
       <SEOHead
-        title="Contact"
-        description={`Get in touch with ${photographerInfo.name} for photography inquiries, collaborations, and project bookings. ${photographerInfo.availability}`}
+        title="Kontak"
+        description={`Hubungi ${photographerInfo.name} untuk pertanyaan fotografi, kolaborasi, dan booking proyek. ${photographerInfo.availability}`}
       />
       
       <div className="min-h-screen">
@@ -27,10 +27,10 @@ export default function Contact() {
             transition={{ duration: 0.4 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide mb-4">
-              Get in Touch
+              Hubungi Kami
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide">
-              Let's discuss your next project
+              Mari diskusikan proyek Anda selanjutnya
             </p>
           </motion.div>
         </div>
@@ -49,10 +49,10 @@ export default function Contact() {
             >
               <div className="space-y-3">
                 <h2 className="text-3xl md:text-4xl font-light tracking-wide">
-                  Send a Message
+                  Kirim Pesan
                 </h2>
                 <p className="text-muted-foreground font-light">
-                  Fill out the form below and I'll get back to you within 24-48 hours. {photographerInfo.availability}
+                  Isi formulir di bawah ini dan saya akan menghubungi Anda dalam 24-48 jam. {photographerInfo.availability}
                 </p>
               </div>
 
@@ -68,10 +68,10 @@ export default function Contact() {
             >
               <div className="space-y-3">
                 <h2 className="text-3xl md:text-4xl font-light tracking-wide">
-                  Contact Information
+                  Informasi Kontak
                 </h2>
                 <p className="text-muted-foreground font-light">
-                  Prefer to reach out directly? Here's how you can contact me.
+                  Lebih suka menghubungi langsung? Berikut cara Anda dapat menghubungi saya.
                 </p>
               </div>
 
@@ -104,7 +104,7 @@ export default function Contact() {
                   </div>
                   <div className="space-y-1">
                     <p className="text-sm font-light tracking-wide text-muted-foreground">
-                      Phone
+                      Telepon
                     </p>
                     <a
                       href={`tel:${photographerInfo.phone}`}
@@ -122,7 +122,7 @@ export default function Contact() {
                   </div>
                   <div className="space-y-1">
                     <p className="text-sm font-light tracking-wide text-muted-foreground">
-                      Location
+                      Lokasi
                     </p>
                     <p className="text-base md:text-lg font-light">
                       {photographerInfo.location}
