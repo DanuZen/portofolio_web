@@ -100,13 +100,13 @@ export function Header() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.4 }}
             >
-              <ThemeToggle />
+              <ThemeToggle isTransparent={isTransparent} />
             </motion.div>
           </nav>
 
           {/* Mobile Menu */}
           <div className="md:hidden flex items-center gap-2">
-            <ThemeToggle />
+            <ThemeToggle isTransparent={isTransparent} />
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
