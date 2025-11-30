@@ -95,6 +95,9 @@ export function Header() {
                   </Link>
                 </motion.div>
               ))}
+            
+            {/* Icon Group with smaller gap */}
+            <div className="flex items-center gap-1">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -140,10 +143,11 @@ export function Header() {
                 <User className="size-5" />
               </Button>
             </motion.div>
+            </div>
           </nav>
 
           {/* Mobile Menu */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-1">
             <Button
               variant="ghost"
               size="icon"
