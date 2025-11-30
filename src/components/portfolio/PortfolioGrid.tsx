@@ -13,19 +13,10 @@ interface PortfolioGridProps {
  */
 export function PortfolioGrid({ projects }: PortfolioGridProps) {
   // Dynamic widths for creative horizontal layout - narrow and tall
-  const getCardStyle = (index: number) => {
+  const getCardWidth = (index: number) => {
     // Pattern: varied widths for visual interest - narrow and tall portrait cards
-    const patterns = [
-      { width: 'w-[140px]', height: 'h-[450px]' }, // Narrow tall
-      { width: 'w-[160px]', height: 'h-[450px]' }, // Medium narrow
-      { width: 'w-[145px]', height: 'h-[450px]' }, // Narrow
-      { width: 'w-[155px]', height: 'h-[450px]' }, // Medium narrow
-      { width: 'w-[150px]', height: 'h-[450px]' }, // Medium
-      { width: 'w-[165px]', height: 'h-[450px]' }, // Medium-wide
-      { width: 'w-[148px]', height: 'h-[450px]' }, // Narrow
-      { width: 'w-[158px]', height: 'h-[450px]' }, // Medium narrow
-    ];
-    return patterns[index % patterns.length];
+    const widths = [140, 160, 145, 155, 150, 165, 148, 158];
+    return widths[index % widths.length];
   };
 
   return (
@@ -36,7 +27,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
       >
         <AnimatePresence mode="popLayout">
           {projects.map((project, index) => {
-            const cardStyle = getCardStyle(index);
+            const cardWidth = getCardWidth(index);
             
             return (
               <motion.div
@@ -53,12 +44,13 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
                     ease: "easeInOut"
                   }
                 }}
-                className={`${cardStyle.width} ${cardStyle.height} flex-shrink-0`}
+                className="h-[450px] flex-shrink-0"
               >
                 <ProjectCard
                   project={project}
                   showCategory={true}
                   index={index}
+                  initialWidth={cardWidth}
                 />
               </motion.div>
             );
