@@ -8,6 +8,7 @@ interface ProjectCardProps {
   project: Project;
   showCategory?: boolean;
   index?: number;
+  initialWidth?: number;
 }
 
 /**
@@ -17,22 +18,23 @@ interface ProjectCardProps {
 export function ProjectCard({ 
   project, 
   showCategory = true,
-  index = 0 
+  index = 0,
+  initialWidth = 150
 }: ProjectCardProps) {
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20, width: initialWidth }}
+      animate={{ opacity: 1, y: 0, width: initialWidth }}
       transition={{ 
         duration: 0.5, 
         delay: index * 0.1,
         layout: { duration: 0.4, ease: "easeInOut" }
       }}
       whileHover={{ 
-        width: '280px',
+        width: 280,
         transition: { duration: 0.4, ease: "easeOut" }
       }}
       className="h-full"
