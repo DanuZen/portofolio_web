@@ -24,7 +24,7 @@ import {
 } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Save, ArrowLeft, Upload, X, Image as ImageIcon } from 'lucide-react';
-import type { ProjectImage, ProjectCategory, AspectRatio } from '@/types';
+import type { ProjectImage, ProjectCategory, AspectRatio, Project } from '@/types';
 
 const projectSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -179,8 +179,16 @@ export default function ProjectForm() {
 
     setIsLoading(true);
 
-    const projectData = {
-      ...data,
+    const projectData: Omit<Project, 'id'> = {
+      title: data.title,
+      slug: data.slug,
+      category: data.category,
+      year: data.year,
+      description: data.description,
+      coverImage: data.coverImage,
+      client: data.client,
+      camera: data.camera,
+      location: data.location,
       images,
     };
 
