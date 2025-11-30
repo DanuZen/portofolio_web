@@ -14,25 +14,25 @@ interface PortfolioGridProps {
 export function PortfolioGrid({ projects }: PortfolioGridProps) {
   // Dynamic widths for creative horizontal layout
   const getCardStyle = (index: number) => {
-    // Pattern: large, small, small, medium, large, small, medium, small
+    // Pattern: varied widths for visual interest
     const patterns = [
-      { width: 'flex-[0_0_450px]', height: 'h-[520px]' }, // Large portrait
-      { width: 'flex-[0_0_280px]', height: 'h-[520px]' }, // Tall narrow
-      { width: 'flex-[0_0_300px]', height: 'h-[520px]' }, // Medium portrait
-      { width: 'flex-[0_0_320px]', height: 'h-[520px]' }, // Medium
-      { width: 'flex-[0_0_380px]', height: 'h-[520px]' }, // Large
-      { width: 'flex-[0_0_300px]', height: 'h-[520px]' }, // Medium
-      { width: 'flex-[0_0_500px]', height: 'h-[520px]' }, // Extra large
-      { width: 'flex-[0_0_280px]', height: 'h-[520px]' }, // Small
+      { width: 'w-[380px]', height: 'h-[480px]' }, // Large
+      { width: 'w-[280px]', height: 'h-[480px]' }, // Narrow
+      { width: 'w-[320px]', height: 'h-[480px]' }, // Medium
+      { width: 'w-[360px]', height: 'h-[480px]' }, // Large-Medium
+      { width: 'w-[300px]', height: 'h-[480px]' }, // Medium
+      { width: 'w-[340px]', height: 'h-[480px]' }, // Medium-Large
+      { width: 'w-[420px]', height: 'h-[480px]' }, // Extra Large
+      { width: 'w-[290px]', height: 'h-[480px]' }, // Narrow-Medium
     ];
     return patterns[index % patterns.length];
   };
 
   return (
-    <div className="overflow-x-auto pb-4 -mx-4 px-4 md:-mx-6 md:px-6 lg:-mx-8 lg:px-8">
+    <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar">
       <motion.div
         layout
-        className="flex gap-4 md:gap-6 min-w-min"
+        className="flex gap-4 md:gap-6 px-4 md:px-6 lg:px-8"
       >
         <AnimatePresence mode="popLayout">
           {projects.map((project, index) => {
@@ -47,7 +47,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ 
                   duration: 0.5,
-                  delay: index * 0.08,
+                  delay: index * 0.05,
                   layout: { duration: 0.4 }
                 }}
                 className={`${cardStyle.width} ${cardStyle.height} flex-shrink-0`}
