@@ -19,23 +19,23 @@ export function ProjectCard({
   project, 
   showCategory = true,
   index = 0,
-  initialWidth = 150
+  initialWidth
 }: ProjectCardProps) {
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 20, width: initialWidth }}
-      animate={{ opacity: 1, y: 0, width: initialWidth }}
+      initial={initialWidth ? { opacity: 0, x: 50, width: initialWidth } : { opacity: 0, scale: 0.9 }}
+      animate={initialWidth ? { opacity: 1, x: 0, width: initialWidth } : { opacity: 1, scale: 1 }}
+      whileHover={initialWidth ? { 
+        width: 280,
+        transition: { duration: 0.4, ease: "easeOut" as const }
+      } : undefined}
       transition={{ 
         duration: 0.5, 
-        delay: index * 0.1,
+        delay: index * 0.05,
         layout: { duration: 0.4, ease: "easeInOut" }
-      }}
-      whileHover={{ 
-        width: 280,
-        transition: { duration: 0.4, ease: "easeOut" }
       }}
       className="h-full"
     >
