@@ -131,18 +131,42 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          {/* Projects Grid - Edge to edge with minimal gaps */}
-          {/* Projects Grid - Responsive with aspect ratios */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {featuredProjects.map((project, index) => (
-              <div key={project.id} className="aspect-[3/2]">
-                <ProjectCard
-                  project={project}
-                  showCategory={true}
-                  index={index}
-                />
-              </div>
-            ))}
+          {/* Projects Grid - Horizontal scrolling layout */}
+          <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar">
+            <motion.div
+              layout
+              className="flex gap-3 px-4 md:px-6 lg:px-8 justify-center items-center"
+            >
+              {featuredProjects.map((project, index) => {
+                const widths = [140, 160, 145, 155, 150, 165, 148, 158];
+                const cardWidth = widths[index % widths.length];
+                
+                return (
+                  <motion.div
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ 
+                      duration: 0.5,
+                      delay: index * 0.05,
+                      layout: { 
+                        duration: 0.4,
+                        ease: "easeInOut"
+                      }
+                    }}
+                    className="h-[450px] flex-shrink-0"
+                  >
+                    <ProjectCard
+                      project={project}
+                      showCategory={true}
+                      index={index}
+                      initialWidth={cardWidth}
+                    />
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </div>
 
           {/* View All Link */}
