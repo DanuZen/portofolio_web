@@ -9,7 +9,7 @@ interface CategoryFilterProps {
 
 /**
  * Category filter component with smooth transitions
- * Shows active state and animates category changes
+ * Shows active state and animates category changes with rounded pills
  */
 export function CategoryFilter({ 
   categories, 
@@ -26,10 +26,10 @@ export function CategoryFilter({
             key={category.id}
             onClick={() => onCategoryChange(category.id)}
             className={cn(
-              'relative px-6 py-2.5 text-sm font-light tracking-wide rounded-sm transition-all duration-300',
+              'relative px-6 py-2.5 text-sm font-light tracking-wide rounded-full transition-all duration-300 overflow-hidden',
               isActive
-                ? 'text-primary-foreground'
-                : 'text-muted-foreground hover:text-foreground border border-border hover:border-foreground/20'
+                ? 'text-background'
+                : 'text-muted-foreground hover:text-foreground border border-border hover:border-foreground/30'
             )}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -37,11 +37,11 @@ export function CategoryFilter({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {/* Active background */}
+            {/* Active background with smooth morph animation */}
             {isActive && (
               <motion.div
                 layoutId="activeCategory"
-                className="absolute inset-0 bg-primary rounded-sm"
+                className="absolute inset-0 bg-foreground"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}
