@@ -12,18 +12,18 @@ interface PortfolioGridProps {
  * Cards arranged in flexible rows with different widths
  */
 export function PortfolioGrid({ projects }: PortfolioGridProps) {
-  // Dynamic widths for creative horizontal layout
+  // Dynamic widths for creative horizontal layout - smaller sizes
   const getCardStyle = (index: number) => {
-    // Pattern: varied widths for visual interest
+    // Pattern: varied widths for visual interest - compact sizes
     const patterns = [
-      { width: 'w-[380px]', height: 'h-[480px]' }, // Large
-      { width: 'w-[280px]', height: 'h-[480px]' }, // Narrow
-      { width: 'w-[320px]', height: 'h-[480px]' }, // Medium
-      { width: 'w-[360px]', height: 'h-[480px]' }, // Large-Medium
-      { width: 'w-[300px]', height: 'h-[480px]' }, // Medium
-      { width: 'w-[340px]', height: 'h-[480px]' }, // Medium-Large
-      { width: 'w-[420px]', height: 'h-[480px]' }, // Extra Large
-      { width: 'w-[290px]', height: 'h-[480px]' }, // Narrow-Medium
+      { width: 'w-[180px]', height: 'h-[380px]' }, // Narrow portrait
+      { width: 'w-[220px]', height: 'h-[380px]' }, // Medium
+      { width: 'w-[200px]', height: 'h-[380px]' }, // Medium-narrow
+      { width: 'w-[190px]', height: 'h-[380px]' }, // Narrow-medium
+      { width: 'w-[210px]', height: 'h-[380px]' }, // Medium
+      { width: 'w-[195px]', height: 'h-[380px]' }, // Medium-narrow
+      { width: 'w-[225px]', height: 'h-[380px]' }, // Medium-large
+      { width: 'w-[185px]', height: 'h-[380px]' }, // Narrow
     ];
     return patterns[index % patterns.length];
   };
@@ -32,7 +32,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
     <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar">
       <motion.div
         layout
-        className="flex gap-4 md:gap-6 px-4 md:px-6 lg:px-8"
+        className="flex gap-3 md:gap-4 px-4 md:px-6 lg:px-8"
       >
         <AnimatePresence mode="popLayout">
           {projects.map((project, index) => {
