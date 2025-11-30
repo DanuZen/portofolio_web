@@ -27,7 +27,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-[250px] gap-0">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-[250px] gap-4 md:gap-6 px-4 md:px-6 lg:px-8">
       <AnimatePresence mode="popLayout">
         {projects.map((project, index) => (
           <motion.div
