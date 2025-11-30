@@ -31,54 +31,56 @@ export function ProjectCard({
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+    <Link
+      to={`/project/${project.slug}`}
+      className="group block relative overflow-hidden rounded-2xl h-full"
     >
-      <Link
-        to={`/project/${project.slug}`}
-        className="group block relative overflow-hidden rounded-sm"
-      >
-        {/* Image Container */}
-        <div className={cn('relative overflow-hidden bg-muted', aspectRatioClasses[ratio])}>
-          {/* Loading placeholder */}
-          {!isLoaded && (
-            <div className="absolute inset-0 bg-muted" />
+      {/* Image Container */}
+      <div className="relative overflow-hidden bg-muted h-full">
+        {/* Loading placeholder */}
+        {!isLoaded && (
+          <div className="absolute inset-0 bg-muted animate-pulse" />
+        )}
+        
+        <motion.img
+          src={project.coverImage}
+          alt={project.title}
+          className={cn(
+            'w-full h-full object-cover transition-all duration-700',
+            isLoaded ? 'opacity-100' : 'opacity-0',
+            'group-hover:scale-110 group-hover:rotate-2'
           )}
-          
-          <motion.img
-            src={project.coverImage}
-            alt={project.title}
-            className={cn(
-              'absolute inset-0 w-full h-full object-cover transition-all duration-700',
-              isLoaded ? 'opacity-100' : 'opacity-0',
-              'group-hover:scale-110'
-            )}
-            loading={index < 6 ? 'eager' : 'lazy'}
-            onLoad={() => setIsLoaded(true)}
-          />
-          
-          {/* Overlay with gradient and text */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            <div className="absolute bottom-0 left-0 right-0 p-6 space-y-2">
-              <h3 className="text-white text-xl md:text-2xl font-light tracking-wide">
+          loading={index < 6 ? 'eager' : 'lazy'}
+          onLoad={() => setIsLoaded(true)}
+        />
+        
+        {/* Overlay with gradient and text */}
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"
+          initial={false}
+        >
+          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+            <motion.div
+              initial={false}
+              className="space-y-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
+            >
+              <h3 className="text-white text-2xl md:text-3xl font-light tracking-wide">
                 {project.title}
               </h3>
               {showCategory && (
-                <div className="flex items-center gap-3 text-sm text-white/80 font-light tracking-wide">
+                <div className="flex items-center gap-3 text-sm text-white/90 font-light tracking-wide">
                   <span className="capitalize">{project.category}</span>
                   <span>•</span>
                   <span>{project.year}</span>
                 </div>
               )}
-            </div>
+            </motion.div>
           </div>
+        </motion.div>
 
-          {/* Subtle hover border effect */}
-          <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/10 transition-colors duration-500" />
-        </div>
-      </Link>
-    </motion.div>
+        {/* Subtle hover border glow effect */}
+        <div className="absolute inset-0 rounded-2xl ring-2 ring-white/0 group-hover:ring-white/20 transition-all duration-500" />
+      </div>
+    </Link>
   );
 }
