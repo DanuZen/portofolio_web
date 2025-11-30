@@ -357,9 +357,9 @@ export const getProjectsByCategory = (category: string): Project[] => {
   return projects.filter(project => project.category === category);
 };
 
-// Helper function to get featured projects (first 4)
+// Helper function to get featured projects (first 6)
 export const getFeaturedProjects = (): Project[] => {
-  return projects.slice(0, 4);
+  return projects.slice(0, 6);
 };
 
 // Helper function to get next/previous project
