@@ -6,7 +6,6 @@ import { cn } from '@/lib/utils';
 
 interface ProjectCardProps {
   project: Project;
-  aspectRatio?: 'portrait' | 'landscape' | 'square';
   showCategory?: boolean;
   index?: number;
 }
@@ -17,18 +16,10 @@ interface ProjectCardProps {
  */
 export function ProjectCard({ 
   project, 
-  aspectRatio, 
   showCategory = true,
   index = 0 
 }: ProjectCardProps) {
   const [isLoaded, setIsLoaded] = React.useState(false);
-  const ratio = aspectRatio || 'landscape';
-  
-  const aspectRatioClasses = {
-    portrait: 'aspect-[3/4]',
-    landscape: 'aspect-[3/2]',
-    square: 'aspect-square'
-  };
 
   return (
     <motion.div
