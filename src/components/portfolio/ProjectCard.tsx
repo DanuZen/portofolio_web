@@ -41,7 +41,7 @@ export function ProjectCard({
     >
       <Link
         to={`/project/${project.slug}`}
-        className="group block relative overflow-hidden rounded-2xl h-full shadow-lg hover:shadow-2xl transition-shadow duration-500"
+        className="group block relative overflow-hidden h-full shadow-none hover:shadow-2xl transition-shadow duration-500"
       >
         {/* Image Container */}
         <div className="relative overflow-hidden bg-muted h-full">
@@ -85,9 +85,6 @@ export function ProjectCard({
               </motion.div>
             </div>
           </motion.div>
-
-          {/* Subtle hover border glow effect */}
-          <div className="absolute inset-0 rounded-2xl ring-2 ring-white/0 group-hover:ring-white/20 transition-all duration-500" />
         </div>
       </Link>
     </motion.div>
