@@ -27,8 +27,8 @@ export function ProjectCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ 
-        scale: 1.05,
-        transition: { duration: 0.3, ease: "easeOut" }
+        width: '280px',
+        transition: { duration: 0.4, ease: "easeOut" }
       }}
       className="h-full"
     >
@@ -49,7 +49,7 @@ export function ProjectCard({
             className={cn(
               'w-full h-full object-cover transition-all duration-700',
               isLoaded ? 'opacity-100' : 'opacity-0',
-              'group-hover:scale-110 group-hover:brightness-110'
+              'group-hover:scale-105 group-hover:brightness-110'
             )}
             loading={index < 6 ? 'eager' : 'lazy'}
             onLoad={() => setIsLoaded(true)}
