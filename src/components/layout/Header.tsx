@@ -129,19 +129,21 @@ export function Header() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.5 }}
             >
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn(
-                  "size-9 transition-colors",
-                  isTransparent 
-                    ? "text-white hover:bg-white/10" 
-                    : "text-foreground hover:bg-accent"
-                )}
-                aria-label="User profile"
-              >
-                <User className="size-5" />
-              </Button>
+              <Link to="/admin/login">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    "size-9 transition-colors",
+                    isTransparent 
+                      ? "text-white hover:bg-white/10" 
+                      : "text-foreground hover:bg-accent"
+                  )}
+                  aria-label="Admin login"
+                >
+                  <User className="size-5" />
+                </Button>
+              </Link>
             </motion.div>
             </div>
           </nav>
@@ -161,19 +163,21 @@ export function Header() {
             >
               <Languages className="size-5" />
             </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className={cn(
-                "size-9 transition-colors",
-                isTransparent 
-                  ? "text-white hover:bg-white/10" 
-                  : "text-foreground hover:bg-accent"
-              )}
-              aria-label="User profile"
-            >
-              <User className="size-5" />
-            </Button>
+            <Link to="/admin/login">
+              <Button
+                variant="ghost"
+                size="icon"
+                className={cn(
+                  "size-9 transition-colors",
+                  isTransparent 
+                    ? "text-white hover:bg-white/10" 
+                    : "text-foreground hover:bg-accent"
+                )}
+                aria-label="Admin login"
+              >
+                <User className="size-5" />
+              </Button>
+            </Link>
             <ThemeToggle isTransparent={isTransparent} />
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
