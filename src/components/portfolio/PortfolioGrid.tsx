@@ -32,7 +32,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
     <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar">
       <motion.div
         layout
-        className="flex gap-3 px-4 md:px-6 lg:px-8"
+        className="flex gap-3 px-4 md:px-6 lg:px-8 justify-center"
       >
         <AnimatePresence mode="popLayout">
           {projects.map((project, index) => {
