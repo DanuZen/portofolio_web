@@ -32,7 +32,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
     <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar">
       <motion.div
         layout
-        className="flex gap-3 px-4 md:px-6 lg:px-8 justify-center"
+        className="flex gap-3 px-4 md:px-6 lg:px-8 justify-center items-center"
       >
         <AnimatePresence mode="popLayout">
           {projects.map((project, index) => {
@@ -48,7 +48,10 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
                 transition={{ 
                   duration: 0.5,
                   delay: index * 0.05,
-                  layout: { duration: 0.4 }
+                  layout: { 
+                    duration: 0.4,
+                    ease: "easeInOut"
+                  }
                 }}
                 className={`${cardStyle.width} ${cardStyle.height} flex-shrink-0`}
               >
