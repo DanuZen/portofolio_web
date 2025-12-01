@@ -107,7 +107,7 @@ export default function Home() {
             }}>
               <div className="relative w-full max-w-md aspect-[3/4] rounded-[2rem] bg-black dark:bg-white p-1 shadow-2xl">
                 <div className="w-full h-full rounded-[1.9rem] bg-white dark:bg-black overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" alt="Photographer portrait" className="w-full h-full object-cover grayscale transition-all duration-500" />
+                  <img alt="Photographer portrait" className="w-full h-full object-cover grayscale transition-all duration-500" src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" />
                 </div>
               </div>
 
