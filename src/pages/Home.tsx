@@ -19,8 +19,8 @@ export default function Home() {
       <SEOHead />
       
       <div className="min-h-screen">
-        {/* Hero Section - Modern split layout */}
-      <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
+      {/* Hero Section - Modern split layout */}
+      <section className="relative h-screen w-full overflow-hidden bg-white dark:bg-black">
         {/* Hero Content */}
         <div className="relative h-full max-w-7xl mx-auto px-6 lg:px-8">
           <div className="h-full grid lg:grid-cols-2 gap-8 lg:gap-12 items-center py-20">
@@ -36,22 +36,7 @@ export default function Home() {
               ease: "easeOut"
             }}>
               <div className="space-y-4">
-                <motion.div className="inline-block" initial={{
-                  opacity: 0,
-                  scale: 0.8
-                }} animate={{
-                  opacity: 1,
-                  scale: 1
-                }} transition={{
-                  duration: 0.6,
-                  delay: 0.2
-                }}>
-                  <div className="w-12 h-12 rounded-full bg-purple-600/20 flex items-center justify-center">
-                    <div className="w-6 h-6 rounded-full border-2 border-purple-500" />
-                  </div>
-                </motion.div>
-                
-                <motion.h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight" initial={{
+                <motion.h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold text-black dark:text-white leading-[0.95] tracking-tight" initial={{
                   opacity: 0,
                   y: 20
                 }} animate={{
@@ -62,7 +47,7 @@ export default function Home() {
                   delay: 0.3
                 }}>
                   Saya {photographerInfo.name},<br />
-                  <span className="text-purple-400">{photographerInfo.tagline}</span>
+                  <span className="italic font-light">{photographerInfo.tagline}</span>
                 </motion.h1>
               </div>
 
@@ -75,7 +60,7 @@ export default function Home() {
               }} transition={{
                 duration: 0.8,
                 delay: 0.5
-              }} className="text-lg leading-relaxed max-w-xl text-slate-50">
+              }} className="text-lg leading-relaxed max-w-xl text-gray-700 dark:text-gray-300 font-light">
                 {photographerInfo.heroIntroduction}
               </motion.p>
 
@@ -91,12 +76,12 @@ export default function Home() {
                 delay: 0.7
               }}>
                 <Link to="/about">
-                  <Button size="lg" variant="outline" className="bg-white text-gray-900 hover:bg-gray-100 border-0 px-8 py-6 text-base font-semibold">
+                  <Button size="lg" variant="outline" className="border-2 border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black px-8 py-6 text-base font-medium transition-colors">
                     Tentang
                   </Button>
                 </Link>
                 <Link to="/portfolio">
-                  <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 text-base font-semibold">
+                  <Button size="lg" className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 px-8 py-6 text-base font-medium transition-colors">
                     Lihat Portfolio
                   </Button>
                 </Link>
@@ -114,9 +99,9 @@ export default function Home() {
               duration: 0.8,
               delay: 0.4
             }}>
-              <div className="relative w-full max-w-md aspect-[3/4] rounded-[2rem] bg-gradient-to-br from-purple-600 to-purple-800 p-1 shadow-2xl">
-                <div className="w-full h-full rounded-[1.9rem] bg-gray-900 overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" alt="Photographer portrait" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+              <div className="relative w-full max-w-md aspect-[3/4] rounded-[2rem] bg-black dark:bg-white p-1 shadow-2xl">
+                <div className="w-full h-full rounded-[1.9rem] bg-white dark:bg-black overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" alt="Photographer portrait" className="w-full h-full object-cover grayscale transition-all duration-500" />
                 </div>
               </div>
 
@@ -136,16 +121,16 @@ export default function Home() {
             duration: 0.8,
             delay: 1
           }}>
-            <div className="writing-mode-vertical text-sm tracking-wider text-gray-500 mb-4">
+            <div className="writing-mode-vertical text-sm tracking-wider text-gray-400 dark:text-gray-600 mb-4 font-light">
               FOLLOW ME ON:
             </div>
-            <a href={photographerInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-all">
+            <a href={photographerInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-black hover:border-black hover:text-white dark:hover:bg-white dark:hover:border-white dark:hover:text-black transition-all">
               <Instagram className="w-5 h-5" />
             </a>
-            <a href={photographerInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-all">
+            <a href={photographerInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-black hover:border-black hover:text-white dark:hover:bg-white dark:hover:border-white dark:hover:text-black transition-all">
               <Facebook className="w-5 h-5" />
             </a>
-            <a href={photographerInfo.socialLinks.behance} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-all">
+            <a href={photographerInfo.socialLinks.behance} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-black hover:border-black hover:text-white dark:hover:bg-white dark:hover:border-white dark:hover:text-black transition-all">
               <Linkedin className="w-5 h-5" />
             </a>
           </motion.div>
