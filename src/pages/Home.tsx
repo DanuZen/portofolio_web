@@ -20,131 +20,139 @@ export default function Home() {
       <SEOHead />
       
       <div className="min-h-screen">
-      {/* Hero Section - Modern split layout */}
-      <section className="relative h-screen w-full overflow-hidden bg-white dark:bg-black">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30 dark:opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/70 to-white dark:from-black/50 dark:via-black/70 dark:to-black" />
-        </div>
+      {/* Hero Section - Editorial style with integrated photo */}
+      <section className="relative h-screen w-full overflow-hidden bg-black">
+        {/* Background with subtle overlay */}
+        <div className="absolute inset-0 z-0 bg-black" />
+        
         {/* Hero Content */}
-        <div className="relative h-full max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="h-full grid lg:grid-cols-2 gap-8 lg:gap-12 items-center py-20">
-            {/* Left Content */}
-            <motion.div className="space-y-8 text-left" initial={{
-              opacity: 0,
-              x: -50
-            }} animate={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.8,
-              ease: "easeOut"
-            }}>
-              <div className="space-y-4">
-                <motion.h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold text-black dark:text-white leading-[0.95] tracking-tight" initial={{
-                  opacity: 0,
-                  y: 20
-                }} animate={{
-                  opacity: 1,
-                  y: 0
-                }} transition={{
-                  duration: 0.8,
-                  delay: 0.3
-                }}>
-                  Saya {photographerInfo.name},<br />
-                  
-                </motion.h1>
-              </div>
+        <div className="relative h-full w-full">
+          <div className="h-full flex items-center">
+            {/* Left side - Large Typography */}
+            <div className="relative z-10 w-full lg:w-1/2 px-6 lg:px-12 xl:px-20">
+              <motion.div 
+                className="space-y-6"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              >
+                <h1 className="font-display font-bold text-white leading-[0.9] tracking-tight">
+                  <motion.div 
+                    className="text-7xl md:text-8xl lg:text-9xl"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
+                    {photographerInfo.name.split(' ')[0]}
+                  </motion.div>
+                  <motion.div 
+                    className="text-7xl md:text-8xl lg:text-9xl"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                  >
+                    {photographerInfo.name.split(' ')[1]}
+                  </motion.div>
+                </h1>
 
-              <motion.p initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.8,
-                delay: 0.5
-              }} className="text-lg leading-relaxed max-w-xl text-gray-700 dark:text-gray-300 font-light">
-                {photographerInfo.heroIntroduction}
-              </motion.p>
+                <motion.p 
+                  className="text-sm md:text-base text-gray-400 max-w-md font-light leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                >
+                  {photographerInfo.heroIntroduction}
+                </motion.p>
 
-              {/* CTA Buttons */}
-              <motion.div className="flex flex-wrap gap-4" initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.8,
-                delay: 0.7
-              }}>
-                <Link to="/about">
-                  <Button size="lg" variant="outline" className="border-2 border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black px-8 py-6 text-base font-medium transition-colors">
-                    Tentang
-                  </Button>
-                </Link>
-                <Link to="/portfolio">
-                  <Button size="lg" className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 px-8 py-6 text-base font-medium transition-colors">
-                    Lihat Portfolio
-                  </Button>
-                </Link>
+                <motion.div 
+                  className="flex flex-wrap gap-4 pt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                >
+                  <Link to="/portfolio">
+                    <Button 
+                      size="lg" 
+                      className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-base font-medium transition-colors"
+                    >
+                      Lihat Portfolio
+                    </Button>
+                  </Link>
+                  <Link to="/about">
+                    <Button 
+                      size="lg" 
+                      variant="outline" 
+                      className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-6 text-base font-medium transition-colors"
+                    >
+                      Tentang
+                    </Button>
+                  </Link>
+                </motion.div>
               </motion.div>
-            </motion.div>
+            </div>
 
-            {/* Right Content - Photo Frame */}
-            <motion.div className="relative hidden lg:flex items-center justify-center" initial={{
-              opacity: 0,
-              scale: 0.9
-            }} animate={{
-              opacity: 1,
-              scale: 1
-            }} transition={{
-              duration: 0.8,
-              delay: 0.4
-            }}>
-              <div className="relative w-full max-w-md aspect-[3/4] rounded-[2rem] overflow-hidden">
-                <img alt="Photographer portrait" className="w-full h-full object-cover grayscale transition-all duration-500" src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" />
+            {/* Right side - Profile Photo */}
+            <motion.div 
+              className="absolute right-0 top-0 h-full w-1/2 lg:w-1/2 hidden lg:block"
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+            >
+              <div className="relative h-full w-full">
+                <img 
+                  src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
+                  alt="Photographer" 
+                  className="h-full w-full object-cover object-center grayscale"
+                />
+                {/* Gradient overlay for blending */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
               </div>
             </motion.div>
           </div>
 
           {/* Social Icons - Vertical Right */}
-          <motion.div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-6" initial={{
-            opacity: 0,
-            x: 20
-          }} animate={{
-            opacity: 1,
-            x: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 1
-          }}>
-            <div className="writing-mode-vertical text-sm tracking-wider text-gray-400 dark:text-gray-600 mb-4 font-light">
-              FOLLOW ME ON:
+          <motion.div 
+            className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-6 z-20"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+          >
+            <div className="writing-mode-vertical text-xs tracking-widest text-gray-500 mb-4 font-light">
+              FOLLOW
             </div>
-            <a href={photographerInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-black hover:border-black hover:text-white dark:hover:bg-white dark:hover:border-white dark:hover:text-black transition-all">
-              <Instagram className="w-5 h-5" />
+            <a 
+              href={photographerInfo.socialLinks.instagram} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-white hover:border-white hover:text-black transition-all"
+            >
+              <Instagram className="w-4 h-4" />
             </a>
-            <a href={photographerInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-black hover:border-black hover:text-white dark:hover:bg-white dark:hover:border-white dark:hover:text-black transition-all">
-              <Facebook className="w-5 h-5" />
+            <a 
+              href={photographerInfo.socialLinks.linkedin} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-white hover:border-white hover:text-black transition-all"
+            >
+              <Facebook className="w-4 h-4" />
             </a>
-            <a href={photographerInfo.socialLinks.behance} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-black hover:border-black hover:text-white dark:hover:bg-white dark:hover:border-white dark:hover:text-black transition-all">
-              <Linkedin className="w-5 h-5" />
+            <a 
+              href={photographerInfo.socialLinks.behance} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-white hover:border-white hover:text-black transition-all"
+            >
+              <Linkedin className="w-4 h-4" />
             </a>
           </motion.div>
 
           {/* Scroll Indicator */}
-          <motion.div className="absolute bottom-12 left-1/2 -translate-x-1/2" initial={{
-            opacity: 0
-          }} animate={{
-            opacity: 1
-          }} transition={{
-            delay: 1.2,
-            duration: 0.8
-          }}>
+          <motion.div 
+            className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+          >
             <ScrollIndicator />
           </motion.div>
         </div>
