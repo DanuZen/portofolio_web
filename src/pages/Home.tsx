@@ -47,7 +47,7 @@ export default function Home() {
                   delay: 0.3
                 }}>
                   Saya {photographerInfo.name},<br />
-                  <span className="italic font-light">{photographerInfo.tagline}</span>
+                  
                 </motion.h1>
               </div>
 
