@@ -8,6 +8,7 @@ import { SEOHead } from '@/components/seo/SEOHead';
 import { ArrowRight, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import heroBg from '@/assets/hero-bg.jpg';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -21,6 +22,11 @@ export default function Home() {
       <div className="min-h-screen">
       {/* Hero Section - Modern split layout */}
       <section className="relative h-screen w-full overflow-hidden bg-white dark:bg-black">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30 dark:opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/70 to-white dark:from-black/50 dark:via-black/70 dark:to-black" />
+        </div>
         {/* Hero Content */}
         <div className="relative h-full max-w-7xl mx-auto px-6 lg:px-8">
           <div className="h-full grid lg:grid-cols-2 gap-8 lg:gap-12 items-center py-20">
