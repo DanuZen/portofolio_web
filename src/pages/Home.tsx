@@ -105,14 +105,9 @@ export default function Home() {
               duration: 0.8,
               delay: 0.4
             }}>
-              <div className="relative w-full max-w-md aspect-[3/4] rounded-[2rem] bg-black dark:bg-white p-1 shadow-2xl">
-                <div className="w-full h-full rounded-[1.9rem] bg-white dark:bg-black overflow-hidden">
-                  <img alt="Photographer portrait" className="w-full h-full object-cover grayscale transition-all duration-500" src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" />
-                </div>
+              <div className="relative w-full max-w-md aspect-[3/4] rounded-[2rem] overflow-hidden">
+                <img alt="Photographer portrait" className="w-full h-full object-cover grayscale transition-all duration-500" src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" />
               </div>
-
-              {/* Arrow Circle */}
-              
             </motion.div>
           </div>
 
