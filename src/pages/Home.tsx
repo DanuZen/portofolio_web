@@ -30,60 +30,73 @@ export default function Home() {
           <div className="h-full flex items-center">
             {/* Left side - Large Typography */}
             <div className="relative z-10 w-full lg:w-1/2 px-6 lg:px-12 xl:px-20">
-              <motion.div 
-                className="space-y-6"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-              >
+              <motion.div className="space-y-6" initial={{
+                opacity: 0,
+                x: -50
+              }} animate={{
+                opacity: 1,
+                x: 0
+              }} transition={{
+                duration: 1,
+                ease: "easeOut"
+              }}>
                 <h1 className="font-display font-bold text-white leading-[0.9] tracking-tight">
-                  <motion.div 
-                    className="text-7xl md:text-8xl lg:text-9xl"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                  >
+                  <motion.div className="text-7xl md:text-8xl lg:text-9xl" initial={{
+                    opacity: 0,
+                    y: 30
+                  }} animate={{
+                    opacity: 1,
+                    y: 0
+                  }} transition={{
+                    duration: 0.8,
+                    delay: 0.2
+                  }}>
                     {photographerInfo.name.split(' ')[0]}
                   </motion.div>
-                  <motion.div 
-                    className="text-7xl md:text-8xl lg:text-9xl"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                  >
+                  <motion.div className="text-7xl md:text-8xl lg:text-9xl" initial={{
+                    opacity: 0,
+                    y: 30
+                  }} animate={{
+                    opacity: 1,
+                    y: 0
+                  }} transition={{
+                    duration: 0.8,
+                    delay: 0.4
+                  }}>
                     {photographerInfo.name.split(' ')[1]}
                   </motion.div>
                 </h1>
 
-                <motion.p 
-                  className="text-sm md:text-base text-gray-400 max-w-md font-light leading-relaxed"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                >
+                <motion.p initial={{
+                  opacity: 0,
+                  y: 20
+                }} animate={{
+                  opacity: 1,
+                  y: 0
+                }} transition={{
+                  duration: 0.8,
+                  delay: 0.6
+                }} className="text-sm md:text-base max-w-md font-light leading-relaxed text-slate-400">
                   {photographerInfo.heroIntroduction}
                 </motion.p>
 
-                <motion.div 
-                  className="flex flex-wrap gap-4 pt-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                >
+                <motion.div className="flex flex-wrap gap-4 pt-4" initial={{
+                  opacity: 0,
+                  y: 20
+                }} animate={{
+                  opacity: 1,
+                  y: 0
+                }} transition={{
+                  duration: 0.8,
+                  delay: 0.8
+                }}>
                   <Link to="/about">
-                    <Button 
-                      size="lg" 
-                      className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-base font-medium transition-colors"
-                    >
+                    <Button size="lg" className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-base font-medium transition-colors">
                       Tentang
                     </Button>
                   </Link>
                   <Link to="/portfolio">
-                    <Button 
-                      size="lg" 
-                      variant="outline" 
-                      className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-6 text-base font-medium transition-colors"
-                    >
+                    <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-6 text-base font-medium transition-colors">
                       Lihat Portfolio
                     </Button>
                   </Link>
@@ -92,18 +105,18 @@ export default function Home() {
             </div>
 
             {/* Right side - Profile Photo */}
-            <motion.div 
-              className="absolute right-0 top-0 h-full w-1/2 lg:w-1/2 hidden lg:block"
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-            >
+            <motion.div className="absolute right-0 top-0 h-full w-1/2 lg:w-1/2 hidden lg:block" initial={{
+              opacity: 0,
+              scale: 1.1
+            }} animate={{
+              opacity: 1,
+              scale: 1
+            }} transition={{
+              duration: 1.2,
+              ease: "easeOut"
+            }}>
               <div className="relative h-full w-full">
-                <img 
-                  src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                  alt="Photographer" 
-                  className="h-full w-full object-cover object-center grayscale"
-                />
+                <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-full w-full object-cover object-center grayscale" />
                 {/* Gradient overlay for blending */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
               </div>
@@ -111,48 +124,39 @@ export default function Home() {
           </div>
 
           {/* Social Icons - Vertical Right */}
-          <motion.div 
-            className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-6 z-20"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-          >
+          <motion.div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-6 z-20" initial={{
+            opacity: 0,
+            x: 20
+          }} animate={{
+            opacity: 1,
+            x: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 1
+          }}>
             <div className="writing-mode-vertical text-xs tracking-widest text-gray-500 mb-4 font-light">
               FOLLOW
             </div>
-            <a 
-              href={photographerInfo.socialLinks.instagram} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-white hover:border-white hover:text-black transition-all"
-            >
+            <a href={photographerInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-white hover:border-white hover:text-black transition-all">
               <Instagram className="w-4 h-4" />
             </a>
-            <a 
-              href={photographerInfo.socialLinks.linkedin} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-white hover:border-white hover:text-black transition-all"
-            >
+            <a href={photographerInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-white hover:border-white hover:text-black transition-all">
               <Facebook className="w-4 h-4" />
             </a>
-            <a 
-              href={photographerInfo.socialLinks.behance} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-white hover:border-white hover:text-black transition-all"
-            >
+            <a href={photographerInfo.socialLinks.behance} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-white hover:border-white hover:text-black transition-all">
               <Linkedin className="w-4 h-4" />
             </a>
           </motion.div>
 
           {/* Scroll Indicator */}
-          <motion.div 
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-          >
+          <motion.div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20" initial={{
+            opacity: 0
+          }} animate={{
+            opacity: 1
+          }} transition={{
+            delay: 1.2,
+            duration: 0.8
+          }}>
             <ScrollIndicator />
           </motion.div>
         </div>
