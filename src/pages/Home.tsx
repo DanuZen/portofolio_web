@@ -105,7 +105,7 @@ export default function Home() {
             </div>
 
             {/* Right side - Profile Photo */}
-            <motion.div className="absolute right-0 top-0 h-full w-1/2 lg:w-1/2 hidden lg:block" initial={{
+            <motion.div className="absolute -right-12 top-0 h-full w-1/2 lg:w-1/2 hidden lg:block" initial={{
               opacity: 0,
               scale: 1.1
             }} animate={{
