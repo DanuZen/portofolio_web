@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useAuth } from '@/hooks/useAuth';
 import { Badge } from '@/components/ui/badge';
 import { User, Mail, Shield, Calendar } from 'lucide-react';
+import { AboutMediaManager } from '@/components/admin/AboutMediaManager';
 
 export default function Settings() {
   const { user } = useAuth();
@@ -17,6 +18,9 @@ export default function Settings() {
           Manage your account settings and preferences
         </p>
       </div>
+
+      {/* About Page Media */}
+      <AboutMediaManager />
 
       {/* User Profile */}
       <Card className="border-purple-200 dark:border-purple-900">
