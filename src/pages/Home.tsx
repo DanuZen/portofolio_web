@@ -26,100 +26,99 @@ export default function Home() {
         <div className="absolute inset-0 z-0 bg-black" />
         
         {/* Hero Content */}
-        <div className="relative h-full w-full">
-          <div className="h-full flex items-center">
-            {/* Left side - Large Typography */}
-            <div className="relative z-10 w-full lg:w-1/2 px-6 lg:px-12 xl:px-20">
-              <motion.div className="space-y-6" initial={{
-                opacity: 0,
-                x: -50
-              }} animate={{
-                opacity: 1,
-                x: 0
-              }} transition={{
-                duration: 1,
-                ease: "easeOut"
-              }}>
-                <h1 className="font-display font-bold text-white leading-[0.9] tracking-tight">
-                  <motion.div className="text-7xl md:text-8xl lg:text-9xl" initial={{
-                    opacity: 0,
-                    y: 30
-                  }} animate={{
-                    opacity: 1,
-                    y: 0
-                  }} transition={{
-                    duration: 0.8,
-                    delay: 0.2
-                  }}>
-                    {photographerInfo.name.split(' ')[0]}
-                  </motion.div>
-                  <motion.div className="text-7xl md:text-8xl lg:text-9xl" initial={{
-                    opacity: 0,
-                    y: 30
-                  }} animate={{
-                    opacity: 1,
-                    y: 0
-                  }} transition={{
-                    duration: 0.8,
-                    delay: 0.4
-                  }}>
-                    {photographerInfo.name.split(' ')[1]}
-                  </motion.div>
-                </h1>
-
-                <motion.p initial={{
-                  opacity: 0,
-                  y: 20
-                }} animate={{
-                  opacity: 1,
-                  y: 0
-                }} transition={{
-                  duration: 0.8,
-                  delay: 0.6
-                }} className="text-sm md:text-base max-w-md font-light leading-relaxed text-slate-400">
-                  {photographerInfo.heroIntroduction}
-                </motion.p>
-
-                <motion.div className="flex flex-wrap gap-4 pt-4" initial={{
-                  opacity: 0,
-                  y: 20
-                }} animate={{
-                  opacity: 1,
-                  y: 0
-                }} transition={{
-                  duration: 0.8,
-                  delay: 0.8
-                }}>
-                  <Link to="/about">
-                    <Button size="lg" className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-base font-medium transition-colors">
-                      Tentang
-                    </Button>
-                  </Link>
-                  <Link to="/portfolio">
-                    <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-6 text-base font-medium transition-colors">
-                      Lihat Portfolio
-                    </Button>
-                  </Link>
-                </motion.div>
-              </motion.div>
+        <div className="relative h-full w-full flex items-center justify-center">
+          {/* Center - Profile Photo */}
+          <motion.div className="absolute inset-0 flex items-center justify-center" initial={{
+            opacity: 0,
+            scale: 1.1
+          }} animate={{
+            opacity: 1,
+            scale: 1
+          }} transition={{
+            duration: 1.2,
+            ease: "easeOut"
+          }}>
+            <div className="relative h-full w-full max-w-4xl mx-auto flex items-center justify-center">
+              <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-[90%] w-auto object-cover object-center grayscale" />
+              {/* Gradient overlays for blending */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
             </div>
+          </motion.div>
 
-            {/* Right side - Profile Photo */}
-            <motion.div className="absolute -right-12 top-0 h-full w-1/2 lg:w-1/2 hidden lg:block" initial={{
+          {/* Typography overlay */}
+          <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
+            <motion.div className="space-y-6" initial={{
               opacity: 0,
-              scale: 1.1
+              y: 30
             }} animate={{
               opacity: 1,
-              scale: 1
+              y: 0
             }} transition={{
-              duration: 1.2,
+              duration: 1,
               ease: "easeOut"
             }}>
-              <div className="relative h-full w-full">
-                <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-full w-full object-cover object-center grayscale" />
-                {/* Gradient overlay for blending */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
-              </div>
+              <h1 className="font-display font-bold text-white leading-[0.85] tracking-tight">
+                <motion.div className="text-8xl md:text-[10rem] lg:text-[12rem] xl:text-[14rem]" initial={{
+                  opacity: 0,
+                  y: 50
+                }} animate={{
+                  opacity: 1,
+                  y: 0
+                }} transition={{
+                  duration: 0.8,
+                  delay: 0.2
+                }}>
+                  {photographerInfo.name.split(' ')[0]}
+                </motion.div>
+                <motion.div className="text-8xl md:text-[10rem] lg:text-[12rem] xl:text-[14rem]" initial={{
+                  opacity: 0,
+                  y: 50
+                }} animate={{
+                  opacity: 1,
+                  y: 0
+                }} transition={{
+                  duration: 0.8,
+                  delay: 0.4
+                }}>
+                  {photographerInfo.name.split(' ')[1]}
+                </motion.div>
+              </h1>
+
+              <motion.p initial={{
+                opacity: 0,
+                y: 20
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.8,
+                delay: 0.6
+              }} className="text-sm md:text-base max-w-md font-light leading-relaxed text-slate-400">
+                {photographerInfo.heroIntroduction}
+              </motion.p>
+
+              <motion.div className="flex flex-wrap gap-4 pt-4" initial={{
+                opacity: 0,
+                y: 20
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.8,
+                delay: 0.8
+              }}>
+                <Link to="/about">
+                  <Button size="lg" className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-base font-medium transition-colors">
+                    Tentang
+                  </Button>
+                </Link>
+                <Link to="/portfolio">
+                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-6 text-base font-medium transition-colors">
+                    Lihat Portfolio
+                  </Button>
+                </Link>
+              </motion.div>
             </motion.div>
           </div>
 
