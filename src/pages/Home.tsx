@@ -70,21 +70,21 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                  <Link to="/portfolio">
+                  <Link to="/about">
                     <Button 
                       size="lg" 
                       className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-base font-medium transition-colors"
                     >
-                      Lihat Portfolio
+                      Tentang
                     </Button>
                   </Link>
-                  <Link to="/about">
+                  <Link to="/portfolio">
                     <Button 
                       size="lg" 
                       variant="outline" 
                       className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-6 text-base font-medium transition-colors"
                     >
-                      Tentang
+                      Lihat Portfolio
                     </Button>
                   </Link>
                 </motion.div>
