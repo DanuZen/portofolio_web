@@ -3,12 +3,27 @@ import { Instagram, Linkedin } from 'lucide-react';
 import { photographerInfo } from '@/data/photographer';
 import { Separator } from '@/components/ui/separator';
 import { SEOHead } from '@/components/seo/SEOHead';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 
 /**
  * About page with photographer biography and professional information
  * Features split layout with portrait video and comprehensive biography
  */
 export default function About() {
+  const { data: aboutSettings } = useQuery({
+    queryKey: ['about-settings'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('about_settings')
+        .select('*')
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+  });
+
   return (
     <>
       <SEOHead
@@ -49,23 +64,25 @@ export default function About() {
               transition={{ duration: 0.4 }}
             >
               <div className="aspect-[3/4] relative overflow-hidden rounded-sm bg-muted">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  poster="https://images.pexels.com/videos/3888252/afro-hair-fashion-model-3888252.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.style.display = 'none';
-                  }}
-                >
-                  <source src="https://videos.pexels.com/video-files/3888252/3888252-sd_426_226_25fps.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                {/* Video from Pexels */}
+                {aboutSettings?.media_url ? (
+                  aboutSettings.media_type === 'video' ? (
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover"
+                    >
+                      <source src={aboutSettings.media_url} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <img
+                      src={aboutSettings.media_url}
+                      alt={photographerInfo.name}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  )
+                ) : null}
               </div>
               
               {/* Social Links */}
