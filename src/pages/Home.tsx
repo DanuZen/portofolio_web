@@ -44,8 +44,8 @@ export default function Home() {
             <div className="relative h-full w-full max-w-4xl mr-0 flex items-center justify-end bg-background">
               <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-[90%] w-auto object-cover object-center grayscale" />
               {/* Gradient overlays for blending */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
+              <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
             </div>
           </motion.div>
 
