@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Loader2, Lock } from 'lucide-react';
+import { Loader2, User, Lock } from 'lucide-react';
+import LogoDann from '@/assets/LogoDann.png';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -49,87 +46,89 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 via-white to-purple-50 dark:from-gray-950 dark:via-gray-900 dark:to-purple-950 p-4">
-      <Card className="w-full max-w-md shadow-2xl border-purple-200 dark:border-purple-900">
-        <CardHeader className="space-y-1 text-center">
-          <div className="flex justify-center mb-4">
-            <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full">
-              <Lock className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-            </div>
-          </div>
-          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 dark:from-purple-400 dark:to-purple-600 bg-clip-text text-transparent">
-            {isSignup ? 'Daftar Admin' : 'Admin Dashboard'}
-          </CardTitle>
-          <CardDescription className="text-base">
-            {isSignup ? 'Buat akun admin baru' : 'Masuk untuk mengelola portfolio Anda'}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {error && (
-              <Alert variant="destructive">
-                <AlertDescription>{error}</AlertDescription>
-              </Alert>
-            )}
-            
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="admin@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                disabled={isLoading}
-                className="border-purple-200 dark:border-purple-800 focus:border-purple-500 dark:focus:border-purple-400"
-              />
-            </div>
+    <div className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/login-bg.jpg)' }}>
+      <div className="w-full max-w-md">
+        {/* Logo */}
+        <div className="flex justify-center mb-12">
+          <img 
+            src={LogoDann} 
+            alt="DANN Logo" 
+            className="h-20 w-auto object-contain"
+          />
+        </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                disabled={isLoading}
-                className="border-purple-200 dark:border-purple-800 focus:border-purple-500 dark:focus:border-purple-400"
-              />
-            </div>
+        {/* Error Alert */}
+        {error && (
+          <Alert variant="destructive" className="mb-6 bg-red-950/50 border-red-900 text-red-200">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
 
-            <Button
-              type="submit"
-              className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold py-6 text-base shadow-lg hover:shadow-xl transition-all duration-200"
+        {/* Login Form */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Username Input */}
+          <div className="relative">
+            <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+              <User className="h-5 w-5 text-white/60" strokeWidth={1.5} />
+            </div>
+            <input
+              type="email"
+              placeholder="USERNAME"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
               disabled={isLoading}
-            >
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  Memproses...
-                </>
-              ) : (
-                isSignup ? 'Daftar' : 'Masuk'
-              )}
-            </Button>
+              className="w-full bg-transparent border border-white/30 text-white placeholder:text-white/40 placeholder:tracking-widest placeholder:text-sm px-12 py-4 rounded-none focus:outline-none focus:border-white/60 transition-colors disabled:opacity-50"
+            />
+          </div>
 
-            <div className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
-              <button
-                type="button"
-                onClick={() => {
-                  setIsSignup(!isSignup);
-                  setError('');
-                }}
-                className="text-purple-600 dark:text-purple-400 hover:underline font-medium"
-              >
-                {isSignup ? 'Sudah punya akun? Masuk' : 'Belum punya akun? Daftar'}
-              </button>
+          {/* Password Input */}
+          <div className="relative">
+            <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+              <Lock className="h-5 w-5 text-white/60" strokeWidth={1.5} />
             </div>
-          </form>
-        </CardContent>
-      </Card>
+            <input
+              type="password"
+              placeholder="PASSWORD"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              disabled={isLoading}
+              className="w-full bg-transparent border border-white/30 text-white placeholder:text-white/40 placeholder:tracking-widest placeholder:text-sm px-12 py-4 rounded-none focus:outline-none focus:border-white/60 transition-colors disabled:opacity-50"
+            />
+          </div>
+
+          {/* Login Button */}
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full bg-white text-black font-semibold tracking-wide py-4 rounded-none hover:bg-white/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                MEMPROSES...
+              </>
+            ) : (
+              isSignup ? 'DAFTAR' : 'LOGIN'
+            )}
+          </button>
+
+          {/* Forgot Password Link */}
+          <div className="text-center">
+            <button
+              type="button"
+              onClick={() => {
+                setIsSignup(!isSignup);
+                setError('');
+              }}
+              className="text-white/60 hover:text-white text-sm transition-colors"
+            >
+              {isSignup ? 'Sudah punya akun? Masuk' : 'Forgot password?'}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

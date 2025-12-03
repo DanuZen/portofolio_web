@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, User, Languages } from 'lucide-react';
+import { Menu, User, Languages, Camera } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { photographerInfo } from '@/data/photographer';
 import { cn } from '@/lib/utils';
+import LogoDann from '@/assets/LogoDann.png';
 
 const navLinks = [
   { name: 'Beranda', path: '/' },
@@ -47,19 +48,24 @@ export function Header() {
           <Link
             to="/"
             className={cn(
-              'text-lg font-light tracking-widest transition-all duration-300',
+              'transition-all duration-300',
               isTransparent
                 ? 'text-white hover:text-white/80'
                 : 'text-foreground hover:text-muted-foreground'
             )}
           >
-            <motion.span
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex items-center gap-2"
             >
-              {photographerInfo.name.toUpperCase()}
-            </motion.span>
+              <img 
+                src={LogoDann} 
+                alt="DANN Logo" 
+                className="h-8 w-auto object-contain transition-all duration-300"
+              />
+            </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -98,87 +104,16 @@ export function Header() {
             
             {/* Icon Group with smaller gap */}
             <div className="flex items-center gap-1">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-            >
-              <ThemeToggle isTransparent={isTransparent} />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.45 }}
-            >
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn(
-                  "size-9 transition-colors",
-                  isTransparent 
-                    ? "text-white hover:bg-white/10" 
-                    : "text-foreground hover:bg-accent"
-                )}
-                aria-label="Change language"
-              >
-                <Languages className="size-5" />
-              </Button>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.5 }}
-            >
-              <Link to="/admin/login">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={cn(
-                    "size-9 transition-colors",
-                    isTransparent 
-                      ? "text-white hover:bg-white/10" 
-                      : "text-foreground hover:bg-accent"
-                  )}
-                  aria-label="Admin login"
-                >
-                  <User className="size-5" />
-                </Button>
-              </Link>
-            </motion.div>
+
+
             </div>
           </nav>
 
           {/* Mobile Menu */}
           <div className="md:hidden flex items-center gap-1">
-            <Button
-              variant="ghost"
-              size="icon"
-              className={cn(
-                "size-9 transition-colors",
-                isTransparent 
-                  ? "text-white hover:bg-white/10" 
-                  : "text-foreground hover:bg-accent"
-              )}
-              aria-label="Change language"
-            >
-              <Languages className="size-5" />
-            </Button>
-            <Link to="/admin/login">
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn(
-                  "size-9 transition-colors",
-                  isTransparent 
-                    ? "text-white hover:bg-white/10" 
-                    : "text-foreground hover:bg-accent"
-                )}
-                aria-label="Admin login"
-              >
-                <User className="size-5" />
-              </Button>
-            </Link>
-            <ThemeToggle isTransparent={isTransparent} />
+
+
+
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button

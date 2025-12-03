@@ -9,6 +9,9 @@ import { ArrowRight, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import heroBg from '@/assets/hero-bg.jpg';
+import LogoDann from '@/assets/LogoDann.png';
+import Pembatas1 from '@/assets/Pembatas1.png';
+import Pembatas2 from '@/assets/Pembatas2.png';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -21,14 +24,14 @@ export default function Home() {
       
       <div className="min-h-screen">
       {/* Hero Section - Editorial style with integrated photo */}
-      <section className="relative h-screen w-full overflow-hidden bg-black">
-        {/* Background with subtle overlay */}
-        <div className="absolute inset-0 z-0 bg-black" />
+      <section className="relative h-screen w-full overflow-hidden">
+        {/* Background with geometric pattern */}
+        <div className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/login-bg.jpg)' }} />
         
         {/* Hero Content */}
-        <div className="relative h-full w-full flex items-center justify-center">
+        <div className="relative h-full w-full flex items-center justify-end">
           {/* Center - Profile Photo */}
-          <motion.div className="absolute inset-0 flex items-center justify-center" initial={{
+          <motion.div className="absolute inset-0 flex items-center justify-end" initial={{
             opacity: 0,
             scale: 1.1
           }} animate={{
@@ -38,7 +41,7 @@ export default function Home() {
             duration: 1.2,
             ease: "easeOut"
           }}>
-            <div className="relative h-full w-full max-w-4xl mx-auto flex items-center justify-center">
+            <div className="relative h-full w-full max-w-4xl mr-0 flex items-center justify-end">
               <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-[90%] w-auto object-cover object-center grayscale" />
               {/* Gradient overlays for blending */}
               <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
@@ -47,8 +50,8 @@ export default function Home() {
           </motion.div>
 
           {/* Typography overlay */}
-          <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
-            <motion.div className="space-y-6" initial={{
+          <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20 flex justify-center">
+            <motion.div className="space-y-6 w-full max-w-7xl text-center" initial={{
               opacity: 0,
               y: 30
             }} animate={{
@@ -58,32 +61,22 @@ export default function Home() {
               duration: 1,
               ease: "easeOut"
             }}>
-              <h1 className="font-display font-bold text-white leading-[0.85] tracking-tight">
-                <motion.div className="text-8xl md:text-[10rem] lg:text-[12rem] xl:text-[14rem]" initial={{
-                  opacity: 0,
-                  y: 50
-                }} animate={{
-                  opacity: 1,
-                  y: 0
-                }} transition={{
-                  duration: 0.8,
-                  delay: 0.2
-                }}>
-                  {photographerInfo.name.split(' ')[0]}
-                </motion.div>
-                <motion.div className="text-8xl md:text-[10rem] lg:text-[12rem] xl:text-[14rem]" initial={{
-                  opacity: 0,
-                  y: 50
-                }} animate={{
-                  opacity: 1,
-                  y: 0
-                }} transition={{
-                  duration: 0.8,
-                  delay: 0.4
-                }}>
-                  {photographerInfo.name.split(' ')[1]}
-                </motion.div>
-              </h1>
+              <motion.div initial={{
+                opacity: 0,
+                scale: 0.9
+              }} animate={{
+                opacity: 1,
+                scale: 1
+              }} transition={{
+                duration: 0.8,
+                delay: 0.2
+              }} className="flex justify-center mb-4">
+                <img 
+                  src={LogoDann} 
+                  alt="DANN" 
+                  className="w-[50%] md:w-[45%] lg:w-[40%] h-auto object-contain drop-shadow-2xl" 
+                />
+              </motion.div>
 
               <motion.p initial={{
                 opacity: 0,
@@ -94,31 +87,9 @@ export default function Home() {
               }} transition={{
                 duration: 0.8,
                 delay: 0.6
-              }} className="text-sm md:text-base max-w-md font-light leading-relaxed text-slate-400">
+              }} className="text-sm md:text-base max-w-md mx-auto font-light leading-relaxed text-slate-400">
                 {photographerInfo.heroIntroduction}
               </motion.p>
-
-              <motion.div className="flex flex-wrap gap-4 pt-4" initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.8,
-                delay: 0.8
-              }}>
-                <Link to="/about">
-                  <Button size="lg" className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-base font-medium transition-colors">
-                    Tentang
-                  </Button>
-                </Link>
-                <Link to="/portfolio">
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-6 text-base font-medium transition-colors">
-                    Lihat Portfolio
-                  </Button>
-                </Link>
-              </motion.div>
             </motion.div>
           </div>
 
@@ -161,6 +132,11 @@ export default function Home() {
         </div>
       </section>
 
+        {/* Image Divider 1 */}
+        <div className="w-full">
+          <img src={Pembatas1} alt="" className="w-full h-auto object-cover" />
+        </div>
+
         {/* Introduction Section */}
         <section className="py-24 md:py-32 px-6 lg:px-8 bg-background">
           <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -183,8 +159,13 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Image Divider 2 */}
+        <div className="w-full">
+          <img src={Pembatas2} alt="" className="w-full h-auto object-cover" />
+        </div>
+
         {/* Featured Projects Section */}
-        <section className="py-24 md:py-32 border-t border-border">
+        <section className="py-24 md:py-32 bg-background">
           {/* Section Header */}
           <ScrollReveal>
             <div className="text-center mb-16 space-y-4 px-6">

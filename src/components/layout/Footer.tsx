@@ -1,6 +1,7 @@
-import { Instagram, Linkedin } from 'lucide-react';
+import { Instagram, Linkedin, User } from 'lucide-react';
 import { photographerInfo } from '@/data/photographer';
 import { Separator } from '@/components/ui/separator';
+import { Link } from 'react-router-dom';
 
 /**
  * Minimal footer component with social links and copyright
@@ -19,6 +20,13 @@ export function Footer() {
 
           {/* Social Links */}
           <div className="flex items-center gap-6">
+            <Link 
+              to="/admin/login" 
+              className="text-black"
+              aria-label="Admin Login"
+            >
+              <User className="size-5" />
+            </Link>
             {photographerInfo.socialLinks.instagram && (
               <a
                 href={photographerInfo.socialLinks.instagram}
