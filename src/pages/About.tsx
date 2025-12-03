@@ -5,6 +5,7 @@ import { Separator } from '@/components/ui/separator';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import Pembatas1 from '@/assets/Pembatas1.png';
 
 /**
  * About page with photographer biography and professional information
@@ -34,17 +35,17 @@ export default function About() {
       
       <div className="min-h-screen">
         {/* Hero Section */}
-      <section className="py-24 md:py-32 px-6 lg:px-8 border-b border-border">
+      <section className="pt-24 md:pt-32 pb-0 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <motion.div
             initial={{ opacity: 0.8, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide mb-4">
-              Tentang
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-4">
+              TENTANG
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide">
+            <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
               Fotografer & Pencerita Visual
             </p>
           </motion.div>
@@ -52,7 +53,7 @@ export default function About() {
       </section>
 
       {/* Portrait and Biography - Split Layout */}
-      <section className="py-16 md:py-24 px-6 lg:px-8">
+      <section className="pt-12 pb-16 md:pt-16 md:pb-24 px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Portrait Image */}
@@ -188,6 +189,11 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Image Divider */}
+      <div className="w-full">
+        <img src={Pembatas1} alt="" className="w-full h-auto object-cover" />
+      </div>
       </div>
     </>
   );

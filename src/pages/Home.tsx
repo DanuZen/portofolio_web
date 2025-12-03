@@ -210,9 +210,22 @@ export default function Home() {
 
         {/* Skills, Tools & Approach Section */}
         <section style={{
-        backgroundColor: '#FF3333'
+        backgroundColor: 'hsl(0, 0, 8)'
       }} className="relative py-24 md:py-32 px-6 lg:px-8 overflow-hidden text-slate-50">
           <div className="max-w-7xl mx-auto relative z-10">
+            {/* Section Header */}
+            <ScrollReveal>
+              <div className="space-y-8 mb-16">
+                <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
+                  <span className="text-white">SKILLS </span>
+                  <span className="text-red-500">& TOOLS</span>
+                </h2>
+                <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl">
+                  Menggabungkan keahlian teknis dan artistik dengan peralatan standar industri untuk menghasilkan karya visual yang memukau.
+                </p>
+              </div>
+            </ScrollReveal>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
               {/* Column 1: SKILLS */}
               <ScrollReveal>
@@ -337,6 +350,11 @@ export default function Home() {
             </ScrollReveal>
           </div>
         </section>
+
+        {/* Image Divider 4 */}
+        <div className="w-full">
+          <img src={Pembatas1} alt="" className="w-full h-auto object-cover" />
+        </div>
       </div>
     </>;
 }

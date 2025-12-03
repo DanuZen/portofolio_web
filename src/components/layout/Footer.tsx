@@ -1,17 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, Youtube, Instagram, Dribbble } from 'lucide-react';
 import { photographerInfo } from '@/data/photographer';
+import LogoDannBlack from '@/assets/LogoDannBlack.png';
 
 export function Footer() {
   return (
     <footer className="py-6 px-6 lg:px-8" style={{ backgroundColor: 'hsl(0, 11%, 91%)' }}>
       <div className="max-w-7xl mx-auto space-y-6">
-        {/* Top Row - Services */}
-        <div className="text-center">
-          <div className="text-xs md:text-sm font-black tracking-wide" style={{ color: 'hsl(0, 0%, 8%)' }}>
-            GRAPHIC DESIGN | BRANDING DESIGN | LOGO DESIGN | PRINT MEDIA DESIGN
-          </div>
-        </div>
+
 
         {/* Bottom Row - 3 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
@@ -22,8 +18,9 @@ export function Footer() {
             </h3>
           </div>
 
-          {/* Center - Empty Space */}
-          <div className="text-center">
+          {/* Center - Logo */}
+          <div className="flex justify-center">
+            <img src={LogoDannBlack} alt="Logo" className="h-12 w-auto object-contain" />
           </div>
 
           {/* Right - Social Media */}

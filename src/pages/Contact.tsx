@@ -4,6 +4,7 @@ import { photographerInfo } from '@/data/photographer';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { Separator } from '@/components/ui/separator';
 import { SEOHead } from '@/components/seo/SEOHead';
+import Pembatas1 from '@/assets/Pembatas1.png';
 
 /**
  * Contact page with form and contact information
@@ -26,10 +27,10 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide mb-4">
-              Hubungi Kami
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-4">
+              HUBUNGI KAMI
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide">
+            <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
               Mari diskusikan proyek Anda selanjutnya
             </p>
           </motion.div>
@@ -135,8 +136,10 @@ export default function Contact() {
         </div>
       </section>
 
-        {/* Bottom spacing */}
-        <div className="h-16" />
+        {/* Image Divider */}
+        <div className="w-full">
+          <img src={Pembatas1} alt="" className="w-full h-auto object-cover" />
+        </div>
       </div>
     </>
   );

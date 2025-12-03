@@ -4,6 +4,7 @@ import { PortfolioGrid } from '@/components/portfolio/PortfolioGrid';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { motion } from 'framer-motion';
 import { CategoryFilter } from '@/components/portfolio/CategoryFilter';
+import Pembatas1 from '@/assets/Pembatas1.png';
 
 const categories = [
   { id: 'all', label: 'Semua Karya' },
@@ -39,10 +40,10 @@ export default function Portfolio() {
               transition={{ duration: 0.8 }}
               className="text-center space-y-4"
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide">
-                Portfolio
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
+                PORTFOLIO
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-3xl mx-auto">
                 Koleksi kurasi fotografi yang mencakup berbagai subjek dan gaya
               </p>
             </motion.div>
@@ -69,6 +70,11 @@ export default function Portfolio() {
             key={activeCategory}
           />
         </section>
+
+        {/* Image Divider */}
+        <div className="w-full">
+          <img src={Pembatas1} alt="" className="w-full h-auto object-cover" />
+        </div>
       </div>
     </>
   );
