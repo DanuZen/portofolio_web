@@ -71,11 +71,7 @@ export default function Home() {
                 duration: 0.8,
                 delay: 0.2
               }} className="flex justify-center mb-4">
-                <img 
-                  src={LogoDann} 
-                  alt="DANN" 
-                  className="w-[50%] md:w-[45%] lg:w-[40%] h-auto object-contain drop-shadow-2xl" 
-                />
+                <img src={LogoDann} alt="DANN" className="w-[50%] md:w-[45%] lg:w-[40%] h-auto object-contain drop-shadow-2xl" />
               </motion.div>
 
               <motion.p initial={{
@@ -138,38 +134,45 @@ export default function Home() {
         </div>
 
         {/* Introduction Section - Modern 2-Column Layout */}
-        <section className="py-24 md:py-32 px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: 'hsl(0, 11%, 91%)' }}>
+        <section className="py-24 md:py-32 px-6 lg:px-8 relative overflow-hidden" style={{
+        backgroundColor: 'hsl(0, 11%, 91%)'
+      }}>
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Text Content */}
               <ScrollReveal>
                 <div className="space-y-8">
-                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none" style={{ color: 'hsl(0, 0%, 8%)' }}>
+                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none" style={{
+                  color: 'hsl(0, 0%, 8%)'
+                }}>
                     TENTANG
                     <br />
                     SAYA
                   </h2>
                   
                   <div className="space-y-4">
-                    <h3 className="text-2xl md:text-3xl font-semibold" style={{ color: 'hsl(0, 0%, 8%)' }}>
+                    <h3 className="text-2xl md:text-3xl font-semibold" style={{
+                    color: 'hsl(0, 0%, 8%)'
+                  }}>
                       FOTOGRAFER PROFESIONAL
                     </h3>
                     
-                    <p className="text-lg md:text-xl font-medium" style={{ color: 'hsl(0, 0%, 20%)' }}>
+                    <p className="text-lg md:text-xl font-medium" style={{
+                    color: 'hsl(0, 0%, 20%)'
+                  }}>
                       Spesialisasi dalam fotografi editorial dan komersial
                     </p>
                     
-                    <div className="text-base leading-relaxed pt-4" style={{ color: 'hsl(0, 0%, 30%)' }}>
+                    <div className="text-base leading-relaxed pt-4" style={{
+                    color: 'hsl(0, 0%, 30%)'
+                  }}>
                       <p>
                         {photographerInfo.biography.split('\n\n')[0]}
                       </p>
                     </div>
                   </div>
                   
-                  <Link 
-                    to="/about" 
-                    className="inline-flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-all group bg-black text-white px-8 py-4"
-                  >
+                  <Link to="/about" className="inline-flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-all group bg-black text-white px-8 py-4">
                     <span>Pelajari Lebih Lanjut</span>
                     <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                   </Link>
@@ -184,11 +187,7 @@ export default function Home() {
                   
                   {/* Photographer Image */}
                   <div className="relative z-10 h-full flex items-end justify-center">
-                    <img 
-                      src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                      alt="Photographer" 
-                      className="h-[85%] w-auto object-cover object-bottom filter-none"
-                    />
+                    <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-[85%] w-auto object-cover object-bottom filter-none" />
                   </div>
                   
                   {/* Decorative Text on Circle */}
@@ -209,7 +208,9 @@ export default function Home() {
         </div>
 
         {/* Featured Projects Section - Bold Header + Gallery */}
-        <section className="py-32 md:py-40 px-6 lg:px-8" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
+        <section className="py-32 md:py-40 px-6 lg:px-8" style={{
+        backgroundColor: 'hsl(0, 0%, 8%)'
+      }}>
           <div className="max-w-7xl mx-auto">
             {/* Bold Title Section */}
             <ScrollReveal>
@@ -256,10 +257,7 @@ export default function Home() {
             {/* View All Link */}
             <ScrollReveal delay={0.4}>
               <div className="flex justify-center mt-16">
-                <Link 
-                  to="/portfolio" 
-                  className="inline-flex items-center gap-3 text-xl font-bold text-white hover:text-red-500 transition-colors group"
-                >
+                <Link to="/portfolio" className="inline-flex items-center gap-3 text-xl font-bold text-white hover:text-red-500 transition-colors group">
                   <span>LIHAT SEMUA KARYA</span>
                   <ArrowRight className="size-6 transition-transform group-hover:translate-x-2" />
                 </Link>
@@ -269,12 +267,14 @@ export default function Home() {
         </section>
 
         {/* Skills, Tools & Approach Section */}
-        <section className="relative py-24 md:py-32 px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: '#FF3333' }}>
+        <section className="relative py-24 md:py-32 px-6 lg:px-8 overflow-hidden" style={{
+        backgroundColor: '#FF3333'
+      }}>
           {/* Decorative Black Corner - Top Right */}
-          <div className="absolute top-0 right-0 w-48 h-48 bg-black transform rotate-12 translate-x-12 -translate-y-12" />
+          
           
           {/* Decorative Black Corner - Bottom Left */}
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-black transform -rotate-12 -translate-x-12 translate-y-12" />
+          
 
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
