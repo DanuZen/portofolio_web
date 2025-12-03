@@ -41,7 +41,7 @@ export default function Home() {
             duration: 1.2,
             ease: "easeOut"
           }}>
-            <div className="relative h-full w-full max-w-4xl mr-0 flex items-center justify-end">
+            <div className="relative h-full w-full max-w-4xl mr-0 flex items-center justify-end bg-background">
               <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-[90%] w-auto object-cover object-center grayscale" />
               {/* Gradient overlays for blending */}
               <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
