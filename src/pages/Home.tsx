@@ -209,9 +209,9 @@ export default function Home() {
         </div>
 
         {/* Skills, Tools & Approach Section */}
-        <section className="relative py-24 md:py-32 px-6 lg:px-8 overflow-hidden" style={{
+        <section style={{
         backgroundColor: '#FF3333'
-      }}>
+      }} className="relative py-24 md:py-32 px-6 lg:px-8 overflow-hidden text-slate-50">
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
               {/* Column 1: SKILLS */}
@@ -276,7 +276,7 @@ export default function Home() {
 
         {/* Image Divider 3 */}
         <div className="w-full">
-          <img src={Pembatas3} alt="" className="w-full h-auto object-cover" />
+          
         </div>
 
         {/* Featured Projects Section - Bold Header + Gallery */}
