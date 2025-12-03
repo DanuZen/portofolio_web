@@ -1,78 +1,68 @@
-import { Instagram, Linkedin, User } from 'lucide-react';
-import { photographerInfo } from '@/data/photographer';
-import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
+import { Linkedin, Youtube, Instagram, Dribbble } from 'lucide-react';
+import { photographerInfo } from '@/data/photographer';
 
-/**
- * Minimal footer component with social links and copyright
- */
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="border-t border-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Copyright */}
-          <p className="text-sm text-muted-foreground font-light tracking-wide">
-            © {currentYear} {photographerInfo.name}. Hak cipta dilindungi.
-          </p>
+    <footer className="py-6 px-6 lg:px-8" style={{ backgroundColor: 'hsl(0, 11%, 91%)' }}>
+      <div className="max-w-7xl mx-auto space-y-6">
+        {/* Top Row - Services */}
+        <div className="text-center">
+          <div className="text-xs md:text-sm font-black tracking-wide" style={{ color: 'hsl(0, 0%, 8%)' }}>
+            GRAPHIC DESIGN | BRANDING DESIGN | LOGO DESIGN | PRINT MEDIA DESIGN
+          </div>
+        </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-6">
-            <Link 
-              to="/admin/login" 
-              className="text-black"
-              aria-label="Admin Login"
-            >
-              <User className="size-5" />
-            </Link>
-            {photographerInfo.socialLinks.instagram && (
-              <a
-                href={photographerInfo.socialLinks.instagram}
-                target="_blank"
+        {/* Bottom Row - 3 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+          {/* Left - Contact Me */}
+          <div>
+            <h3 className="text-2xl md:text-3xl font-black tracking-tight" style={{ color: 'hsl(0, 0%, 8%)' }}>
+              CONTACT ME
+            </h3>
+          </div>
+
+          {/* Center - Empty Space */}
+          <div className="text-center">
+          </div>
+
+          {/* Right - Social Media */}
+          <div className="flex flex-col items-end gap-2">
+            {/* Social Icons */}
+            <div className="flex gap-2">
+              <a 
+                href={photographerInfo.socialLinks.linkedin} 
+                target="_blank" 
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Instagram"
+                className="w-9 h-9 rounded-full border-2 border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all"
               >
-                <Instagram className="size-5" />
+                <Linkedin className="w-4 h-4" />
               </a>
-            )}
-            {photographerInfo.socialLinks.linkedin && (
-              <a
-                href={photographerInfo.socialLinks.linkedin}
-                target="_blank"
+              <a 
+                href="https://youtube.com" 
+                target="_blank" 
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="LinkedIn"
+                className="w-9 h-9 rounded-full border-2 border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all"
               >
-                <Linkedin className="size-5" />
+                <Youtube className="w-4 h-4" />
               </a>
-            )}
-            {photographerInfo.socialLinks.behance && (
-              <a
-                href={photographerInfo.socialLinks.behance}
-                target="_blank"
+              <a 
+                href={photographerInfo.socialLinks.instagram} 
+                target="_blank" 
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Behance"
+                className="w-9 h-9 rounded-full border-2 border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all"
               >
-                <svg
-                  className="size-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M3 8h6a3 3 0 0 1 0 6H3V8z" />
-                  <path d="M3 14h7a3 3 0 0 1 0 6H3v-6z" />
-                  <path d="M14 7h7" />
-                  <path d="M17 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
-                </svg>
+                <Instagram className="w-4 h-4" />
               </a>
-            )}
+              <a 
+                href={photographerInfo.socialLinks.behance} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full border-2 border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all"
+              >
+                <Dribbble className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
