@@ -87,7 +87,7 @@ export default function Home() {
               }} transition={{
                 duration: 0.8,
                 delay: 0.6
-              }} className="text-sm md:text-base max-w-md mx-auto font-light leading-relaxed text-slate-400">
+              }} className="text-sm md:text-base max-w-md mx-auto font-light leading-relaxed text-white">
                 {photographerInfo.heroIntroduction}
               </motion.p>
             </motion.div>
@@ -104,7 +104,7 @@ export default function Home() {
             duration: 0.8,
             delay: 1
           }}>
-            <div className="writing-mode-vertical text-xs tracking-widest text-gray-500 mb-4 font-light">
+            <div className="writing-mode-vertical text-xs tracking-widest text-white mb-4 font-light">
               FOLLOW
             </div>
             <a href={photographerInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-red-500 hover:border-red-500 hover:text-white hover:shadow-[0_0_15px_rgba(239,68,68,0.5)] transition-all">
