@@ -138,7 +138,7 @@ export default function Home() {
         </div>
 
         {/* Introduction Section */}
-        <section className="py-24 md:py-32 px-6 lg:px-8 bg-background">
+        <section className="py-24 md:py-32 px-6 lg:px-8" style={{ backgroundColor: 'hsl(0, 11%, 91%)' }}>
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <ScrollReveal>
               <div className="space-y-6">
