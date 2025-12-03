@@ -12,6 +12,7 @@ import heroBg from '@/assets/hero-bg.jpg';
 import LogoDann from '@/assets/LogoDann.png';
 import Pembatas1 from '@/assets/Pembatas1.png';
 import Pembatas2 from '@/assets/Pembatas2.png';
+import Pembatas3 from '@/assets/Pembatas3.png';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -207,75 +208,10 @@ export default function Home() {
           <img src={Pembatas2} alt="" className="w-full h-auto object-cover" />
         </div>
 
-        {/* Featured Projects Section - Bold Header + Gallery */}
-        <section className="py-32 md:py-40 px-6 lg:px-8" style={{
-        backgroundColor: 'hsl(0, 0%, 8%)'
-      }}>
-          <div className="max-w-7xl mx-auto">
-            {/* Bold Title Section */}
-            <ScrollReveal>
-              <div className="space-y-8 mb-16">
-                {/* Bold Title */}
-                <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
-                  <span className="text-white">PROYEK </span>
-                  <span className="text-red-500">UNGGULAN</span>
-                </h2>
-                
-                {/* Description */}
-                <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl">
-                  Koleksi karya fotografi terpilih yang menampilkan keahlian dalam editorial, komersial, dan portrait photography. Setiap proyek dirancang dengan perhatian detail dan visi kreatif yang kuat.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            {/* Projects Grid - Horizontal scrolling layout */}
-            <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar">
-              <motion.div layout className="flex gap-3 justify-center items-center">
-                {featuredProjects.map((project, index) => {
-                const widths = [140, 160, 145, 155, 150, 165, 148, 158];
-                const cardWidth = widths[index % widths.length];
-                return <motion.div key={project.id} layout initial={{
-                  opacity: 0,
-                  x: 50
-                }} animate={{
-                  opacity: 1,
-                  x: 0
-                }} transition={{
-                  duration: 0.5,
-                  delay: index * 0.05,
-                  layout: {
-                    duration: 0.4,
-                    ease: "easeInOut"
-                  }
-                }} className="h-[450px] flex-shrink-0">
-                      <ProjectCard project={project} showCategory={true} index={index} initialWidth={cardWidth} />
-                    </motion.div>;
-              })}
-              </motion.div>
-            </div>
-
-            {/* View All Link */}
-            <ScrollReveal delay={0.4}>
-              <div className="flex justify-center mt-16">
-                <Link to="/portfolio" className="inline-flex items-center gap-3 text-xl font-bold text-white hover:text-red-500 transition-colors group">
-                  <span>LIHAT SEMUA KARYA</span>
-                  <ArrowRight className="size-6 transition-transform group-hover:translate-x-2" />
-                </Link>
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
-
         {/* Skills, Tools & Approach Section */}
         <section className="relative py-24 md:py-32 px-6 lg:px-8 overflow-hidden" style={{
         backgroundColor: '#FF3333'
       }}>
-          {/* Decorative Black Corner - Top Right */}
-          
-          
-          {/* Decorative Black Corner - Bottom Left */}
-          
-
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
               {/* Column 1: SKILLS */}
@@ -335,6 +271,70 @@ export default function Home() {
                 </div>
               </ScrollReveal>
             </div>
+          </div>
+        </section>
+
+        {/* Image Divider 3 */}
+        <div className="w-full">
+          <img src={Pembatas3} alt="" className="w-full h-auto object-cover" />
+        </div>
+
+        {/* Featured Projects Section - Bold Header + Gallery */}
+        <section className="py-32 md:py-40 px-6 lg:px-8" style={{
+        backgroundColor: 'hsl(0, 0%, 8%)'
+      }}>
+          <div className="max-w-7xl mx-auto">
+            {/* Bold Title Section */}
+            <ScrollReveal>
+              <div className="space-y-8 mb-16">
+                {/* Bold Title */}
+                <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
+                  <span className="text-white">PROYEK </span>
+                  <span className="text-red-500">UNGGULAN</span>
+                </h2>
+                
+                {/* Description */}
+                <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl">
+                  Koleksi karya fotografi terpilih yang menampilkan keahlian dalam editorial, komersial, dan portrait photography. Setiap proyek dirancang dengan perhatian detail dan visi kreatif yang kuat.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Projects Grid - Horizontal scrolling layout */}
+            <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar">
+              <motion.div layout className="flex gap-3 justify-center items-center">
+                {featuredProjects.map((project, index) => {
+                const widths = [140, 160, 145, 155, 150, 165, 148, 158];
+                const cardWidth = widths[index % widths.length];
+                return <motion.div key={project.id} layout initial={{
+                  opacity: 0,
+                  x: 50
+                }} animate={{
+                  opacity: 1,
+                  x: 0
+                }} transition={{
+                  duration: 0.5,
+                  delay: index * 0.05,
+                  layout: {
+                    duration: 0.4,
+                    ease: "easeInOut"
+                  }
+                }} className="h-[450px] flex-shrink-0">
+                      <ProjectCard project={project} showCategory={true} index={index} initialWidth={cardWidth} />
+                    </motion.div>;
+              })}
+              </motion.div>
+            </div>
+
+            {/* View All Link */}
+            <ScrollReveal delay={0.4}>
+              <div className="flex justify-center mt-16">
+                <Link to="/portfolio" className="inline-flex items-center gap-3 text-xl font-bold text-white hover:text-red-500 transition-colors group">
+                  <span>LIHAT SEMUA KARYA</span>
+                  <ArrowRight className="size-6 transition-transform group-hover:translate-x-2" />
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
       </div>
