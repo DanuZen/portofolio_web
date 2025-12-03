@@ -3,7 +3,7 @@ import type { PhotographerInfo } from '@/types';
 export const photographerInfo: PhotographerInfo = {
   name: 'DANN',
   tagline: 'Fotografer Editorial & Komersial',
-  heroIntroduction: 'Menciptakan narasi visual yang menangkap momen autentik dan cerita abadi.',
+  heroIntroduction: 'Ngoding dulu, Jagonya belakangan.',
   biography: `DANN adalah fotografer pemenang penghargaan yang mengkhususkan diri dalam pekerjaan editorial dan komersial, dengan pengakuan termasuk International Photography Awards Editorial Photographer of the Year 2023 dan PDN Photo Annual Winner 2022. Dengan pengalaman lebih dari satu dekade, karyanya telah ditampilkan dalam berbagai publikasi dan pameran internasional, berkolaborasi dengan klien seperti Vogue, The New York Times, National Geographic, Adobe, Apple, Nike, dan Architectural Digest.
 
 Berbasis di New York dengan gelar MFA dalam Fotografi dari School of Visual Arts, DANN membawa perspektif unik ke setiap proyek, menggabungkan keunggulan teknis dengan visi artistik. Pendekatannya terhadap fotografi berakar kuat pada penceritaan, percaya bahwa setiap gambar harus menyampaikan emosi dan makna di luar daya tarik visualnya.`,
