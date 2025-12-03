@@ -26,7 +26,7 @@ export default function Home() {
       {/* Hero Section - Editorial style with integrated photo */}
       <section className="relative h-screen w-full overflow-hidden">
         {/* Background with geometric pattern */}
-        <div className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/login-bg.jpg)' }} />
+        <div className="absolute inset-0 z-0 bg-background" />
         
         {/* Hero Content */}
         <div className="relative h-full w-full flex items-center justify-end">
