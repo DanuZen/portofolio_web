@@ -104,14 +104,14 @@ export default function Home() {
             <div className="writing-mode-vertical text-xs tracking-widest text-white mb-4 font-light">
               FOLLOW
             </div>
-            <a href={photographerInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-red-500 hover:border-red-500 hover:text-white hover:shadow-[0_0_15px_rgba(239,68,68,0.5)] transition-all">
-              <Instagram className="w-4 h-4" />
+            <a href={photographerInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-red-500 hover:scale-110 transition-all duration-300">
+              <Instagram className="w-5 h-5" />
             </a>
-            <a href={photographerInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-red-500 hover:border-red-500 hover:text-white hover:shadow-[0_0_15px_rgba(239,68,68,0.5)] transition-all">
-              <Facebook className="w-4 h-4" />
+            <a href={photographerInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-red-500 hover:scale-110 transition-all duration-300">
+              <Facebook className="w-5 h-5" />
             </a>
-            <a href={photographerInfo.socialLinks.behance} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-red-500 hover:border-red-500 hover:text-white hover:shadow-[0_0_15px_rgba(239,68,68,0.5)] transition-all">
-              <Linkedin className="w-4 h-4" />
+            <a href={photographerInfo.socialLinks.behance} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-red-500 hover:scale-110 transition-all duration-300">
+              <Linkedin className="w-5 h-5" />
             </a>
           </motion.div>
 
