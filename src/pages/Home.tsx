@@ -286,9 +286,7 @@ export default function Home() {
               {/* Column 3: FILOSOFI CODING */}
               <ScrollReveal delay={0.2}>
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-300">
-                  <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight mb-6">
-                    FILOSOFI
-                    <br />
+                  <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight mb-6">FILOSOFI CODING<br />
                     CODING
                   </h2>
                   <div className="space-y-3 text-white/80 text-sm font-normal leading-relaxed">
