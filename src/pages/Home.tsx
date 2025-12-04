@@ -226,62 +226,80 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {/* Column 1: SKILLS */}
               <ScrollReveal>
-                <div className="space-y-6">
-                  <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-300">
+                  <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-6">
                     SKILLS
                   </h2>
-                  <ul className="space-y-3 text-white text-lg font-medium">
-                    <li>FOTOGRAFI EDITORIAL</li>
-                    <li>FOTOGRAFI KOMERSIAL</li>
-                    <li>POST-PROCESSING</li>
-                    <li>LIGHTING DESIGN</li>
+                  <ul className="space-y-3 text-white/90 text-base font-medium">
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                      FRONTEND DEVELOPMENT
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                      BACKEND DEVELOPMENT
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                      DATABASE DESIGN
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                      UI/UX DESIGN
+                    </li>
                   </ul>
                 </div>
               </ScrollReveal>
 
               {/* Column 2: TOOLS */}
               <ScrollReveal delay={0.1}>
-                <div className="space-y-6">
-                  <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-300">
+                  <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-6">
                     TOOLS
                   </h2>
-                  <div className="flex gap-4">
-                    {/* Photoshop Icon */}
-                    <div className="w-16 h-16 bg-black rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold text-2xl">Ps</span>
+                  <div className="flex flex-wrap gap-3">
+                    <div className="px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-lg">
+                      <span className="text-white font-bold text-sm">React</span>
                     </div>
-                    {/* Lightroom Icon */}
-                    <div className="w-16 h-16 bg-black rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold text-2xl">Lr</span>
+                    <div className="px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-lg">
+                      <span className="text-white font-bold text-sm">TypeScript</span>
                     </div>
-                    {/* Capture One Icon */}
-                    <div className="w-16 h-16 bg-black rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold text-xl">C1</span>
+                    <div className="px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-lg">
+                      <span className="text-white font-bold text-sm">Node.js</span>
+                    </div>
+                    <div className="px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-lg">
+                      <span className="text-white font-bold text-sm">Tailwind</span>
+                    </div>
+                    <div className="px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-lg">
+                      <span className="text-white font-bold text-sm">PostgreSQL</span>
+                    </div>
+                    <div className="px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-lg">
+                      <span className="text-white font-bold text-sm">Git</span>
                     </div>
                   </div>
                 </div>
               </ScrollReveal>
 
-              {/* Column 3: APPROACH TO DESIGN */}
+              {/* Column 3: FILOSOFI CODING */}
               <ScrollReveal delay={0.2}>
-                <div className="space-y-6">
-                  <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-300">
+                  <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight mb-6">
                     FILOSOFI
                     <br />
                     CODING
                   </h2>
-                  <div className="space-y-4 text-white text-base font-normal leading-relaxed">
+                  <div className="space-y-3 text-white/80 text-sm font-normal leading-relaxed">
                     <p>
-                      KEJELASAN & STRUKTUR: Menulis kode yang bersih, mudah dibaca, dan mudah dikembangkan dalam jangka panjang. Setiap baris harus punya tujuan.
+                      <span className="text-red-500 font-semibold">KEJELASAN:</span> Kode bersih, mudah dibaca, dan mudah dikembangkan.
                     </p>
                     <p>
-                      SOLUSI BERDASARKAN KEBUTUHAN: Memahami kebutuhan pengguna/klien sebelum mulai membangun, sehingga solusi yang dibuat tepat sasaran dan efisien.
+                      <span className="text-red-500 font-semibold">SOLUSI:</span> Memahami kebutuhan sebelum membangun solusi.
                     </p>
                     <p>
-                      KOLABORASI: Bekerja secara terbuka dengan tim, berdiskusi, dan membangun solusi yang kuat serta scalable.
+                      <span className="text-red-500 font-semibold">KOLABORASI:</span> Bekerja terbuka dengan tim untuk hasil scalable.
                     </p>
                   </div>
                 </div>
