@@ -26,38 +26,38 @@ export function Footer() {
           {/* Right - Social Media */}
           <div className="flex flex-col items-end gap-2">
             {/* Social Icons */}
-            <div className="flex gap-2">
+            <div className="flex gap-4">
               <a 
                 href={photographerInfo.socialLinks.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border-2 border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all"
+                className="text-black/70 hover:text-red-500 hover:scale-110 transition-all duration-300"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="w-5 h-5" />
               </a>
               <a 
                 href="https://youtube.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border-2 border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all"
+                className="text-black/70 hover:text-red-500 hover:scale-110 transition-all duration-300"
               >
-                <Youtube className="w-4 h-4" />
+                <Youtube className="w-5 h-5" />
               </a>
               <a 
                 href={photographerInfo.socialLinks.instagram} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border-2 border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all"
+                className="text-black/70 hover:text-red-500 hover:scale-110 transition-all duration-300"
               >
-                <Instagram className="w-4 h-4" />
+                <Instagram className="w-5 h-5" />
               </a>
               <a 
                 href={photographerInfo.socialLinks.behance} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border-2 border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all"
+                className="text-black/70 hover:text-red-500 hover:scale-110 transition-all duration-300"
               >
-                <Dribbble className="w-4 h-4" />
+                <Dribbble className="w-5 h-5" />
               </a>
             </div>
           </div>
