@@ -269,16 +269,19 @@ export default function Home() {
               <ScrollReveal delay={0.2}>
                 <div className="space-y-6">
                   <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
-                    PENDEKATAN
+                    FILOSOFI
                     <br />
-                    FOTOGRAFI
+                    CODING
                   </h2>
                   <div className="space-y-4 text-white text-base font-normal leading-relaxed">
                     <p>
-                      RISET & KONSEP: Memahami visi klien dan mengembangkan konsep visual yang kuat.
+                      KEJELASAN & STRUKTUR: Menulis kode yang bersih, mudah dibaca, dan mudah dikembangkan dalam jangka panjang. Setiap baris harus punya tujuan.
                     </p>
                     <p>
-                      KOLABORASI: Bekerja sama dengan tim kreatif untuk hasil yang maksimal dan kohesif.
+                      SOLUSI BERDASARKAN KEBUTUHAN: Memahami kebutuhan pengguna/klien sebelum mulai membangun, sehingga solusi yang dibuat tepat sasaran dan efisien.
+                    </p>
+                    <p>
+                      KOLABORASI: Bekerja secara terbuka dengan tim, berdiskusi, dan membangun solusi yang kuat serta scalable.
                     </p>
                   </div>
                 </div>
