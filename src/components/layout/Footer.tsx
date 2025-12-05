@@ -24,16 +24,19 @@ export function Footer() {
           </div>
 
           {/* Right - Social Media */}
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex flex-col items-end gap-3">
+            <h3 className="text-2xl md:text-3xl font-black tracking-tight" style={{ color: 'hsl(0, 0%, 8%)' }}>
+              FOLLOW ME
+            </h3>
             {/* Social Icons */}
-            <div className="flex gap-4">
+            <div className="flex gap-5">
               <a 
                 href={photographerInfo.socialLinks.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-black/70 hover:text-red-500 hover:scale-110 transition-all duration-300"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-7 h-7" />
               </a>
               <a 
                 href="https://youtube.com" 
@@ -41,7 +44,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-black/70 hover:text-red-500 hover:scale-110 transition-all duration-300"
               >
-                <Youtube className="w-5 h-5" />
+                <Youtube className="w-7 h-7" />
               </a>
               <a 
                 href={photographerInfo.socialLinks.instagram} 
@@ -49,7 +52,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-black/70 hover:text-red-500 hover:scale-110 transition-all duration-300"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-7 h-7" />
               </a>
               <a 
                 href={photographerInfo.socialLinks.behance} 
@@ -57,7 +60,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-black/70 hover:text-red-500 hover:scale-110 transition-all duration-300"
               >
-                <Dribbble className="w-5 h-5" />
+                <Dribbble className="w-7 h-7" />
               </a>
             </div>
           </div>
