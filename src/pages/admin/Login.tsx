@@ -2,16 +2,19 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Loader2, User, Lock } from 'lucide-react';
+import { Loader2, User, Lock, Mail, ArrowLeft } from 'lucide-react';
 import LogoDann from '@/assets/LogoDann.png';
+
+type ViewMode = 'login' | 'signup' | 'forgot-password';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isSignup, setIsSignup] = useState(false);
-  const { login, signup } = useAuth();
+  const [viewMode, setViewMode] = useState<ViewMode>('login');
+  const { login, signup, resetPassword } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,19 +23,33 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setSuccess('');
     setIsLoading(true);
 
-    if (isSignup) {
+    if (viewMode === 'forgot-password') {
+      const { error: resetError } = await resetPassword(email);
+      
+      if (resetError) {
+        setError(resetError.message || 'Gagal mengirim email reset password.');
+      } else {
+        setSuccess('Email reset password telah dikirim! Periksa inbox Anda.');
+        setEmail('');
+      }
+      setIsLoading(false);
+      return;
+    }
+
+    if (viewMode === 'signup') {
       const { error: signupError } = await signup(email, password);
       
       if (signupError) {
         setError(signupError.message || 'Pendaftaran gagal. Coba lagi.');
-        setIsLoading(false);
       } else {
-        setError('');
-        setIsLoading(false);
-        navigate(from, { replace: true });
+        setSuccess('Akun berhasil dibuat! Silakan login.');
+        setViewMode('login');
+        setPassword('');
       }
+      setIsLoading(false);
     } else {
       const { error: loginError } = await login(email, password);
 
@@ -43,6 +60,12 @@ export default function Login() {
         navigate(from, { replace: true });
       }
     }
+  };
+
+  const switchView = (newMode: ViewMode) => {
+    setViewMode(newMode);
+    setError('');
+    setSuccess('');
   };
 
   return (
@@ -57,6 +80,13 @@ export default function Login() {
           />
         </div>
 
+        {/* Title */}
+        <h1 className="text-white text-center text-2xl font-light tracking-widest mb-8">
+          {viewMode === 'login' && 'ADMIN LOGIN'}
+          {viewMode === 'signup' && 'DAFTAR AKUN'}
+          {viewMode === 'forgot-password' && 'RESET PASSWORD'}
+        </h1>
+
         {/* Error Alert */}
         {error && (
           <Alert variant="destructive" className="mb-6 bg-red-950/50 border-red-900 text-red-200">
@@ -64,16 +94,27 @@ export default function Login() {
           </Alert>
         )}
 
-        {/* Login Form */}
+        {/* Success Alert */}
+        {success && (
+          <Alert className="mb-6 bg-green-950/50 border-green-900 text-green-200">
+            <AlertDescription>{success}</AlertDescription>
+          </Alert>
+        )}
+
+        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Username Input */}
+          {/* Email Input */}
           <div className="relative">
             <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
-              <User className="h-5 w-5 text-white/60" strokeWidth={1.5} />
+              {viewMode === 'forgot-password' ? (
+                <Mail className="h-5 w-5 text-white/60" strokeWidth={1.5} />
+              ) : (
+                <User className="h-5 w-5 text-white/60" strokeWidth={1.5} />
+              )}
             </div>
             <input
               type="email"
-              placeholder="USERNAME"
+              placeholder="EMAIL"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -82,23 +123,26 @@ export default function Login() {
             />
           </div>
 
-          {/* Password Input */}
-          <div className="relative">
-            <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
-              <Lock className="h-5 w-5 text-white/60" strokeWidth={1.5} />
+          {/* Password Input - Hide for forgot password */}
+          {viewMode !== 'forgot-password' && (
+            <div className="relative">
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                <Lock className="h-5 w-5 text-white/60" strokeWidth={1.5} />
+              </div>
+              <input
+                type="password"
+                placeholder="PASSWORD"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                disabled={isLoading}
+                minLength={6}
+                className="w-full bg-transparent border border-white/30 text-white placeholder:text-white/40 placeholder:tracking-widest placeholder:text-sm px-12 py-4 rounded-none focus:outline-none focus:border-white/60 transition-colors disabled:opacity-50"
+              />
             </div>
-            <input
-              type="password"
-              placeholder="PASSWORD"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              disabled={isLoading}
-              className="w-full bg-transparent border border-white/30 text-white placeholder:text-white/40 placeholder:tracking-widest placeholder:text-sm px-12 py-4 rounded-none focus:outline-none focus:border-white/60 transition-colors disabled:opacity-50"
-            />
-          </div>
+          )}
 
-          {/* Login Button */}
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={isLoading}
@@ -110,22 +154,56 @@ export default function Login() {
                 MEMPROSES...
               </>
             ) : (
-              isSignup ? 'DAFTAR' : 'LOGIN'
+              <>
+                {viewMode === 'login' && 'LOGIN'}
+                {viewMode === 'signup' && 'DAFTAR'}
+                {viewMode === 'forgot-password' && 'KIRIM EMAIL RESET'}
+              </>
             )}
           </button>
 
-          {/* Forgot Password Link */}
-          <div className="text-center">
-            <button
-              type="button"
-              onClick={() => {
-                setIsSignup(!isSignup);
-                setError('');
-              }}
-              className="text-white/60 hover:text-white text-sm transition-colors"
-            >
-              {isSignup ? 'Sudah punya akun? Masuk' : 'Forgot password?'}
-            </button>
+          {/* Links */}
+          <div className="flex flex-col items-center gap-3">
+            {viewMode === 'login' && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => switchView('forgot-password')}
+                  className="text-white/60 hover:text-white text-sm transition-colors"
+                >
+                  Lupa password?
+                </button>
+                <button
+                  type="button"
+                  onClick={() => switchView('signup')}
+                  className="text-white/60 hover:text-white text-sm transition-colors"
+                >
+                  Belum punya akun? Daftar
+                </button>
+              </>
+            )}
+            
+            {viewMode === 'signup' && (
+              <button
+                type="button"
+                onClick={() => switchView('login')}
+                className="text-white/60 hover:text-white text-sm transition-colors flex items-center gap-2"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Kembali ke Login
+              </button>
+            )}
+            
+            {viewMode === 'forgot-password' && (
+              <button
+                type="button"
+                onClick={() => switchView('login')}
+                className="text-white/60 hover:text-white text-sm transition-colors flex items-center gap-2"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Kembali ke Login
+              </button>
+            )}
           </div>
         </form>
       </div>
