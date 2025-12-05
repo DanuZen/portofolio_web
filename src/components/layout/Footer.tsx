@@ -25,7 +25,7 @@ export function Footer() {
 
           {/* Center - Logo */}
           <div className="flex justify-center">
-            <img src={LogoDannBlack} alt="Logo" className="h-12 w-auto object-contain" />
+            <img src={LogoDannBlack} alt="Logo" className="h-20 w-auto object-contain" />
           </div>
 
           {/* Right - Social Media */}
