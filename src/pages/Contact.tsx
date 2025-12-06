@@ -20,7 +20,7 @@ export default function Contact() {
       
       <div className="min-h-screen">
         {/* Hero Section */}
-      <section className="pt-16 md:pt-24 pb-4 md:pb-6 px-6 lg:px-8">
+      <section className="pt-16 md:pt-24 pb-8 md:pb-12 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <motion.div
             initial={{ opacity: 0.8, y: 10 }}
