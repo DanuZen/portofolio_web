@@ -63,42 +63,34 @@ export default function Dashboard() {
     }
   }, [projects]);
 
-  const categoryColors: Record<ProjectCategory, string> = {
-    portraits: 'bg-blue-500',
-    landscapes: 'bg-green-500',
-    editorial: 'bg-purple-500',
-    architecture: 'bg-orange-500',
-    documentary: 'bg-pink-500',
-  };
-
   const recentProjects = projects.slice(0, 5);
 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading dashboard...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-foreground mx-auto"></div>
+          <p className="mt-4 text-muted-foreground">Loading dashboard...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl font-semibold tracking-wide text-foreground">
             Dashboard Overview
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">
+          <p className="text-muted-foreground mt-1 text-sm">
             Kelola dan pantau portfolio Anda
           </p>
         </div>
         <Link to="/admin/projects/new">
-          <Button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-lg">
-            <Plus className="mr-2 h-5 w-5" />
+          <Button className="bg-foreground text-background hover:bg-foreground/90">
+            <Plus className="mr-2 h-4 w-4" strokeWidth={1.5} />
             New Project
           </Button>
         </Link>
@@ -106,69 +98,69 @@ export default function Dashboard() {
 
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="border-purple-200 dark:border-purple-900 shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="border-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Projects
             </CardTitle>
-            <FolderKanban className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+            <FolderKanban className="h-5 w-5 text-foreground" strokeWidth={1.5} />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+            <div className="text-3xl font-semibold text-foreground">
               {stats.totalProjects}
             </div>
-            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+            <p className="text-xs text-muted-foreground mt-1">
               Across all categories
             </p>
           </CardContent>
         </Card>
 
-        <Card className="border-purple-200 dark:border-purple-900 shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="border-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Images
             </CardTitle>
-            <ImageIcon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <ImageIcon className="h-5 w-5 text-foreground" strokeWidth={1.5} />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+            <div className="text-3xl font-semibold text-foreground">
               {stats.totalImages}
             </div>
-            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+            <p className="text-xs text-muted-foreground mt-1">
               In all projects
             </p>
           </CardContent>
         </Card>
 
-        <Card className="border-purple-200 dark:border-purple-900 shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="border-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               Recent Projects
             </CardTitle>
-            <TrendingUp className="h-5 w-5 text-green-600 dark:text-green-400" />
+            <TrendingUp className="h-5 w-5 text-foreground" strokeWidth={1.5} />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+            <div className="text-3xl font-semibold text-foreground">
               {stats.recentProjects}
             </div>
-            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+            <p className="text-xs text-muted-foreground mt-1">
               Last 30 days
             </p>
           </CardContent>
         </Card>
 
-        <Card className="border-purple-200 dark:border-purple-900 shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="border-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               Top Category
             </CardTitle>
-            <FolderKanban className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+            <FolderKanban className="h-5 w-5 text-foreground" strokeWidth={1.5} />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 capitalize">
+            <div className="text-3xl font-semibold text-foreground capitalize">
               {Object.entries(stats.projectsByCategory).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A'}
             </div>
-            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+            <p className="text-xs text-muted-foreground mt-1">
               {Object.entries(stats.projectsByCategory).sort((a, b) => b[1] - a[1])[0]?.[1] || 0} projects
             </p>
           </CardContent>
@@ -176,33 +168,33 @@ export default function Dashboard() {
       </div>
 
       {/* Category Breakdown */}
-      <Card className="border-purple-200 dark:border-purple-900 shadow-lg">
+      <Card className="border-border">
         <CardHeader>
-          <CardTitle>Projects by Category</CardTitle>
+          <CardTitle className="text-lg font-medium">Projects by Category</CardTitle>
           <CardDescription>Distribution across all categories</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {Object.entries(stats.projectsByCategory).map(([category, count]) => (
               <div key={category} className="flex items-center gap-4">
-                <div className="w-32 capitalize font-medium text-gray-700 dark:text-gray-300">
+                <div className="w-32 capitalize font-medium text-foreground text-sm">
                   {category}
                 </div>
                 <div className="flex-1">
-                  <div className="h-8 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+                  <div className="h-6 bg-accent overflow-hidden">
                     <div
-                      className={`h-full ${categoryColors[category as ProjectCategory]} transition-all duration-500 flex items-center justify-end pr-3`}
+                      className="h-full bg-foreground transition-all duration-500 flex items-center justify-end pr-3"
                       style={{
                         width: `${stats.totalProjects > 0 ? (count / stats.totalProjects) * 100 : 0}%`,
                       }}
                     >
                       {count > 0 && (
-                        <span className="text-white text-sm font-semibold">{count}</span>
+                        <span className="text-background text-xs font-medium">{count}</span>
                       )}
                     </div>
                   </div>
                 </div>
-                <div className="w-16 text-right text-sm text-gray-600 dark:text-gray-400">
+                <div className="w-16 text-right text-sm text-muted-foreground">
                   {stats.totalProjects > 0 ? Math.round((count / stats.totalProjects) * 100) : 0}%
                 </div>
               </div>
@@ -212,14 +204,14 @@ export default function Dashboard() {
       </Card>
 
       {/* Recent Projects */}
-      <Card className="border-purple-200 dark:border-purple-900 shadow-lg">
+      <Card className="border-border">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
-            <CardTitle>Recent Projects</CardTitle>
+            <CardTitle className="text-lg font-medium">Recent Projects</CardTitle>
             <CardDescription>Your latest portfolio additions</CardDescription>
           </div>
           <Link to="/admin/projects">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="border-border">
               View All
             </Button>
           </Link>
@@ -227,8 +219,8 @@ export default function Dashboard() {
         <CardContent>
           {recentProjects.length === 0 ? (
             <div className="text-center py-12">
-              <FolderKanban className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600 dark:text-gray-400">No projects yet</p>
+              <FolderKanban className="h-12 w-12 text-muted-foreground mx-auto mb-4" strokeWidth={1.5} />
+              <p className="text-muted-foreground">No projects yet</p>
               <Link to="/admin/projects/new">
                 <Button className="mt-4" variant="outline">
                   Create Your First Project
@@ -236,39 +228,39 @@ export default function Dashboard() {
               </Link>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3">
               {recentProjects.map((project) => (
                 <div
                   key={project.id}
-                  className="flex items-center gap-4 p-4 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-purple-300 dark:hover:border-purple-700 transition-colors"
+                  className="flex items-center gap-4 p-4 border border-border hover:bg-accent/50 transition-colors"
                 >
                   <img
                     src={project.coverImage}
                     alt={project.title}
-                    className="w-16 h-16 rounded-lg object-cover"
+                    className="w-14 h-14 object-cover"
                   />
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 truncate">
+                    <h3 className="font-medium text-foreground truncate">
                       {project.title}
                     </h3>
                     <div className="flex items-center gap-2 mt-1">
-                      <Badge variant="secondary" className="capitalize">
+                      <Badge variant="secondary" className="capitalize text-xs">
                         {project.category}
                       </Badge>
-                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                      <span className="text-xs text-muted-foreground">
                         {project.year}
                       </span>
                     </div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-1">
                     <Link to={`/project/${project.slug}`}>
                       <Button variant="ghost" size="sm">
-                        <Eye className="h-4 w-4" />
+                        <Eye className="h-4 w-4" strokeWidth={1.5} />
                       </Button>
                     </Link>
                     <Link to={`/admin/projects/${project.id}/edit`}>
                       <Button variant="ghost" size="sm">
-                        <Edit className="h-4 w-4" />
+                        <Edit className="h-4 w-4" strokeWidth={1.5} />
                       </Button>
                     </Link>
                   </div>
