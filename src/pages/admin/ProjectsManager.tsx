@@ -32,7 +32,7 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Search, Edit, Trash2, Eye, Image as ImageIcon } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import type { Project, ProjectCategory } from '@/types';
+import type { Project } from '@/types';
 
 export default function ProjectsManager() {
   const { projects, isLoading, deleteProject } = useProjects();
@@ -83,64 +83,56 @@ export default function ProjectsManager() {
     setProjectToDelete(null);
   };
 
-  const categoryColors: Record<ProjectCategory, string> = {
-    portraits: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    landscapes: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    editorial: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-    architecture: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
-    documentary: 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
-  };
-
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading projects...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-foreground mx-auto"></div>
+          <p className="mt-4 text-muted-foreground">Loading projects...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl font-semibold tracking-wide text-foreground">
             Projects Manager
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">
+          <p className="text-muted-foreground mt-1 text-sm">
             Manage all your portfolio projects
           </p>
         </div>
         <Link to="/admin/projects/new">
-          <Button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-lg">
-            <Plus className="mr-2 h-5 w-5" />
+          <Button className="bg-foreground text-background hover:bg-foreground/90">
+            <Plus className="mr-2 h-4 w-4" strokeWidth={1.5} />
             New Project
           </Button>
         </Link>
       </div>
 
       {/* Filters */}
-      <Card className="border-purple-200 dark:border-purple-900">
+      <Card className="border-border">
         <CardHeader>
-          <CardTitle className="text-lg">Filters</CardTitle>
+          <CardTitle className="text-lg font-medium">Filters</CardTitle>
           <CardDescription>Search and filter your projects</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Search projects..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
+                className="pl-10 border-border"
               />
             </div>
             <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-              <SelectTrigger className="w-full md:w-48">
+              <SelectTrigger className="w-full md:w-48 border-border">
                 <SelectValue placeholder="All Categories" />
               </SelectTrigger>
               <SelectContent>
@@ -157,10 +149,10 @@ export default function ProjectsManager() {
       </Card>
 
       {/* Projects Table */}
-      <Card className="border-purple-200 dark:border-purple-900">
+      <Card className="border-border">
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle>
+            <CardTitle className="text-lg font-medium">
               All Projects ({filteredProjects.length})
             </CardTitle>
           </div>
@@ -168,8 +160,8 @@ export default function ProjectsManager() {
         <CardContent>
           {filteredProjects.length === 0 ? (
             <div className="text-center py-12">
-              <ImageIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600 dark:text-gray-400">
+              <ImageIcon className="h-12 w-12 text-muted-foreground mx-auto mb-4" strokeWidth={1.5} />
+              <p className="text-muted-foreground">
                 {searchQuery || categoryFilter !== 'all'
                   ? 'No projects match your filters'
                   : 'No projects yet'}
@@ -183,10 +175,10 @@ export default function ProjectsManager() {
               )}
             </div>
           ) : (
-            <div className="rounded-md border border-gray-200 dark:border-gray-800 overflow-hidden">
+            <div className="border border-border overflow-hidden">
               <Table>
                 <TableHeader>
-                  <TableRow className="bg-gray-50 dark:bg-gray-900">
+                  <TableRow className="bg-accent/50 border-border">
                     <TableHead className="w-20">Cover</TableHead>
                     <TableHead>Title</TableHead>
                     <TableHead>Category</TableHead>
@@ -197,50 +189,47 @@ export default function ProjectsManager() {
                 </TableHeader>
                 <TableBody>
                   {filteredProjects.map((project) => (
-                    <TableRow key={project.id} className="hover:bg-gray-50 dark:hover:bg-gray-900/50">
+                    <TableRow key={project.id} className="hover:bg-accent/30 border-border">
                       <TableCell>
                         <img
                           src={project.coverImage}
                           alt={project.title}
-                          className="w-16 h-16 rounded-lg object-cover"
+                          className="w-14 h-14 object-cover"
                         />
                       </TableCell>
                       <TableCell>
                         <div>
-                          <p className="font-semibold text-gray-900 dark:text-gray-100">
+                          <p className="font-medium text-foreground">
                             {project.title}
                           </p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-1">
+                          <p className="text-sm text-muted-foreground line-clamp-1">
                             {project.description}
                           </p>
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge
-                          variant="secondary"
-                          className={`capitalize ${categoryColors[project.category]}`}
-                        >
+                        <Badge variant="secondary" className="capitalize">
                           {project.category}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-gray-600 dark:text-gray-400">
+                      <TableCell className="text-muted-foreground">
                         {project.year}
                       </TableCell>
                       <TableCell className="text-center">
-                        <Badge variant="outline">
+                        <Badge variant="outline" className="border-border">
                           {project.images.length}
                         </Badge>
                       </TableCell>
                       <TableCell className="text-right">
-                        <div className="flex justify-end gap-2">
+                        <div className="flex justify-end gap-1">
                           <Link to={`/project/${project.slug}`} target="_blank">
                             <Button variant="ghost" size="sm" title="View">
-                              <Eye className="h-4 w-4" />
+                              <Eye className="h-4 w-4" strokeWidth={1.5} />
                             </Button>
                           </Link>
                           <Link to={`/admin/projects/${project.id}/edit`}>
                             <Button variant="ghost" size="sm" title="Edit">
-                              <Edit className="h-4 w-4" />
+                              <Edit className="h-4 w-4" strokeWidth={1.5} />
                             </Button>
                           </Link>
                           <Button
@@ -248,9 +237,9 @@ export default function ProjectsManager() {
                             size="sm"
                             title="Delete"
                             onClick={() => handleDeleteClick(project)}
-                            className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950"
+                            className="text-destructive hover:text-destructive hover:bg-destructive/10"
                           >
-                            <Trash2 className="h-4 w-4" />
+                            <Trash2 className="h-4 w-4" strokeWidth={1.5} />
                           </Button>
                         </div>
                       </TableCell>
@@ -265,7 +254,7 @@ export default function ProjectsManager() {
 
       {/* Delete Confirmation Dialog */}
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-        <AlertDialogContent>
+        <AlertDialogContent className="border-border">
           <AlertDialogHeader>
             <AlertDialogTitle>Are you sure?</AlertDialogTitle>
             <AlertDialogDescription>
@@ -274,10 +263,10 @@ export default function ProjectsManager() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel className="border-border">Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
-              className="bg-red-600 hover:bg-red-700"
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
               Delete
             </AlertDialogAction>
