@@ -1,20 +1,19 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, User, Languages, Camera } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
-import { ThemeToggle } from './ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { photographerInfo } from '@/data/photographer';
 import { cn } from '@/lib/utils';
 import LogoDann from '@/assets/LogoDann.png';
+import { useNavigation } from '@/contexts/NavigationContext';
 
 const navLinks = [
-  { name: 'Beranda', path: '/' },
-  { name: 'Portfolio', path: '/portfolio' },
-  { name: 'Tentang', path: '/about' },
-  { name: 'Kontak', path: '/contact' },
+  { name: 'Beranda', path: '/', index: 0 },
+  { name: 'Portfolio', path: '/portfolio', index: 1 },
+  { name: 'Tentang', path: '/about', index: 2 },
+  { name: 'Kontak', path: '/contact', index: 3 },
 ];
 
 /**
@@ -24,8 +23,13 @@ const navLinks = [
  */
 export function Header() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { isScrolled } = useScrollPosition();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { navigateWithDirection } = useNavigation();
+  
+  // Get current tab index
+  const currentIndex = navLinks.findIndex(link => link.path === location.pathname) || 0;
   
   // Header is transparent only on homepage hero when not scrolled
   const isTransparent = location.pathname === '/' && !isScrolled;
@@ -69,7 +73,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8 relative">
             {navLinks.map((link, index) => (
                 <motion.div
                   key={link.path}
@@ -77,28 +81,36 @@ export function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.1 * index }}
                 >
-                  <Link
-                    to={link.path}
+                  <button
+                    onClick={() => {
+                      navigateWithDirection(currentIndex, link.index);
+                      navigate(link.path);
+                    }}
                     className={cn(
-                      "relative text-lg leading-7 font-light tracking-wide transition-colors duration-300",
+                      "relative text-lg leading-7 font-light tracking-wide transition-colors duration-300 bg-transparent border-none cursor-pointer",
                       isTransparent
                         ? "text-white hover:text-white/80"
                         : "text-foreground hover:text-muted-foreground"
                     )}
                   >
                     {link.name}
-                    {/* Active underline */}
-                    {location.pathname === link.path && (
-                      <div
-                        className={cn(
-                          "absolute -bottom-1 left-0 right-0 h-px",
-                          isTransparent ? "bg-white" : "bg-foreground"
-                        )}
-                      />
-                    )}
-                  </Link>
+                  </button>
                 </motion.div>
               ))}
+            
+            {/* Sliding underline indicator */}
+            <motion.div
+              layoutId="nav-underline"
+              className={cn(
+                "absolute -bottom-1 h-px",
+                isTransparent ? "bg-white" : "bg-foreground"
+              )}
+              style={{
+                left: `${currentIndex * 25}%`,
+                width: '60px',
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            />
             
             {/* Icon Group with smaller gap */}
             <div className="flex items-center gap-1">
@@ -129,14 +141,17 @@ export function Header() {
               <SheetContent side="right" className="w-full sm:w-80">
                 <nav className="flex flex-col gap-6 mt-8">
                   {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-lg leading-7 font-light tracking-wide text-foreground hover:text-muted-foreground"
-                  >
+                    <button
+                      key={link.path}
+                      onClick={() => {
+                        navigateWithDirection(currentIndex, link.index);
+                        navigate(link.path);
+                        setMobileMenuOpen(false);
+                      }}
+                      className="text-lg leading-7 font-light tracking-wide text-foreground hover:text-muted-foreground text-left bg-transparent border-none cursor-pointer"
+                    >
                       {link.name}
-                    </Link>
+                    </button>
                   ))}
                 </nav>
               </SheetContent>
