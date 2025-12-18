@@ -448,9 +448,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Image Divider 4 */}
-        <div className="w-full">
-          <img src={Pembatas1} alt="" className="w-full h-auto object-cover" />
+        {/* Image Divider 4 - Connected to Footer */}
+        <div className="w-full -mb-6" style={{ backgroundColor: 'hsl(0, 11%, 91%)' }}>
+          <img src={Pembatas1} alt="" className="w-full h-auto object-cover block" />
         </div>
       </div>
     </>;

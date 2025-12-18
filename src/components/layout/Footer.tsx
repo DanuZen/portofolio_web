@@ -5,7 +5,7 @@ import LogoDannBlack from '@/assets/LogoDannBlack.png';
 
 export function Footer() {
   return (
-    <footer className="py-6 px-6 lg:px-8" style={{ backgroundColor: 'hsl(0, 11%, 91%)' }}>
+    <footer className="pt-0 pb-6 px-6 lg:px-8" style={{ backgroundColor: 'hsl(0, 11%, 91%)' }}>
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Bottom Row - 3 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
