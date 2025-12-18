@@ -67,7 +67,7 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
             >
-              <div className="space-y-3">
+              <div className="space-y-1">
                 <h2 className="text-3xl md:text-4xl font-light tracking-wide">
                   Informasi Kontak
                 </h2>
