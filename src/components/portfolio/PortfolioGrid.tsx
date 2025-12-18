@@ -28,31 +28,18 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-[250px] gap-4 md:gap-6 px-4 md:px-6 lg:px-8">
-      <AnimatePresence mode="popLayout">
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            layout
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              duration: 0.5,
-              delay: index * 0.05,
-              layout: { 
-                duration: 0.4,
-                ease: "easeInOut"
-              }
-            }}
-            className={getBentoClass(index)}
-          >
-            <ProjectCard
-              project={project}
-              showCategory={true}
-              index={index}
-            />
-          </motion.div>
-        ))}
-      </AnimatePresence>
+      {projects.map((project, index) => (
+        <div
+          key={project.id}
+          className={getBentoClass(index)}
+        >
+          <ProjectCard
+            project={project}
+            showCategory={true}
+            index={index}
+          />
+        </div>
+      ))}
     </div>
   );
 }

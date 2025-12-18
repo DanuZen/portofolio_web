@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import type { Project } from '@/types';
 import { cn } from '@/lib/utils';
 
@@ -24,21 +23,7 @@ export function ProjectCard({
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   return (
-    <motion.div
-      layout
-      initial={initialWidth ? { opacity: 0, x: 50, width: initialWidth } : { opacity: 0, scale: 0.9 }}
-      animate={initialWidth ? { opacity: 1, x: 0, width: initialWidth } : { opacity: 1, scale: 1 }}
-      whileHover={initialWidth ? { 
-        width: 280,
-        transition: { duration: 0.4, ease: "easeOut" as const }
-      } : undefined}
-      transition={{ 
-        duration: 0.5, 
-        delay: index * 0.05,
-        layout: { duration: 0.4, ease: "easeInOut" }
-      }}
-      className="h-full"
-    >
+    <div className="h-full">
       <Link
         to={`/project/${project.slug}`}
         className="group block relative overflow-hidden rounded-2xl h-full shadow-lg hover:shadow-2xl transition-shadow duration-500"
@@ -50,7 +35,7 @@ export function ProjectCard({
             <div className="absolute inset-0 bg-muted animate-pulse" />
           )}
           
-          <motion.img
+          <img
             src={project.coverImage}
             alt={project.title}
             className={cn(
@@ -63,15 +48,9 @@ export function ProjectCard({
           />
           
           {/* Overlay with gradient and text */}
-          <motion.div 
-            className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"
-            initial={false}
-          >
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
             <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-              <motion.div
-                initial={false}
-                className="space-y-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
-              >
+              <div className="space-y-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <h3 className="text-white text-2xl md:text-3xl font-light tracking-wide">
                   {project.title}
                 </h3>
@@ -82,11 +61,11 @@ export function ProjectCard({
                     <span>{project.year}</span>
                   </div>
                 )}
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 }
