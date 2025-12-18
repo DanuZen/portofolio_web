@@ -89,13 +89,11 @@ export function Header() {
                     {link.name}
                     {/* Active underline */}
                     {location.pathname === link.path && (
-                      <motion.div
-                        layoutId="activeNav"
+                      <div
                         className={cn(
                           "absolute -bottom-1 left-0 right-0 h-px",
                           isTransparent ? "bg-white" : "bg-foreground"
                         )}
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
                   </Link>
