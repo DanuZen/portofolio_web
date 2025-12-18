@@ -1,6 +1,5 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import type { Project } from '@/types';
-import { ProjectCard } from './ProjectCard';
+import { PortfolioCard } from './PortfolioCard';
 
 interface PortfolioGridProps {
   projects: Project[];
@@ -33,7 +32,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
           key={project.id}
           className={getBentoClass(index)}
         >
-          <ProjectCard
+          <PortfolioCard
             project={project}
             showCategory={true}
             index={index}
