@@ -2,10 +2,18 @@ import { Link } from 'react-router-dom';
 import { Linkedin, Youtube, Instagram, Github, User } from 'lucide-react';
 import { photographerInfo } from '@/data/photographer';
 import LogoDannBlack from '@/assets/LogoDannBlack.png';
+import { motion } from 'framer-motion';
 
 export function Footer() {
   return (
-    <footer className="pt-0 pb-6 px-6 lg:px-8" style={{ backgroundColor: 'hsl(0, 11%, 91%)' }}>
+    <motion.footer 
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="pt-0 pb-6 px-6 lg:px-8" 
+      style={{ backgroundColor: 'hsl(0, 11%, 91%)' }}
+    >
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Bottom Row - 3 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
@@ -50,6 +58,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
