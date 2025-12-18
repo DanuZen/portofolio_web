@@ -16,15 +16,15 @@ import { ScrollToTop } from "@/components/utils/ScrollToTop";
 import { AnimatePresence } from "framer-motion";
 import { lazy, Suspense } from "react";
 
-// Code-split route components for better performance
-const Index = lazy(() => import("./pages/Index"));
-const Portfolio = lazy(() => import("./pages/Portfolio"));
-const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
-const About = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+// Direct imports for main pages (no loading)
+import Index from "./pages/Index";
+import Portfolio from "./pages/Portfolio";
+import ProjectDetail from "./pages/ProjectDetail";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
-// Admin pages
+// Admin pages (keep lazy loaded)
 const Login = lazy(() => import("./pages/admin/Login"));
 const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
 const ProjectsManager = lazy(() => import("./pages/admin/ProjectsManager"));
