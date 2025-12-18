@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { AuthProvider } from "@/hooks/useAuth";
+import { NavigationProvider } from "@/contexts/NavigationContext";
 import { Layout } from "@/components/layout/Layout";
 import { AdminLayout } from "@/components/layout/AdminLayout";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
@@ -123,24 +124,26 @@ const App = () => (
             <Toaster />
             <Sonner />
             <BrowserRouter>
-              <ScrollToTop />
-              <SkipToContent />
-              <Suspense fallback={<LoadingFallback />}>
-                <Routes>
-                  {/* Admin Routes */}
-                  <Route path="/admin/*" element={<AdminRoutes />} />
-                  
-                  {/* Public Routes */}
-                  <Route
-                    path="/*"
-                    element={
-                      <Layout>
-                        <AnimatedRoutes />
-                      </Layout>
-                    }
-                  />
-                </Routes>
-              </Suspense>
+              <NavigationProvider>
+                <ScrollToTop />
+                <SkipToContent />
+                <Suspense fallback={<LoadingFallback />}>
+                  <Routes>
+                    {/* Admin Routes */}
+                    <Route path="/admin/*" element={<AdminRoutes />} />
+                    
+                    {/* Public Routes */}
+                    <Route
+                      path="/*"
+                      element={
+                        <Layout>
+                          <AnimatedRoutes />
+                        </Layout>
+                      }
+                    />
+                  </Routes>
+                </Suspense>
+              </NavigationProvider>
             </BrowserRouter>
           </TooltipProvider>
         </AuthProvider>
