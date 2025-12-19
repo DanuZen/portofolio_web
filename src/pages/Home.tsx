@@ -35,62 +35,60 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
             
             {/* Left Column - Content */}
-            <motion.div 
-              className="space-y-8 z-10"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+            <motion.div className="space-y-8 z-10" initial={{
+              opacity: 0,
+              x: -30
+            }} animate={{
+              opacity: 1,
+              x: 0
+            }} transition={{
+              duration: 0.8,
+              ease: "easeOut"
+            }}>
               {/* Large Title */}
               <div className="space-y-2">
-              <motion.h1 
-                  className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-black leading-[0.9] tracking-tight"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
+              <motion.h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-black leading-[0.9] tracking-tight" initial={{
+                  opacity: 0,
+                  y: 30
+                }} animate={{
+                  opacity: 1,
+                  y: 0
+                }} transition={{
+                  duration: 0.8,
+                  delay: 0.2
+                }}>
                   Dann
                 </motion.h1>
               </div>
 
               {/* Description */}
-              <motion.p 
-                className="text-gray-600 text-base md:text-lg max-w-md leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
+              <motion.p className="text-gray-600 text-base md:text-lg max-w-md leading-relaxed" initial={{
+                opacity: 0,
+                y: 20
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.8,
+                delay: 0.4
+              }}>
                 {photographerInfo.heroIntroduction}
               </motion.p>
 
               {/* Social Icons */}
-              <motion.div 
-                className="flex items-center gap-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-amber-400 hover:border-amber-400 hover:text-white transition-all duration-300 text-xs font-medium">
-                  yt
-                </a>
-                <a href={photographerInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-amber-400 hover:border-amber-400 hover:text-white transition-all duration-300 text-xs font-medium">
-                  ig
-                </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-amber-400 hover:border-amber-400 hover:text-white transition-all duration-300 text-xs font-medium">
-                  fb
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-amber-400 hover:border-amber-400 hover:text-white transition-all duration-300 text-xs font-medium">
-                  x
-                </a>
-              </motion.div>
+              
 
               {/* Statistics */}
-              <motion.div 
-                className="flex gap-12 pt-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-              >
+              <motion.div className="flex gap-12 pt-4" initial={{
+                opacity: 0,
+                y: 20
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.8,
+                delay: 0.8
+              }}>
                 <div>
                   <h3 className="text-4xl md:text-5xl font-black text-black">+250k</h3>
                   <p className="text-gray-500 text-sm max-w-[140px] leading-tight mt-1">Videos that reaching a wide audience and give lasting impression</p>
@@ -103,12 +101,16 @@ export default function Home() {
             </motion.div>
 
             {/* Right Column - Image with Orange Background */}
-            <motion.div 
-              className="relative flex justify-center lg:justify-end"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.3 }}
-            >
+            <motion.div className="relative flex justify-center lg:justify-end" initial={{
+              opacity: 0,
+              scale: 0.95
+            }} animate={{
+              opacity: 1,
+              scale: 1
+            }} transition={{
+              duration: 1,
+              delay: 0.3
+            }}>
               {/* Orange/Amber Background Shape */}
               <div className="relative">
                 <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full bg-white border border-gray-200 flex items-center justify-center z-20">
@@ -121,44 +123,36 @@ export default function Home() {
                 
                 <div className="relative w-[500px] md:w-[600px] lg:w-[700px] h-[600px] md:h-[750px] lg:h-[850px]">
                   {/* Yellow Shape Background */}
-                  <div 
-                    className="absolute inset-0 bg-amber-400"
-                    style={{
-                      maskImage: `url('/images/hero-shape.png')`,
-                      WebkitMaskImage: `url('/images/hero-shape.png')`,
-                      maskSize: '100% 100%',
-                      WebkitMaskSize: '100% 100%',
-                      maskRepeat: 'no-repeat',
-                      WebkitMaskRepeat: 'no-repeat',
-                      maskPosition: 'center',
-                      WebkitMaskPosition: 'center'
-                    }}
-                  />
+                  <div className="absolute inset-0 bg-amber-400" style={{
+                    maskImage: `url('/images/hero-shape.png')`,
+                    WebkitMaskImage: `url('/images/hero-shape.png')`,
+                    maskSize: '100% 100%',
+                    WebkitMaskSize: '100% 100%',
+                    maskRepeat: 'no-repeat',
+                    WebkitMaskRepeat: 'no-repeat',
+                    maskPosition: 'center',
+                    WebkitMaskPosition: 'center'
+                  }} />
                   
                   {/* Signature Text */}
-                  <div 
-                    className="absolute top-8 left-8 z-20 font-serif italic text-white text-2xl md:text-3xl"
-                    style={{ fontFamily: 'cursive', textShadow: '1px 1px 2px rgba(0,0,0,0.2)' }}
-                  >
+                  <div className="absolute top-8 left-8 z-20 font-serif italic text-white text-2xl md:text-3xl" style={{
+                    fontFamily: 'cursive',
+                    textShadow: '1px 1px 2px rgba(0,0,0,0.2)'
+                  }}>
                     Gustatory
                   </div>
                   
                   {/* Photographer Image */}
-                  <img 
-                    src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                    alt="Photographer" 
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                    style={{
-                      maskImage: `url('/images/hero-shape.png')`,
-                      WebkitMaskImage: `url('/images/hero-shape.png')`,
-                      maskSize: '100% 100%',
-                      WebkitMaskSize: '100% 100%',
-                      maskRepeat: 'no-repeat',
-                      WebkitMaskRepeat: 'no-repeat',
-                      maskPosition: 'center',
-                      WebkitMaskPosition: 'center'
-                    }}
-                  />
+                  <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="absolute inset-0 w-full h-full object-cover object-center" style={{
+                    maskImage: `url('/images/hero-shape.png')`,
+                    WebkitMaskImage: `url('/images/hero-shape.png')`,
+                    maskSize: '100% 100%',
+                    WebkitMaskSize: '100% 100%',
+                    maskRepeat: 'no-repeat',
+                    WebkitMaskRepeat: 'no-repeat',
+                    maskPosition: 'center',
+                    WebkitMaskPosition: 'center'
+                  }} />
                   
                   {/* Floating Action Buttons - Left Edge of Shape, Vertically Centered */}
                   <div className="absolute -left-6 top-1/2 -translate-y-1/2 flex flex-col items-start gap-3 z-20">
@@ -183,12 +177,14 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-        >
+        <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20" initial={{
+          opacity: 0
+        }} animate={{
+          opacity: 1
+        }} transition={{
+          delay: 1.2,
+          duration: 0.8
+        }}>
           <ScrollIndicator />
         </motion.div>
       </section>
