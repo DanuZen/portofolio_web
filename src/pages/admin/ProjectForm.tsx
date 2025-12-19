@@ -448,11 +448,11 @@ export default function ProjectForm() {
                 onDragOver={handleDragOver}
                 onDrop={handleCoverDrop}
                 onClick={() => document.getElementById('cover-upload')?.click()}
-                className={`
+              className={`
                   cursor-pointer border-2 border-dashed rounded-lg p-8 text-center transition-all
                   ${coverDragActive 
-                    ? 'border-primary bg-primary/10' 
-                    : 'border-muted-foreground/30 hover:border-primary/50 hover:bg-accent/50'
+                    ? 'border-white bg-white/10' 
+                    : 'border-muted-foreground/30 hover:border-white/50 hover:bg-accent/50'
                   }
                 `}
               >
@@ -503,8 +503,8 @@ export default function ProjectForm() {
               className={`
                 cursor-pointer border-2 border-dashed rounded-lg p-8 text-center transition-all
                 ${imagesDragActive 
-                  ? 'border-primary bg-primary/10' 
-                  : 'border-muted-foreground/30 hover:border-primary/50 hover:bg-accent/50'
+                  ? 'border-white bg-white/10' 
+                  : 'border-muted-foreground/30 hover:border-white/50 hover:bg-accent/50'
                 }
               `}
             >
