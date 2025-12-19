@@ -34,9 +34,9 @@ export default function Portfolio() {
               duration: 0.4
             }}>
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-4">
-                PORTFOLIO
+                <span className="text-white">PORT</span><span className="text-red-500">FOLIO</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
+              <p className="text-white text-lg md:text-xl font-light leading-relaxed">
                 Koleksi kurasi fotografi yang mencakup berbagai subjek dan gaya
               </p>
             </motion.div>
