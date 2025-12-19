@@ -119,8 +119,31 @@ export default function Home() {
                   </svg>
                 </div>
                 
-                <div className="relative w-[280px] md:w-[340px] lg:w-[400px] h-[400px] md:h-[480px] lg:h-[560px]">
+                <div className="relative w-[320px] md:w-[400px] lg:w-[480px] h-[420px] md:h-[520px] lg:h-[620px]">
                   {/* Yellow Shape Background */}
+                  <div 
+                    className="absolute inset-0 bg-amber-400"
+                    style={{
+                      maskImage: `url('/images/hero-shape.png')`,
+                      WebkitMaskImage: `url('/images/hero-shape.png')`,
+                      maskSize: '100% 100%',
+                      WebkitMaskSize: '100% 100%',
+                      maskRepeat: 'no-repeat',
+                      WebkitMaskRepeat: 'no-repeat',
+                      maskPosition: 'center',
+                      WebkitMaskPosition: 'center'
+                    }}
+                  />
+                  
+                  {/* Signature Text */}
+                  <div 
+                    className="absolute top-8 left-8 z-20 font-serif italic text-white text-2xl md:text-3xl"
+                    style={{ fontFamily: 'cursive', textShadow: '1px 1px 2px rgba(0,0,0,0.2)' }}
+                  >
+                    Gustatory
+                  </div>
+                  
+                  {/* Photographer Image */}
                   <img 
                     src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
                     alt="Photographer" 
@@ -128,22 +151,8 @@ export default function Home() {
                     style={{
                       maskImage: `url('/images/hero-shape.png')`,
                       WebkitMaskImage: `url('/images/hero-shape.png')`,
-                      maskSize: 'contain',
-                      WebkitMaskSize: 'contain',
-                      maskRepeat: 'no-repeat',
-                      WebkitMaskRepeat: 'no-repeat',
-                      maskPosition: 'center',
-                      WebkitMaskPosition: 'center'
-                    }}
-                  />
-                  {/* Yellow background behind the mask */}
-                  <div 
-                    className="absolute inset-0 bg-yellow-400 -z-10"
-                    style={{
-                      maskImage: `url('/images/hero-shape.png')`,
-                      WebkitMaskImage: `url('/images/hero-shape.png')`,
-                      maskSize: 'contain',
-                      WebkitMaskSize: 'contain',
+                      maskSize: '100% 100%',
+                      WebkitMaskSize: '100% 100%',
                       maskRepeat: 'no-repeat',
                       WebkitMaskRepeat: 'no-repeat',
                       maskPosition: 'center',
@@ -152,22 +161,22 @@ export default function Home() {
                   />
                   
                   {/* Floating Action Buttons */}
-                  <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
-                    <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg">
-                      <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                  <div className="absolute -left-6 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
+                    <div className="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center shadow-lg">
+                      <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path fillRule="evenodd" d="M1.5 4.5a3 3 0 013-3h15a3 3 0 013 3v15a3 3 0 01-3 3h-15a3 3 0 01-3-3v-15zm3-1.5a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-15a1.5 1.5 0 00-1.5-1.5h-15z" clipRule="evenodd" />
                       </svg>
                     </div>
-                    <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg overflow-hidden">
-                      <img src={LogoDann} alt="Profile" className="w-8 h-8 object-cover rounded-full" />
+                    <div className="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center shadow-lg overflow-hidden">
+                      <img src={LogoDann} alt="Profile" className="w-10 h-10 object-cover rounded-full" />
                     </div>
                   </div>
-                </div>
-
-                {/* Arrow Button */}
-                <div className="absolute -bottom-4 right-8 w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center z-20 shadow-lg">
-                  <ArrowRight className="w-6 h-6 text-gray-800 rotate-[-45deg]" />
+                  
+                  {/* Arrow Button */}
+                  <div className="absolute -bottom-4 -left-4 w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center z-20 shadow-lg">
+                    <ArrowRight className="w-5 h-5 text-gray-800 rotate-[-45deg]" />
+                  </div>
                 </div>
               </div>
             </motion.div>
