@@ -75,7 +75,7 @@ export default function Home() {
                 {photographerInfo.heroIntroduction}
               </motion.p>
 
-              {/* Social Icons */}
+              {/* Social Icons - 1 di atas, 3 di bawah */}
               <motion.div initial={{
                 opacity: 0,
                 y: 20
@@ -85,16 +85,23 @@ export default function Home() {
               }} transition={{
                 duration: 0.8,
                 delay: 0.6
-              }} className="pt-4 flex flex-row items-center justify-start gap-3">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-                  <Instagram className="w-4 h-4 text-gray-700" />
+              }} className="pt-4 flex flex-col items-start gap-2">
+                {/* 1 Icon di atas */}
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
+                  <Youtube className="w-4 h-4 text-gray-700" />
                 </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-                  <Github className="w-4 h-4 text-gray-700" />
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-                  <Linkedin className="w-4 h-4 text-gray-700" />
-                </a>
+                {/* 3 Icon di bawah horizontal */}
+                <div className="flex flex-row gap-2">
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
+                    <Instagram className="w-4 h-4 text-gray-700" />
+                  </a>
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
+                    <Github className="w-4 h-4 text-gray-700" />
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
+                    <Linkedin className="w-4 h-4 text-gray-700" />
+                  </a>
+                </div>
               </motion.div>
 
               {/* Statistics */}
