@@ -3,37 +3,104 @@
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
+Dark theme inspired by bold-idea-canvas with red accent.
 */
 
 :root {
+  /* Dark theme as default - matching reference style */
+  --background: 0 0% 4%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 6%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 6%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 72% 51%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 0 72% 51%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 18%;
+  --input: 0 0% 18%;
+  --ring: 0 72% 51%;
+  --radius: 0.75rem;
+  --sidebar-background: 0 0% 4%;
+  --sidebar-foreground: 0 0% 95%;
+  --sidebar-primary: 0 72% 51%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 12%;
+  --sidebar-accent-foreground: 0 0% 95%;
+  --sidebar-border: 0 0% 18%;
+  --sidebar-ring: 0 72% 51%;
+
+  /* Custom accent colors */
+  --accent-red: 0 72% 51%;
+  --accent-red-glow: 0 72% 60%;
+  
+  /* Glass effect colors */
+  --glass-bg: 0 0% 100% / 0.05;
+  --glass-border: 0 0% 100% / 0.1;
+
+  /* Shugar Design System Variables */
+  --context-card-border: hsla(0, 0%, 18%, 1);
+  --ds-red-800: oklch(58.01% 0.227 25.12);
+  --ds-red-900: oklch(69.96% 0.2136 22.03);
+  --ds-amber-800: oklch(77.21% 0.1991 64.28);
+  --ds-gray-100: hsla(0, 0%, 10%, 1);
+  --ds-gray-400: hsla(0, 0%, 18%, 1);
+  --ds-gray-700: hsla(0, 0%, 56%, 1);
+  --ds-gray-1000: hsla(0, 0%, 93%, 1);
+  --ds-gray-1000-h: hsl(0, 0%, 80%);
+  --ds-gray-alpha-200: hsla(0, 0%, 100%, 0.09);
+  --ds-gray-alpha-400: hsla(0, 0%, 100%, 0.14);
+  --ds-background-100: hsla(0,0%,4%, 1);
+  --ds-focus-color: var(--ring);
+  --ds-focus-ring: 0 0 0 2px var(--ds-background-100), 0 0 0 4px hsl(var(--ds-focus-color));
+  --ds-shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  --ds-shadow-small: 0px 1px 2px rgba(0, 0, 0, 0.16);
+  --ds-shadow-border-small: var(--ds-shadow-border), var(--ds-shadow-small);
+}
+
+.light {
   --background: 0 0% 100%;
   --foreground: 0 0% 8%;
   --card: 0 0% 100%;
   --card-foreground: 0 0% 8%;
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 8%;
-  --primary: 0 0% 8%;
+  --primary: 0 72% 51%;
   --primary-foreground: 0 0% 100%;
   --secondary: 0 0% 96%;
   --secondary-foreground: 0 0% 8%;
   --muted: 0 0% 96%;
   --muted-foreground: 0 0% 40%;
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 8%;
+  --accent: 0 72% 51%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
   --border: 0 0% 90%;
   --input: 0 0% 90%;
-  --ring: 0 0% 8%;
-  --radius: 0.5rem;
+  --ring: 0 72% 51%;
   --sidebar-background: 0 0% 98%;
   --sidebar-foreground: 0 0% 20%;
-  --sidebar-primary: 0 0% 8%;
+  --sidebar-primary: 0 72% 51%;
   --sidebar-primary-foreground: 0 0% 100%;
   --sidebar-accent: 0 0% 96%;
   --sidebar-accent-foreground: 0 0% 8%;
   --sidebar-border: 0 0% 90%;
-  --sidebar-ring: 0 0% 8%;
+  --sidebar-ring: 0 72% 51%;
+
+  /* Custom accent colors */
+  --accent-red: 0 72% 51%;
+  --accent-red-glow: 0 72% 60%;
+  
+  /* Glass effect colors */
+  --glass-bg: 0 0% 0% / 0.05;
+  --glass-border: 0 0% 0% / 0.1;
 
   /* Shugar Design System Variables */
   --context-card-border: hsla(0, 0%, 92%, 1);
@@ -49,63 +116,14 @@ All colors MUST be HSL.
   --ds-gray-alpha-200: hsla(0, 0%, 0%, 0.08);
   --ds-gray-alpha-400: hsla(0, 0%, 0%, 0.08);
   --ds-background-100: hsla(0, 0%, 100%, 1);
-  --ds-focus-color: var(--ring);
-  --ds-focus-ring: 0 0 0 2px var(--ds-background-100), 0 0 0 4px var(--ds-focus-color);
   --ds-shadow-border: 0 0 0 1px rgba(0, 0, 0, 0.08);
   --ds-shadow-small: 0px 2px 2px rgba(0, 0, 0, 0.04);
   --ds-shadow-border-small: var(--ds-shadow-border), var(--ds-shadow-small);
 }
 
-.dark {
-  --background: 0 0% 8%;
-  --foreground: 0 0% 100%;
-  --card: 0 0% 5%;
-  --card-foreground: 0 0% 100%;
-  --popover: 0 0% 5%;
-  --popover-foreground: 0 0% 100%;
-  --primary: 0 0% 100%;
-  --primary-foreground: 0 0% 0%;
-  --secondary: 0 0% 10%;
-  --secondary-foreground: 0 0% 100%;
-  --muted: 0 0% 10%;
-  --muted-foreground: 0 0% 60%;
-  --accent: 0 0% 10%;
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 63% 31%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 15%;
-  --input: 0 0% 15%;
-  --ring: 0 0% 100%;
-  --sidebar-background: 0 0% 5%;
-  --sidebar-foreground: 0 0% 95%;
-  --sidebar-primary: 0 0% 100%;
-  --sidebar-primary-foreground: 0 0% 0%;
-  --sidebar-accent: 0 0% 10%;
-  --sidebar-accent-foreground: 0 0% 95%;
-  --sidebar-border: 0 0% 15%;
-  --sidebar-ring: 0 0% 100%;
-
-  /* Shugar Design System Variables - Dark Mode */
-  --context-card-border: hsla(0, 0%, 18%, 1);
-  --ds-red-800: oklch(58.01% 0.227 25.12);
-  --ds-red-900: oklch(69.96% 0.2136 22.03);
-  --ds-amber-800: oklch(77.21% 0.1991 64.28);
-  --ds-gray-100: hsla(0, 0%, 10%, 1);
-  --ds-gray-400: hsla(0, 0%, 18%, 1);
-  --ds-gray-700: hsla(0, 0%, 56%, 1);
-  --ds-gray-1000: hsla(0, 0%, 93%, 1);
-  --ds-gray-1000-h: hsl(0, 0%, 80%);
-  --ds-gray-alpha-200: hsla(0, 0%, 100%, 0.09);
-  --ds-gray-alpha-400: hsla(0, 0%, 100%, 0.14);
-  --ds-background-100: hsla(0,0%,4%, 1);
-  --ds-shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.145);
-  --ds-shadow-small: 0px 1px 2px rgba(0, 0, 0, 0.16);
-  --ds-shadow-border-small: var(--ds-shadow-border), var(--ds-shadow-small);
-}
-
 @theme {
-  --font-display: 'Oxanium', sans-serif;
-  --font-sans: 'Oxanium', sans-serif;
+  --font-display: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -134,6 +152,12 @@ All colors MUST be HSL.
   --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  /* Custom colors */
+  --color-accent-red: hsl(var(--accent-red));
+  --color-accent-red-glow: hsl(var(--accent-red-glow));
+  --color-glass-bg: hsl(var(--glass-bg));
+  --color-glass-border: hsl(var(--glass-border));
 
   /* Shugar Design System Colors */
   --color-context-card-border: var(--context-card-border);
@@ -178,13 +202,36 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 60px hsl(var(--accent-red) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 100px hsl(var(--accent-red) / 0.5);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    color-scheme: dark;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
@@ -201,5 +248,26 @@ All colors MUST be HSL.
   .writing-mode-vertical {
     writing-mode: vertical-rl;
     text-orientation: mixed;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .text-gradient-red {
+    background: linear-gradient(135deg, hsl(0 72% 51%), hsl(0 72% 65%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
