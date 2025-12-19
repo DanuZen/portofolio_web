@@ -119,7 +119,7 @@ export default function Home() {
                   </svg>
                 </div>
                 
-                <div className="relative bg-amber-400 rounded-[2rem] overflow-hidden w-[280px] md:w-[340px] lg:w-[400px] h-[400px] md:h-[480px] lg:h-[560px]">
+                <div className="relative bg-amber-400 rounded-[3rem] rounded-bl-[8rem] overflow-hidden w-[280px] md:w-[340px] lg:w-[400px] h-[400px] md:h-[480px] lg:h-[560px]">
                   <img 
                     src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
                     alt="Photographer" 
