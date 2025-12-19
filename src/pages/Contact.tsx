@@ -89,8 +89,8 @@ export default function Contact() {
               <div className="space-y-6">
                 {/* Email */}
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-sm bg-accent">
-                    <Mail className="size-5 text-muted-foreground" />
+                  <div className="p-3 rounded-sm bg-red-600">
+                    <Mail className="size-5 text-white" />
                   </div>
                   <div className="space-y-1">
                     <p className="text-sm font-light tracking-wide text-muted-foreground">
@@ -104,8 +104,8 @@ export default function Contact() {
 
                 {/* Phone */}
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-sm bg-accent">
-                    <Phone className="size-5 text-muted-foreground" />
+                  <div className="p-3 rounded-sm bg-red-600">
+                    <Phone className="size-5 text-white" />
                   </div>
                   <div className="space-y-1">
                     <p className="text-sm font-light tracking-wide text-muted-foreground">
@@ -119,8 +119,8 @@ export default function Contact() {
 
                 {/* Location */}
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-sm bg-accent">
-                    <MapPin className="size-5 text-muted-foreground" />
+                  <div className="p-3 rounded-sm bg-red-600">
+                    <MapPin className="size-5 text-white" />
                   </div>
                   <div className="space-y-1">
                     <p className="text-sm font-light tracking-wide text-muted-foreground">
