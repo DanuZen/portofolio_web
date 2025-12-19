@@ -18,7 +18,6 @@ import image2 from '@/assets/image2.png';
 import image3 from '@/assets/image3.png';
 import image4 from '@/assets/image4.png';
 import image5 from '@/assets/image5.png';
-import heroPhotographer from '@/assets/hero-photographer.png';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -110,11 +109,42 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
             >
-              <img 
-                src={heroPhotographer} 
-                alt="Photographer with vintage camera" 
-                className="w-[320px] md:w-[400px] lg:w-[480px] h-auto object-contain"
-              />
+              {/* Orange/Amber Background Shape */}
+              <div className="relative">
+                <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full bg-white border border-gray-200 flex items-center justify-center z-20">
+                  <svg className="w-8 h-8 text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                </div>
+                
+                <div className="relative bg-amber-400 rounded-[2rem] overflow-hidden w-[280px] md:w-[340px] lg:w-[400px] h-[400px] md:h-[480px] lg:h-[560px]">
+                  <img 
+                    src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
+                    alt="Photographer" 
+                    className="w-full h-full object-cover object-center"
+                  />
+                  
+                  {/* Floating Action Buttons */}
+                  <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
+                    <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg">
+                      <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path fillRule="evenodd" d="M1.5 4.5a3 3 0 013-3h15a3 3 0 013 3v15a3 3 0 01-3 3h-15a3 3 0 01-3-3v-15zm3-1.5a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-15a1.5 1.5 0 00-1.5-1.5h-15z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg overflow-hidden">
+                      <img src={LogoDann} alt="Profile" className="w-8 h-8 object-cover rounded-full" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Arrow Button */}
+                <div className="absolute -bottom-4 right-8 w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center z-20 shadow-lg">
+                  <ArrowRight className="w-6 h-6 text-gray-800 rotate-[-45deg]" />
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
