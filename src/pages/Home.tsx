@@ -29,109 +29,121 @@ export default function Home() {
       <SEOHead />
       
       <div className="min-h-screen">
-      {/* Hero Section - Editorial style with integrated photo */}
-      <section className="relative h-screen w-full overflow-hidden">
-        {/* Background with geometric pattern */}
-        <div className="absolute inset-0 z-0 bg-background" />
-        
-        {/* Hero Content */}
-        <div className="relative h-full w-full flex items-center justify-end">
-          {/* Center - Profile Photo */}
-          <motion.div className="absolute inset-0 flex items-center justify-end" initial={{
-            opacity: 0,
-            scale: 1.1
-          }} animate={{
-            opacity: 1,
-            scale: 1
-          }} transition={{
-            duration: 1.2,
-            ease: "easeOut"
-          }}>
-            <div className="relative h-full w-full max-w-4xl mr-0 flex items-center justify-end bg-background">
-              <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-[90%] w-auto object-cover object-center grayscale" />
-              {/* Gradient overlays for blending */}
-              <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
+      {/* Hero Section - Dark theme with globe/planet background like reference */}
+      <section className="relative h-screen w-full overflow-hidden bg-background">
+        {/* Starfield background effect */}
+        <div className="absolute inset-0 z-0">
+          {/* Stars */}
+          <div className="absolute inset-0" style={{
+            background: 'radial-gradient(2px 2px at 20px 30px, white, transparent), radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent), radial-gradient(1px 1px at 90px 40px, white, transparent), radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.6), transparent), radial-gradient(1px 1px at 160px 120px, white, transparent)',
+            backgroundSize: '200px 200px'
+          }} />
+        </div>
+
+        {/* Globe/Planet Image */}
+        <motion.div 
+          className="absolute inset-0 flex items-center justify-center z-0"
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        >
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* Planet/Globe with photographer */}
+            <div className="relative">
+              {/* Glowing orb background */}
+              <motion.div 
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full opacity-30"
+                style={{
+                  background: 'radial-gradient(circle, rgba(100,100,100,0.4) 0%, rgba(50,50,50,0.2) 50%, transparent 70%)',
+                }}
+                animate={{ 
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{ 
+                  duration: 8, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+              />
+              
+              {/* Photographer image as the globe element */}
+              <img 
+                src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
+                alt="Photographer" 
+                className="h-[70vh] max-h-[700px] w-auto object-contain opacity-60 grayscale"
+              />
+              
+              {/* Gradient overlays */}
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+              <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
+              <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background" />
             </div>
+          </div>
+        </motion.div>
+
+        {/* Hero Content - Centered text overlay */}
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+          {/* Tag pill */}
+          <motion.div 
+            className="glass px-6 py-2 rounded-full mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <span className="text-sm text-muted-foreground flex items-center gap-2">
+              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              Programmer & Designer Professional
+            </span>
           </motion.div>
 
-          {/* Typography overlay */}
-          <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20 flex justify-center">
-            <motion.div className="space-y-6 w-full max-w-7xl text-center" initial={{
-              opacity: 0,
-              y: 30
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 1,
-              ease: "easeOut"
-            }}>
-              <motion.div initial={{
-                opacity: 0,
-                scale: 0.9
-              }} animate={{
-                opacity: 1,
-                scale: 1
-              }} transition={{
-                duration: 0.8,
-                delay: 0.2
-              }} className="flex justify-center mb-4">
-                <img src={LogoDann} alt="DANN" className="w-[65%] md:w-[60%] lg:w-[55%] h-auto object-contain drop-shadow-2xl" />
-              </motion.div>
+          {/* Main heading */}
+          <motion.h1 
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] max-w-5xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <span className="text-foreground">Mengubah ide menjadi </span>
+            <span className="text-primary">karya digital</span>
+          </motion.h1>
 
-              <motion.p initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.8,
-                delay: 0.6
-              }} className="text-base md:text-lg lg:text-xl max-w-md mx-auto font-light leading-relaxed text-white">
-                {photographerInfo.heroIntroduction}
-              </motion.p>
-            </motion.div>
-          </div>
+          {/* Subtitle */}
+          <motion.p 
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mt-6 font-light"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            {photographerInfo.heroIntroduction}
+          </motion.p>
 
-          {/* Social Icons - Vertical Left */}
-          <motion.div className="absolute left-6 lg:left-8 xl:left-[calc((100vw-80rem)/2+2rem)] top-[70%] -translate-y-1/2 hidden xl:flex flex-col items-center gap-6 z-20" initial={{
-            opacity: 0,
-            x: -20
-          }} animate={{
-            opacity: 1,
-            x: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 1
-          }}>
-            <div className="writing-mode-vertical text-xs tracking-widest text-white mb-4 font-light">
-              FOLLOW
-            </div>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <Youtube className="w-7 h-7" />
-            </a>
-            <a href={photographerInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <Instagram className="w-7 h-7" />
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <Github className="w-7 h-7" />
-            </a>
-            <a href={photographerInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <Linkedin className="w-7 h-7" />
-            </a>
+          {/* CTA Buttons */}
+          <motion.div 
+            className="flex flex-col sm:flex-row items-center gap-4 mt-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            <Link to="/portfolio">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg font-semibold rounded-full group">
+                <ArrowRight className="mr-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                Lihat Portfolio
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button variant="outline" size="lg" className="border-border hover:bg-secondary text-foreground px-8 py-6 text-lg font-semibold rounded-full">
+                Hubungi Saya
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Scroll Indicator */}
-          <motion.div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20" initial={{
-            opacity: 0
-          }} animate={{
-            opacity: 1
-          }} transition={{
-            delay: 1.2,
-            duration: 0.8
-          }}>
+          <motion.div 
+            className="absolute bottom-12 left-1/2 -translate-x-1/2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+          >
             <ScrollIndicator />
           </motion.div>
         </div>
@@ -142,61 +154,49 @@ export default function Home() {
           <img src={Pembatas1} alt="" className="w-full h-auto object-cover" />
         </div>
 
-        {/* Introduction Section - Modern 2-Column Layout */}
-        <section className="min-h-screen flex items-center py-24 md:py-32 px-6 lg:px-8 relative overflow-hidden" style={{
-        backgroundColor: 'hsl(0, 11%, 91%)'
-      }}>
+        {/* Introduction Section - Modern 2-Column Layout with Dark Theme */}
+        <section className="min-h-screen flex items-center py-24 md:py-32 px-6 lg:px-8 relative overflow-hidden bg-secondary">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Text Content */}
               <ScrollReveal>
                 <div className="space-y-8">
-                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none" style={{
-                  color: 'hsl(0, 0%, 8%)'
-                }}>
+                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none text-foreground">
                     TENTANG
                     <br />
-                    SAYA
+                    <span className="text-primary">SAYA</span>
                   </h2>
                   
                   <div className="space-y-4">
-                    <h3 className="text-2xl md:text-3xl font-semibold" style={{
-                    color: 'hsl(0, 0%, 8%)'
-                  }}>
+                    <h3 className="text-2xl md:text-3xl font-semibold text-foreground">
                       PROGRAMER & DESAINER PROFESIONAL
                     </h3>
                     
-                    <p className="text-lg md:text-xl font-medium" style={{
-                    color: 'hsl(0, 0%, 20%)'
-                  }}>
+                    <p className="text-lg md:text-xl font-medium text-muted-foreground">
                       Spesialisasi dalam pengembangan web dan desain antarmuka modern
                     </p>
                     
-                    <div className="text-base leading-relaxed pt-4" style={{
-                    color: 'hsl(0, 0%, 30%)'
-                  }}>
+                    <div className="text-base leading-relaxed pt-4 text-muted-foreground">
                       <p>
                         Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan. Saya terus mengembangkan keterampilan untuk menghadirkan solusi digital yang modern dan berkualitas.
                       </p>
                     </div>
                   </div>
                   
-                  <Link to="/about" className="inline-flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-all group bg-black text-white px-8 py-4">
+                  <Link to="/about" className="inline-flex items-center gap-2 text-lg font-semibold transition-all group bg-primary text-primary-foreground px-8 py-4 rounded-full hover:bg-primary/90">
                     <span>Pelajari Lebih Lanjut</span>
                     <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               </ScrollReveal>
 
-              {/* Right Column - Image with Red Accent */}
               <ScrollReveal delay={0.2}>
                 <div className="relative h-[500px] md:h-[600px] flex items-center justify-center">
                   {/* Red Circle Background with Gradient */}
                   <motion.div 
-                    className="absolute right-0 top-1/2 -translate-y-1/2 w-[350px] h-[350px] md:w-[450px] md:h-[450px] rounded-full z-0"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 w-[350px] h-[350px] md:w-[450px] md:h-[450px] rounded-full z-0 animate-pulse-glow"
                     style={{
-                      background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%)',
-                      boxShadow: '0 0 80px rgba(239, 68, 68, 0.4), inset 0 0 60px rgba(0,0,0,0.2)'
+                      background: 'linear-gradient(135deg, hsl(0 72% 51%), hsl(0 72% 40%), hsl(0 72% 30%))',
                     }}
                     animate={{ 
                       scale: [1, 1.02, 1],
@@ -234,7 +234,7 @@ export default function Home() {
                   
                   {/* Additional Decorative Ring */}
                   <motion.div 
-                    className="absolute right-0 top-1/2 -translate-y-1/2 w-[380px] h-[380px] md:w-[490px] md:h-[490px] rounded-full border border-red-500/30 z-0"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 w-[380px] h-[380px] md:w-[490px] md:h-[490px] rounded-full border border-primary/30 z-0"
                     animate={{ 
                       rotate: 360,
                       scale: [1, 1.05, 1]
@@ -251,23 +251,21 @@ export default function Home() {
         </section>
 
         {/* Image Divider 2 */}
-        <div className="w-full">
-          <img src={Pembatas2} alt="" className="w-full h-auto object-cover" />
+        <div className="w-full bg-background">
+          <img src={Pembatas2} alt="" className="w-full h-auto object-cover opacity-50" />
         </div>
 
         {/* Skills, Tools & Approach Section */}
-        <section style={{
-        backgroundColor: 'hsl(0, 0, 8)'
-      }} className="min-h-screen flex items-center relative py-24 md:py-32 px-6 lg:px-8 overflow-hidden text-slate-50">
+        <section className="min-h-screen flex items-center relative py-24 md:py-32 px-6 lg:px-8 overflow-hidden bg-background text-foreground">
           <div className="max-w-7xl mx-auto relative z-10">
             {/* Section Header */}
             <ScrollReveal>
               <div className="space-y-8 mb-16">
                 <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
-                  <span className="text-white">SKILLS </span>
-                  <span className="text-red-500">& TOOLS</span>
+                  <span className="text-foreground">SKILLS </span>
+                  <span className="text-primary">& TOOLS</span>
                 </h2>
-                <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl">
+                <p className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed max-w-3xl">
                   Menggabungkan keahlian teknis dan artistik dengan peralatan standar industri untuk menghasilkan karya visual yang memukau.
                 </p>
               </div>
@@ -276,25 +274,25 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {/* Column 1: SKILLS */}
               <ScrollReveal>
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-300">
-                  <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-6">
+                <div className="glass rounded-2xl p-8 h-full hover:bg-secondary/50 transition-all duration-300">
+                  <h2 className="text-3xl md:text-4xl font-black text-foreground tracking-tight mb-6">
                     SKILLS
                   </h2>
-                  <ul className="space-y-3 text-white/90 text-base font-medium">
+                  <ul className="space-y-3 text-foreground/90 text-base font-medium">
                     <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                      <span className="w-2 h-2 bg-primary rounded-full"></span>
                       FRONTEND DEVELOPMENT
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                      <span className="w-2 h-2 bg-primary rounded-full"></span>
                       BACKEND DEVELOPMENT
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                      <span className="w-2 h-2 bg-primary rounded-full"></span>
                       DATABASE DESIGN
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                      <span className="w-2 h-2 bg-primary rounded-full"></span>
                       UI/UX DESIGN
                     </li>
                   </ul>
@@ -303,8 +301,8 @@ export default function Home() {
 
               {/* Column 2: TOOLS */}
               <ScrollReveal delay={0.1}>
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-300">
-                  <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-6">
+                <div className="glass rounded-2xl p-8 h-full hover:bg-secondary/50 transition-all duration-300">
+                  <h2 className="text-3xl md:text-4xl font-black text-foreground tracking-tight mb-6">
                     TOOLS
                   </h2>
                   <div className="flex flex-wrap gap-4 items-center">
@@ -364,18 +362,18 @@ export default function Home() {
 
               {/* Column 3: FILOSOFI CODING */}
               <ScrollReveal delay={0.2}>
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-300">
-                  <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight mb-6">FILOSOFI CODING</h2>
+                <div className="glass rounded-2xl p-8 h-full hover:bg-secondary/50 transition-all duration-300">
+                  <h2 className="text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight mb-6">FILOSOFI CODING</h2>
 
-                  <div className="space-y-3 text-white/80 text-sm font-normal leading-relaxed">
+                  <div className="space-y-3 text-muted-foreground text-sm font-normal leading-relaxed">
                     <p>
-                      <span className="text-red-500 font-semibold">KEJELASAN:</span> Kode bersih, mudah dibaca, dan mudah dikembangkan.
+                      <span className="text-primary font-semibold">KEJELASAN:</span> Kode bersih, mudah dibaca, dan mudah dikembangkan.
                     </p>
                     <p>
-                      <span className="text-red-500 font-semibold">SOLUSI:</span> Memahami kebutuhan sebelum membangun solusi.
+                      <span className="text-primary font-semibold">SOLUSI:</span> Memahami kebutuhan sebelum membangun solusi.
                     </p>
                     <p>
-                      <span className="text-red-500 font-semibold">KOLABORASI:</span> Bekerja terbuka dengan tim untuk hasil scalable.
+                      <span className="text-primary font-semibold">KOLABORASI:</span> Bekerja terbuka dengan tim untuk hasil scalable.
                     </p>
                   </div>
                 </div>
@@ -390,21 +388,19 @@ export default function Home() {
         </div>
 
         {/* Featured Projects Section - Bold Header + Gallery */}
-        <section className="min-h-screen flex items-center py-32 md:py-40" style={{
-        backgroundColor: 'hsl(0, 0%, 8%)'
-      }}>
+        <section className="min-h-screen flex items-center py-32 md:py-40 bg-background">
           <div className="w-full">
             {/* Bold Title Section */}
             <ScrollReveal>
               <div className="space-y-8 mb-16 text-center px-6 lg:px-8">
                 {/* Bold Title */}
                 <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
-                  <span className="text-white">PROYEK </span>
-                  <span className="text-red-500">UNGGULAN</span>
+                  <span className="text-foreground">PROYEK </span>
+                  <span className="text-primary">UNGGULAN</span>
                 </h2>
                 
                 {/* Description */}
-                <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
+                <p className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
                   Koleksi karya fotografi terpilih yang menampilkan keahlian dalam editorial, komersial, dan portrait photography. Setiap proyek dirancang dengan perhatian detail dan visi kreatif yang kuat.
                 </p>
               </div>
@@ -439,7 +435,7 @@ export default function Home() {
             {/* View All Link */}
             <ScrollReveal delay={0.4}>
               <div className="flex justify-center mt-16 px-6 lg:px-8">
-                <Link to="/portfolio" className="inline-flex items-center gap-3 text-xl font-bold text-white hover:text-red-500 transition-colors group">
+                <Link to="/portfolio" className="inline-flex items-center gap-3 text-xl font-bold text-foreground hover:text-primary transition-colors group">
                   <span>LIHAT SEMUA KARYA</span>
                   <ArrowRight className="size-6 transition-transform group-hover:translate-x-2" />
                 </Link>
@@ -449,8 +445,8 @@ export default function Home() {
         </section>
 
         {/* Image Divider 4 - Connected to Footer */}
-        <div className="w-full -mb-6" style={{ backgroundColor: 'hsl(0, 11%, 91%)' }}>
-          <img src={Pembatas1} alt="" className="w-full h-auto object-cover block" />
+        <div className="w-full -mb-6 bg-secondary">
+          <img src={Pembatas1} alt="" className="w-full h-auto object-cover block opacity-50" />
         </div>
       </div>
     </>;
