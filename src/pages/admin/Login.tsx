@@ -165,22 +165,13 @@ export default function Login() {
           {/* Links */}
           <div className="flex flex-col items-center gap-3">
             {viewMode === 'login' && (
-              <>
-                <button
-                  type="button"
-                  onClick={() => switchView('forgot-password')}
-                  className="text-white/60 hover:text-white text-sm transition-colors"
-                >
-                  Lupa password?
-                </button>
-                <button
-                  type="button"
-                  onClick={() => switchView('signup')}
-                  className="text-white/60 hover:text-white text-sm transition-colors"
-                >
-                  Belum punya akun? Daftar
-                </button>
-              </>
+              <button
+                type="button"
+                onClick={() => switchView('forgot-password')}
+                className="text-white/60 hover:text-white text-sm transition-colors"
+              >
+                Lupa password?
+              </button>
             )}
             
             {viewMode === 'signup' && (
