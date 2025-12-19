@@ -119,15 +119,25 @@ export default function Home() {
                   </svg>
                 </div>
                 
-                <div className="relative w-[400px] md:w-[450px] lg:w-[500px] h-[500px] md:h-[580px] lg:h-[620px]">
+                <div className="relative w-[500px] md:w-[600px] lg:w-[700px] h-[600px] md:h-[750px] lg:h-[850px]">
                   {/* Yellow Shape Background */}
                   <div 
-                    className="absolute inset-0 bg-amber-400 rounded-[40px]"
+                    className="absolute inset-0 bg-amber-400"
+                    style={{
+                      maskImage: `url('/images/hero-shape.png')`,
+                      WebkitMaskImage: `url('/images/hero-shape.png')`,
+                      maskSize: '100% 100%',
+                      WebkitMaskSize: '100% 100%',
+                      maskRepeat: 'no-repeat',
+                      WebkitMaskRepeat: 'no-repeat',
+                      maskPosition: 'center',
+                      WebkitMaskPosition: 'center'
+                    }}
                   />
                   
                   {/* Signature Text */}
                   <div 
-                    className="absolute top-12 left-12 z-20 font-serif italic text-white text-2xl md:text-3xl"
+                    className="absolute top-8 left-8 z-20 font-serif italic text-white text-2xl md:text-3xl"
                     style={{ fontFamily: 'cursive', textShadow: '1px 1px 2px rgba(0,0,0,0.2)' }}
                   >
                     Gustatory
@@ -137,11 +147,21 @@ export default function Home() {
                   <img 
                     src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
                     alt="Photographer" 
-                    className="absolute inset-0 w-full h-full object-cover object-center rounded-[40px]"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                    style={{
+                      maskImage: `url('/images/hero-shape.png')`,
+                      WebkitMaskImage: `url('/images/hero-shape.png')`,
+                      maskSize: '100% 100%',
+                      WebkitMaskSize: '100% 100%',
+                      maskRepeat: 'no-repeat',
+                      WebkitMaskRepeat: 'no-repeat',
+                      maskPosition: 'center',
+                      WebkitMaskPosition: 'center'
+                    }}
                   />
                   
-                  {/* Floating Action Buttons - Left side middle of shape */}
-                  <div className="absolute -left-6 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
+                  {/* Floating Action Buttons - Bottom Left Outside Shape */}
+                  <div className="absolute -left-16 bottom-8 flex flex-col gap-3 z-20">
                     <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg">
                       <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -149,13 +169,13 @@ export default function Home() {
                       </svg>
                     </div>
                     <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg overflow-hidden">
-                      <img src={LogoDann} alt="Profile" className="w-full h-full object-cover" />
+                      <img src={LogoDann} alt="Profile" className="w-8 h-8 object-cover rounded-full" />
                     </div>
                   </div>
                   
-                  {/* Arrow Button - Bottom left outside shape */}
-                  <div className="absolute -left-4 bottom-4 w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-lg z-20">
-                    <ArrowRight className="w-5 h-5 text-gray-800 rotate-[-45deg]" />
+                  {/* Arrow Button - Below and slightly right of floating buttons */}
+                  <div className="absolute -left-12 -bottom-4 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-lg z-20">
+                    <ArrowRight className="w-4 h-4 text-gray-800 rotate-[-45deg]" />
                   </div>
                 </div>
               </div>
