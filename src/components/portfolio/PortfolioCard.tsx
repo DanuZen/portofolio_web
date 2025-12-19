@@ -75,12 +75,10 @@ export function PortfolioCard({
             
             {/* View indicator - fades in at top right */}
             <div className="absolute top-4 right-4 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 delay-150">
-              <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center">
-                <ArrowUpRight 
-                  className="w-5 h-5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" 
-                  strokeWidth={2}
-                />
-              </div>
+              <ArrowUpRight 
+                className="w-6 h-6 text-white drop-shadow-lg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" 
+                strokeWidth={2.5}
+              />
             </div>
             
             {/* Title and info - slides up */}
