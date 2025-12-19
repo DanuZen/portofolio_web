@@ -139,34 +139,42 @@ export default function Home() {
 
         {/* Image Divider 1 */}
         <div className="w-full">
-          <img src={Pembatas1} alt="" className="w-full h-auto object-cover" />
+          
         </div>
 
         {/* Introduction Section - Modern 2-Column Layout */}
-        <section style={{
-        backgroundColor: 'hsl(0, 0, 8)'
-      }} className="min-h-screen flex items-center py-24 md:py-32 px-6 lg:px-8 relative overflow-hidden text-slate-50">
+        <section className="min-h-screen flex items-center py-24 md:py-32 px-6 lg:px-8 relative overflow-hidden" style={{
+        backgroundColor: 'hsl(0, 11%, 91%)'
+      }}>
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Text Content */}
               <ScrollReveal>
                 <div className="space-y-8">
-                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none">
-                    <span className="text-red-500">TENTANG</span>
+                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none" style={{
+                  color: 'hsl(0, 0%, 8%)'
+                }}>
+                    TENTANG
                     <br />
-                    <span className="text-slate-50">SAYA</span>
+                    SAYA
                   </h2>
                   
                   <div className="space-y-4">
-                    <h3 className="text-2xl md:text-3xl font-semibold text-slate-50">
-                      PROGRAMER & <span className="text-red-500">DESAINER</span> PROFESIONAL
+                    <h3 className="text-2xl md:text-3xl font-semibold" style={{
+                    color: 'hsl(0, 0%, 8%)'
+                  }}>
+                      PROGRAMER & DESAINER PROFESIONAL
                     </h3>
                     
-                    <p className="text-lg md:text-xl font-medium text-red-400">
+                    <p className="text-lg md:text-xl font-medium" style={{
+                    color: 'hsl(0, 0%, 20%)'
+                  }}>
                       Spesialisasi dalam pengembangan web dan desain antarmuka modern
                     </p>
                     
-                    <div className="text-base leading-relaxed pt-4 text-slate-400">
+                    <div className="text-base leading-relaxed pt-4" style={{
+                    color: 'hsl(0, 0%, 30%)'
+                  }}>
                       <p>
                         Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan. Saya terus mengembangkan keterampilan untuk menghadirkan solusi digital yang modern dan berkualitas.
                       </p>
@@ -177,6 +185,62 @@ export default function Home() {
                 </div>
               </ScrollReveal>
 
+              {/* Right Column - Image with Red Accent */}
+              <ScrollReveal delay={0.2}>
+                <div className="relative h-[500px] md:h-[600px] flex items-center justify-center">
+                  {/* Red Circle Background with Gradient */}
+                  <motion.div className="absolute right-0 top-1/2 -translate-y-1/2 w-[350px] h-[350px] md:w-[450px] md:h-[450px] rounded-full z-0" style={{
+                  background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%)',
+                  boxShadow: '0 0 80px rgba(239, 68, 68, 0.4), inset 0 0 60px rgba(0,0,0,0.2)'
+                }} animate={{
+                  scale: [1, 1.02, 1]
+                }} transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }} />
+                  
+                  {/* Photographer Image */}
+                  <div className="relative z-10 h-full flex items-end justify-center">
+                    <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-[85%] w-auto object-cover object-bottom filter-none drop-shadow-2xl" />
+                  </div>
+                  
+                  {/* Decorative Text on Circle - Improved */}
+                  <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20">
+                    <motion.div className="writing-mode-vertical text-white text-base md:text-xl font-black tracking-[0.3em] uppercase" style={{
+                    textShadow: '2px 2px 8px rgba(0,0,0,0.5)'
+                  }} initial={{
+                    opacity: 0,
+                    x: 20
+                  }} animate={{
+                    opacity: 1,
+                    x: 0
+                  }} transition={{
+                    delay: 0.5,
+                    duration: 0.8
+                  }}>
+                      I am A Designer
+                    </motion.div>
+                  </div>
+                  
+                  {/* Additional Decorative Ring */}
+                  <motion.div className="absolute right-0 top-1/2 -translate-y-1/2 w-[380px] h-[380px] md:w-[490px] md:h-[490px] rounded-full border border-red-500/30 z-0" animate={{
+                  rotate: 360,
+                  scale: [1, 1.05, 1]
+                }} transition={{
+                  rotate: {
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear"
+                  },
+                  scale: {
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }
+                }} />
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
