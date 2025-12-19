@@ -238,7 +238,7 @@ export function ContactForm() {
         {/* Submit Button */}
         <Button
           type="submit"
-          className="w-full py-6 text-base font-light tracking-wide"
+          className="w-full py-6 text-base font-light tracking-wide bg-red-600 hover:bg-red-700 text-white"
           disabled={isSubmitting}
         >
           {isSubmitting ? (
