@@ -8,6 +8,7 @@ import { SEOHead } from '@/components/seo/SEOHead';
 import { ArrowRight, Youtube, Instagram, Github, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { StarField } from '@/components/ui/StarField';
 import heroBg from '@/assets/hero-bg.jpg';
 import LogoDann from '@/assets/LogoDann.png';
 import Pembatas1 from '@/assets/Pembatas1.png';
@@ -18,7 +19,7 @@ import image2 from '@/assets/image2.png';
 import image3 from '@/assets/image3.png';
 import image4 from '@/assets/image4.png';
 import image5 from '@/assets/image5.png';
-
+import earthHero from '@/assets/earth-hero.png';
 /**
  * Homepage with immersive hero section and featured projects grid
  * Showcases photographer's best work with minimal, elegant design
@@ -29,31 +30,27 @@ export default function Home() {
       <SEOHead />
       
       <div className="min-h-screen">
-      {/* Hero Section - Editorial style with integrated photo */}
-      <section className="relative h-screen w-full overflow-hidden">
-        {/* Background with geometric pattern */}
-        <div className="absolute inset-0 z-0 bg-background" />
+      {/* Hero Section - Space theme with Earth */}
+      <section className="relative h-screen w-full overflow-hidden bg-black">
+        {/* Star Field Background */}
+        <StarField />
+        
+        {/* Earth Image */}
+        <motion.div 
+          className="absolute inset-0 z-[1]"
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        >
+          <img 
+            src={earthHero} 
+            alt="Earth from space" 
+            className="absolute w-full h-full object-cover object-center"
+          />
+        </motion.div>
         
         {/* Hero Content */}
-        <div className="relative h-full w-full flex items-center justify-end">
-          {/* Center - Profile Photo */}
-          <motion.div className="absolute inset-0 flex items-center justify-end" initial={{
-            opacity: 0,
-            scale: 1.1
-          }} animate={{
-            opacity: 1,
-            scale: 1
-          }} transition={{
-            duration: 1.2,
-            ease: "easeOut"
-          }}>
-            <div className="relative h-full w-full max-w-4xl mr-0 flex items-center justify-end bg-background">
-              <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-[90%] w-auto object-cover object-center grayscale" />
-              {/* Gradient overlays for blending */}
-              <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
-            </div>
-          </motion.div>
+        <div className="relative z-10 h-full w-full flex items-center justify-center">
 
           {/* Typography overlay */}
           <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20 flex justify-center">
