@@ -150,11 +150,12 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Text Content */}
               <ScrollReveal>
-                <div className="space-y-8">
-                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none whitespace-nowrap">
-                    <span className="text-white">TENTANG </span><span className="text-red-500">SAYA</span>
+                <div className="space-y-8 text-center">
+                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
+                    <span className="text-white">TENTANG </span>
+                    <span className="text-red-500">SAYA</span>
                   </h2>
-                  <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl">
+                  <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
                     Programer & Desainer Profesional yang menciptakan produk digital estetis, fungsional, dan responsif.
                   </p>
                   <div className="text-base leading-relaxed text-white/70">
