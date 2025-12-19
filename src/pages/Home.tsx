@@ -161,7 +161,7 @@ export default function Home() {
                   />
                   
                   {/* Floating Action Buttons - Left Edge of Shape, Vertically Centered */}
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 flex flex-col items-start gap-3 z-20">
+                  <div className="absolute -left-6 top-1/2 -translate-y-1/2 flex flex-col items-start gap-3 z-20">
                     <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg">
                       <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
