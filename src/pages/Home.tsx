@@ -43,13 +43,13 @@ export default function Home() {
             >
               {/* Large Title */}
               <div className="space-y-2">
-                <motion.h1 
+              <motion.h1 
                   className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-black leading-[0.9] tracking-tight"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  visual<br />poetry
+                  Dann
                 </motion.h1>
               </div>
 
