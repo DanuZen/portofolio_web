@@ -200,10 +200,6 @@ export default function Home() {
                   ease: "easeInOut"
                 }} />
                   
-                  {/* Photographer Image */}
-                  <div className="relative z-10 h-full flex items-end justify-center">
-                    <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-[85%] w-auto object-cover object-bottom filter-none drop-shadow-2xl" />
-                  </div>
                   
                   {/* Decorative Text on Circle - Improved */}
                   <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20">
