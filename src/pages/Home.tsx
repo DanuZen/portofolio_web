@@ -119,11 +119,36 @@ export default function Home() {
                   </svg>
                 </div>
                 
-                <div className="relative bg-amber-400 rounded-[3rem] rounded-bl-[8rem] overflow-hidden w-[280px] md:w-[340px] lg:w-[400px] h-[400px] md:h-[480px] lg:h-[560px]">
+                <div className="relative w-[280px] md:w-[340px] lg:w-[400px] h-[400px] md:h-[480px] lg:h-[560px]">
+                  {/* Yellow Shape Background */}
                   <img 
                     src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
                     alt="Photographer" 
-                    className="w-full h-full object-cover object-center"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                    style={{
+                      maskImage: `url('/images/hero-shape.png')`,
+                      WebkitMaskImage: `url('/images/hero-shape.png')`,
+                      maskSize: 'contain',
+                      WebkitMaskSize: 'contain',
+                      maskRepeat: 'no-repeat',
+                      WebkitMaskRepeat: 'no-repeat',
+                      maskPosition: 'center',
+                      WebkitMaskPosition: 'center'
+                    }}
+                  />
+                  {/* Yellow background behind the mask */}
+                  <div 
+                    className="absolute inset-0 bg-yellow-400 -z-10"
+                    style={{
+                      maskImage: `url('/images/hero-shape.png')`,
+                      WebkitMaskImage: `url('/images/hero-shape.png')`,
+                      maskSize: 'contain',
+                      WebkitMaskSize: 'contain',
+                      maskRepeat: 'no-repeat',
+                      WebkitMaskRepeat: 'no-repeat',
+                      maskPosition: 'center',
+                      WebkitMaskPosition: 'center'
+                    }}
                   />
                   
                   {/* Floating Action Buttons */}
