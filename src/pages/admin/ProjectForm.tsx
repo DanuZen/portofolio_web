@@ -277,7 +277,7 @@ export default function ProjectForm() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Basic Information */}
-        <Card className="border-purple-200 dark:border-purple-900">
+        <Card className="border-white/20 dark:border-white/20">
           <CardHeader>
             <CardTitle>Basic Information</CardTitle>
             <CardDescription>Essential project details</CardDescription>
@@ -362,7 +362,7 @@ export default function ProjectForm() {
         </Card>
 
         {/* Additional Details */}
-        <Card className="border-purple-200 dark:border-purple-900">
+        <Card className="border-white/20 dark:border-white/20">
           <CardHeader>
             <CardTitle>Additional Details</CardTitle>
             <CardDescription>Optional project metadata</CardDescription>
@@ -400,7 +400,7 @@ export default function ProjectForm() {
         </Card>
 
         {/* Cover Image */}
-        <Card className="border-purple-200 dark:border-purple-900">
+        <Card className="border-white/20 dark:border-white/20">
           <CardHeader>
             <CardTitle>Cover Image</CardTitle>
             <CardDescription>Upload gambar utama proyek</CardDescription>
@@ -478,7 +478,7 @@ export default function ProjectForm() {
         </Card>
 
         {/* Project Images */}
-        <Card className="border-purple-200 dark:border-purple-900">
+        <Card className="border-white/20 dark:border-white/20">
           <CardHeader>
             <CardTitle>Project Images</CardTitle>
             <CardDescription>Upload dan kelola gambar galeri proyek</CardDescription>
