@@ -160,8 +160,8 @@ export default function Home() {
                     }}
                   />
                   
-                  {/* Floating Action Buttons - Left side, vertically centered lower */}
-                  <div className="absolute left-0 bottom-[20%] -translate-x-1/2 flex flex-col gap-3 z-20">
+                  {/* Floating Action Buttons - Bottom Left Outside Shape */}
+                  <div className="absolute -left-16 bottom-8 flex flex-col gap-3 z-20">
                     <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg">
                       <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -171,10 +171,11 @@ export default function Home() {
                     <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg overflow-hidden">
                       <img src={LogoDann} alt="Profile" className="w-8 h-8 object-cover rounded-full" />
                     </div>
-                    {/* Arrow Button - Below Floating Buttons */}
-                    <div className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-lg">
-                      <ArrowRight className="w-4 h-4 text-gray-800 rotate-[-45deg]" />
-                    </div>
+                  </div>
+                  
+                  {/* Arrow Button - Below and slightly right of floating buttons */}
+                  <div className="absolute -left-12 -bottom-4 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-lg z-20">
+                    <ArrowRight className="w-4 h-4 text-gray-800 rotate-[-45deg]" />
                   </div>
                 </div>
               </div>
