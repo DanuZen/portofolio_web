@@ -142,30 +142,26 @@ export default function Home() {
           
         </div>
 
-        {/* Introduction Section - Modern 2-Column Layout */}
-        <section className="min-h-screen flex items-center py-24 md:py-32 px-6 lg:px-8 relative overflow-hidden" style={{
-        backgroundColor: 'hsl(0, 0%, 8%)'
-      }}>
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Text Content */}
-              <ScrollReveal>
-                <div className="space-y-8 text-center">
-                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none whitespace-nowrap">
-                    <span className="text-white">TENTANG </span><span className="text-red-500">SAYA</span>
-                  </h2>
-                  <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-                    Programer & Desainer Profesional yang menciptakan produk digital estetis, fungsional, dan responsif.
+        {/* Introduction Section */}
+        <section className="min-h-screen flex items-center py-32 md:py-40" style={{
+          backgroundColor: 'hsl(0, 0%, 8%)'
+        }}>
+          <div className="w-full">
+            <ScrollReveal>
+              <div className="space-y-8 text-center px-6 lg:px-8">
+                <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
+                  <span className="text-white">TENTANG </span><span className="text-red-500">SAYA</span>
+                </h2>
+                <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
+                  Programer & Desainer Profesional yang menciptakan produk digital estetis, fungsional, dan responsif.
+                </p>
+                <div className="text-base leading-relaxed text-white/70 max-w-3xl mx-auto">
+                  <p>
+                    Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan. Saya terus mengembangkan keterampilan untuk menghadirkan solusi digital yang modern dan berkualitas.
                   </p>
-                  <div className="text-base leading-relaxed text-white/70">
-                    <p>
-                      Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan. Saya terus mengembangkan keterampilan untuk menghadirkan solusi digital yang modern dan berkualitas.
-                    </p>
-                  </div>
                 </div>
-              </ScrollReveal>
-
-            </div>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
 
