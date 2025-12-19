@@ -9,6 +9,7 @@ import { ArrowRight, Youtube, Instagram, Github, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { StarField } from '@/components/ui/StarField';
+import { WaveMesh } from '@/components/ui/WaveMesh';
 import heroBg from '@/assets/hero-bg.jpg';
 import LogoDann from '@/assets/LogoDann.png';
 import Pembatas1 from '@/assets/Pembatas1.png';
@@ -31,23 +32,14 @@ export default function Home() {
       
       <div className="min-h-screen">
       {/* Hero Section - Space theme with Earth */}
-      <section className="relative h-screen w-full overflow-hidden bg-black">
-        {/* Star Field Background */}
-        <StarField />
+      <section className="relative h-screen w-full overflow-hidden bg-background">
+        {/* Animated Wave Mesh Background */}
+        <div className="absolute inset-0 z-0">
+          <WaveMesh />
+        </div>
         
-        {/* Earth Image */}
-        <motion.div 
-          className="absolute inset-0 z-[1]"
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-          <img 
-            src={earthHero} 
-            alt="Earth from space" 
-            className="absolute w-full h-full object-cover object-center"
-          />
-        </motion.div>
+        {/* Gradient overlay for depth */}
+        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background via-transparent to-background/80" />
         
         {/* Hero Content */}
         <div className="relative z-10 h-full w-full flex items-center justify-center">
