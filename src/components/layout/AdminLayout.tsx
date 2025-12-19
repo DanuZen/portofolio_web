@@ -6,7 +6,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { LayoutDashboard, FolderKanban, Settings, Menu, LogOut, User, Moon, Sun } from 'lucide-react';
+import { LayoutDashboard, FolderKanban, Settings, Menu, LogOut, User, Moon, Sun, ExternalLink } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import LogoDann from '@/assets/LogoDann.png';
 const menuItems = [{
@@ -115,6 +115,13 @@ export function AdminLayout() {
               {menuItems.find(item => item.href === location.pathname)?.title || 'Dashboard'}
             </h2>
           </div>
+
+          {/* Back to Website Button */}
+          <Button variant="ghost" size="icon" asChild className="h-9 w-9">
+            <Link to="/" target="_blank">
+              <ExternalLink className="h-4 w-4" strokeWidth={1.5} />
+            </Link>
+          </Button>
 
           {/* Theme Toggle */}
           <Button variant="ghost" size="icon" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="h-9 w-9">
