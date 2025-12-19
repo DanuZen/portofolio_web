@@ -155,19 +155,7 @@ export default function Home() {
                   }} />
                   
                   {/* Floating Action Buttons - Left Edge of Shape, Vertically Centered */}
-                  <div className="absolute -left-6 top-1/2 -translate-y-1/2 flex flex-col items-start gap-3 z-20">
-                    <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg">
-                      <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path fillRule="evenodd" d="M1.5 4.5a3 3 0 013-3h15a3 3 0 013 3v15a3 3 0 01-3 3h-15a3 3 0 01-3-3v-15zm3-1.5a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-15a1.5 1.5 0 00-1.5-1.5h-15z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg overflow-hidden">
-                      <img src={LogoDann} alt="Profile" className="w-8 h-8 object-cover rounded-full" />
-                    </div>
-                    {/* Arrow Button - Below floating buttons */}
-                    
-                  </div>
+                  
                 </div>
               </div>
             </motion.div>
