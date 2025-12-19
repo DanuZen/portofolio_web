@@ -161,9 +161,7 @@ export default function Home() {
                       PROGRAMER & DESAINER PROFESIONAL
                     </h3>
                     
-                    <p className="text-lg md:text-xl font-medium text-white/80">
-                      Spesialisasi dalam pengembangan web dan desain antarmuka modern
-                    </p>
+                    
                     
                     <div className="text-base leading-relaxed pt-4 text-white/70">
                       <p>
