@@ -42,9 +42,9 @@ export default function About() {
             duration: 0.4
           }}>
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-4">
-              TENTANG
+              <span className="text-white">TEN</span><span className="text-red-500">TANG</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
+            <p className="text-white text-lg md:text-xl font-light leading-relaxed">
               Fotografer & Pencerita Visual
             </p>
           </motion.div>
