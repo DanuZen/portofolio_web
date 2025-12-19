@@ -98,10 +98,16 @@ export default function ProjectForm() {
     }
   }, [isEditMode, id, getProjectById, setValue]);
 
+  const [coverDragActive, setCoverDragActive] = useState(false);
+  const [imagesDragActive, setImagesDragActive] = useState(false);
+
   const handleCoverImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    await uploadCoverFile(file);
+  };
 
+  const uploadCoverFile = async (file: File) => {
     setUploadingCover(true);
     const { url, error } = await uploadImage(file);
 
@@ -121,14 +127,30 @@ export default function ProjectForm() {
     setUploadingCover(false);
   };
 
+  const handleCoverDrop = async (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCoverDragActive(false);
+    
+    const file = e.dataTransfer.files?.[0];
+    if (file && file.type.startsWith('image/')) {
+      await uploadCoverFile(file);
+    }
+  };
+
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;
+    await uploadImageFiles(Array.from(files));
+  };
 
+  const uploadImageFiles = async (files: File[]) => {
     setUploadingImage(true);
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
+      if (!file.type.startsWith('image/')) continue;
+      
       const { url, error } = await uploadImage(file);
 
       if (error || !url) {
@@ -153,6 +175,22 @@ export default function ProjectForm() {
       title: 'Success',
       description: 'Images uploaded successfully',
     });
+  };
+
+  const handleImagesDrop = async (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setImagesDragActive(false);
+    
+    const files = Array.from(e.dataTransfer.files);
+    if (files.length > 0) {
+      await uploadImageFiles(files);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
   };
 
   const handleImageAspectRatioChange = (imageId: string, aspectRatio: AspectRatio) => {
@@ -365,53 +403,76 @@ export default function ProjectForm() {
         <Card className="border-purple-200 dark:border-purple-900">
           <CardHeader>
             <CardTitle>Cover Image</CardTitle>
-            <CardDescription>Main project image</CardDescription>
+            <CardDescription>Upload gambar utama proyek</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="coverImage">Cover Image URL *</Label>
-              <div className="flex gap-2">
-                <Input
-                  id="coverImage"
-                  {...register('coverImage')}
-                  placeholder="https://example.com/image.jpg"
-                  className="flex-1"
-                />
-                <div className="relative">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleCoverImageUpload}
-                    className="hidden"
-                    id="cover-upload"
-                  />
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => document.getElementById('cover-upload')?.click()}
-                    disabled={uploadingCover}
-                  >
-                    {uploadingCover ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    ) : (
-                      <Upload className="h-4 w-4" />
-                    )}
-                  </Button>
-                </div>
-              </div>
-              {errors.coverImage && (
-                <p className="text-sm text-red-600">{errors.coverImage.message}</p>
-              )}
-            </div>
-
-            {watch('coverImage') && (
-              <div className="mt-4">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleCoverImageUpload}
+              className="hidden"
+              id="cover-upload"
+            />
+            
+            {watch('coverImage') ? (
+              <div className="relative group">
                 <img
                   src={watch('coverImage')}
                   alt="Cover preview"
-                  className="w-full max-w-md h-48 object-cover rounded-lg border-2 border-gray-200 dark:border-gray-800"
+                  className="w-full h-64 object-cover rounded-lg border-2 border-border"
                 />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center gap-2">
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => document.getElementById('cover-upload')?.click()}
+                    disabled={uploadingCover}
+                  >
+                    {uploadingCover ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Ganti'}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    size="sm"
+                    onClick={() => setValue('coverImage', '')}
+                  >
+                    Hapus
+                  </Button>
+                </div>
               </div>
+            ) : (
+              <div
+                onDragEnter={() => setCoverDragActive(true)}
+                onDragLeave={() => setCoverDragActive(false)}
+                onDragOver={handleDragOver}
+                onDrop={handleCoverDrop}
+                onClick={() => document.getElementById('cover-upload')?.click()}
+                className={`
+                  cursor-pointer border-2 border-dashed rounded-lg p-8 text-center transition-all
+                  ${coverDragActive 
+                    ? 'border-primary bg-primary/10' 
+                    : 'border-muted-foreground/30 hover:border-primary/50 hover:bg-accent/50'
+                  }
+                `}
+              >
+                {uploadingCover ? (
+                  <div className="flex flex-col items-center gap-2">
+                    <Loader2 className="h-10 w-10 text-primary animate-spin" />
+                    <p className="text-sm text-muted-foreground">Mengupload...</p>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center gap-2">
+                    <Upload className="h-10 w-10 text-muted-foreground" />
+                    <p className="text-sm font-medium">Drag & drop atau klik untuk upload</p>
+                    <p className="text-xs text-muted-foreground">PNG, JPG, WEBP (Max 10MB)</p>
+                  </div>
+                )}
+              </div>
+            )}
+            
+            {errors.coverImage && (
+              <p className="text-sm text-destructive">{errors.coverImage.message}</p>
             )}
           </CardContent>
         </Card>
@@ -420,46 +481,51 @@ export default function ProjectForm() {
         <Card className="border-purple-200 dark:border-purple-900">
           <CardHeader>
             <CardTitle>Project Images</CardTitle>
-            <CardDescription>Upload and manage project gallery images</CardDescription>
+            <CardDescription>Upload dan kelola gambar galeri proyek</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div>
-              <input
-                type="file"
-                accept="image/*"
-                multiple
-                onChange={handleImageUpload}
-                className="hidden"
-                id="images-upload"
-              />
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => document.getElementById('images-upload')?.click()}
-                disabled={uploadingImage}
-                className="w-full"
-              >
-                {uploadingImage ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Uploading...
-                  </>
-                ) : (
-                  <>
-                    <Upload className="mr-2 h-4 w-4" />
-                    Upload Images
-                  </>
-                )}
-              </Button>
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={handleImageUpload}
+              className="hidden"
+              id="images-upload"
+            />
+            
+            {/* Drop Zone */}
+            <div
+              onDragEnter={() => setImagesDragActive(true)}
+              onDragLeave={() => setImagesDragActive(false)}
+              onDragOver={handleDragOver}
+              onDrop={handleImagesDrop}
+              onClick={() => document.getElementById('images-upload')?.click()}
+              className={`
+                cursor-pointer border-2 border-dashed rounded-lg p-8 text-center transition-all
+                ${imagesDragActive 
+                  ? 'border-primary bg-primary/10' 
+                  : 'border-muted-foreground/30 hover:border-primary/50 hover:bg-accent/50'
+                }
+              `}
+            >
+              {uploadingImage ? (
+                <div className="flex flex-col items-center gap-2">
+                  <Loader2 className="h-10 w-10 text-primary animate-spin" />
+                  <p className="text-sm text-muted-foreground">Mengupload...</p>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center gap-2">
+                  <Upload className="h-10 w-10 text-muted-foreground" />
+                  <p className="text-sm font-medium">Drag & drop atau klik untuk upload</p>
+                  <p className="text-xs text-muted-foreground">Upload banyak gambar sekaligus</p>
+                </div>
+              )}
             </div>
 
             {images.length === 0 ? (
-              <div className="text-center py-12 border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg">
-                <ImageIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600 dark:text-gray-400">
-                  No images yet. Upload at least one image.
-                </p>
-              </div>
+              <p className="text-sm text-muted-foreground text-center">
+                Belum ada gambar. Upload minimal satu gambar.
+              </p>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {images.map((image) => (
