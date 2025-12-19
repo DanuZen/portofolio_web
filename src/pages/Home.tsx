@@ -143,9 +143,7 @@ export default function Home() {
         </div>
 
         {/* Introduction Section */}
-        <section className="min-h-screen flex items-center py-32 md:py-40" style={{
-          backgroundColor: 'hsl(0, 0%, 8%)'
-        }}>
+        <section className="min-h-screen flex items-center py-32 md:py-40 bg-background">
           <div className="w-full">
             <ScrollReveal>
               <div className="space-y-8 text-center px-6 lg:px-8">
@@ -167,9 +165,7 @@ export default function Home() {
 
 
         {/* Skills, Tools & Approach Section */}
-        <section style={{
-          backgroundColor: 'hsl(0, 0%, 8%)'
-        }} className="min-h-screen flex items-center relative py-32 md:py-40 overflow-hidden text-slate-50">
+        <section className="min-h-screen flex items-center relative py-32 md:py-40 overflow-hidden text-slate-50 bg-background">
           <div className="w-full relative z-10">
             {/* Section Header */}
             <ScrollReveal>
@@ -301,9 +297,7 @@ export default function Home() {
         </div>
 
         {/* Featured Projects Section - Bold Header + Gallery */}
-        <section className="min-h-screen flex items-center py-32 md:py-40" style={{
-        backgroundColor: 'hsl(0, 0%, 8%)'
-      }}>
+        <section className="min-h-screen flex items-center py-32 md:py-40 bg-background">
           <div className="w-full">
             {/* Bold Title Section */}
             <ScrollReveal>
@@ -360,9 +354,7 @@ export default function Home() {
         </section>
 
         {/* Image Divider 4 - Connected to Footer */}
-        <div className="w-full -mb-6" style={{
-        backgroundColor: 'hsl(0, 11%, 91%)'
-      }}>
+        <div className="w-full -mb-6 bg-background">
           <img src={Pembatas1} alt="" className="w-full h-auto object-cover block" />
         </div>
       </div>
