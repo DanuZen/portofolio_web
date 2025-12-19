@@ -76,7 +76,37 @@ export default function Home() {
               </motion.p>
 
               {/* Social Icons */}
-              
+              <motion.div 
+                className="flex gap-3 pt-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors"
+                >
+                  <Instagram className="w-4 h-4 text-gray-700" />
+                </a>
+                <a 
+                  href="https://github.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors"
+                >
+                  <Github className="w-4 h-4 text-gray-700" />
+                </a>
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors"
+                >
+                  <Linkedin className="w-4 h-4 text-gray-700" />
+                </a>
+              </motion.div>
 
               {/* Statistics */}
               <motion.div className="flex gap-12 pt-4" initial={{
