@@ -151,21 +151,17 @@ export default function Home() {
               {/* Left Column - Text Content */}
               <ScrollReveal>
                 <div className="space-y-8">
-                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none">
+                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
                     <span className="text-white">TENTANG </span>
                     <span className="text-red-500">SAYA</span>
                   </h2>
-                  
-                  <div className="space-y-4">
-                    <h3 className="text-2xl md:text-3xl font-semibold text-white">
-                      PROGRAMER & DESAINER PROFESIONAL
-                    </h3>
-                    
-                    <div className="text-base leading-relaxed pt-4 text-white/70">
-                      <p>
-                        Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan. Saya terus mengembangkan keterampilan untuk menghadirkan solusi digital yang modern dan berkualitas.
-                      </p>
-                    </div>
+                  <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl">
+                    Programer & Desainer Profesional yang menciptakan produk digital estetis, fungsional, dan responsif.
+                  </p>
+                  <div className="text-base leading-relaxed text-white/70">
+                    <p>
+                      Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan. Saya terus mengembangkan keterampilan untuk menghadirkan solusi digital yang modern dan berkualitas.
+                    </p>
                   </div>
                 </div>
               </ScrollReveal>
