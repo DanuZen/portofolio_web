@@ -85,7 +85,7 @@ export default function Home() {
               }} transition={{
                 duration: 0.8,
                 delay: 0.6
-              }} className="pt-2 flex-col flex items-center justify-center gap-[12px] mx-[250px]">
+              }} className="pt-4 flex flex-row items-center justify-start gap-3">
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
                   <Instagram className="w-4 h-4 text-gray-700" />
                 </a>
