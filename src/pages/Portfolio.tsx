@@ -13,26 +13,26 @@ import Pembatas1 from '@/assets/Pembatas1.png';
  */
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
-  const { data: categories = [] } = useCategories();
+  const {
+    data: categories = []
+  } = useCategories();
   const filteredProjects = getProjectsByCategory(activeCategory);
-
-  return (
-    <>
-      <SEOHead 
-        title="Portfolio"
-        description="Jelajahi portfolio fotografi lengkap saya yang menampilkan potret, pemandangan, karya editorial, arsitektur, dan proyek dokumenter."
-      />
+  return <>
+      <SEOHead title="Portfolio" description="Jelajahi portfolio fotografi lengkap saya yang menampilkan potret, pemandangan, karya editorial, arsitektur, dan proyek dokumenter." />
       
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 px-6 lg:px-8">
           <div className="max-w-7xl mx-auto space-y-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center space-y-4"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8
+          }} className="text-center space-y-4">
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
                 PORTFOLIO
               </h1>
@@ -42,33 +42,30 @@ export default function Portfolio() {
             </motion.div>
 
             {/* Category Filter */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <CategoryFilter 
-                categories={categories}
-                activeCategory={activeCategory}
-                onCategoryChange={setActiveCategory}
-              />
+            <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 0.2
+          }}>
+              <CategoryFilter categories={categories} activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
             </motion.div>
           </div>
         </section>
 
         {/* Portfolio Grid - Full Width Horizontal Scroll */}
         <section className="pb-24">
-          <PortfolioGrid 
-            projects={filteredProjects}
-            key={activeCategory}
-          />
+          <PortfolioGrid projects={filteredProjects} key={activeCategory} />
         </section>
 
         {/* Image Divider */}
         <div className="w-full">
-          <img src={Pembatas1} alt="" className="w-full h-auto object-cover" />
+          
         </div>
       </div>
-    </>
-  );
+    </>;
 }
