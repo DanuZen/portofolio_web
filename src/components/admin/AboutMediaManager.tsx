@@ -158,7 +158,7 @@ export function AboutMediaManager() {
   };
 
   return (
-    <Card className="border-purple-200 dark:border-purple-900">
+    <Card className="border-white/20 dark:border-white/20">
       <CardHeader>
         <CardTitle>Foto/Video Profil About</CardTitle>
         <CardDescription>
