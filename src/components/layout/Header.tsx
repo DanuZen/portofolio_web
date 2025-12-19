@@ -100,16 +100,16 @@ export function Header() {
             
             {/* Sliding underline indicator */}
             <motion.div
-              layoutId="nav-underline"
               className={cn(
-                "absolute -bottom-1 h-px",
+                "absolute -bottom-1 h-px w-[60px]",
                 isTransparent ? "bg-white" : "bg-foreground"
               )}
-              style={{
-                left: `${currentIndex * 25}%`,
-                width: '60px',
+              animate={{
+                x: currentIndex * 100,
               }}
+              initial={false}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              style={{ left: 0 }}
             />
             
             {/* Icon Group with smaller gap */}
