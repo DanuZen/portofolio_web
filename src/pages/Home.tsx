@@ -144,37 +144,28 @@ export default function Home() {
 
         {/* Introduction Section - Modern 2-Column Layout */}
         <section className="min-h-screen flex items-center py-24 md:py-32 px-6 lg:px-8 relative overflow-hidden" style={{
-        backgroundColor: 'hsl(0, 11%, 91%)'
+        backgroundColor: 'hsl(0, 0%, 8%)'
       }}>
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Text Content */}
               <ScrollReveal>
                 <div className="space-y-8">
-                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none" style={{
-                  color: 'hsl(0, 0%, 8%)'
-                }}>
-                    TENTANG
-                    <br />
-                    SAYA
+                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none">
+                    <span className="text-white">TENTANG </span>
+                    <span className="text-red-500">SAYA</span>
                   </h2>
                   
                   <div className="space-y-4">
-                    <h3 className="text-2xl md:text-3xl font-semibold" style={{
-                    color: 'hsl(0, 0%, 8%)'
-                  }}>
+                    <h3 className="text-2xl md:text-3xl font-semibold text-white">
                       PROGRAMER & DESAINER PROFESIONAL
                     </h3>
                     
-                    <p className="text-lg md:text-xl font-medium" style={{
-                    color: 'hsl(0, 0%, 20%)'
-                  }}>
+                    <p className="text-lg md:text-xl font-medium text-white/80">
                       Spesialisasi dalam pengembangan web dan desain antarmuka modern
                     </p>
                     
-                    <div className="text-base leading-relaxed pt-4" style={{
-                    color: 'hsl(0, 0%, 30%)'
-                  }}>
+                    <div className="text-base leading-relaxed pt-4 text-white/70">
                       <p>
                         Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan. Saya terus mengembangkan keterampilan untuk menghadirkan solusi digital yang modern dan berkualitas.
                       </p>
