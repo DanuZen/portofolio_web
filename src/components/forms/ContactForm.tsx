@@ -138,17 +138,17 @@ export function ContactForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-sm font-light tracking-wide">
+              <FormLabel className="text-sm font-light tracking-wide text-white/70">
                 Nama
               </FormLabel>
               <FormControl>
                 <Input
                   placeholder="Nama lengkap Anda"
-                  className="font-light"
+                  className="font-light bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
                   {...field}
                 />
               </FormControl>
-              <FormMessage className="text-xs font-light" />
+              <FormMessage className="text-xs font-light text-red-400" />
             </FormItem>
           )}
         />
@@ -159,18 +159,18 @@ export function ContactForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-sm font-light tracking-wide">
+              <FormLabel className="text-sm font-light tracking-wide text-white/70">
                 Email
               </FormLabel>
               <FormControl>
                 <Input
                   type="email"
                   placeholder="email.anda@contoh.com"
-                  className="font-light"
+                  className="font-light bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
                   {...field}
                 />
               </FormControl>
-              <FormMessage className="text-xs font-light" />
+              <FormMessage className="text-xs font-light text-red-400" />
             </FormItem>
           )}
         />
@@ -181,28 +181,28 @@ export function ContactForm() {
           name="projectType"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-sm font-light tracking-wide">
+              <FormLabel className="text-sm font-light tracking-wide text-white/70">
                 Jenis Proyek
               </FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger className="font-light">
-                    <SelectValue placeholder="Pilih jenis proyek" />
+                  <SelectTrigger className="font-light bg-white/5 border-white/20 text-white focus:border-red-500">
+                    <SelectValue placeholder="Pilih jenis proyek" className="text-white/40" />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent className="bg-popover z-50">
-                  <SelectItem value="editorial" className="font-light">
+                <SelectContent className="bg-neutral-900 border-white/20 z-50">
+                  <SelectItem value="editorial" className="font-light text-white hover:bg-white/10 focus:bg-white/10">
                     Editorial
                   </SelectItem>
-                  <SelectItem value="commercial" className="font-light">
+                  <SelectItem value="commercial" className="font-light text-white hover:bg-white/10 focus:bg-white/10">
                     Komersial
                   </SelectItem>
-                  <SelectItem value="personal" className="font-light">
+                  <SelectItem value="personal" className="font-light text-white hover:bg-white/10 focus:bg-white/10">
                     Personal
                   </SelectItem>
                 </SelectContent>
               </Select>
-              <FormMessage className="text-xs font-light" />
+              <FormMessage className="text-xs font-light text-red-400" />
             </FormItem>
           )}
         />
@@ -213,17 +213,17 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-sm font-light tracking-wide">
+              <FormLabel className="text-sm font-light tracking-wide text-white/70">
                 Pesan
               </FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="Ceritakan tentang proyek Anda..."
-                  className="min-h-32 font-light resize-none"
+                  className="min-h-32 font-light resize-none bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
                   {...field}
                 />
               </FormControl>
-              <FormMessage className="text-xs font-light" />
+              <FormMessage className="text-xs font-light text-red-400" />
             </FormItem>
           )}
         />
