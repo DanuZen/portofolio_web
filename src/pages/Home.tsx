@@ -142,38 +142,48 @@ export default function Home() {
           
         </div>
 
-        {/* Introduction Section - Modern 2-Column Layout */}
-        <section className="min-h-screen flex items-center py-24 md:py-32 px-6 lg:px-8 relative overflow-hidden" style={{
-        backgroundColor: 'hsl(0, 0%, 8%)'
-      }}>
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Text Content */}
+        {/* Introduction Section - Modern Layout */}
+        <section style={{
+          backgroundColor: 'hsl(0, 0%, 8%)'
+        }} className="min-h-screen flex items-center relative py-24 md:py-32 px-6 lg:px-8 overflow-hidden text-slate-50">
+          <div className="max-w-7xl mx-auto relative z-10">
+            {/* Section Header */}
+            <ScrollReveal>
+              <div className="space-y-8 mb-16">
+                <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
+                  <span className="text-white">TENTANG </span>
+                  <span className="text-red-500">SAYA</span>
+                </h2>
+                <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl">
+                  Programer & Desainer Profesional yang menciptakan produk digital estetis, fungsional, dan responsif.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {/* Card 1: About */}
               <ScrollReveal>
-                <div className="space-y-8">
-                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none">
-                    <span className="text-white">TENTANG </span>
-                    <span className="text-red-500">SAYA</span>
-                  </h2>
-                  
-                  <div className="space-y-4">
-                    <h3 className="text-2xl md:text-3xl font-semibold text-white">
-                      PROGRAMER & DESAINER PROFESIONAL
-                    </h3>
-                    
-                    
-                    
-                    <div className="text-base leading-relaxed pt-4 text-white/70">
-                      <p>
-                        Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan. Saya terus mengembangkan keterampilan untuk menghadirkan solusi digital yang modern dan berkualitas.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-300">
+                  <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-6">
+                    PROFIL
+                  </h3>
+                  <p className="text-white/90 text-base leading-relaxed">
+                    Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan.
+                  </p>
                 </div>
               </ScrollReveal>
 
+              {/* Card 2: Expertise */}
+              <ScrollReveal delay={0.1}>
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-300">
+                  <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-6">
+                    KEAHLIAN
+                  </h3>
+                  <p className="text-white/90 text-base leading-relaxed">
+                    Mewujudkan desain menjadi kode yang rapi, cepat, serta dapat diandalkan. Saya terus mengembangkan keterampilan untuk menghadirkan solusi digital yang modern dan berkualitas.
+                  </p>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
