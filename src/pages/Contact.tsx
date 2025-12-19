@@ -52,10 +52,10 @@ export default function Contact() {
               duration: 0.4
             }}>
               <div className="space-y-3">
-                <h2 className="text-3xl md:text-4xl font-light tracking-wide">
-                  Kirim Pesan
+                <h2 className="text-3xl md:text-4xl font-black tracking-tight">
+                  <span className="text-white">Kirim </span><span className="text-red-500">Pesan</span>
                 </h2>
-                <p className="text-muted-foreground font-light">
+                <p className="text-white/70 font-light leading-relaxed">
                   Isi formulir di bawah ini dan saya akan menghubungi Anda dalam 24-48 jam. {photographerInfo.availability}
                 </p>
               </div>
@@ -75,10 +75,10 @@ export default function Contact() {
               delay: 0.1
             }}>
               <div className="space-y-1">
-                <h2 className="text-3xl md:text-4xl font-light tracking-wide">
-                  Informasi Kontak
+                <h2 className="text-3xl md:text-4xl font-black tracking-tight">
+                  <span className="text-white">Informasi </span><span className="text-red-500">Kontak</span>
                 </h2>
-                <p className="text-muted-foreground font-light">
+                <p className="text-white/70 font-light leading-relaxed">
                   Lebih suka menghubungi langsung? Berikut cara Anda dapat menghubungi saya.
                 </p>
               </div>
@@ -93,10 +93,10 @@ export default function Contact() {
                     <Mail className="size-5 text-white" />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm font-light tracking-wide text-muted-foreground">
+                    <p className="text-sm font-light tracking-wide text-white/50">
                       Email
                     </p>
-                    <a href={`mailto:${photographerInfo.email}`} className="text-base md:text-lg font-light hover:text-muted-foreground transition-colors">
+                    <a href={`mailto:${photographerInfo.email}`} className="text-base md:text-lg font-light text-white hover:text-white/70 transition-colors">
                       {photographerInfo.email}
                     </a>
                   </div>
@@ -108,10 +108,10 @@ export default function Contact() {
                     <Phone className="size-5 text-white" />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm font-light tracking-wide text-muted-foreground">
+                    <p className="text-sm font-light tracking-wide text-white/50">
                       Telepon
                     </p>
-                    <a href={`tel:${photographerInfo.phone}`} className="text-base md:text-lg font-light hover:text-muted-foreground transition-colors">
+                    <a href={`tel:${photographerInfo.phone}`} className="text-base md:text-lg font-light text-white hover:text-white/70 transition-colors">
                       {photographerInfo.phone}
                     </a>
                   </div>
@@ -123,10 +123,10 @@ export default function Contact() {
                     <MapPin className="size-5 text-white" />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm font-light tracking-wide text-muted-foreground">
+                    <p className="text-sm font-light tracking-wide text-white/50">
                       Lokasi
                     </p>
-                    <p className="text-base md:text-lg font-light">
+                    <p className="text-base md:text-lg font-light text-white">
                       {photographerInfo.location}
                     </p>
                   </div>
