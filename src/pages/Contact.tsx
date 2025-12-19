@@ -30,7 +30,7 @@ export default function Contact() {
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-4">
               <span className="text-white">HUBUNGI </span><span className="text-red-500">KAMI</span>
             </h1>
-            <p className="text-white/70 text-lg md:text-xl font-light leading-relaxed">
+            <p className="text-white text-lg md:text-xl font-light leading-relaxed">
               Mari diskusikan proyek Anda selanjutnya
             </p>
           </motion.div>
