@@ -166,9 +166,7 @@ export default function Home() {
                       <img src={LogoDann} alt="Profile" className="w-8 h-8 object-cover rounded-full" />
                     </div>
                     {/* Arrow Button - Below floating buttons */}
-                    <div className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-lg">
-                      <ArrowRight className="w-4 h-4 text-gray-800 rotate-45" />
-                    </div>
+                    
                   </div>
                 </div>
               </div>
