@@ -22,6 +22,7 @@ import {
   User,
   Moon,
   Sun,
+  Home,
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import LogoDann from '@/assets/LogoDann.png';
@@ -158,6 +159,17 @@ export function AdminLayout() {
               {menuItems.find((item) => item.href === location.pathname)?.title || 'Dashboard'}
             </h2>
           </div>
+
+          {/* Back to Website */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate('/')}
+            className="gap-2"
+          >
+            <Home className="h-4 w-4" strokeWidth={1.5} />
+            <span className="hidden sm:inline">Website</span>
+          </Button>
 
           {/* Theme Toggle */}
           <Button
