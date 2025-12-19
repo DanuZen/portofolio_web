@@ -118,7 +118,7 @@ export function AdminLayout() {
 
           {/* Back to Website Button */}
           <Button variant="ghost" size="icon" asChild className="h-9 w-9">
-            <Link to="/" target="_blank">
+            <Link to="/">
               <ExternalLink className="h-4 w-4" strokeWidth={1.5} />
             </Link>
           </Button>
