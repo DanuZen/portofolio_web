@@ -152,8 +152,7 @@ export default function Home() {
               <ScrollReveal>
                 <div className="space-y-8 text-center">
                   <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
-                    <span className="text-white">TENTANG </span>
-                    <span className="text-red-500">SAYA</span>
+                    <span className="text-white">TENTANG </span><span className="text-red-500">SAYA</span>
                   </h2>
                   <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
                     Programer & Desainer Profesional yang menciptakan produk digital estetis, fungsional, dan responsif.
