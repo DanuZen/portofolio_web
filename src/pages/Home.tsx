@@ -135,12 +135,7 @@ export default function Home() {
                   }} />
                   
                   {/* Signature Text */}
-                  <div className="absolute top-8 left-8 z-20 font-serif italic text-white text-2xl md:text-3xl" style={{
-                    fontFamily: 'cursive',
-                    textShadow: '1px 1px 2px rgba(0,0,0,0.2)'
-                  }}>
-                    Gustatory
-                  </div>
+                  
                   
                   {/* Photographer Image */}
                   <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="absolute inset-0 w-full h-full object-cover object-center" style={{
