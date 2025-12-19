@@ -151,7 +151,7 @@ export default function Home() {
               {/* Left Column - Text Content */}
               <ScrollReveal>
                 <div className="space-y-8 text-center">
-                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
+                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none whitespace-nowrap">
                     <span className="text-white">TENTANG </span><span className="text-red-500">SAYA</span>
                   </h2>
                   <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
