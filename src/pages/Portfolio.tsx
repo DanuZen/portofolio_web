@@ -22,36 +22,40 @@ export default function Portfolio() {
       
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="relative py-16 md:py-24 px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto space-y-8">
+        <section className="pt-16 md:pt-24 pb-0 px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
             <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8
-          }} className="text-center space-y-4">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
+              opacity: 0.8,
+              y: 10
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.4
+            }}>
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-4">
                 PORTFOLIO
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
                 Koleksi kurasi fotografi yang mencakup berbagai subjek dan gaya
               </p>
             </motion.div>
+          </div>
+        </section>
 
-            {/* Category Filter */}
+        {/* Category Filter */}
+        <section className="pt-12 pb-8 px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
             <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 0.2
-          }}>
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.8,
+              delay: 0.2
+            }}>
               <CategoryFilter categories={categories} activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
             </motion.div>
           </div>
