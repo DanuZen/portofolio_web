@@ -29,112 +29,135 @@ export default function Home() {
       <SEOHead />
       
       <div className="min-h-screen">
-      {/* Hero Section - Editorial style with integrated photo */}
-      <section className="relative h-screen w-full overflow-hidden">
-        {/* Background with geometric pattern */}
-        <div className="absolute inset-0 z-0 bg-background" />
-        
-        {/* Hero Content */}
-        <div className="relative h-full w-full flex items-center justify-end">
-          {/* Center - Profile Photo */}
-          <motion.div className="absolute inset-0 flex items-center justify-end" initial={{
-            opacity: 0,
-            scale: 1.1
-          }} animate={{
-            opacity: 1,
-            scale: 1
-          }} transition={{
-            duration: 1.2,
-            ease: "easeOut"
-          }}>
-            <div className="relative h-full w-full max-w-4xl mr-0 flex items-center justify-end bg-background">
-              <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="h-[90%] w-auto object-cover object-center grayscale" />
-              {/* Gradient overlays for blending */}
-              <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
-            </div>
-          </motion.div>
+      {/* Hero Section - Two Column Layout */}
+      <section className="relative min-h-screen w-full overflow-hidden bg-[#F5F0E8]">
+        <div className="container mx-auto px-6 lg:px-12 h-screen flex items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+            
+            {/* Left Column - Content */}
+            <motion.div 
+              className="space-y-8 z-10"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              {/* Large Title */}
+              <div className="space-y-2">
+                <motion.h1 
+                  className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-black leading-[0.9] tracking-tight"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  visual<br />poetry
+                </motion.h1>
+              </div>
 
-          {/* Typography overlay */}
-          <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20 flex justify-center">
-            <motion.div className="space-y-6 w-full max-w-7xl text-center" initial={{
-              opacity: 0,
-              y: 30
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 1,
-              ease: "easeOut"
-            }}>
-              <motion.div initial={{
-                opacity: 0,
-                scale: 0.9
-              }} animate={{
-                opacity: 1,
-                scale: 1
-              }} transition={{
-                duration: 0.8,
-                delay: 0.2
-              }} className="flex justify-center mb-4">
-                <img src={LogoDann} alt="DANN" className="w-[65%] md:w-[60%] lg:w-[55%] h-auto object-contain drop-shadow-2xl" />
-              </motion.div>
-
-              <motion.p initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.8,
-                delay: 0.6
-              }} className="text-base md:text-lg lg:text-xl max-w-md mx-auto font-light leading-relaxed text-white">
+              {/* Description */}
+              <motion.p 
+                className="text-gray-600 text-base md:text-lg max-w-md leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
                 {photographerInfo.heroIntroduction}
               </motion.p>
+
+              {/* Social Icons */}
+              <motion.div 
+                className="flex items-center gap-3"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-amber-400 hover:border-amber-400 hover:text-white transition-all duration-300 text-xs font-medium">
+                  yt
+                </a>
+                <a href={photographerInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-amber-400 hover:border-amber-400 hover:text-white transition-all duration-300 text-xs font-medium">
+                  ig
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-amber-400 hover:border-amber-400 hover:text-white transition-all duration-300 text-xs font-medium">
+                  fb
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-amber-400 hover:border-amber-400 hover:text-white transition-all duration-300 text-xs font-medium">
+                  x
+                </a>
+              </motion.div>
+
+              {/* Statistics */}
+              <motion.div 
+                className="flex gap-12 pt-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                <div>
+                  <h3 className="text-4xl md:text-5xl font-black text-black">+250k</h3>
+                  <p className="text-gray-500 text-sm max-w-[140px] leading-tight mt-1">Videos that reaching a wide audience and give lasting impression</p>
+                </div>
+                <div>
+                  <h3 className="text-4xl md:text-5xl font-black text-black">+800k</h3>
+                  <p className="text-gray-500 text-sm max-w-[140px] leading-tight mt-1">Hours watched, engaging storytelling that captivates viewers</p>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Column - Image with Orange Background */}
+            <motion.div 
+              className="relative flex justify-center lg:justify-end"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
+            >
+              {/* Orange/Amber Background Shape */}
+              <div className="relative">
+                <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full bg-white border border-gray-200 flex items-center justify-center z-20">
+                  <svg className="w-8 h-8 text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                </div>
+                
+                <div className="relative bg-amber-400 rounded-[2rem] overflow-hidden w-[280px] md:w-[340px] lg:w-[400px] h-[400px] md:h-[480px] lg:h-[560px]">
+                  <img 
+                    src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
+                    alt="Photographer" 
+                    className="w-full h-full object-cover object-center"
+                  />
+                  
+                  {/* Floating Action Buttons */}
+                  <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
+                    <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg">
+                      <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path fillRule="evenodd" d="M1.5 4.5a3 3 0 013-3h15a3 3 0 013 3v15a3 3 0 01-3 3h-15a3 3 0 01-3-3v-15zm3-1.5a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-15a1.5 1.5 0 00-1.5-1.5h-15z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center shadow-lg overflow-hidden">
+                      <img src={LogoDann} alt="Profile" className="w-8 h-8 object-cover rounded-full" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Arrow Button */}
+                <div className="absolute -bottom-4 right-8 w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center z-20 shadow-lg">
+                  <ArrowRight className="w-6 h-6 text-gray-800 rotate-[-45deg]" />
+                </div>
+              </div>
             </motion.div>
           </div>
-
-          {/* Social Icons - Vertical Left */}
-          <motion.div className="absolute left-6 lg:left-8 xl:left-[calc((100vw-80rem)/2+2rem)] top-[70%] -translate-y-1/2 hidden xl:flex flex-col items-center gap-6 z-20" initial={{
-            opacity: 0,
-            x: -20
-          }} animate={{
-            opacity: 1,
-            x: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 1
-          }}>
-            <div className="writing-mode-vertical text-xs tracking-widest text-white mb-4 font-light">
-              FOLLOW
-            </div>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <Youtube className="w-7 h-7" />
-            </a>
-            <a href={photographerInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <Instagram className="w-7 h-7" />
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <Github className="w-7 h-7" />
-            </a>
-            <a href={photographerInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <Linkedin className="w-7 h-7" />
-            </a>
-          </motion.div>
-
-          {/* Scroll Indicator */}
-          <motion.div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20" initial={{
-            opacity: 0
-          }} animate={{
-            opacity: 1
-          }} transition={{
-            delay: 1.2,
-            duration: 0.8
-          }}>
-            <ScrollIndicator />
-          </motion.div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+        >
+          <ScrollIndicator />
+        </motion.div>
       </section>
 
         {/* Image Divider 1 */}
