@@ -104,8 +104,8 @@ export default function Login() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email Input */}
-          <div className="relative">
-            <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+          <div className="relative flex items-center">
+            <div className="absolute left-4 flex items-center justify-center">
               {viewMode === 'forgot-password' ? (
                 <Mail className="h-5 w-5 text-white/60" strokeWidth={1.5} />
               ) : (
@@ -125,8 +125,8 @@ export default function Login() {
 
           {/* Password Input - Hide for forgot password */}
           {viewMode !== 'forgot-password' && (
-            <div className="relative">
-              <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+            <div className="relative flex items-center">
+              <div className="absolute left-4 flex items-center justify-center">
                 <Lock className="h-5 w-5 text-white/60" strokeWidth={1.5} />
               </div>
               <input
