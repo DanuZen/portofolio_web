@@ -119,7 +119,7 @@ export default function Home() {
                   </svg>
                 </div>
                 
-                <div className="relative w-[320px] md:w-[400px] lg:w-[480px] h-[420px] md:h-[520px] lg:h-[620px]">
+                <div className="relative w-[500px] md:w-[600px] lg:w-[700px] h-[600px] md:h-[750px] lg:h-[850px]">
                   {/* Yellow Shape Background */}
                   <div 
                     className="absolute inset-0 bg-amber-400"
