@@ -189,10 +189,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Image Divider 2 */}
-        <div className="w-full">
-          <img src={Pembatas2} alt="" className="w-full h-auto object-cover" />
-        </div>
 
         {/* Skills, Tools & Approach Section */}
         <section style={{
