@@ -1,19 +1,11 @@
 import { useState } from 'react';
-import { projects, getProjectsByCategory } from '@/data/projects';
+import { getProjectsByCategory } from '@/data/projects';
 import { PortfolioGrid } from '@/components/portfolio/PortfolioGrid';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { motion } from 'framer-motion';
 import { CategoryFilter } from '@/components/portfolio/CategoryFilter';
+import { useCategories } from '@/hooks/useCategories';
 import Pembatas1 from '@/assets/Pembatas1.png';
-
-const categories = [
-  { id: 'all', label: 'Semua Karya' },
-  { id: 'portraits', label: 'Potret' },
-  { id: 'landscapes', label: 'Pemandangan' },
-  { id: 'editorial', label: 'Editorial' },
-  { id: 'architecture', label: 'Arsitektur' },
-  { id: 'documentary', label: 'Dokumenter' }
-];
 
 /**
  * Portfolio page with dynamic category filtering
@@ -21,6 +13,7 @@ const categories = [
  */
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
+  const { data: categories = [] } = useCategories();
   const filteredProjects = getProjectsByCategory(activeCategory);
 
   return (

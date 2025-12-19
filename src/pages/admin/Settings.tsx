@@ -3,6 +3,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Badge } from '@/components/ui/badge';
 import { User, Mail, Shield, Calendar, Database, Key } from 'lucide-react';
 import { AboutMediaManager } from '@/components/admin/AboutMediaManager';
+import { CategoriesManager } from '@/components/admin/CategoriesManager';
 
 export default function Settings() {
   const { user } = useAuth();
@@ -18,6 +19,9 @@ export default function Settings() {
           Manage your account settings and preferences
         </p>
       </div>
+
+      {/* Categories Manager */}
+      <CategoriesManager />
 
       {/* About Page Media */}
       <AboutMediaManager />
