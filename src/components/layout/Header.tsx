@@ -31,19 +31,27 @@ export function Header() {
   // Get current tab index
   const currentIndex = navLinks.findIndex(link => link.path === location.pathname) || 0;
   
+  // Homepage has light background, other pages have dark background
+  const isLightBackground = location.pathname === '/';
+  
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-background/90 backdrop-blur-lg border-b border-border shadow-sm"
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-lg border-b shadow-sm",
+        isLightBackground 
+          ? "bg-[#F5F0E8]/90 border-gray-900/10" 
+          : "bg-background/90 border-border"
+      )}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
             to="/"
-            className="transition-all duration-300 text-foreground hover:text-muted-foreground"
+            className="transition-all duration-300"
           >
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -54,7 +62,10 @@ export function Header() {
               <img 
                 src={LogoDann} 
                 alt="DANN Logo" 
-                className="h-8 w-auto object-contain transition-all duration-300"
+                className={cn(
+                  "h-8 w-auto object-contain transition-all duration-300",
+                  !isLightBackground && "invert"
+                )}
               />
             </motion.div>
           </Link>
@@ -73,7 +84,12 @@ export function Header() {
                       navigateWithDirection(currentIndex, link.index);
                       navigate(link.path);
                     }}
-                    className="relative text-lg leading-7 font-light tracking-wide transition-colors duration-300 bg-transparent border-none cursor-pointer text-foreground hover:text-muted-foreground"
+                    className={cn(
+                      "relative text-lg leading-7 font-light tracking-wide transition-colors duration-300 bg-transparent border-none cursor-pointer",
+                      isLightBackground 
+                        ? "text-gray-900 hover:text-gray-600" 
+                        : "text-foreground hover:text-muted-foreground"
+                    )}
                   >
                     {link.name}
                   </button>
@@ -82,7 +98,10 @@ export function Header() {
             
             {/* Sliding underline indicator */}
             <motion.div
-              className="absolute -bottom-1 h-px w-[60px] bg-foreground"
+              className={cn(
+                "absolute -bottom-1 h-px w-[60px]",
+                isLightBackground ? "bg-gray-900" : "bg-foreground"
+              )}
               animate={{
                 x: currentIndex * 100,
               }}
@@ -108,7 +127,12 @@ export function Header() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="size-9 text-foreground hover:bg-foreground/10"
+                  className={cn(
+                    "size-9",
+                    isLightBackground 
+                      ? "text-gray-900 hover:bg-gray-900/10" 
+                      : "text-foreground hover:bg-foreground/10"
+                  )}
                   aria-label="Open menu"
                 >
                   <Menu className="size-5" />
