@@ -75,12 +75,15 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8 relative">
-            {navLinks.map((link, index) => (
+            {navLinks.map((link, index) => {
+              const isActive = location.pathname === link.path;
+              return (
                 <motion.div
                   key={link.path}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.1 * index }}
+                  className="relative"
                 >
                   <button
                     onClick={() => {
@@ -88,30 +91,26 @@ export function Header() {
                       navigate(link.path);
                     }}
                     className={cn(
-                      "relative text-lg leading-7 font-bold tracking-wide transition-colors duration-300 bg-transparent border-none cursor-pointer",
-                      isLightBackground 
-                        ? "text-gray-900 hover:text-gray-600" 
-                        : "text-foreground hover:text-muted-foreground"
+                      "relative text-lg leading-7 font-bold tracking-wide transition-colors duration-300 bg-transparent border-none cursor-pointer pb-1",
+                      isActive
+                        ? "text-red-500"
+                        : isLightBackground 
+                          ? "text-gray-900 hover:text-gray-600" 
+                          : "text-foreground hover:text-muted-foreground"
                     )}
                   >
                     {link.name}
+                    {isActive && (
+                      <motion.div
+                        layoutId="nav-underline"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-red-500"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
                   </button>
                 </motion.div>
-              ))}
-            
-            {/* Sliding underline indicator */}
-            <motion.div
-              className={cn(
-                "absolute -bottom-1 h-px w-[60px]",
-                isLightBackground ? "bg-gray-900" : "bg-foreground"
-              )}
-              animate={{
-                x: currentIndex * 100,
-              }}
-              initial={false}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              style={{ left: 0 }}
-            />
+              );
+            })}
             
             {/* Icon Group with smaller gap */}
             <div className="flex items-center gap-1">
