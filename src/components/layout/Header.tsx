@@ -3,6 +3,7 @@ import { Menu } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
+import { useActiveSection } from '@/hooks/useActiveSection';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -17,22 +18,24 @@ const navLinks = [
 ];
 
 /**
- * Main header component with scroll-aware styling
- * Transparent on hero section, solid when scrolled
+ * Main header component with section-aware styling
+ * Changes color based on the background of the current section in view
  * Mobile responsive with hamburger menu
  */
 export function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const { isScrolled } = useScrollPosition();
+  const { isLightSection } = useActiveSection();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { navigateWithDirection } = useNavigation();
   
   // Get current tab index
   const currentIndex = navLinks.findIndex(link => link.path === location.pathname) || 0;
   
-  // Homepage has light background, other pages have dark background
-  const isLightBackground = location.pathname === '/';
+  // Use section detection for homepage, otherwise use page-based logic
+  const isHomepage = location.pathname === '/';
+  const isLightBackground = isHomepage ? isLightSection : false;
   
   return (
     <motion.header
