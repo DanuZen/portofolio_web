@@ -53,9 +53,7 @@ export function Header() {
             to="/"
             className={cn(
               'transition-all duration-300',
-              isTransparent
-                ? 'text-white hover:text-white/80'
-                : 'text-foreground hover:text-muted-foreground'
+              'text-foreground hover:text-muted-foreground'
             )}
           >
             <motion.div
@@ -88,9 +86,7 @@ export function Header() {
                     }}
                     className={cn(
                       "relative text-lg leading-7 font-light tracking-wide transition-colors duration-300 bg-transparent border-none cursor-pointer",
-                      isTransparent
-                        ? "text-white hover:text-white/80"
-                        : "text-foreground hover:text-muted-foreground"
+                      "text-foreground hover:text-muted-foreground"
                     )}
                   >
                     {link.name}
@@ -102,7 +98,7 @@ export function Header() {
             <motion.div
               className={cn(
                 "absolute -bottom-1 h-px w-[60px]",
-                isTransparent ? "bg-white" : "bg-foreground"
+                "bg-foreground"
               )}
               animate={{
                 x: currentIndex * 100,
@@ -131,7 +127,7 @@ export function Header() {
                   size="icon"
                   className={cn(
                     'size-9',
-                    isTransparent && 'text-white hover:bg-white/10'
+                    'text-foreground hover:bg-foreground/10'
                   )}
                   aria-label="Open menu"
                 >
