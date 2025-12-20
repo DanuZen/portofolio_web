@@ -69,7 +69,7 @@ export function Header() {
                 alt="DANN Logo" 
                 className={cn(
                   "h-8 w-auto object-contain transition-all duration-300",
-                  !isTransparent && "invert"
+                  isTransparent && "invert"
                 )}
               />
             </motion.div>
