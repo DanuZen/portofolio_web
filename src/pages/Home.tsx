@@ -28,10 +28,10 @@ export default function Home() {
   return <>
       <SEOHead />
       
-      <div className="min-h-screen">
+      <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section - Two Column Layout */}
-      <section data-section-theme="light" className="relative min-h-screen w-full overflow-hidden bg-[#F5F0E8]">
-        <div className="container mx-auto px-6 lg:px-12 h-screen flex items-center">
+      <section data-section-theme="light" className="relative min-h-screen w-full overflow-x-hidden bg-[#F5F0E8]">
+        <div className="container mx-auto px-6 lg:px-12 h-screen flex items-center overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
             
             {/* Left Column - Content */}
