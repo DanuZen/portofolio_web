@@ -35,7 +35,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
             
             {/* Left Column - Content */}
-            <motion.div className="space-y-8 z-10" initial={{
+            <motion.div className="space-y-8 z-10 lg:pl-16 xl:pl-24" initial={{
               opacity: 0,
               x: -30
             }} animate={{
