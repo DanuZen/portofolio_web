@@ -28,7 +28,7 @@ export default function About() {
   return <>
       <SEOHead title="Tentang" description={`Pelajari tentang ${photographerInfo.name}, ${photographerInfo.tagline}. ${photographerInfo.biography.split('\n\n')[0]}`} image={photographerInfo.portraitImage} />
       
-      <div className="min-h-screen">
+      <div className="min-h-screen" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
         {/* Hero Section */}
       <section className="pt-16 md:pt-24 pb-0 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-6">

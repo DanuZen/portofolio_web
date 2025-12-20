@@ -20,7 +20,7 @@ export default function Portfolio() {
   return <>
       <SEOHead title="Portfolio" description="Jelajahi portfolio fotografi lengkap saya yang menampilkan potret, pemandangan, karya editorial, arsitektur, dan proyek dokumenter." />
       
-      <div className="min-h-screen">
+      <div className="min-h-screen" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
         {/* Hero Section */}
         <section className="pt-16 md:pt-24 pb-0 px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-6">
