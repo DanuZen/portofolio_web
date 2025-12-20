@@ -31,32 +31,19 @@ export function Header() {
   // Get current tab index
   const currentIndex = navLinks.findIndex(link => link.path === location.pathname) || 0;
   
-  // Header is transparent only on homepage hero when not scrolled
-  const isTransparent = location.pathname === '/' && !isScrolled;
-
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        isTransparent
-          ? 'bg-transparent'
-          : 'bg-background/90 backdrop-blur-lg border-b border-border shadow-sm'
-      )}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-background/90 backdrop-blur-lg border-b border-border shadow-sm"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
             to="/"
-            className={cn(
-              'transition-all duration-300',
-              isTransparent
-                ? 'text-gray-900 hover:text-gray-700'
-                : 'text-foreground hover:text-muted-foreground'
-            )}
+            className="transition-all duration-300 text-foreground hover:text-muted-foreground"
           >
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -67,10 +54,7 @@ export function Header() {
               <img 
                 src={LogoDann} 
                 alt="DANN Logo" 
-                className={cn(
-                  "h-8 w-auto object-contain transition-all duration-300",
-                  isTransparent && "invert"
-                )}
+                className="h-8 w-auto object-contain transition-all duration-300"
               />
             </motion.div>
           </Link>
@@ -89,12 +73,7 @@ export function Header() {
                       navigateWithDirection(currentIndex, link.index);
                       navigate(link.path);
                     }}
-                    className={cn(
-                      "relative text-lg leading-7 font-light tracking-wide transition-colors duration-300 bg-transparent border-none cursor-pointer",
-                      isTransparent
-                        ? "text-gray-900 hover:text-gray-700"
-                        : "text-foreground hover:text-muted-foreground"
-                    )}
+                    className="relative text-lg leading-7 font-light tracking-wide transition-colors duration-300 bg-transparent border-none cursor-pointer text-foreground hover:text-muted-foreground"
                   >
                     {link.name}
                   </button>
@@ -103,10 +82,7 @@ export function Header() {
             
             {/* Sliding underline indicator */}
             <motion.div
-              className={cn(
-                "absolute -bottom-1 h-px w-[60px]",
-                isTransparent ? "bg-gray-900" : "bg-foreground"
-              )}
+              className="absolute -bottom-1 h-px w-[60px] bg-foreground"
               animate={{
                 x: currentIndex * 100,
               }}
@@ -132,12 +108,7 @@ export function Header() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={cn(
-                    'size-9',
-                    isTransparent 
-                      ? 'text-gray-900 hover:bg-gray-900/10' 
-                      : 'text-foreground hover:bg-foreground/10'
-                  )}
+                  className="size-9 text-foreground hover:bg-foreground/10"
                   aria-label="Open menu"
                 >
                   <Menu className="size-5" />
