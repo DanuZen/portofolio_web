@@ -43,10 +43,10 @@ export function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-lg border-b shadow-sm",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-lg",
         isLightBackground 
-          ? "bg-[#F5F0E8]/90 border-gray-900/10" 
-          : "bg-background/90 border-border"
+          ? "bg-[#F5F0E8]/90" 
+          : "bg-background/90"
       )}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
