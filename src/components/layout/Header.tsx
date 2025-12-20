@@ -88,7 +88,7 @@ export function Header() {
                       navigate(link.path);
                     }}
                     className={cn(
-                      "relative text-lg leading-7 font-light tracking-wide transition-colors duration-300 bg-transparent border-none cursor-pointer",
+                      "relative text-lg leading-7 font-bold tracking-wide transition-colors duration-300 bg-transparent border-none cursor-pointer",
                       isLightBackground 
                         ? "text-gray-900 hover:text-gray-600" 
                         : "text-foreground hover:text-muted-foreground"
