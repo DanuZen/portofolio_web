@@ -87,9 +87,7 @@ export default function Home() {
                 delay: 0.6
               }} className="pt-4 flex flex-col items-start gap-2">
                 {/* 1 Icon di atas */}
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-                  <Youtube className="w-4 h-4 text-gray-700" />
-                </a>
+                
                 {/* 3 Icon di bawah horizontal */}
                 <div className="flex flex-row gap-2">
                   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
@@ -197,7 +195,9 @@ export default function Home() {
         </div>
 
         {/* Introduction Section */}
-        <section data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
+        <section data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40" style={{
+        backgroundColor: 'hsl(0, 0%, 8%)'
+      }}>
           <div className="w-full">
             <ScrollReveal>
               <div className="space-y-8 text-center px-6 lg:px-8">
@@ -219,7 +219,9 @@ export default function Home() {
 
 
         {/* Skills, Tools & Approach Section */}
-        <section data-section-theme="dark" className="min-h-screen flex items-center relative py-32 md:py-40 overflow-hidden text-slate-50" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
+        <section data-section-theme="dark" className="min-h-screen flex items-center relative py-32 md:py-40 overflow-hidden text-slate-50" style={{
+        backgroundColor: 'hsl(0, 0%, 8%)'
+      }}>
           <div className="w-full relative z-10">
             {/* Section Header */}
             <ScrollReveal>
@@ -351,7 +353,9 @@ export default function Home() {
         </div>
 
         {/* Featured Projects Section - Bold Header + Gallery */}
-        <section data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
+        <section data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40" style={{
+        backgroundColor: 'hsl(0, 0%, 8%)'
+      }}>
           <div className="w-full">
             {/* Bold Title Section */}
             <ScrollReveal>
