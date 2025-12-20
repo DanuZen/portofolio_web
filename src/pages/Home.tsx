@@ -141,7 +141,7 @@ export default function Home() {
               <div className="relative">
                 
                 
-                <div className="relative w-[500px] md:w-[600px] lg:w-[700px] h-[600px] md:h-[750px] lg:h-[850px]">
+                <div className="relative w-[350px] sm:w-[400px] md:w-[500px] lg:w-[550px] xl:w-[650px] h-[450px] sm:h-[500px] md:h-[650px] lg:h-[700px] xl:h-[800px]">
                   {/* Yellow Shape Background */}
                   <div className="absolute inset-0 bg-amber-400" style={{
                     maskImage: `url('/images/hero-shape.png')`,
