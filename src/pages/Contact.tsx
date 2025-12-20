@@ -14,7 +14,9 @@ export default function Contact() {
   return <>
       <SEOHead title="Kontak" description={`Hubungi ${photographerInfo.name} untuk pertanyaan fotografi, kolaborasi, dan booking proyek. ${photographerInfo.availability}`} />
       
-      <div className="min-h-screen" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
+      <div className="min-h-screen" style={{
+      backgroundColor: 'hsl(0, 0%, 8%)'
+    }}>
         {/* Hero Section */}
       <section className="pt-16 md:pt-24 pb-8 md:pb-12 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-6">
@@ -55,9 +57,7 @@ export default function Contact() {
                 <h2 className="text-3xl md:text-4xl font-black tracking-tight">
                   <span className="text-white">Kirim </span><span className="text-red-500">Pesan</span>
                 </h2>
-                <p className="text-white/70 font-light leading-relaxed">
-                  Isi formulir di bawah ini dan saya akan menghubungi Anda dalam 24-48 jam. {photographerInfo.availability}
-                </p>
+                
               </div>
 
               <ContactForm />
@@ -78,9 +78,7 @@ export default function Contact() {
                 <h2 className="text-3xl md:text-4xl font-black tracking-tight">
                   <span className="text-white">Informasi </span><span className="text-red-500">Kontak</span>
                 </h2>
-                <p className="text-white/70 font-light leading-relaxed">
-                  Lebih suka menghubungi langsung? Berikut cara Anda dapat menghubungi saya.
-                </p>
+                
               </div>
 
               <Separator />
