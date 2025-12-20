@@ -67,7 +67,10 @@ export function Header() {
               <img 
                 src={LogoDann} 
                 alt="DANN Logo" 
-                className="h-8 w-auto object-contain transition-all duration-300"
+                className={cn(
+                  "h-8 w-auto object-contain transition-all duration-300",
+                  !isTransparent && "invert"
+                )}
               />
             </motion.div>
           </Link>
