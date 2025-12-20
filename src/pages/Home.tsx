@@ -139,13 +139,7 @@ export default function Home() {
             }}>
               {/* Orange/Amber Background Shape */}
               <div className="relative">
-                <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full bg-white border border-gray-200 flex items-center justify-center z-20">
-                  <svg className="w-8 h-8 text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                </div>
+                
                 
                 <div className="relative w-[500px] md:w-[600px] lg:w-[700px] h-[600px] md:h-[750px] lg:h-[850px]">
                   {/* Yellow Shape Background */}
