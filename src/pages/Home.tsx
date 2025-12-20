@@ -158,7 +158,7 @@ export default function Home() {
                   
                   
                   {/* Photographer Image */}
-                  <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="absolute inset-0 w-full h-full object-contain" style={{
+                  <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="absolute inset-0 w-full h-full object-contain scale-50" style={{
                     objectPosition: '60% 70%',
                     maskImage: `url('/images/hero-shape.png')`,
                     WebkitMaskImage: `url('/images/hero-shape.png')`,
