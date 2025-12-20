@@ -197,7 +197,7 @@ export default function Home() {
         </div>
 
         {/* Introduction Section */}
-        <section data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40 bg-background">
+        <section data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
           <div className="w-full">
             <ScrollReveal>
               <div className="space-y-8 text-center px-6 lg:px-8">
@@ -219,7 +219,7 @@ export default function Home() {
 
 
         {/* Skills, Tools & Approach Section */}
-        <section data-section-theme="dark" className="min-h-screen flex items-center relative py-32 md:py-40 overflow-hidden text-slate-50 bg-background">
+        <section data-section-theme="dark" className="min-h-screen flex items-center relative py-32 md:py-40 overflow-hidden text-slate-50" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
           <div className="w-full relative z-10">
             {/* Section Header */}
             <ScrollReveal>
@@ -351,7 +351,7 @@ export default function Home() {
         </div>
 
         {/* Featured Projects Section - Bold Header + Gallery */}
-        <section data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40 bg-background">
+        <section data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
           <div className="w-full">
             {/* Bold Title Section */}
             <ScrollReveal>
