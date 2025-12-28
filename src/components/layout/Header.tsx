@@ -42,39 +42,26 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-lg",
-        isLightBackground 
-          ? "bg-[#F5F0E8]/90" 
-          : "bg-background/90"
-      )}
+      className="fixed top-0 left-0 right-0 z-50 py-4"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="transition-all duration-300"
+        <div className="flex items-center justify-between">
+          {/* Left Side - Logo in Pill */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex items-center gap-2"
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#B8FF00] bg-transparent hover:bg-[#B8FF00]/10 transition-all duration-300"
             >
-              <img 
-                src={LogoDann} 
-                alt="DANN Logo" 
-                className={cn(
-                  "h-8 w-auto object-contain transition-all duration-300",
-                  isLightBackground && "invert"
-                )}
-              />
-            </motion.div>
-          </Link>
+              <span className="text-[#B8FF00] font-bold text-sm tracking-wide">DANN</span>
+            </Link>
+          </motion.div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 relative">
+          {/* Center - Desktop Navigation Pills */}
+          <nav className="hidden md:flex items-center gap-2">
             {navLinks.map((link, index) => {
               const isActive = location.pathname === link.path;
               return (
@@ -83,7 +70,6 @@ export function Header() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.1 * index }}
-                  className="relative"
                 >
                   <button
                     onClick={() => {
@@ -91,70 +77,87 @@ export function Header() {
                       navigate(link.path);
                     }}
                     className={cn(
-                      "relative text-lg leading-7 font-bold tracking-wide transition-colors duration-300 bg-transparent border-none cursor-pointer pb-1",
+                      "relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-300 border",
                       isActive
-                        ? "text-red-500"
-                        : isLightBackground 
-                          ? "text-gray-900 hover:text-gray-600" 
-                          : "text-foreground hover:text-muted-foreground"
+                        ? "bg-[#B8FF00] text-black border-[#B8FF00]"
+                        : "bg-transparent text-[#B8FF00] border-[#B8FF00] hover:bg-[#B8FF00]/10"
                     )}
                   >
-                    {link.name}
-                    {isActive && (
-                      <motion.div
-                        layoutId="nav-underline"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-red-500"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
+                    <span className="flex items-center gap-2">
+                      {isActive && (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+                          <path d="M8 12h8M12 8v8M6 6l2 2M18 6l-2 2M6 18l2-2M18 18l-2-2" stroke="currentColor" strokeWidth="1" fill="none"/>
+                        </svg>
+                      )}
+                      {link.name}
+                    </span>
                   </button>
                 </motion.div>
               );
             })}
-            
-            {/* Icon Group with smaller gap */}
-            <div className="flex items-center gap-1">
-
-
-            </div>
           </nav>
 
+          {/* Right Side - Decorative Line with Stars */}
+          <motion.div 
+            className="hidden md:flex items-center gap-4"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-32 lg:w-48 h-px bg-[#B8FF00]" />
+              <div className="w-2 h-2 rounded-full bg-[#B8FF00]" />
+            </div>
+            <div className="flex items-center gap-1 text-[#B8FF00]">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z"/>
+              </svg>
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z"/>
+              </svg>
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z"/>
+              </svg>
+            </div>
+          </motion.div>
+
           {/* Mobile Menu */}
-          <div className="md:hidden flex items-center gap-1">
-
-
-
+          <div className="md:hidden">
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={cn(
-                    "size-9",
-                    isLightBackground 
-                      ? "text-gray-900 hover:bg-gray-900/10" 
-                      : "text-foreground hover:bg-foreground/10"
-                  )}
+                  className="size-10 rounded-full border border-[#B8FF00] text-[#B8FF00] hover:bg-[#B8FF00]/10"
                   aria-label="Open menu"
                 >
                   <Menu className="size-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:w-80">
-                <nav className="flex flex-col gap-6 mt-8">
-                  {navLinks.map((link) => (
-                    <button
-                      key={link.path}
-                      onClick={() => {
-                        navigateWithDirection(currentIndex, link.index);
-                        navigate(link.path);
-                        setMobileMenuOpen(false);
-                      }}
-                      className="text-lg leading-7 font-light tracking-wide text-foreground hover:text-muted-foreground text-left bg-transparent border-none cursor-pointer"
-                    >
-                      {link.name}
-                    </button>
-                  ))}
+              <SheetContent side="right" className="w-full sm:w-80 bg-[hsl(0,0%,8%)] border-[#B8FF00]/20">
+                <nav className="flex flex-col gap-4 mt-8">
+                  {navLinks.map((link) => {
+                    const isActive = location.pathname === link.path;
+                    return (
+                      <button
+                        key={link.path}
+                        onClick={() => {
+                          navigateWithDirection(currentIndex, link.index);
+                          navigate(link.path);
+                          setMobileMenuOpen(false);
+                        }}
+                        className={cn(
+                          "text-left px-5 py-3 rounded-full text-base font-bold tracking-wide transition-all duration-300 border",
+                          isActive
+                            ? "bg-[#B8FF00] text-black border-[#B8FF00]"
+                            : "bg-transparent text-[#B8FF00] border-[#B8FF00] hover:bg-[#B8FF00]/10"
+                        )}
+                      >
+                        {link.name}
+                      </button>
+                    );
+                  })}
                 </nav>
               </SheetContent>
             </Sheet>
