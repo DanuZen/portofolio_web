@@ -32,134 +32,68 @@ export default function Home() {
       {/* Hero Section - Modern Dark Design */}
       <section data-section-theme="dark" className="relative min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
         <div className="container mx-auto px-6 lg:px-12 min-h-screen flex items-center py-24 overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
-            
-            {/* Left Column - Large Neon Green Card */}
-            <motion.div 
-              className="relative"
+          {/* Full Width Neon Green Card */}
+          <motion.div 
+            className="relative w-full bg-[#B8FF00] rounded-[2.5rem] p-8 md:p-12 lg:p-16 overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {/* Large CREATIVE Title at Top */}
+            <motion.h1 
+              className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-black italic text-black leading-[0.85] tracking-tighter mb-8"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {/* Neon Green Card */}
-              <div className="relative bg-[#B8FF00] rounded-[2.5rem] p-8 md:p-12 lg:p-16 overflow-hidden">
-                {/* Decorative Circle Icon */}
+              CREATIVE
+            </motion.h1>
+
+            {/* Content Grid - Image Left, BRIEF Right */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
+              {/* Left - Image with Arrow Icon */}
+              <motion.div 
+                className="relative"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                {/* Arrow Icon overlapping top-left of image */}
                 <motion.div 
-                  className="absolute -top-6 -right-6 w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center shadow-xl z-10"
+                  className="absolute -top-6 -left-2 md:-left-4 w-16 h-16 md:w-20 md:h-20 bg-black rounded-full flex items-center justify-center z-10"
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4, type: "spring" }}
+                  transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
                 >
-                  <svg className="w-10 h-10 md:w-12 md:h-12 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2L12 22M2 12L22 12" strokeLinecap="round" />
-                  </svg>
+                  <ArrowRight className="w-8 h-8 md:w-10 md:h-10 text-[#B8FF00] -rotate-45" />
                 </motion.div>
 
-                {/* Card Content */}
-                <div className="space-y-6">
-                  {/* Label */}
-                  <motion.span 
-                    className="inline-block text-black/60 text-sm md:text-base font-medium uppercase tracking-wider"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
-                    Programmer & Designer
-                  </motion.span>
-
-                  {/* Large Italic Title */}
-                  <motion.h1 
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black italic text-black leading-[0.95] tracking-tight"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                  >
-                    Menciptakan
-                    <br />
-                    Produk Digital
-                    <br />
-                    <span className="not-italic">Yang Estetis</span>
-                  </motion.h1>
-
-                  {/* Description */}
-                  <motion.p 
-                    className="text-black/70 text-base md:text-lg max-w-md leading-relaxed"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                  >
-                    {photographerInfo.heroIntroduction}
-                  </motion.p>
-
-                  {/* Social Icons */}
-                  <motion.div 
-                    className="flex flex-row gap-3 pt-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                  >
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full bg-black flex items-center justify-center hover:bg-black/80 transition-colors">
-                      <Instagram className="w-5 h-5 text-[#B8FF00]" />
-                    </a>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full bg-black flex items-center justify-center hover:bg-black/80 transition-colors">
-                      <Github className="w-5 h-5 text-[#B8FF00]" />
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full bg-black flex items-center justify-center hover:bg-black/80 transition-colors">
-                      <Linkedin className="w-5 h-5 text-[#B8FF00]" />
-                    </a>
-                  </motion.div>
-                </div>
-              </div>
-
-              {/* Statistics Below Card */}
-              <motion.div 
-                className="flex gap-8 md:gap-12 mt-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                <div>
-                  <h3 className="text-3xl md:text-4xl font-black text-white">+250k</h3>
-                  <p className="text-white/50 text-sm max-w-[140px] leading-tight mt-1">Videos reaching a wide audience</p>
-                </div>
-                <div>
-                  <h3 className="text-3xl md:text-4xl font-black text-white">+800k</h3>
-                  <p className="text-white/50 text-sm max-w-[140px] leading-tight mt-1">Hours watched, captivating viewers</p>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Right Column - Image */}
-            <motion.div 
-              className="relative flex justify-center lg:justify-end"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
-            >
-              <div className="relative w-full max-w-[500px] lg:max-w-[600px]">
-                {/* Image Container with Rounded Corners */}
-                <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-red-500/20 to-transparent">
+                {/* Image Container */}
+                <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white">
                   <img 
                     src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                    alt="Photographer" 
+                    alt="Creative Team" 
                     className="absolute inset-0 w-full h-full object-cover object-center"
                   />
-                  {/* Overlay Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
+              </motion.div>
 
-                {/* Decorative Element */}
-                <motion.div 
-                  className="absolute -bottom-4 -left-4 w-16 h-16 md:w-20 md:h-20 bg-red-500 rounded-full flex items-center justify-center"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.8, type: "spring" }}
-                >
-                  <ArrowRight className="w-8 h-8 text-white -rotate-45" />
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
+              {/* Right - BRIEF Title and Description */}
+              <motion.div 
+                className="space-y-6"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-black italic text-black leading-[0.85] tracking-tighter">
+                  BRIEF
+                </h2>
+                <p className="text-black/80 text-base md:text-lg lg:text-xl max-w-md leading-relaxed">
+                  Menciptakan produk digital yang estetis, fungsional, dan responsif. Menggabungkan kemampuan teknis dan kreativitas visual untuk menghadirkan solusi digital yang modern.
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Scroll Indicator */}
