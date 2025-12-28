@@ -29,162 +29,146 @@ export default function Home() {
       <SEOHead />
       
       <div className="min-h-screen overflow-x-hidden">
-      {/* Hero Section - Two Column Layout */}
-      <section data-section-theme="light" className="relative min-h-screen w-full overflow-x-hidden bg-[#F5F0E8]">
-        <div className="container mx-auto px-6 lg:px-12 h-screen flex items-center overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+      {/* Hero Section - Modern Dark Design */}
+      <section data-section-theme="dark" className="relative min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
+        <div className="container mx-auto px-6 lg:px-12 min-h-screen flex items-center py-24 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
             
-            {/* Left Column - Content */}
-            <motion.div className="space-y-8 z-10 lg:pl-16 xl:pl-24" initial={{
-              opacity: 0,
-              x: -30
-            }} animate={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.8,
-              ease: "easeOut"
-            }}>
-              {/* Large Title */}
-              <div className="space-y-2">
-              <motion.h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-black leading-[0.9] tracking-tight" initial={{
-                  opacity: 0,
-                  y: 30
-                }} animate={{
-                  opacity: 1,
-                  y: 0
-                }} transition={{
-                  duration: 0.8,
-                  delay: 0.2
-                }}>
-                  Dann
-                </motion.h1>
+            {/* Left Column - Large Neon Green Card */}
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              {/* Neon Green Card */}
+              <div className="relative bg-[#B8FF00] rounded-[2.5rem] p-8 md:p-12 lg:p-16 overflow-hidden">
+                {/* Decorative Circle Icon */}
+                <motion.div 
+                  className="absolute -top-6 -right-6 w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center shadow-xl z-10"
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4, type: "spring" }}
+                >
+                  <svg className="w-10 h-10 md:w-12 md:h-12 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L12 22M2 12L22 12" strokeLinecap="round" />
+                  </svg>
+                </motion.div>
+
+                {/* Card Content */}
+                <div className="space-y-6">
+                  {/* Label */}
+                  <motion.span 
+                    className="inline-block text-black/60 text-sm md:text-base font-medium uppercase tracking-wider"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    Programmer & Designer
+                  </motion.span>
+
+                  {/* Large Italic Title */}
+                  <motion.h1 
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black italic text-black leading-[0.95] tracking-tight"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                  >
+                    Menciptakan
+                    <br />
+                    Produk Digital
+                    <br />
+                    <span className="not-italic">Yang Estetis</span>
+                  </motion.h1>
+
+                  {/* Description */}
+                  <motion.p 
+                    className="text-black/70 text-base md:text-lg max-w-md leading-relaxed"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                  >
+                    {photographerInfo.heroIntroduction}
+                  </motion.p>
+
+                  {/* Social Icons */}
+                  <motion.div 
+                    className="flex flex-row gap-3 pt-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                  >
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full bg-black flex items-center justify-center hover:bg-black/80 transition-colors">
+                      <Instagram className="w-5 h-5 text-[#B8FF00]" />
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full bg-black flex items-center justify-center hover:bg-black/80 transition-colors">
+                      <Github className="w-5 h-5 text-[#B8FF00]" />
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full bg-black flex items-center justify-center hover:bg-black/80 transition-colors">
+                      <Linkedin className="w-5 h-5 text-[#B8FF00]" />
+                    </a>
+                  </motion.div>
+                </div>
               </div>
 
-              {/* Description */}
-              <motion.p className="text-gray-600 text-base md:text-lg max-w-md leading-relaxed" initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.8,
-                delay: 0.4
-              }}>
-                {photographerInfo.heroIntroduction}
-              </motion.p>
-
-              {/* Social Icons - 1 di atas, 3 di bawah */}
-              <motion.div initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.8,
-                delay: 0.6
-              }} className="pt-4 flex flex-col items-start gap-2">
-                {/* 1 Icon di atas */}
-                
-                {/* 3 Icon di bawah horizontal */}
-                <div className="flex flex-row gap-2">
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-                    <Instagram className="w-4 h-4 text-gray-700" />
-                  </a>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-                    <Github className="w-4 h-4 text-gray-700" />
-                  </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-                    <Linkedin className="w-4 h-4 text-gray-700" />
-                  </a>
-                </div>
-              </motion.div>
-
-              {/* Statistics */}
-              <motion.div className="flex gap-12 pt-4" initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.8,
-                delay: 0.8
-              }}>
+              {/* Statistics Below Card */}
+              <motion.div 
+                className="flex gap-8 md:gap-12 mt-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
                 <div>
-                  <h3 className="text-4xl md:text-5xl font-black text-black">+250k</h3>
-                  <p className="text-gray-500 text-sm max-w-[140px] leading-tight mt-1">Videos that reaching a wide audience and give lasting impression</p>
+                  <h3 className="text-3xl md:text-4xl font-black text-white">+250k</h3>
+                  <p className="text-white/50 text-sm max-w-[140px] leading-tight mt-1">Videos reaching a wide audience</p>
                 </div>
                 <div>
-                  <h3 className="text-4xl md:text-5xl font-black text-black">+800k</h3>
-                  <p className="text-gray-500 text-sm max-w-[140px] leading-tight mt-1">Hours watched, engaging storytelling that captivates viewers</p>
+                  <h3 className="text-3xl md:text-4xl font-black text-white">+800k</h3>
+                  <p className="text-white/50 text-sm max-w-[140px] leading-tight mt-1">Hours watched, captivating viewers</p>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Right Column - Image with Orange Background */}
-            <motion.div className="relative flex justify-center lg:justify-end" initial={{
-              opacity: 0,
-              scale: 0.95
-            }} animate={{
-              opacity: 1,
-              scale: 1
-            }} transition={{
-              duration: 1,
-              delay: 0.3
-            }}>
-              {/* Orange/Amber Background Shape */}
-              <div className="relative">
-                
-                
-                <div className="relative w-[350px] sm:w-[400px] md:w-[500px] lg:w-[550px] xl:w-[650px] h-[450px] sm:h-[500px] md:h-[650px] lg:h-[700px] xl:h-[800px]">
-                  {/* Red Shape Background */}
-                  <div className="absolute inset-0 bg-red-500" style={{
-                    maskImage: `url('/images/hero-shape.png')`,
-                    WebkitMaskImage: `url('/images/hero-shape.png')`,
-                    maskSize: '100% 100%',
-                    WebkitMaskSize: '100% 100%',
-                    maskRepeat: 'no-repeat',
-                    WebkitMaskRepeat: 'no-repeat',
-                    maskPosition: 'center',
-                    WebkitMaskPosition: 'center'
-                  }} />
-                  
-                  {/* Signature Text */}
-                  
-                  
-                  {/* Photographer Image */}
-                  <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Photographer" className="absolute inset-0 w-full h-full object-contain scale-100" style={{
-                    objectPosition: '80% 70%',
-                    maskImage: `url('/images/hero-shape.png')`,
-                    WebkitMaskImage: `url('/images/hero-shape.png')`,
-                    maskSize: '100% 100%',
-                    WebkitMaskSize: '100% 100%',
-                    maskRepeat: 'no-repeat',
-                    WebkitMaskRepeat: 'no-repeat',
-                    maskPosition: 'center',
-                    WebkitMaskPosition: 'center'
-                  }} />
-                  
-                  {/* Floating Action Buttons - Left Edge of Shape, Vertically Centered */}
-                  
+            {/* Right Column - Image */}
+            <motion.div 
+              className="relative flex justify-center lg:justify-end"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.4 }}
+            >
+              <div className="relative w-full max-w-[500px] lg:max-w-[600px]">
+                {/* Image Container with Rounded Corners */}
+                <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-red-500/20 to-transparent">
+                  <img 
+                    src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
+                    alt="Photographer" 
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                  />
+                  {/* Overlay Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
+
+                {/* Decorative Element */}
+                <motion.div 
+                  className="absolute -bottom-4 -left-4 w-16 h-16 md:w-20 md:h-20 bg-red-500 rounded-full flex items-center justify-center"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.8, type: "spring" }}
+                >
+                  <ArrowRight className="w-8 h-8 text-white -rotate-45" />
+                </motion.div>
               </div>
             </motion.div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20" initial={{
-          opacity: 0
-        }} animate={{
-          opacity: 1
-        }} transition={{
-          delay: 1.2,
-          duration: 0.8
-        }}>
+        <motion.div 
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+        >
           <ScrollIndicator />
         </motion.div>
       </section>
