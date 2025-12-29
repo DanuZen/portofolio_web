@@ -29,34 +29,41 @@ import { FadeContentSimple as FadeContent } from '@/components/ui/FadeContent';
  */
 export default function Home() {
   const featuredProjects = getFeaturedProjects();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   return <>
       <SEOHead />
       
       <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section - Modern Dark Design */}
-      <section id="hero" data-section-theme="dark" className="relative min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
+      <section id="hero" data-section-theme="dark" className="relative min-h-screen w-full overflow-x-hidden" style={{
+        backgroundColor: 'hsl(0, 0%, 8%)'
+      }}>
         <div className="container mx-auto px-6 lg:px-12 min-h-screen flex flex-col justify-center py-24 overflow-hidden">
           {/* Full Width Neon Green Card */}
-          <motion.div 
-            data-section-theme="light"
-            className="relative w-full bg-[#FF3B30] rounded-[2.5rem] px-8 py-6 md:px-12 md:py-8 lg:px-16 lg:py-10 overflow-hidden mb-24"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
+          <motion.div data-section-theme="light" className="relative w-full bg-[#FF3B30] rounded-[2.5rem] px-8 py-6 md:px-12 md:py-8 lg:px-16 lg:py-10 overflow-hidden mb-24" initial={{
+            opacity: 0,
+            y: 50
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            ease: "easeOut"
+          }}>
             {/* Large CREATIVE Title at Top */}
             <FadeContent>
-              <motion.h1 
-                className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-bold text-black leading-[0.9] tracking-tight mb-8 font-akzidenz"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
+              <motion.h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-bold text-black leading-[0.9] tracking-tight mb-8 font-akzidenz" initial={{
+                opacity: 0,
+                x: -50
+              }} animate={{
+                opacity: 1,
+                x: 0
+              }} transition={{
+                duration: 0.8,
+                delay: 0.2
+              }}>
                 CREATIVE
               </motion.h1>
             </FadeContent>
@@ -65,40 +72,49 @@ export default function Home() {
             <FadeContent>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
                 {/* Left - Image with Arrow Icon */}
-                <motion.div 
-                  className="relative"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                >
+                <motion.div className="relative" initial={{
+                  opacity: 0,
+                  y: 30
+                }} animate={{
+                  opacity: 1,
+                  y: 0
+                }} transition={{
+                  duration: 0.8,
+                  delay: 0.4
+                }}>
                   {/* Arrow Icon overlapping top-left of image */}
-                  <motion.div 
-                    className="absolute -top-6 -left-2 md:-left-4 w-16 h-16 md:w-20 md:h-20 bg-black rounded-full flex items-center justify-center z-10"
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
-                  >
+                  <motion.div className="absolute -top-6 -left-2 md:-left-4 w-16 h-16 md:w-20 md:h-20 bg-black rounded-full flex items-center justify-center z-10" initial={{
+                    scale: 0,
+                    rotate: -180
+                  }} animate={{
+                    scale: 1,
+                    rotate: 0
+                  }} transition={{
+                    duration: 0.6,
+                    delay: 0.6,
+                    type: "spring"
+                  }}>
                     <ArrowRight className="w-8 h-8 md:w-10 md:h-10 text-[#FF3B30] -rotate-45" />
                   </motion.div>
 
                   {/* Image Container */}
                   <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white">
-                    <img 
-                      src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                      alt="Creative Team" 
-                      className="absolute inset-0 w-full h-full object-cover object-center"
-                    />
+                    <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Creative Team" className="absolute inset-0 w-full h-full object-cover object-center" />
                   </div>
                 </motion.div>
 
                 {/* Right - BRIEF Title and Description */}
-                <motion.div 
-                  className="space-y-6"
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                >
-                  <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-bold text-black leading-[0.9] tracking-tight font-akzidenz">
+                <motion.div className="space-y-6" initial={{
+                  opacity: 0,
+                  x: 50
+                }} animate={{
+                  opacity: 1,
+                  x: 0
+                }} transition={{
+                  duration: 0.8,
+                  delay: 0.5
+                }}>
+                  <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold text-black leading-[0.9] tracking-tight font-akzidenz xl:text-8xl">
                     BRIEF
                   </h2>
                   <p className="text-black/80 text-base md:text-lg lg:text-xl max-w-md leading-relaxed">
@@ -155,11 +171,7 @@ export default function Home() {
                     <ArrowRight className="w-8 h-8 md:w-12 md:h-12 text-[#FF3B30] -rotate-45" />
                   </div>
                   
-                  <img 
-                    src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                    alt="About Me" 
-                    className="w-full h-full object-cover transition-opacity duration-500"
-                  />
+                  <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="About Me" className="w-full h-full object-cover transition-opacity duration-500" />
                 </div>
               </div>
             </FadeContent>
