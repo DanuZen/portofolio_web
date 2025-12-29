@@ -120,12 +120,6 @@ export default function Home() {
                   <p className="text-black/80 text-base md:text-lg lg:text-xl max-w-md leading-relaxed">
                     Menciptakan produk digital yang estetis, fungsional, dan responsif. Menggabungkan kemampuan teknis dan kreativitas visual untuk menghadirkan solusi digital yang modern.
                   </p>
-                  <a 
-                    href={`mailto:${photographerInfo.email}`} 
-                    className="inline-block mt-4 px-6 py-3 bg-black text-white font-bold text-sm md:text-base tracking-wide hover:bg-red-500 transition-all duration-300"
-                  >
-                    CONTACT ME
-                  </a>
                 </motion.div>
               </div>
             </FadeContent>
