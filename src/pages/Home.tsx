@@ -52,7 +52,7 @@ export default function Home() {
             {/* Large CREATIVE Title at Top */}
             <FadeContent>
               <motion.h1 
-                className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-black italic text-black leading-[0.85] tracking-tighter mb-8 font-akzidenz"
+                className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-normal text-black leading-[0.9] tracking-tight mb-8 font-bebas"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}

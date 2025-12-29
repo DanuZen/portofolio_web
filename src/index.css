@@ -116,6 +116,7 @@ All colors MUST be HSL.
   --font-display: 'Oxanium', sans-serif;
   --font-sans: 'Oxanium', sans-serif;
   --font-akzidenz: 'AkzidenzGroteskBE-Bold', sans-serif;
+  --font-bebas: 'Bebas Neue', sans-serif;
   
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
