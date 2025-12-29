@@ -108,7 +108,7 @@ export default function Home() {
               </div>
             </FadeContent>
 
-            {/* Scroll Indicator - Moved here */}
+            {/* Scroll Indicator */}
             <FadeContent>
               <div className="flex justify-center pt-20 md:pt-28">
                 <ScrollIndicator className="text-black hover:text-black/70" />
@@ -116,55 +116,64 @@ export default function Home() {
             </FadeContent>
           </motion.div>
 
-          {/* About Me Section - Moved Outside Red Card */}
+          {/* About Me Section - Redesigned */}
           <div id="about" className="w-full px-6 lg:px-8 pb-0 mt-24 md:mt-32 scroll-mt-32 md:scroll-mt-40">
-            {/* Top Row: Title Left, Text Right */}
             <FadeContent>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-4 md:mb-8 lg:mb-4">
-                {/* Left: Title */}
-                <div>
-                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.85] font-akzidenz">
-                    <span className="block text-white">TENTANG</span>
-                    <span className="block text-white">SAYA</span>
-                  </h2>
-                </div>
+              {/* Title - Full Width */}
+              <div className="mb-12 md:mb-16">
+                <h2 className="text-6xl md:text-7xl lg:text-8xl font-black italic tracking-tighter leading-[0.85] font-akzidenz text-white">
+                  TENTANG SAYA
+                </h2>
+              </div>
 
-                {/* Right: Description */}
-                <div className="flex flex-col justify-end">
-                  <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed max-w-xl">
+              {/* Grid Layout */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start lg:items-stretch">
+                {/* Left Column: Text & Tags */}
+                <div className="space-y-8">
+                  <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed">
                     Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan.
                   </p>
+                  
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-4 pt-4">
+                    <div className="px-6 py-2 rounded-full border border-white/20 text-white text-sm md:text-base hover:bg-white/10 transition-colors cursor-default">
+                      Web Development
+                    </div>
+                    <div className="px-6 py-2 rounded-full border border-white/20 text-white text-sm md:text-base hover:bg-white/10 transition-colors cursor-default">
+                      UI/UX Design
+                    </div>
+                    <div className="px-6 py-2 rounded-full border border-white/20 text-white text-sm md:text-base hover:bg-white/10 transition-colors cursor-default">
+                      2024
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </FadeContent>
 
-            {/* Bottom Row: Image with Arrow */}
-            <FadeContent>
-              <div className="relative w-auto aspect-[16/9] md:aspect-[21/9] rounded-[2.5rem] overflow-hidden bg-white mt-8 md:mt-12 lg:mt-16">
-                 {/* Arrow Icon */}
-                <div className="absolute top-6 left-6 md:top-10 md:left-10 w-16 h-16 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center z-10">
-                  <ArrowRight className="w-8 h-8 md:w-12 md:h-12 text-[#FF3B30] -rotate-45" />
+                {/* Right Column: Image */}
+                <div className="relative w-full aspect-square md:aspect-[4/3] lg:aspect-auto lg:h-full rounded-[2.5rem] overflow-hidden bg-white">
+                   {/* Arrow Icon */}
+                  <div className="absolute top-6 left-6 md:top-10 md:left-10 w-16 h-16 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center z-10">
+                    <ArrowRight className="w-8 h-8 md:w-12 md:h-12 text-[#FF3B30] -rotate-45" />
+                  </div>
+                  
+                  <img 
+                    src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
+                    alt="About Me" 
+                    className="w-full h-full object-cover transition-opacity duration-500"
+                  />
                 </div>
-                
-                <img 
-                  src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                  alt="About Me" 
-                  className="w-full h-full object-cover transition-opacity duration-500"
-                />
               </div>
             </FadeContent>
           </div>
         </div>
       </section>
 
-        {/* Image Divider 1 */}
-        <div className="w-full">
-          
-        </div>
+      {/* Image Divider 1 */}
+      <div className="w-full">
+        
+      </div>
 
-
-        {/* Skills, Tools & Approach Section */}
-        <section id="skills" data-section-theme="dark" className="min-h-screen flex items-center relative py-32 md:py-40 overflow-hidden text-slate-50" style={{
+      {/* Skills, Tools & Approach Section */}
+      <section id="skills" data-section-theme="dark" className="min-h-screen flex items-center relative py-32 md:py-40 overflow-hidden text-slate-50" style={{
         backgroundColor: 'hsl(0, 0%, 8%)'
       }}>
           <div className="w-full relative z-10">
@@ -172,7 +181,7 @@ export default function Home() {
             <FadeContent>
               <ScrollReveal>
                 <div className="space-y-8 mb-16 text-center px-6 lg:px-8">
-                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none font-akzidenz">
+                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black italic tracking-tighter leading-[0.85] font-akzidenz">
                     <span className="text-white">SKILLS </span>
                     <span className="text-red-500">& TOOLS</span>
                   </h2>
@@ -230,7 +239,7 @@ export default function Home() {
                     {/* Tailwind */}
                     <div className="w-12 h-12 flex items-center justify-center bg-white/10 rounded-lg hover:bg-white/20 transition-all" title="Tailwind CSS">
                       <svg viewBox="0 0 24 24" className="w-8 h-8 fill-[#06B6D4]">
-                        <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89-2.288-1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
+                        <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
                       </svg>
                     </div>
                     {/* PostgreSQL */}
@@ -282,7 +291,7 @@ export default function Home() {
               <ScrollReveal>
                 <div className="space-y-8 mb-16 text-center px-6 lg:px-8">
                   {/* Bold Title */}
-                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none font-akzidenz">
+                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black italic tracking-tighter leading-[0.85] font-akzidenz">
                     <span className="text-white">PROYEK </span>
                     <span className="text-red-500">UNGGULAN</span>
                   </h2>
@@ -350,7 +359,7 @@ export default function Home() {
              <FadeContent>
                <ScrollReveal>
                 <div className="space-y-8 mb-16 text-center px-6 lg:px-8">
-                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none font-akzidenz">
+                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black italic tracking-tighter leading-[0.85] font-akzidenz">
                     <span className="text-white">HUBUNGI </span><span className="text-red-500">KAMI</span>
                   </h2>
                   <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
@@ -443,6 +452,10 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Image Divider 3 */}
+        <div className="w-full">
+          
+        </div>
       </div>
     </>;
 }
