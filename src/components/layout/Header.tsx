@@ -11,10 +11,11 @@ import LogoDann from '@/assets/LogoDann.png';
 import { useNavigation } from '@/contexts/NavigationContext';
 
 const navLinks = [
-  { name: 'Beranda', path: '/', index: 0 },
-  { name: 'Portfolio', path: '/portfolio', index: 1 },
-  { name: 'Tentang', path: '/about', index: 2 },
-  { name: 'Kontak', path: '/contact', index: 3 },
+  { name: 'Beranda', path: '#hero', index: 0 },
+  { name: 'Tentang', path: '#about', index: 1 },
+  { name: 'Skills', path: '#skills', index: 2 },
+  { name: 'Proyek', path: '#projects', index: 3 },
+  { name: 'Kontak', path: '#contact', index: 4 },
 ];
 
 /**
@@ -54,14 +55,21 @@ export function Header() {
           >
             <Link
               to="/"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#B8FF00] bg-transparent hover:bg-[#B8FF00]/10 transition-all duration-300"
+              className="inline-flex items-center gap-2 transition-opacity duration-300 hover:opacity-80"
             >
-              <span className="text-[#B8FF00] font-bold text-sm tracking-wide">DANN</span>
+              <img 
+                src={LogoDann} 
+                alt="DANN" 
+                className={cn(
+                  "h-8 w-auto object-contain transition-all duration-300",
+                  isLightBackground ? "brightness-0" : ""
+                )} 
+              />
             </Link>
           </motion.div>
 
           {/* Center - Desktop Navigation Pills */}
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="hidden md:flex items-center gap-2 ml-64">
             {navLinks.map((link, index) => {
               const isActive = location.pathname === link.path;
               return (
@@ -73,23 +81,28 @@ export function Header() {
                 >
                   <button
                     onClick={() => {
-                      navigateWithDirection(currentIndex, link.index);
-                      navigate(link.path);
+                      if (link.path.startsWith('#')) {
+                        const element = document.querySelector(link.path);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      } else {
+                        navigateWithDirection(currentIndex, link.index);
+                        navigate(link.path);
+                      }
                     }}
                     className={cn(
                       "relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-300 border",
                       isActive
-                        ? "bg-[#B8FF00] text-black border-[#B8FF00]"
-                        : "bg-transparent text-[#B8FF00] border-[#B8FF00] hover:bg-[#B8FF00]/10"
+                        ? (isLightBackground 
+                            ? "bg-black text-white border-black" 
+                            : "bg-[#FF3B30] text-black border-[#FF3B30]")
+                        : (isLightBackground
+                            ? "bg-transparent text-black border-black hover:bg-black/10"
+                            : "bg-transparent text-[#FF3B30] border-[#FF3B30] hover:bg-[#FF3B30]/10")
                     )}
                   >
                     <span className="flex items-center gap-2">
-                      {isActive && (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                          <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5"/>
-                          <path d="M8 12h8M12 8v8M6 6l2 2M18 6l-2 2M6 18l2-2M18 18l-2-2" stroke="currentColor" strokeWidth="1" fill="none"/>
-                        </svg>
-                      )}
                       {link.name}
                     </span>
                   </button>
@@ -106,10 +119,10 @@ export function Header() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <div className="flex items-center gap-2">
-              <div className="w-32 lg:w-48 h-px bg-[#B8FF00]" />
-              <div className="w-2 h-2 rounded-full bg-[#B8FF00]" />
+              <div className={cn("w-32 lg:w-48 h-px transition-colors duration-300", isLightBackground ? "bg-black" : "bg-[#FF3B30]")} />
+              <div className={cn("w-2 h-2 rounded-full transition-colors duration-300", isLightBackground ? "bg-black" : "bg-[#FF3B30]")} />
             </div>
-            <div className="flex items-center gap-1 text-[#B8FF00]">
+            <div className={cn("flex items-center gap-1 transition-colors duration-300", isLightBackground ? "text-black" : "text-[#FF3B30]")}>
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z"/>
               </svg>
@@ -129,13 +142,18 @@ export function Header() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="size-10 rounded-full border border-[#B8FF00] text-[#B8FF00] hover:bg-[#B8FF00]/10"
+                  className={cn(
+                    "size-10 rounded-full border transition-colors duration-300",
+                    isLightBackground 
+                      ? "border-black text-black hover:bg-black/10" 
+                      : "border-[#FF3B30] text-[#FF3B30] hover:bg-[#FF3B30]/10"
+                  )}
                   aria-label="Open menu"
                 >
                   <Menu className="size-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:w-80 bg-[hsl(0,0%,8%)] border-[#B8FF00]/20">
+              <SheetContent side="right" className="w-full sm:w-80 bg-[hsl(0,0%,8%)] border-[#FF3B30]/20">
                 <nav className="flex flex-col gap-4 mt-8">
                   {navLinks.map((link) => {
                     const isActive = location.pathname === link.path;
@@ -143,15 +161,23 @@ export function Header() {
                       <button
                         key={link.path}
                         onClick={() => {
-                          navigateWithDirection(currentIndex, link.index);
-                          navigate(link.path);
-                          setMobileMenuOpen(false);
+                          if (link.path.startsWith('#')) {
+                            const element = document.querySelector(link.path);
+                            if (element) {
+                              element.scrollIntoView({ behavior: 'smooth' });
+                              setMobileMenuOpen(false);
+                            }
+                          } else {
+                            navigateWithDirection(currentIndex, link.index);
+                            navigate(link.path);
+                            setMobileMenuOpen(false);
+                          }
                         }}
                         className={cn(
                           "text-left px-5 py-3 rounded-full text-base font-bold tracking-wide transition-all duration-300 border",
                           isActive
-                            ? "bg-[#B8FF00] text-black border-[#B8FF00]"
-                            : "bg-transparent text-[#B8FF00] border-[#B8FF00] hover:bg-[#B8FF00]/10"
+                            ? "bg-[#FF3B30] text-black border-[#FF3B30]"
+                            : "bg-transparent text-[#FF3B30] border-[#FF3B30] hover:bg-[#FF3B30]/10"
                         )}
                       >
                         {link.name}

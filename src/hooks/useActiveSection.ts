@@ -20,7 +20,10 @@ export function useActiveSection() {
       // Check which section is at the top of the viewport (where navbar is)
       const navbarHeight = 64; // Height of navbar
       
-      for (const section of sections) {
+      // Convert NodeList to Array and reverse to check deepest children first (nested sections)
+      const sectionsArray = Array.from(sections).reverse();
+
+      for (const section of sectionsArray) {
         const rect = section.getBoundingClientRect();
         // Section is considered active if it covers the navbar area
         if (rect.top <= navbarHeight && rect.bottom > navbarHeight) {

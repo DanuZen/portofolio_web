@@ -1,11 +1,16 @@
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+interface ScrollIndicatorProps {
+  className?: string;
+}
 
 /**
  * Animated scroll indicator for hero sections
  * Subtle visual cue to encourage scrolling
  */
-export function ScrollIndicator() {
+export function ScrollIndicator({ className }: ScrollIndicatorProps) {
   const handleScroll = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -16,7 +21,7 @@ export function ScrollIndicator() {
   return (
     <motion.button
       onClick={handleScroll}
-      className="flex flex-col items-center gap-2 text-white/80 hover:text-white transition-colors cursor-pointer"
+      className={cn("flex flex-col items-center gap-2 text-white/80 hover:text-white transition-colors cursor-pointer", className)}
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1, duration: 0.8 }}

@@ -104,9 +104,18 @@ All colors MUST be HSL.
   --ds-shadow-border-small: var(--ds-shadow-border), var(--ds-shadow-small);
 }
 
+@font-face {
+  font-family: 'AkzidenzGroteskBE-Bold';
+  src: url('./assets/AkzidenzGroteskBE-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-display: 'Oxanium', sans-serif;
   --font-sans: 'Oxanium', sans-serif;
+  --font-akzidenz: 'AkzidenzGroteskBE-Bold', sans-serif;
   
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
