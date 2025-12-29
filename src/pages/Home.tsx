@@ -99,7 +99,7 @@ export default function Home() {
 
                   {/* Image Container */}
                   <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white">
-                    <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Creative Team" className="absolute inset-0 w-full h-full object-cover object-center" />
+                    <img src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" alt="Creative Team" className="absolute inset-0 w-full h-full object-center object-contain" />
                   </div>
                 </motion.div>
 
