@@ -40,11 +40,11 @@ export default function Home() {
       <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section - Modern Dark Design */}
       <section id="hero" data-section-theme="dark" className="relative min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
-        <div className="container mx-auto px-6 lg:px-12 min-h-screen flex items-center py-24 overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-12 min-h-screen flex flex-col justify-center py-24 overflow-hidden">
           {/* Full Width Neon Green Card */}
           <motion.div 
             data-section-theme="light"
-            className="relative w-full bg-[#FF3B30] rounded-[2.5rem] p-8 md:p-12 lg:p-16 overflow-hidden"
+            className="relative w-full bg-[#FF3B30] rounded-[2.5rem] px-8 py-6 md:px-12 md:py-8 lg:px-16 lg:py-10 overflow-hidden mb-24"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -110,50 +110,50 @@ export default function Home() {
 
             {/* Scroll Indicator - Moved here */}
             <FadeContent>
-              <div className="flex justify-center pt-12 pb-64">
+              <div className="flex justify-center pt-20 md:pt-28">
                 <ScrollIndicator className="text-black hover:text-black/70" />
               </div>
             </FadeContent>
-
-            {/* About Me Section - Redesigned */}
-            <div id="about" className="px-6 lg:px-8 pb-0">
-              {/* Top Row: Title Left, Text Right */}
-              <FadeContent>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-4 md:mb-8 lg:mb-4">
-                  {/* Left: Title */}
-                  <div>
-                    <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.85] font-akzidenz">
-                      <span className="block text-black">TENTANG</span>
-                      <span className="block text-black">SAYA</span>
-                    </h2>
-                  </div>
-
-                  {/* Right: Description */}
-                  <div className="flex flex-col justify-end">
-                    <p className="text-black/80 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-                      Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan.
-                    </p>
-                  </div>
-                </div>
-              </FadeContent>
-
-              {/* Bottom Row: Image with Arrow */}
-              <FadeContent>
-                <div className="relative w-auto aspect-[16/9] md:aspect-[21/9] rounded-t-[2.5rem] rounded-b-none overflow-hidden bg-black/5 translate-y-8 md:translate-y-12 lg:translate-y-16">
-                   {/* Arrow Icon */}
-                  <div className="absolute top-6 left-6 md:top-10 md:left-10 w-16 h-16 md:w-24 md:h-24 bg-[#1a1a1a] rounded-full flex items-center justify-center z-10">
-                    <ArrowRight className="w-8 h-8 md:w-12 md:h-12 text-[#FF3B30] -rotate-45" />
-                  </div>
-                  
-                  <img 
-                    src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                    alt="About Me" 
-                    className="w-full h-full object-cover transition-opacity duration-500"
-                  />
-                </div>
-              </FadeContent>
-            </div>
           </motion.div>
+
+          {/* About Me Section - Moved Outside Red Card */}
+          <div id="about" className="w-full px-6 lg:px-8 pb-0 mt-24 md:mt-32 scroll-mt-32 md:scroll-mt-40">
+            {/* Top Row: Title Left, Text Right */}
+            <FadeContent>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-4 md:mb-8 lg:mb-4">
+                {/* Left: Title */}
+                <div>
+                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.85] font-akzidenz">
+                    <span className="block text-white">TENTANG</span>
+                    <span className="block text-white">SAYA</span>
+                  </h2>
+                </div>
+
+                {/* Right: Description */}
+                <div className="flex flex-col justify-end">
+                  <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed max-w-xl">
+                    Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan.
+                  </p>
+                </div>
+              </div>
+            </FadeContent>
+
+            {/* Bottom Row: Image with Arrow */}
+            <FadeContent>
+              <div className="relative w-auto aspect-[16/9] md:aspect-[21/9] rounded-[2.5rem] overflow-hidden bg-white mt-8 md:mt-12 lg:mt-16">
+                 {/* Arrow Icon */}
+                <div className="absolute top-6 left-6 md:top-10 md:left-10 w-16 h-16 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center z-10">
+                  <ArrowRight className="w-8 h-8 md:w-12 md:h-12 text-[#FF3B30] -rotate-45" />
+                </div>
+                
+                <img 
+                  src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
+                  alt="About Me" 
+                  className="w-full h-full object-cover transition-opacity duration-500"
+                />
+              </div>
+            </FadeContent>
+          </div>
         </div>
       </section>
 

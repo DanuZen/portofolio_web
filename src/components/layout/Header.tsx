@@ -92,14 +92,14 @@ export function Header() {
                       }
                     }}
                     className={cn(
-                      "relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-300 border",
+                      "relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-300",
                       isActive
                         ? (isLightBackground 
-                            ? "bg-black text-white border-black" 
-                            : "bg-[#FF3B30] text-black border-[#FF3B30]")
+                            ? "bg-black text-white" 
+                            : "bg-[#FF3B30] text-black")
                         : (isLightBackground
-                            ? "bg-transparent text-black border-black hover:bg-black/10"
-                            : "bg-transparent text-[#FF3B30] border-[#FF3B30] hover:bg-[#FF3B30]/10")
+                            ? "bg-transparent text-black hover:bg-black/10"
+                            : "bg-transparent text-white hover:bg-white/10")
                     )}
                   >
                     <span className="flex items-center gap-2">
@@ -119,10 +119,10 @@ export function Header() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <div className="flex items-center gap-2">
-              <div className={cn("w-32 lg:w-48 h-px transition-colors duration-300", isLightBackground ? "bg-black" : "bg-[#FF3B30]")} />
-              <div className={cn("w-2 h-2 rounded-full transition-colors duration-300", isLightBackground ? "bg-black" : "bg-[#FF3B30]")} />
+              <div className={cn("w-32 lg:w-48 h-px transition-colors duration-300", isLightBackground ? "bg-black" : "bg-white")} />
+              <div className={cn("w-2 h-2 rounded-full transition-colors duration-300", isLightBackground ? "bg-black" : "bg-white")} />
             </div>
-            <div className={cn("flex items-center gap-1 transition-colors duration-300", isLightBackground ? "text-black" : "text-[#FF3B30]")}>
+            <div className={cn("flex items-center gap-1 transition-colors duration-300", isLightBackground ? "text-black" : "text-white")}>
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z"/>
               </svg>

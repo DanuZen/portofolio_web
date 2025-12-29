@@ -107,9 +107,10 @@ export function FadeContentSimple({ children, className, threshold = 200 }: Fade
     // We want opacity 1 at progress 0, and opacity 0 at progress 1.
     
     const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+    const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
     return (
-        <motion.div ref={ref} style={{ opacity }} className={className}>
+        <motion.div ref={ref} style={{ opacity, y }} className={className}>
             {children}
         </motion.div>
     );
