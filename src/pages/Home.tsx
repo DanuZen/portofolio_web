@@ -114,7 +114,7 @@ export default function Home() {
                   duration: 0.8,
                   delay: 0.5
                 }}>
-                  <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold text-black leading-[0.9] tracking-tight font-akzidenz xl:text-8xl">
+                  <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-[0.9] tracking-tight font-akzidenz text-slate-50 xl:text-9xl">
                     BRIEF
                   </h2>
                   <p className="text-black/80 text-base md:text-lg lg:text-xl max-w-md leading-relaxed">
