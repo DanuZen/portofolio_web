@@ -63,7 +63,7 @@ export default function Home() {
               }} transition={{
                 duration: 0.8,
                 delay: 0.2
-              }} className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-[0.9] tracking-tight mb-8 font-akzidenz text-slate-50 xl:text-9xl">
+              }} className="text-6xl sm:text-7xl md:text-8xl lg:text-[12rem] xl:text-[14rem] font-bold leading-[0.9] tracking-tight mb-8 font-akzidenz text-slate-50">
                 DANN
               </motion.h1>
             </FadeContent>
