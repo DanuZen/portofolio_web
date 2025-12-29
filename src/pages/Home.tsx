@@ -54,7 +54,7 @@ export default function Home() {
           }}>
             {/* Large CREATIVE Title at Top */}
             <FadeContent>
-              <motion.h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-bold text-black leading-[0.9] tracking-tight mb-8 font-akzidenz" initial={{
+              <motion.h1 initial={{
                 opacity: 0,
                 x: -50
               }} animate={{
@@ -63,8 +63,8 @@ export default function Home() {
               }} transition={{
                 duration: 0.8,
                 delay: 0.2
-              }}>
-                CREATIVE
+              }} className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-[0.9] tracking-tight mb-8 font-akzidenz text-slate-50 xl:text-9xl">
+                DANN
               </motion.h1>
             </FadeContent>
 
