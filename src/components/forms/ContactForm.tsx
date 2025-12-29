@@ -146,17 +146,7 @@ export function ContactForm() {
         {/* Project Type Select */}
         <FormField control={form.control} name="projectType" render={({
         field
-      }) => (
-          <FormItem>
-            <FormLabel className="text-sm font-light tracking-wide text-white/70">
-              Tipe Proyek
-            </FormLabel>
-            <FormControl>
-              <Input placeholder="commercial / editorial / personal" className="font-light bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500" {...field} />
-            </FormControl>
-            <FormMessage className="text-xs font-light text-red-400" />
-          </FormItem>
-        )} />
+      }) => {}} />
 
         {/* Message Textarea */}
         <FormField control={form.control} name="message" render={({
