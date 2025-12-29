@@ -137,9 +137,8 @@ export default function Home() {
             <FadeContent>
               {/* Title - Full Width */}
               <div className="mb-12 md:mb-16">
-                <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.9] font-akzidenz text-white">
-                  TENTANG SAYA
-                </h2>
+                <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.9] font-akzidenz text-white">TENTANG 
+SAYA</h2>
               </div>
 
               {/* Grid Layout */}
