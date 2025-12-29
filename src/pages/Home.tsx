@@ -119,7 +119,7 @@ export default function Home() {
 & DESAIN GRAFIS   
  
                   </h2>
-                  <p className="text-black/80 text-base md:text-lg lg:text-xl max-w-md leading-relaxed">
+                  <p className="text-black/80 text-base md:text-lg lg:text-xl max-w-md leading-relaxed text-justify mx-0 px-0 font-bold">
                     Menciptakan produk digital yang estetis, fungsional, dan responsif. Menggabungkan kemampuan teknis dan kreativitas visual untuk menghadirkan solusi digital yang modern.
                   </p>
                 </motion.div>
