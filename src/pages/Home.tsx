@@ -98,7 +98,7 @@ export default function Home() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 >
-                  <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-black italic text-black leading-[0.85] tracking-tighter font-akzidenz">
+                  <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-bold text-black leading-[0.9] tracking-tight font-akzidenz">
                     BRIEF
                   </h2>
                   <p className="text-black/80 text-base md:text-lg lg:text-xl max-w-md leading-relaxed">
@@ -121,7 +121,7 @@ export default function Home() {
             <FadeContent>
               {/* Title - Full Width */}
               <div className="mb-12 md:mb-16">
-                <h2 className="text-6xl md:text-7xl lg:text-8xl font-black italic tracking-tighter leading-[0.85] font-akzidenz text-white">
+                <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] font-akzidenz text-white">
                   TENTANG SAYA
                 </h2>
               </div>
@@ -181,7 +181,7 @@ export default function Home() {
             <FadeContent>
               <ScrollReveal>
                 <div className="space-y-8 mb-16 text-center px-6 lg:px-8">
-                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black italic tracking-tighter leading-[0.85] font-akzidenz">
+                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] font-akzidenz">
                     <span className="text-white">SKILLS </span>
                     <span className="text-red-500">& TOOLS</span>
                   </h2>
@@ -291,7 +291,7 @@ export default function Home() {
               <ScrollReveal>
                 <div className="space-y-8 mb-16 text-center px-6 lg:px-8">
                   {/* Bold Title */}
-                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black italic tracking-tighter leading-[0.85] font-akzidenz">
+                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] font-akzidenz">
                     <span className="text-white">PROYEK </span>
                     <span className="text-red-500">UNGGULAN</span>
                   </h2>
@@ -359,7 +359,7 @@ export default function Home() {
              <FadeContent>
                <ScrollReveal>
                 <div className="space-y-8 mb-16 text-center px-6 lg:px-8">
-                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-black italic tracking-tighter leading-[0.85] font-akzidenz">
+                  <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] font-akzidenz">
                     <span className="text-white">HUBUNGI </span><span className="text-red-500">KAMI</span>
                   </h2>
                   <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
