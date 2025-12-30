@@ -112,10 +112,19 @@ All colors MUST be HSL.
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'AkzidenzGroteskBE-Super';
+  src: url('./assets/AkzidenzGroteskBE-Super.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-display: 'Oxanium', sans-serif;
   --font-sans: 'Oxanium', sans-serif;
-  --font-akzidenz: 'AkzidenzGroteskBE-Bold', sans-serif;
+  --font-akzidenz: 'AkzidenzGroteskBE-Super', sans-serif;
+  --font-akzidenz-bold: 'AkzidenzGroteskBE-Bold', sans-serif;
   --font-bebas: 'Bebas Neue', sans-serif;
   
   --color-background: hsl(var(--background));

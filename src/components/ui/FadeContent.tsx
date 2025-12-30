@@ -99,15 +99,15 @@ export function FadeContentSimple({ children, className, threshold = 200 }: Fade
     const ref = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start 120px", "start 60px"]
+        offset: ["start 50px", "start -50px"]
     });
     
-    // When scroll is at "start 100px" (element top is 100px from top of viewport), progress is 0.
+    // When scroll is at "start 150px" (element top is 150px from top of viewport), progress is 0.
     // When scroll is at "start 0px" (element top is at top of viewport), progress is 1.
     // We want opacity 1 at progress 0, and opacity 0 at progress 1.
     
     const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-    const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+    const y = useTransform(scrollYProgress, [0, 1], [0, -25]);
 
     return (
         <motion.div ref={ref} style={{ opacity, y }} className={className}>

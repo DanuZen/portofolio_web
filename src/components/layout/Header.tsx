@@ -92,7 +92,7 @@ export function Header() {
                       }
                     }}
                     className={cn(
-                      "relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-300",
+                      "relative px-5 py-2.5 rounded-full text-sm font-black font-akzidenz tracking-wide transition-all duration-300",
                       isActive
                         ? (isLightBackground 
                             ? "bg-black text-white" 
@@ -143,10 +143,10 @@ export function Header() {
                   variant="ghost"
                   size="icon"
                   className={cn(
-                    "size-10 rounded-full border transition-colors duration-300",
+                    "size-10 transition-colors duration-300",
                     isLightBackground 
-                      ? "border-black text-black hover:bg-black/10" 
-                      : "border-[#FF3B30] text-[#FF3B30] hover:bg-[#FF3B30]/10"
+                      ? "text-black hover:bg-black/10" 
+                      : "text-white hover:bg-white/10"
                   )}
                   aria-label="Open menu"
                 >
@@ -154,7 +154,10 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-full sm:w-80 bg-[hsl(0,0%,8%)] border-[#FF3B30]/20">
-                <nav className="flex flex-col gap-4 mt-8">
+                <div className="px-5 pt-10 pb-4">
+                  <img src={LogoDann} alt="DANN" className="h-6 w-auto" />
+                </div>
+                <nav className="flex flex-col gap-4 mt-2">
                   {navLinks.map((link) => {
                     const isActive = location.pathname === link.path;
                     return (
@@ -174,10 +177,10 @@ export function Header() {
                           }
                         }}
                         className={cn(
-                          "text-left px-5 py-3 rounded-full text-base font-bold tracking-wide transition-all duration-300 border",
+                          "text-left px-5 py-4 text-4xl font-black font-akzidenz uppercase tracking-tighter transition-all duration-300",
                           isActive
-                            ? "bg-[#FF3B30] text-black border-[#FF3B30]"
-                            : "bg-transparent text-[#FF3B30] border-[#FF3B30] hover:bg-[#FF3B30]/10"
+                            ? "bg-[#FF3B30] text-black"
+                            : "bg-transparent text-white hover:text-[#FF3B30]"
                         )}
                       >
                         {link.name}
