@@ -146,7 +146,26 @@ export function ContactForm() {
         {/* Project Type Select */}
         <FormField control={form.control} name="projectType" render={({
         field
-      }) => {}} />
+      }) => (
+          <FormItem>
+            <FormLabel className="text-sm font-light tracking-wide text-white/70">
+              Jenis Proyek
+            </FormLabel>
+            <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <FormControl>
+                <SelectTrigger className="font-light bg-white/5 border-white/20 text-white focus:border-red-500">
+                  <SelectValue placeholder="Pilih jenis proyek" />
+                </SelectTrigger>
+              </FormControl>
+              <SelectContent>
+                <SelectItem value="editorial">Editorial</SelectItem>
+                <SelectItem value="commercial">Commercial</SelectItem>
+                <SelectItem value="personal">Personal</SelectItem>
+              </SelectContent>
+            </Select>
+            <FormMessage className="text-xs font-light text-red-400" />
+          </FormItem>
+        )} />
 
         {/* Message Textarea */}
         <FormField control={form.control} name="message" render={({
