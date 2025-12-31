@@ -11,6 +11,7 @@ import { ContactForm } from '@/components/forms/ContactForm';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { SocialIcon } from '@/components/SocialIcon';
 import heroBg from '@/assets/hero-bg.jpg';
 import LogoDann from '@/assets/LogoDann.png';
 import Pembatas1 from '@/assets/Pembatas1.png';
@@ -111,19 +112,11 @@ export default function Home() {
                   </p>
                   </FadeContent>
                   <FadeContent>
-                    <div className="flex gap-5 mt-12">
-                      <a href="#" className="text-white hover:text-black transition-colors">
-                        <Youtube className="w-6 h-6 md:w-7 md:h-7" />
-                      </a>
-                      <a href="#" className="text-white hover:text-black transition-colors">
-                        <Instagram className="w-6 h-6 md:w-7 md:h-7" />
-                      </a>
-                      <a href="#" className="text-white hover:text-black transition-colors">
-                        <Github className="w-6 h-6 md:w-7 md:h-7" />
-                      </a>
-                      <a href="#" className="text-white hover:text-black transition-colors">
-                        <Linkedin className="w-6 h-6 md:w-7 md:h-7" />
-                      </a>
+                    <div className="flex gap-1 mt-12">
+                      <SocialIcon icon={Youtube} name="YouTube" />
+                      <SocialIcon icon={Instagram} name="Instagram" />
+                      <SocialIcon icon={Github} name="GitHub" />
+                      <SocialIcon icon={Linkedin} name="LinkedIn" />
                     </div>
                   </FadeContent>
                 </motion.div>
