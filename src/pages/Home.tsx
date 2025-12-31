@@ -12,6 +12,7 @@ import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { SocialIcon } from '@/components/SocialIcon';
+import { ParallaxSection } from '@/components/ui/ParallaxSection';
 import heroBg from '@/assets/hero-bg.jpg';
 import LogoDann from '@/assets/LogoDann.png';
 import Pembatas1 from '@/assets/Pembatas1.png';
@@ -24,7 +25,6 @@ import image4 from '@/assets/image4.png';
 import image5 from '@/assets/image5.png';
 import image6 from '@/assets/image6.png';
 import { FadeContentSimple as FadeContent } from '@/components/ui/FadeContent';
-
 /**
  * Homepage with immersive hero section and featured projects grid
  * Showcases photographer's best work with minimal, elegant design
@@ -182,10 +182,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Image Divider 1 */}
-      <div className="w-full">
-        
-      </div>
+      {/* Image Divider 1 - Parallax */}
+      <ParallaxSection 
+        backgroundImage={Pembatas1} 
+        className="h-[50vh] md:h-[70vh]"
+        speed={0.4}
+      />
 
       {/* Skills, Tools & Approach Section */}
       <section id="skills" data-section-theme="dark" className="min-h-screen flex items-center relative py-32 md:py-40 overflow-hidden text-slate-50" style={{
@@ -254,10 +256,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Image Divider 3 */}
-        <div className="w-full">
-          
-        </div>
+        {/* Image Divider 2 - Parallax */}
+        <ParallaxSection 
+          backgroundImage={Pembatas2} 
+          className="h-[50vh] md:h-[70vh]"
+          speed={0.3}
+        />
 
         {/* Featured Projects Section - Bold Header + Gallery */}
         <section id="projects" data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40" style={{
@@ -425,10 +429,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Image Divider 3 */}
-        <div className="w-full">
-          
-        </div>
+        {/* Image Divider 3 - Parallax */}
+        <ParallaxSection 
+          backgroundImage={Pembatas3} 
+          className="h-[50vh] md:h-[70vh]"
+          speed={0.35}
+        />
       </div>
     </>;
 }
