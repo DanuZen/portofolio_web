@@ -14,7 +14,7 @@ export function SocialIcon({ icon: Icon, name, href = '#' }: SocialIconProps) {
   return (
     <motion.a
       href={href}
-      className="flex items-center gap-2 text-white hover:text-black transition-colors py-2 px-2 rounded-md"
+      className="flex items-center gap-2 text-white/70 hover:text-white transition-colors py-2 px-2 rounded-md"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       layout
