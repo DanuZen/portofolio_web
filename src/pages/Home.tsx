@@ -6,9 +6,7 @@ import { ProjectCard } from '@/components/portfolio/ProjectCard';
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SEOHead } from '@/components/seo/SEOHead';
-import { ArrowRight, Youtube, Instagram, Github, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
-import { ContactForm } from '@/components/forms/ContactForm';
-import { Separator } from '@/components/ui/separator';
+import { ArrowRight, Youtube, Instagram, Github, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { SocialIcon } from '@/components/SocialIcon';
@@ -17,7 +15,6 @@ import heroBg from '@/assets/hero-bg.jpg';
 import LogoDann from '@/assets/LogoDann.png';
 import Pembatas1 from '@/assets/Pembatas1.png';
 import Pembatas2 from '@/assets/Pembatas2.png';
-import Pembatas3 from '@/assets/Pembatas3.png';
 import image1 from '@/assets/image1.png';
 import image2 from '@/assets/image2.png';
 import image3 from '@/assets/image3.png';
@@ -328,113 +325,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section id="contact" data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40" style={{
-        backgroundColor: 'hsl(0, 0%, 8%)'
-      }}>
-          <div className="w-full">
-             <FadeContent>
-               <ScrollReveal>
-                <div className="space-y-8 mb-16 text-center px-6 lg:px-8">
-                  <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.9] font-akzidenz">
-                    <span className="text-white">HUBUNGI </span><span className="text-red-500">KAMI</span>
-                  </h2>
-                  <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-                    Mari diskusikan proyek Anda selanjutnya
-                  </p>
-                </div>
-              </ScrollReveal>
-            </FadeContent>
-
-            <div className="max-w-5xl mx-auto px-6 lg:px-8">
-              <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-                {/* Contact Form */}
-                <FadeContent>
-                  <ScrollReveal delay={0.2}>
-                    <div className="space-y-6">
-                      <div className="space-y-3">
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white">
-                          Kirim <span className="text-red-500">Pesan</span>
-                        </h2>
-                      </div>
-                      <ContactForm />
-                    </div>
-                  </ScrollReveal>
-                </FadeContent>
-
-                {/* Contact Information */}
-                <FadeContent>
-                  <ScrollReveal delay={0.4}>
-                    <div className="space-y-8">
-                      <div className="space-y-1">
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white">
-                          Informasi <span className="text-red-500">Kontak</span>
-                        </h2>
-                      </div>
-
-                      <Separator className="bg-white/10" />
-
-                      {/* Contact Details */}
-                      <div className="space-y-6">
-                        {/* Email */}
-                        <div className="flex items-start gap-4">
-                          <div className="p-3 rounded-sm bg-red-600">
-                            <Mail className="size-5 text-white" />
-                          </div>
-                          <div className="space-y-1">
-                            <p className="text-sm font-light tracking-wide text-white/50">
-                              Email
-                            </p>
-                            <a href={`mailto:${photographerInfo.email}`} className="text-base md:text-lg font-light text-white hover:text-white/70 transition-colors">
-                              {photographerInfo.email}
-                            </a>
-                          </div>
-                        </div>
-
-                        {/* Phone */}
-                        <div className="flex items-start gap-4">
-                          <div className="p-3 rounded-sm bg-red-600">
-                            <Phone className="size-5 text-white" />
-                          </div>
-                          <div className="space-y-1">
-                            <p className="text-sm font-light tracking-wide text-white/50">
-                              Telepon
-                            </p>
-                            <a href={`tel:${photographerInfo.phone}`} className="text-base md:text-lg font-light text-white hover:text-white/70 transition-colors">
-                              {photographerInfo.phone}
-                            </a>
-                          </div>
-                        </div>
-
-                        {/* Location */}
-                        <div className="flex items-start gap-4">
-                          <div className="p-3 rounded-sm bg-red-600">
-                            <MapPin className="size-5 text-white" />
-                          </div>
-                          <div className="space-y-1">
-                            <p className="text-sm font-light tracking-wide text-white/50">
-                              Lokasi
-                            </p>
-                            <p className="text-base md:text-lg font-light text-white">
-                              {photographerInfo.location}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                </FadeContent>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Image Divider 3 - Parallax */}
-        <ParallaxSection 
-          backgroundImage={Pembatas3} 
-          className="h-[50vh] md:h-[70vh]"
-          speed={0.35}
-        />
       </div>
     </>;
 }
