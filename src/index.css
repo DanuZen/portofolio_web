@@ -227,4 +227,87 @@ All colors MUST be HSL.
     writing-mode: vertical-rl;
     text-orientation: mixed;
   }
+
+  /* Glow effects */
+  .glow-red {
+    box-shadow: 0 0 40px rgba(255, 59, 48, 0.4), 0 0 80px rgba(255, 59, 48, 0.2);
+  }
+
+  .glow-white {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.3), 0 0 80px rgba(255, 255, 255, 0.15);
+  }
+
+  /* Text gradient animation */
+  .gradient-text {
+    background: linear-gradient(90deg, #fff, #FF3B30, #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+  }
+
+  /* Pulse glow */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Hover lift */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* 3D rotate on hover */
+  .hover-3d {
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+  }
+
+  .hover-3d:hover {
+    transform: perspective(1000px) rotateY(5deg) rotateX(5deg);
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(255, 59, 48, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(255, 59, 48, 0.6), 0 0 60px rgba(255, 59, 48, 0.3);
+  }
 }
