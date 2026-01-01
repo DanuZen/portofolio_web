@@ -24,6 +24,7 @@ import { TextReveal, CharReveal } from '@/components/ui/TextReveal';
 import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
 import { BlurReveal } from '@/components/ui/BlurReveal';
 import { ScaleReveal } from '@/components/ui/ScaleReveal';
+import { FadeContentSimple as FadeNearNav } from '@/components/ui/FadeContent';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -183,64 +184,70 @@ export default function Home() {
               {/* Left Column: Title, Text & Tags */}
               <div className="flex flex-col justify-center space-y-6">
                 {/* Title */}
-                <BlurReveal>
-                  <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.9] font-akzidenz text-white">
-                    <TextReveal text="TENTANG" delay={0.1} /> 
-                    <br/> 
-                    <span className="text-[#FF3B30]">
-                      <TextReveal text="SAYA" delay={0.3} />
-                    </span>
-                  </h2>
-                </BlurReveal>
+                <FadeNearNav>
+                  <BlurReveal>
+                    <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.9] font-akzidenz text-white">
+                      <TextReveal text="TENTANG" delay={0.1} /> 
+                      <br/> 
+                      <span className="text-[#FF3B30]">
+                        <TextReveal text="SAYA" delay={0.3} />
+                      </span>
+                    </h2>
+                  </BlurReveal>
+                </FadeNearNav>
 
                 {/* Text & Tags */}
-                <BlurReveal delay={0.2} className="space-y-8">
-                  <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed">
-                    Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan.
-                  </p>
-                  
-                  {/* Tags */}
-                  <StaggerContainer staggerDelay={0.1} className="flex flex-wrap gap-4 pt-4">
-                    {['Web Development', 'UI/UX Design', '2024'].map((tag, i) => (
-                      <StaggerItem key={tag} direction="left">
-                        <motion.div 
-                          className="px-6 py-2 rounded-full border border-white/20 text-white text-sm md:text-base cursor-default shimmer"
-                          whileHover={{ 
-                            scale: 1.05, 
-                            borderColor: 'rgba(255, 59, 48, 0.5)',
-                            boxShadow: '0 0 20px rgba(255, 59, 48, 0.3)'
-                          }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          {tag}
-                        </motion.div>
-                      </StaggerItem>
-                    ))}
-                  </StaggerContainer>
-                </BlurReveal>
+                <FadeNearNav>
+                  <BlurReveal delay={0.2} className="space-y-8">
+                    <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed">
+                      Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan.
+                    </p>
+                    
+                    {/* Tags */}
+                    <StaggerContainer staggerDelay={0.1} className="flex flex-wrap gap-4 pt-4">
+                      {['Web Development', 'UI/UX Design', '2024'].map((tag, i) => (
+                        <StaggerItem key={tag} direction="left">
+                          <motion.div 
+                            className="px-6 py-2 rounded-full border border-white/20 text-white text-sm md:text-base cursor-default shimmer"
+                            whileHover={{ 
+                              scale: 1.05, 
+                              borderColor: 'rgba(255, 59, 48, 0.5)',
+                              boxShadow: '0 0 20px rgba(255, 59, 48, 0.3)'
+                            }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {tag}
+                          </motion.div>
+                        </StaggerItem>
+                      ))}
+                    </StaggerContainer>
+                  </BlurReveal>
+                </FadeNearNav>
               </div>
 
               {/* Right Column: Image */}
-              <ScaleReveal delay={0.3} className="relative w-full h-full min-h-[500px] lg:min-h-0 rounded-[2.5rem] overflow-hidden bg-white">
-                {/* Arrow Icon */}
-                <MagneticElement strength={0.3}>
-                  <motion.div 
-                    className="absolute top-6 left-6 md:top-10 md:left-10 w-16 h-16 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center z-10 cursor-pointer"
-                    whileHover={{ scale: 1.2, rotate: 90 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <ArrowRight className="w-8 h-8 md:w-12 md:h-12 text-[#FF3B30] -rotate-45" />
-                  </motion.div>
-                </MagneticElement>
-                
-                <motion.img 
-                  src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                  alt="About Me" 
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.5 }}
-                />
-              </ScaleReveal>
+              <FadeNearNav>
+                <ScaleReveal delay={0.3} className="relative w-full h-full min-h-[500px] lg:min-h-0 rounded-[2.5rem] overflow-hidden bg-white">
+                  {/* Arrow Icon */}
+                  <MagneticElement strength={0.3}>
+                    <motion.div 
+                      className="absolute top-6 left-6 md:top-10 md:left-10 w-16 h-16 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center z-10 cursor-pointer"
+                      whileHover={{ scale: 1.2, rotate: 90 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <ArrowRight className="w-8 h-8 md:w-12 md:h-12 text-[#FF3B30] -rotate-45" />
+                    </motion.div>
+                  </MagneticElement>
+                  
+                  <motion.img 
+                    src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
+                    alt="About Me" 
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </ScaleReveal>
+              </FadeNearNav>
             </div>
           </div>
         </div>
@@ -255,35 +262,38 @@ export default function Home() {
       >
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           {/* Section Header - Split Layout */}
-          <BlurReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
-              {/* Left: Title */}
-              <div>
-                <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.9] font-akzidenz uppercase">
-                  <TextReveal text="MEMBANGUN" delay={0.1} /> <br/>
-                  <TextReveal text="SOLUSI DENGAN" delay={0.2} /> <br/>
-                  <span className="text-[#FF3B30]">
-                    <CharReveal text="SKILLS" delay={0.4} staggerDelay={0.05} />
-                  </span>
-                </h2>
-              </div>
-              
-              {/* Right: Description */}
-              <div className="lg:text-right pt-4">
-                <motion.p 
-                  className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-md ml-auto"
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
+          <FadeNearNav>
+            <BlurReveal>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
+                {/* Left: Title */}
+                <div>
+                  <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.9] font-akzidenz uppercase">
+                    <TextReveal text="MEMBANGUN" delay={0.1} /> <br/>
+                    <TextReveal text="SOLUSI DENGAN" delay={0.2} /> <br/>
+                    <span className="text-[#FF3B30]">
+                      <CharReveal text="SKILLS" delay={0.4} staggerDelay={0.05} />
+                    </span>
+                  </h2>
+                </div>
+                
+                {/* Right: Description */}
+                <div className="lg:text-right pt-4">
+                  <motion.p 
+                    className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-md ml-auto"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                  >
                   Presentations serve as versatile communication tools, utilized for demonstrations, lectures, speeches, reports, and more. Typically delivered before an audience, they fulfill various purposes, making presentations powerful tools for both persuasion and education.
                 </motion.p>
               </div>
             </div>
           </BlurReveal>
+          </FadeNearNav>
 
           {/* Icons Grid */}
+          <FadeNearNav>
           <StaggerContainer staggerDelay={0.15} className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
             {/* Image 4 - Figma (Down) */}
             <StaggerItem direction="up">
@@ -375,6 +385,7 @@ export default function Home() {
               </MagneticElement>
             </StaggerItem>
           </StaggerContainer>
+          </FadeNearNav>
         </div>
       </section>
 
@@ -387,6 +398,7 @@ export default function Home() {
       >
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           {/* Section Header - Split Layout */}
+          <FadeNearNav>
           <BlurReveal>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
               {/* Left: Title */}
@@ -415,6 +427,7 @@ export default function Home() {
               </div>
             </div>
           </BlurReveal>
+          </FadeNearNav>
 
           {/* Projects Grid - Horizontal scrolling layout */}
           <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar">
