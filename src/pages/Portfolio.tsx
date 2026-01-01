@@ -5,7 +5,7 @@ import { SEOHead } from '@/components/seo/SEOHead';
 import { motion } from 'framer-motion';
 import { CategoryFilter } from '@/components/portfolio/CategoryFilter';
 import { useCategories } from '@/hooks/useCategories';
-import Pembatas1 from '@/assets/Pembatas1.png';
+
 
 /**
  * Portfolio page with dynamic category filtering

@@ -4,7 +4,7 @@ import { photographerInfo } from '@/data/photographer';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { Separator } from '@/components/ui/separator';
 import { SEOHead } from '@/components/seo/SEOHead';
-import Pembatas1 from '@/assets/Pembatas1.png';
+
 
 /**
  * Contact page with form and contact information

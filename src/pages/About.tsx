@@ -5,7 +5,7 @@ import { Separator } from '@/components/ui/separator';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import Pembatas1 from '@/assets/Pembatas1.png';
+
 
 /**
  * About page with photographer biography and professional information

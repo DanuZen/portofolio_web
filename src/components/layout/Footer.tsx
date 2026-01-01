@@ -2,15 +2,12 @@ import { Link } from 'react-router-dom';
 import { Linkedin, Youtube, Instagram, Github, User } from 'lucide-react';
 import { photographerInfo } from '@/data/photographer';
 import LogoDannBlack from '@/assets/LogoDannBlack.png';
-import Pembatas1 from '@/assets/Pembatas1.png';
+
 
 export function Footer() {
   return (
     <footer className="pt-0 pb-6 px-6 lg:px-8" style={{ backgroundColor: 'hsl(0, 11%, 91%)' }}>
-      {/* Image Divider - Always above footer */}
-      <div className="w-full -mt-0 -mx-6 lg:-mx-8 mb-6" style={{ marginLeft: 'calc(-1 * (100vw - 100%) / 2)', marginRight: 'calc(-1 * (100vw - 100%) / 2)', width: '100vw' }}>
-        <img src={Pembatas1} alt="" className="w-full h-auto object-cover block" />
-      </div>
+
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Bottom Row - 3 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
