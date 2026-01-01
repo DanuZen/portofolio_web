@@ -10,11 +10,8 @@ import { ArrowRight, Youtube, Instagram, Github, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { SocialIcon } from '@/components/SocialIcon';
-import { ParallaxSection } from '@/components/ui/ParallaxSection';
 import heroBg from '@/assets/hero-bg.jpg';
 import LogoDann from '@/assets/LogoDann.png';
-import Pembatas1 from '@/assets/Pembatas1.png';
-import Pembatas2 from '@/assets/Pembatas2.png';
 import image1 from '@/assets/image1.png';
 import image2 from '@/assets/image2.png';
 import image3 from '@/assets/image3.png';
@@ -179,15 +176,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Image Divider 1 - Parallax */}
-      <ParallaxSection 
-        backgroundImage={Pembatas1} 
-        className="h-[50vh] md:h-[70vh]"
-        speed={0.4}
-      />
-
       {/* Skills, Tools & Approach Section */}
-      <section id="skills" data-section-theme="dark" className="min-h-screen flex items-center relative py-32 md:py-40 overflow-hidden text-slate-50" style={{
+      <section id="skills" data-section-theme="dark" className="min-h-screen flex items-center relative pt-32 md:pt-40 pb-64 md:pb-96 overflow-hidden text-slate-50" style={{
         backgroundColor: 'hsl(0, 0%, 8%)'
       }}>
           <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -215,77 +205,82 @@ export default function Home() {
             </FadeContent>
 
             {/* Icons Grid */}
-            <FadeContent>
-              <ScrollReveal delay={0.2}>
-                <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
-                  {/* Image 4 - Figma (Down) */}
-                  <div className="aspect-square bg-white rounded-[2.5rem] flex items-center justify-center p-6 hover:scale-105 transition-transform duration-300 translate-y-56">
-                    <img src={image4} alt="Figma" className="w-full h-full object-contain" />
-                  </div>
-
-                  {/* Image 1 - Affinity Designer (Up) */}
-                  <div className="aspect-square bg-[#ccff00] rounded-[2.5rem] flex items-center justify-center p-0 hover:scale-105 transition-transform duration-300 overflow-hidden">
-                     <img src={image1} alt="Affinity Designer" className="w-full h-full object-cover" />
-                  </div>
-
-                  {/* Image 6 - PostgreSQL (Down) */}
-                  <div className="aspect-square bg-white rounded-[2.5rem] flex items-center justify-center p-6 hover:scale-105 transition-transform duration-300 translate-y-56">
-                    <img src={image6} alt="PostgreSQL" className="w-full h-full object-contain" />
-                  </div>
-
-                  {/* Image 3 - Adobe Illustrator (Up) */}
-                  <div className="aspect-square bg-[#330000] rounded-[2.5rem] flex items-center justify-center p-0 hover:scale-105 transition-transform duration-300 overflow-hidden">
-                    <img src={image3} alt="Adobe Illustrator" className="w-full h-full object-cover" />
-                  </div>
-
-                  {/* Image 5 - Tailwind/Other (Down) */}
-                  <div className="aspect-square bg-[#0F172A] rounded-[2.5rem] flex items-center justify-center p-0 hover:scale-105 transition-transform duration-300 overflow-hidden translate-y-56">
-                    <img src={image5} alt="Tool" className="w-full h-full object-cover" />
-                  </div>
-
-                  {/* Image 2 - Adobe Photoshop (Up) */}
-                  <div className="aspect-square bg-[#001e36] rounded-[2.5rem] flex items-center justify-center p-0 hover:scale-105 transition-transform duration-300 overflow-hidden">
-                    <img src={image2} alt="Adobe Photoshop" className="w-full h-full object-cover" />
-                  </div>
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
+              {/* Image 4 - Figma (Down) */}
+              <FadeContent>
+                <div className="aspect-square bg-white rounded-[2.5rem] flex items-center justify-center p-6 hover:scale-105 transition-transform duration-300 translate-y-56">
+                  <img src={image4} alt="Figma" className="w-full h-full object-contain" />
                 </div>
-              </ScrollReveal>
-            </FadeContent>
+              </FadeContent>
+
+              {/* Image 1 - Affinity Designer (Up) */}
+              <FadeContent>
+                <div className="aspect-square bg-[#ccff00] rounded-[2.5rem] flex items-center justify-center p-0 hover:scale-105 transition-transform duration-300 overflow-hidden">
+                   <img src={image1} alt="Affinity Designer" className="w-full h-full object-cover" />
+                </div>
+              </FadeContent>
+
+              {/* Image 6 - PostgreSQL (Down) */}
+              <FadeContent>
+                <div className="aspect-square bg-white rounded-[2.5rem] flex items-center justify-center p-6 hover:scale-105 transition-transform duration-300 translate-y-56">
+                  <img src={image6} alt="PostgreSQL" className="w-full h-full object-contain" />
+                </div>
+              </FadeContent>
+
+              {/* Image 3 - Adobe Illustrator (Up) */}
+              <FadeContent>
+                <div className="aspect-square bg-[#330000] rounded-[2.5rem] flex items-center justify-center p-0 hover:scale-105 transition-transform duration-300 overflow-hidden">
+                  <img src={image3} alt="Adobe Illustrator" className="w-full h-full object-cover" />
+                </div>
+              </FadeContent>
+
+              {/* Image 5 - Tailwind/Other (Down) */}
+              <FadeContent>
+                <div className="aspect-square bg-[#0F172A] rounded-[2.5rem] flex items-center justify-center p-0 hover:scale-105 transition-transform duration-300 overflow-hidden translate-y-56">
+                  <img src={image5} alt="Tool" className="w-full h-full object-cover" />
+                </div>
+              </FadeContent>
+
+              {/* Image 2 - Adobe Photoshop (Up) */}
+              <FadeContent>
+                <div className="aspect-square bg-[#001e36] rounded-[2.5rem] flex items-center justify-center p-0 hover:scale-105 transition-transform duration-300 overflow-hidden">
+                  <img src={image2} alt="Adobe Photoshop" className="w-full h-full object-cover" />
+                </div>
+              </FadeContent>
+            </div>
           </div>
         </section>
-
-        {/* Image Divider 2 - Parallax */}
-        <ParallaxSection 
-          backgroundImage={Pembatas2} 
-          className="h-[50vh] md:h-[70vh]"
-          speed={0.3}
-        />
 
         {/* Featured Projects Section - Bold Header + Gallery */}
         <section id="projects" data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40" style={{
         backgroundColor: 'hsl(0, 0%, 8%)'
       }}>
-          <div className="w-full">
-            {/* Bold Title Section */}
+          <div className="container mx-auto px-6 lg:px-12 relative z-10">
+            {/* Section Header - Split Layout */}
             <FadeContent>
               <ScrollReveal>
-                <div className="space-y-8 mb-16 text-center px-6 lg:px-8">
-                  {/* Bold Title */}
-                  <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.9] font-akzidenz">
-                    <span className="text-white">PROYEK </span>
-                    <span className="text-red-500">UNGGULAN</span>
-                  </h2>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
+                  {/* Left: Title */}
+                  <div>
+                    <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.9] font-akzidenz uppercase">
+                      <span className="text-white">PROYEK </span> <br/>
+                      <span className="text-[#FF3B30]">UNGGULAN</span>
+                    </h2>
+                  </div>
                   
-                  {/* Description */}
-                  <p className="text-white text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-                    Koleksi karya fotografi terpilih yang menampilkan keahlian dalam editorial, komersial, dan portrait photography. Setiap proyek dirancang dengan perhatian detail dan visi kreatif yang kuat.
-                  </p>
+                  {/* Right: Description */}
+                  <div className="lg:text-right pt-4">
+                    <p className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-md ml-auto">
+                      Koleksi karya fotografi terpilih yang menampilkan keahlian dalam editorial, komersial, dan portrait photography. Setiap proyek dirancang dengan perhatian detail dan visi kreatif yang kuat.
+                    </p>
+                  </div>
                 </div>
               </ScrollReveal>
             </FadeContent>
 
             {/* Projects Grid - Horizontal scrolling layout */}
             <FadeContent>
-              <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar px-6 lg:px-8">
+              <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar">
                 <motion.div layout className="flex gap-3 justify-center items-center">
                   {featuredProjects.map((project, index) => {
                   const widths = [140, 160, 145, 155, 150, 165, 148, 158];
@@ -314,7 +309,7 @@ export default function Home() {
             {/* View All Link */}
             <FadeContent>
               <ScrollReveal delay={0.4}>
-                <div className="flex justify-center mt-16 px-6 lg:px-8">
+                <div className="flex justify-center mt-16">
                   <Link to="/portfolio" className="inline-flex items-center gap-3 text-xl font-bold text-white hover:text-red-500 transition-colors group">
                     <span>LIHAT SEMUA KARYA</span>
                     <ArrowRight className="size-6 transition-transform group-hover:translate-x-2" />
