@@ -62,7 +62,6 @@ export default function Home() {
         <div className="container mx-auto px-6 lg:px-12 min-h-screen flex flex-col justify-center py-24 overflow-hidden">
           {/* Full Width Neon Green Card */}
           <motion.div 
-            data-section-theme="light"
             className="relative w-full bg-[#FF3B30] rounded-[2.5rem] px-8 pt-8 pb-16 md:px-12 md:pt-12 md:pb-20 lg:px-16 lg:pt-16 lg:pb-24 overflow-hidden mb-24"
             style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
           >
@@ -178,7 +177,7 @@ export default function Home() {
           </motion.div>
 
           {/* About Me Section - Redesigned */}
-          <div id="about" className="w-full pb-0 mt-24 md:mt-32 scroll-mt-32 md:scroll-mt-40">
+          <div id="about" data-section-theme="dark" className="w-full pb-0 mt-24 md:mt-32 scroll-mt-32 md:scroll-mt-40">
             {/* Grid Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
               {/* Left Column: Title, Text & Tags */}
@@ -269,7 +268,7 @@ export default function Home() {
                 <div>
                   <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.9] font-akzidenz uppercase">
                     <TextReveal text="MEMBANGUN" delay={0.1} /> <br/>
-                    <TextReveal text="SOLUSI DENGAN" delay={0.2} /> <br/>
+                    <TextReveal text="SOLUSI DENGAN" delay={0.2} className="whitespace-nowrap" /> <br/>
                     <span className="text-[#FF3B30]">
                       <CharReveal text="SKILLS" delay={0.4} staggerDelay={0.05} />
                     </span>
@@ -294,97 +293,150 @@ export default function Home() {
 
           {/* Icons Grid */}
           <FadeNearNav>
-          <StaggerContainer staggerDelay={0.15} className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
-            {/* Image 4 - Figma (Down) */}
-            <StaggerItem direction="up">
-              <MagneticElement strength={0.2}>
-                <motion.div 
-                  className="aspect-square bg-white rounded-[2.5rem] flex items-center justify-center p-6 translate-y-56 cursor-pointer hover-lift"
-                  whileHover={{ 
-                    scale: 1.1,
-                    boxShadow: '0 20px 60px rgba(255, 255, 255, 0.2)'
-                  }}
-                >
-                  <img src={image4} alt="Figma" className="w-full h-full object-contain" />
-                </motion.div>
-              </MagneticElement>
-            </StaggerItem>
+            <motion.div 
+              className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              {/* Image 4 - Figma (Down) - Row 2 Item 1 */}
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, y: -60, scale: 0.95 },
+                  visible: { 
+                    opacity: 1, y: 0, scale: 1,
+                    transition: { duration: 0.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }
+                  }
+                }}
+              >
+                <MagneticElement strength={0.2}>
+                  <motion.div 
+                    className="aspect-square bg-white rounded-[2.5rem] flex items-center justify-center p-6 translate-y-56 cursor-pointer hover-lift"
+                    whileHover={{ 
+                      scale: 1.1,
+                      boxShadow: '0 0 30px rgba(255, 255, 255, 0.6)'
+                    }}
+                  >
+                    <img src={image4} alt="Figma" className="w-full h-full object-contain" />
+                  </motion.div>
+                </MagneticElement>
+              </motion.div>
 
-            {/* Image 1 - Affinity Designer (Up) */}
-            <StaggerItem direction="down">
-              <MagneticElement strength={0.2}>
-                <motion.div 
-                  className="aspect-square bg-[#ccff00] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
-                  whileHover={{ 
-                    scale: 1.1,
-                    boxShadow: '0 20px 60px rgba(204, 255, 0, 0.3)'
-                  }}
-                >
-                  <img src={image1} alt="Affinity Designer" className="w-full h-full object-cover" />
-                </motion.div>
-              </MagneticElement>
-            </StaggerItem>
+              {/* Image 1 - Affinity Designer (Up) - Row 1 Item 1 */}
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, y: 60, scale: 0.95 },
+                  visible: { 
+                    opacity: 1, y: 0, scale: 1,
+                    transition: { duration: 0.6, delay: 0, ease: [0.22, 1, 0.36, 1] }
+                  }
+                }}
+              >
+                <MagneticElement strength={0.2}>
+                  <motion.div 
+                    className="aspect-square bg-[#ccff00] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
+                    whileHover={{ 
+                      scale: 1.1,
+                      boxShadow: '0 0 30px rgba(204, 255, 0, 0.6)'
+                    }}
+                  >
+                    <img src={image1} alt="Affinity Designer" className="w-full h-full object-cover" />
+                  </motion.div>
+                </MagneticElement>
+              </motion.div>
 
-            {/* Image 6 - PostgreSQL (Down) */}
-            <StaggerItem direction="up">
-              <MagneticElement strength={0.2}>
-                <motion.div 
-                  className="aspect-square bg-white rounded-[2.5rem] flex items-center justify-center p-6 translate-y-56 cursor-pointer hover-lift"
-                  whileHover={{ 
-                    scale: 1.1,
-                    boxShadow: '0 20px 60px rgba(255, 255, 255, 0.2)'
-                  }}
-                >
-                  <img src={image6} alt="PostgreSQL" className="w-full h-full object-contain" />
-                </motion.div>
-              </MagneticElement>
-            </StaggerItem>
+              {/* Image 6 - PostgreSQL (Down) - Row 2 Item 2 */}
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, y: -60, scale: 0.95 },
+                  visible: { 
+                    opacity: 1, y: 0, scale: 1,
+                    transition: { duration: 0.6, delay: 0.9, ease: [0.22, 1, 0.36, 1] }
+                  }
+                }}
+              >
+                <MagneticElement strength={0.2}>
+                  <motion.div 
+                    className="aspect-square bg-white rounded-[2.5rem] flex items-center justify-center p-6 translate-y-56 cursor-pointer hover-lift"
+                    whileHover={{ 
+                      scale: 1.1,
+                      boxShadow: '0 0 30px rgba(255, 255, 255, 0.6)'
+                    }}
+                  >
+                    <img src={image6} alt="PostgreSQL" className="w-full h-full object-contain" />
+                  </motion.div>
+                </MagneticElement>
+              </motion.div>
 
-            {/* Image 3 - Adobe Illustrator (Up) */}
-            <StaggerItem direction="down">
-              <MagneticElement strength={0.2}>
-                <motion.div 
-                  className="aspect-square bg-[#330000] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
-                  whileHover={{ 
-                    scale: 1.1,
-                    boxShadow: '0 20px 60px rgba(255, 59, 48, 0.3)'
-                  }}
-                >
-                  <img src={image3} alt="Adobe Illustrator" className="w-full h-full object-cover" />
-                </motion.div>
-              </MagneticElement>
-            </StaggerItem>
+              {/* Image 3 - Adobe Illustrator (Up) - Row 1 Item 2 */}
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, y: 60, scale: 0.95 },
+                  visible: { 
+                    opacity: 1, y: 0, scale: 1,
+                    transition: { duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }
+                  }
+                }}
+              >
+                <MagneticElement strength={0.2}>
+                  <motion.div 
+                    className="aspect-square bg-[#330000] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
+                    whileHover={{ 
+                      scale: 1.1,
+                      boxShadow: '0 0 30px rgba(255, 59, 48, 0.6)'
+                    }}
+                  >
+                    <img src={image3} alt="Adobe Illustrator" className="w-full h-full object-cover" />
+                  </motion.div>
+                </MagneticElement>
+              </motion.div>
 
-            {/* Image 5 - Tailwind/Other (Down) */}
-            <StaggerItem direction="up">
-              <MagneticElement strength={0.2}>
-                <motion.div 
-                  className="aspect-square bg-[#0F172A] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden translate-y-56 cursor-pointer"
-                  whileHover={{ 
-                    scale: 1.1,
-                    boxShadow: '0 20px 60px rgba(15, 23, 42, 0.4)'
-                  }}
-                >
-                  <img src={image5} alt="Tool" className="w-full h-full object-cover" />
-                </motion.div>
-              </MagneticElement>
-            </StaggerItem>
+              {/* Image 5 - Tailwind/Other (Down) - Row 2 Item 3 */}
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, y: -60, scale: 0.95 },
+                  visible: { 
+                    opacity: 1, y: 0, scale: 1,
+                    transition: { duration: 0.6, delay: 1.0, ease: [0.22, 1, 0.36, 1] }
+                  }
+                }}
+              >
+                <MagneticElement strength={0.2}>
+                  <motion.div 
+                    className="aspect-square bg-[#0F172A] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden translate-y-56 cursor-pointer"
+                    whileHover={{ 
+                      scale: 1.1,
+                      boxShadow: '0 0 30px rgba(56, 189, 248, 0.6)'
+                    }}
+                  >
+                    <img src={image5} alt="Tool" className="w-full h-full object-cover" />
+                  </motion.div>
+                </MagneticElement>
+              </motion.div>
 
-            {/* Image 2 - Adobe Photoshop (Up) */}
-            <StaggerItem direction="down">
-              <MagneticElement strength={0.2}>
-                <motion.div 
-                  className="aspect-square bg-[#001e36] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
-                  whileHover={{ 
-                    scale: 1.1,
-                    boxShadow: '0 20px 60px rgba(0, 30, 54, 0.4)'
-                  }}
-                >
-                  <img src={image2} alt="Adobe Photoshop" className="w-full h-full object-cover" />
-                </motion.div>
-              </MagneticElement>
-            </StaggerItem>
-          </StaggerContainer>
+              {/* Image 2 - Adobe Photoshop (Up) - Row 1 Item 3 */}
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, y: 60, scale: 0.95 },
+                  visible: { 
+                    opacity: 1, y: 0, scale: 1,
+                    transition: { duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }
+                  }
+                }}
+              >
+                <MagneticElement strength={0.2}>
+                  <motion.div 
+                    className="aspect-square bg-[#001e36] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
+                    whileHover={{ 
+                      scale: 1.1,
+                      boxShadow: '0 0 30px rgba(49, 168, 255, 0.6)'
+                    }}
+                  >
+                    <img src={image2} alt="Adobe Photoshop" className="w-full h-full object-cover" />
+                  </motion.div>
+                </MagneticElement>
+              </motion.div>
+            </motion.div>
           </FadeNearNav>
         </div>
       </section>

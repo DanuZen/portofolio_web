@@ -15,7 +15,6 @@ const navLinks = [
   { name: 'Tentang', path: '#about', index: 1 },
   { name: 'Skills', path: '#skills', index: 2 },
   { name: 'Proyek', path: '#projects', index: 3 },
-  { name: 'Kontak', path: '#contact', index: 4 },
 ];
 
 /**
@@ -71,7 +70,10 @@ export function Header() {
           {/* Center - Desktop Navigation Pills */}
           <nav className="hidden md:flex items-center gap-2 ml-64">
             {navLinks.map((link, index) => {
-              const isActive = location.pathname === link.path;
+              // Check if link is active based on current section ID
+              const activeSectionId = useActiveSection().activeSectionId;
+              const isActive = activeSectionId ? link.path === `#${activeSectionId}` : location.pathname === link.path;
+              
               return (
                 <motion.div
                   key={link.path}
@@ -94,9 +96,7 @@ export function Header() {
                     className={cn(
                       "relative px-5 py-2.5 rounded-full text-sm font-black font-akzidenz tracking-wide transition-all duration-300",
                       isActive
-                        ? (isLightBackground 
-                            ? "bg-black text-white" 
-                            : "bg-[#FF3B30] text-black")
+                        ? "text-[#FF3B30]"
                         : (isLightBackground
                             ? "bg-transparent text-black hover:bg-black/10"
                             : "bg-transparent text-white hover:bg-white/10")
@@ -139,27 +139,28 @@ export function Header() {
           <div className="md:hidden">
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
+                <button
                   className={cn(
-                    "size-10 transition-colors duration-300",
+                    "inline-flex items-center justify-center rounded-md size-11 transition-colors duration-300",
                     isLightBackground 
                       ? "text-black hover:bg-black/10" 
                       : "text-white hover:bg-white/10"
                   )}
                   aria-label="Open menu"
                 >
-                  <Menu className="size-5" />
-                </Button>
+                  <Menu className="w-8 h-8" strokeWidth={3} />
+                </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:w-80 bg-[hsl(0,0%,8%)] border-[#FF3B30]/20">
-                <div className="px-5 pt-10 pb-4">
-                  <img src={LogoDann} alt="DANN" className="h-6 w-auto" />
+              <SheetContent side="right" className="w-full sm:w-80 bg-[hsl(0,0%,8%)] border-[#FF3B30]/20 p-0">
+                <div className="px-6 pt-6 pb-4">
+                  <img src={LogoDann} alt="DANN" className="h-8 w-auto" />
                 </div>
                 <nav className="flex flex-col gap-4 mt-2">
                   {navLinks.map((link) => {
-                    const isActive = location.pathname === link.path;
+                    // Check if link is active based on current section ID
+                    const activeSectionId = useActiveSection().activeSectionId;
+                    const isActive = activeSectionId ? link.path === `#${activeSectionId}` : location.pathname === link.path;
+                    
                     return (
                       <button
                         key={link.path}
