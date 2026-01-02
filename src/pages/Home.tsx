@@ -360,11 +360,11 @@ export default function Home() {
                     >
                       <img src={image1} alt="Affinity Designer" className="w-full h-full object-cover" />
                     </motion.div>
-                    <motion.span 
-                      className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white text-sm font-akzidenz-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    <span 
+                      className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-white text-base font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out"
                     >
                       Affinity Designer
-                    </motion.span>
+                    </span>
                   </motion.div>
                 </MagneticElement>
               </motion.div>
@@ -415,11 +415,11 @@ export default function Home() {
                     >
                       <img src={image3} alt="Adobe Illustrator" className="w-full h-full object-cover" />
                     </motion.div>
-                    <motion.span 
-                      className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white text-sm font-akzidenz-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    <span 
+                      className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-white text-base font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out"
                     >
                       Adobe Illustrator
-                    </motion.span>
+                    </span>
                   </motion.div>
                 </MagneticElement>
               </motion.div>
@@ -468,11 +468,11 @@ export default function Home() {
                     >
                       <img src={image2} alt="Adobe Photoshop" className="w-full h-full object-cover" />
                     </motion.div>
-                    <motion.span 
-                      className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white text-sm font-akzidenz-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    <span 
+                      className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-white text-base font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out"
                     >
                       Adobe Photoshop
-                    </motion.span>
+                    </span>
                   </motion.div>
                 </MagneticElement>
               </motion.div>
