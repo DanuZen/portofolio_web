@@ -350,14 +350,21 @@ export default function Home() {
                 }}
               >
                 <MagneticElement strength={0.2}>
-                  <motion.div 
-                    className="aspect-square bg-[#ccff00] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
-                    whileHover={{ 
-                      scale: 1.1,
-                      boxShadow: '0 0 30px rgba(204, 255, 0, 0.6)'
-                    }}
-                  >
-                    <img src={image1} alt="Affinity Designer" className="w-full h-full object-cover" />
+                  <motion.div className="relative group">
+                    <motion.div 
+                      className="aspect-square bg-[#ccff00] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
+                      whileHover={{ 
+                        scale: 1.1,
+                        boxShadow: '0 0 30px rgba(204, 255, 0, 0.6)'
+                      }}
+                    >
+                      <img src={image1} alt="Affinity Designer" className="w-full h-full object-cover" />
+                    </motion.div>
+                    <motion.span 
+                      className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white text-sm font-akzidenz-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    >
+                      Affinity Designer
+                    </motion.span>
                   </motion.div>
                 </MagneticElement>
               </motion.div>
@@ -397,13 +404,22 @@ export default function Home() {
               >
                 <MagneticElement strength={0.2}>
                   <motion.div 
-                    className="aspect-square bg-[#330000] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
-                    whileHover={{ 
-                      scale: 1.1,
-                      boxShadow: '0 0 30px rgba(255, 59, 48, 0.6)'
-                    }}
+                    className="relative group"
                   >
-                    <img src={image3} alt="Adobe Illustrator" className="w-full h-full object-cover" />
+                    <motion.div 
+                      className="aspect-square bg-[#330000] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
+                      whileHover={{ 
+                        scale: 1.1,
+                        boxShadow: '0 0 30px rgba(255, 59, 48, 0.6)'
+                      }}
+                    >
+                      <img src={image3} alt="Adobe Illustrator" className="w-full h-full object-cover" />
+                    </motion.div>
+                    <motion.span 
+                      className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white text-sm font-akzidenz-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    >
+                      Adobe Illustrator
+                    </motion.span>
                   </motion.div>
                 </MagneticElement>
               </motion.div>
@@ -442,14 +458,21 @@ export default function Home() {
                 }}
               >
                 <MagneticElement strength={0.2}>
-                  <motion.div 
-                    className="aspect-square bg-[#001e36] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
-                    whileHover={{ 
-                      scale: 1.1,
-                      boxShadow: '0 0 30px rgba(49, 168, 255, 0.6)'
-                    }}
-                  >
-                    <img src={image2} alt="Adobe Photoshop" className="w-full h-full object-cover" />
+                  <motion.div className="relative group">
+                    <motion.div 
+                      className="aspect-square bg-[#001e36] rounded-[2.5rem] flex items-center justify-center p-0 overflow-hidden cursor-pointer"
+                      whileHover={{ 
+                        scale: 1.1,
+                        boxShadow: '0 0 30px rgba(49, 168, 255, 0.6)'
+                      }}
+                    >
+                      <img src={image2} alt="Adobe Photoshop" className="w-full h-full object-cover" />
+                    </motion.div>
+                    <motion.span 
+                      className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white text-sm font-akzidenz-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    >
+                      Adobe Photoshop
+                    </motion.span>
                   </motion.div>
                 </MagneticElement>
               </motion.div>
