@@ -140,10 +140,15 @@ export default function Home() {
                 </BlurReveal>
                 
                 <motion.p 
-                  className="text-white/90 text-base md:text-lg lg:text-xl max-w-lg leading-relaxed text-justify mx-0 px-0 font-akzidenz-bold"
+                  className="text-white/90 text-base md:text-lg lg:text-xl max-w-lg leading-relaxed text-justify mx-0 px-0 font-akzidenz-bold cursor-default transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.2 }}
+                  whileHover={{ 
+                    scale: 1.02, 
+                    textShadow: "0 0 20px rgba(255,255,255,0.3)",
+                    transition: { duration: 0.2 }
+                  }}
                 >
                   Menciptakan produk digital yang estetis, fungsional, dan responsif. Menggabungkan kemampuan teknis dan kreativitas visual untuk menghadirkan solusi digital yang modern.
                 </motion.p>
@@ -198,9 +203,16 @@ export default function Home() {
                 {/* Text & Tags */}
                 <FadeNearNav>
                   <BlurReveal delay={0.2} className="space-y-8">
-                    <p className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold">
+                    <motion.p 
+                      className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold cursor-default"
+                      whileHover={{ 
+                        scale: 1.02, 
+                        textShadow: "0 0 20px rgba(255,255,255,0.3)",
+                        transition: { duration: 0.2 }
+                      }}
+                    >
                       Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan.
-                    </p>
+                    </motion.p>
                     
                     {/* Tags */}
                     <StaggerContainer staggerDelay={0.1} className="flex flex-wrap gap-4 pt-4">
@@ -278,14 +290,19 @@ export default function Home() {
                 {/* Right: Description */}
                 <div className="lg:text-right pt-4">
                   <motion.p 
-                    className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold max-w-md ml-auto"
+                    className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold max-w-md ml-auto cursor-default"
                     initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.3 }}
+                    whileHover={{ 
+                      scale: 1.02, 
+                      textShadow: "0 0 20px rgba(255,255,255,0.3)",
+                      transition: { duration: 0.2 }
+                    }}
                   >
-                  Presentations serve as versatile communication tools, utilized for demonstrations, lectures, speeches, reports, and more. Typically delivered before an audience, they fulfill various purposes, making presentations powerful tools for both persuasion and education.
-                </motion.p>
+                    Presentations serve as versatile communication tools, utilized for demonstrations, lectures, speeches, reports, and more. Typically delivered before an audience, they fulfill various purposes, making presentations powerful tools for both persuasion and education.
+                  </motion.p>
               </div>
             </div>
           </BlurReveal>
@@ -468,11 +485,16 @@ export default function Home() {
               {/* Right: Description */}
               <div className="lg:text-right pt-4">
                 <motion.p 
-                  className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold max-w-md ml-auto"
+                  className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold max-w-md ml-auto cursor-default"
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 }}
+                  whileHover={{ 
+                    scale: 1.02, 
+                    textShadow: "0 0 20px rgba(255,255,255,0.3)",
+                    transition: { duration: 0.2 }
+                  }}
                 >
                   Koleksi karya fotografi terpilih yang menampilkan keahlian dalam editorial, komersial, dan portrait photography. Setiap proyek dirancang dengan perhatian detail dan visi kreatif yang kuat.
                 </motion.p>
