@@ -198,7 +198,7 @@ export default function Home() {
                 {/* Text & Tags */}
                 <FadeNearNav>
                   <BlurReveal delay={0.2} className="space-y-8">
-                    <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed">
+                    <p className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold">
                       Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan.
                     </p>
                     
@@ -278,7 +278,7 @@ export default function Home() {
                 {/* Right: Description */}
                 <div className="lg:text-right pt-4">
                   <motion.p 
-                    className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-md ml-auto"
+                    className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold max-w-md ml-auto"
                     initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -468,7 +468,7 @@ export default function Home() {
               {/* Right: Description */}
               <div className="lg:text-right pt-4">
                 <motion.p 
-                  className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-md ml-auto"
+                  className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold max-w-md ml-auto"
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
