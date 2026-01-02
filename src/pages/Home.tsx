@@ -216,7 +216,7 @@ export default function Home() {
                     
                     {/* Tags */}
                     <StaggerContainer staggerDelay={0.1} className="flex flex-wrap gap-4 pt-4">
-                      {['Web Development', 'UI/UX Design', '2024'].map((tag, i) => (
+                      {['Web Development', 'UI/UX Design', 'Desain Grafis'].map((tag, i) => (
                         <StaggerItem key={tag} direction="left">
                           <motion.div 
                             className="px-6 py-2 rounded-full border border-white/20 text-white text-sm md:text-base cursor-default shimmer"
