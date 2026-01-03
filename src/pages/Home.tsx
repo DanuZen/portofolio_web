@@ -533,11 +533,11 @@ export default function Home() {
           </BlurReveal>
           </FadeNearNav>
 
-          {/* Projects Grid - Horizontal scrolling layout */}
-          <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar">
+          {/* Projects Grid - Responsive layout */}
+          <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar px-4 md:px-0">
             <motion.div 
               layout 
-              className="flex gap-3 justify-center items-center"
+              className="flex gap-3 md:gap-4 md:justify-center md:items-center md:flex-wrap lg:flex-nowrap"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -562,7 +562,7 @@ export default function Home() {
                       y: -10,
                       transition: { duration: 0.3 }
                     }}
-                    className="h-[450px] flex-shrink-0"
+                    className="h-[320px] md:h-[400px] lg:h-[450px] flex-shrink-0 w-[120px] md:w-auto"
                   >
                     <ProjectCard 
                       project={project} 
