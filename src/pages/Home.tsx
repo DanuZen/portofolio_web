@@ -311,13 +311,16 @@ export default function Home() {
           {/* Icons Grid */}
           <FadeNearNav>
             <motion.div 
-              className="grid grid-cols-2 gap-4 max-w-xs mx-auto md:grid-cols-3 md:gap-8 md:max-w-2xl"
+              className="flex flex-col gap-4 md:gap-6 max-w-2xl mx-auto"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
             >
-              {/* Row 1, Col 1 - Affinity Designer */}
-              <motion.div 
+              {/* Row 1 - 3 items with center offset up */}
+              <div className="flex justify-center items-end gap-4 md:gap-8">
+                {/* Affinity Designer */}
+                <motion.div 
+                  className="w-20 md:w-28"
                 variants={{
                   hidden: { opacity: 0, y: 40, scale: 0.95 },
                   visible: { 
@@ -344,8 +347,9 @@ export default function Home() {
                 </MagneticElement>
               </motion.div>
 
-              {/* Row 1, Col 2 - Adobe Illustrator */}
-              <motion.div 
+                {/* Adobe Illustrator - offset up */}
+                <motion.div 
+                  className="w-20 md:w-28 -translate-y-6 md:-translate-y-10"
                 variants={{
                   hidden: { opacity: 0, y: 40, scale: 0.95 },
                   visible: { 
@@ -372,8 +376,9 @@ export default function Home() {
                 </MagneticElement>
               </motion.div>
 
-              {/* Row 2, Col 1 - Adobe Photoshop */}
-              <motion.div 
+                {/* Adobe Photoshop */}
+                <motion.div 
+                  className="w-20 md:w-28"
                 variants={{
                   hidden: { opacity: 0, y: 40, scale: 0.95 },
                   visible: { 
@@ -398,10 +403,14 @@ export default function Home() {
                     </span>
                   </motion.div>
                 </MagneticElement>
-              </motion.div>
+                </motion.div>
+              </div>
 
-              {/* Row 2, Col 2 - Figma */}
-              <motion.div 
+              {/* Row 2 - 3 items with center offset down */}
+              <div className="flex justify-center items-start gap-4 md:gap-8">
+                {/* Figma */}
+                <motion.div 
+                  className="w-20 md:w-28"
                 variants={{
                   hidden: { opacity: 0, y: 40, scale: 0.95 },
                   visible: { 
@@ -426,63 +435,66 @@ export default function Home() {
                     </span>
                   </motion.div>
                 </MagneticElement>
-              </motion.div>
+                </motion.div>
 
-              {/* Row 3, Col 1 - Tailwind */}
-              <motion.div 
-                variants={{
-                  hidden: { opacity: 0, y: 40, scale: 0.95 },
-                  visible: { 
-                    opacity: 1, y: 0, scale: 1,
-                    transition: { duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }
-                  }
-                }}
-              >
-                <MagneticElement strength={0.2}>
-                  <motion.div className="relative group flex flex-col items-center">
-                    <motion.div 
-                      className="aspect-square w-full bg-[#0F172A] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
-                      whileHover={{ 
-                        scale: 1.08,
-                        boxShadow: '0 0 30px rgba(56, 189, 248, 0.6)'
-                      }}
-                    >
-                      <img src={image5} alt="Tailwind CSS" className="w-full h-full object-cover" />
+                {/* PostgreSQL - offset down */}
+                <motion.div 
+                  className="w-20 md:w-28 translate-y-6 md:translate-y-10"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-white rounded-[2rem] flex items-center justify-center p-5 cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(255, 255, 255, 0.6)'
+                        }}
+                      >
+                        <img src={image6} alt="PostgreSQL" className="w-full h-full object-contain" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        PostgreSQL
+                      </span>
                     </motion.div>
-                    <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                      Tailwind CSS
-                    </span>
-                  </motion.div>
-                </MagneticElement>
-              </motion.div>
+                  </MagneticElement>
+                </motion.div>
 
-              {/* Row 3, Col 2 - PostgreSQL */}
-              <motion.div 
-                variants={{
-                  hidden: { opacity: 0, y: 40, scale: 0.95 },
-                  visible: { 
-                    opacity: 1, y: 0, scale: 1,
-                    transition: { duration: 0.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }
-                  }
-                }}
-              >
-                <MagneticElement strength={0.2}>
-                  <motion.div className="relative group flex flex-col items-center">
-                    <motion.div 
-                      className="aspect-square w-full bg-white rounded-[2rem] flex items-center justify-center p-5 cursor-pointer"
-                      whileHover={{ 
-                        scale: 1.08,
-                        boxShadow: '0 0 30px rgba(255, 255, 255, 0.6)'
-                      }}
-                    >
-                      <img src={image6} alt="PostgreSQL" className="w-full h-full object-contain" />
+                {/* Tailwind CSS */}
+                <motion.div 
+                  className="w-20 md:w-28"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-[#0F172A] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(56, 189, 248, 0.6)'
+                        }}
+                      >
+                        <img src={image5} alt="Tailwind CSS" className="w-full h-full object-cover" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        Tailwind CSS
+                      </span>
                     </motion.div>
-                    <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                      PostgreSQL
-                    </span>
-                  </motion.div>
-                </MagneticElement>
-              </motion.div>
+                  </MagneticElement>
+                </motion.div>
+              </div>
             </motion.div>
           </FadeNearNav>
         </div>
