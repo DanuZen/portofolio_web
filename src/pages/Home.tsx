@@ -311,135 +311,135 @@ export default function Home() {
           {/* Icons Grid */}
           <FadeNearNav>
             <motion.div 
-              className="flex flex-col gap-4 md:gap-6 max-w-2xl mx-auto"
+              className="flex flex-col gap-4 max-w-xs mx-auto md:flex-row md:flex-wrap md:justify-center md:items-center md:gap-8 md:max-w-5xl"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
             >
-              {/* Row 1 - 3 items with center offset up */}
-              <div className="flex justify-center items-end gap-4 md:gap-8">
+              {/* Mobile: Row 1 - 3 items with center offset up */}
+              <div className="flex justify-center items-end gap-4 md:hidden">
                 {/* Affinity Designer */}
                 <motion.div 
-                  className="w-20 md:w-28"
-                variants={{
-                  hidden: { opacity: 0, y: 40, scale: 0.95 },
-                  visible: { 
-                    opacity: 1, y: 0, scale: 1,
-                    transition: { duration: 0.5, delay: 0, ease: [0.22, 1, 0.36, 1] }
-                  }
-                }}
-              >
-                <MagneticElement strength={0.2}>
-                  <motion.div className="relative group flex flex-col items-center">
-                    <motion.div 
-                      className="aspect-square w-full bg-[#ccff00] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
-                      whileHover={{ 
-                        scale: 1.08,
-                        boxShadow: '0 0 30px rgba(204, 255, 0, 0.6)'
-                      }}
-                    >
-                      <img src={image1} alt="Affinity Designer" className="w-full h-full object-cover" />
+                  className="w-20"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-[#ccff00] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(204, 255, 0, 0.6)'
+                        }}
+                      >
+                        <img src={image1} alt="Affinity Designer" className="w-full h-full object-cover" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        Affinity Designer
+                      </span>
                     </motion.div>
-                    <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                      Affinity Designer
-                    </span>
-                  </motion.div>
-                </MagneticElement>
-              </motion.div>
+                  </MagneticElement>
+                </motion.div>
 
                 {/* Adobe Illustrator - offset up */}
                 <motion.div 
-                  className="w-20 md:w-28 -translate-y-6 md:-translate-y-10"
-                variants={{
-                  hidden: { opacity: 0, y: 40, scale: 0.95 },
-                  visible: { 
-                    opacity: 1, y: 0, scale: 1,
-                    transition: { duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }
-                  }
-                }}
-              >
-                <MagneticElement strength={0.2}>
-                  <motion.div className="relative group flex flex-col items-center">
-                    <motion.div 
-                      className="aspect-square w-full bg-[#330000] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
-                      whileHover={{ 
-                        scale: 1.08,
-                        boxShadow: '0 0 30px rgba(255, 59, 48, 0.6)'
-                      }}
-                    >
-                      <img src={image3} alt="Adobe Illustrator" className="w-full h-full object-cover" />
+                  className="w-20 -translate-y-6"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-[#330000] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(255, 59, 48, 0.6)'
+                        }}
+                      >
+                        <img src={image3} alt="Adobe Illustrator" className="w-full h-full object-cover" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        Adobe Illustrator
+                      </span>
                     </motion.div>
-                    <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                      Adobe Illustrator
-                    </span>
-                  </motion.div>
-                </MagneticElement>
-              </motion.div>
+                  </MagneticElement>
+                </motion.div>
 
                 {/* Adobe Photoshop */}
                 <motion.div 
-                  className="w-20 md:w-28"
-                variants={{
-                  hidden: { opacity: 0, y: 40, scale: 0.95 },
-                  visible: { 
-                    opacity: 1, y: 0, scale: 1,
-                    transition: { duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }
-                  }
-                }}
-              >
-                <MagneticElement strength={0.2}>
-                  <motion.div className="relative group flex flex-col items-center">
-                    <motion.div 
-                      className="aspect-square w-full bg-[#001e36] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
-                      whileHover={{ 
-                        scale: 1.08,
-                        boxShadow: '0 0 30px rgba(49, 168, 255, 0.6)'
-                      }}
-                    >
-                      <img src={image2} alt="Adobe Photoshop" className="w-full h-full object-cover" />
+                  className="w-20"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-[#001e36] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(49, 168, 255, 0.6)'
+                        }}
+                      >
+                        <img src={image2} alt="Adobe Photoshop" className="w-full h-full object-cover" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        Adobe Photoshop
+                      </span>
                     </motion.div>
-                    <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                      Adobe Photoshop
-                    </span>
-                  </motion.div>
-                </MagneticElement>
+                  </MagneticElement>
                 </motion.div>
               </div>
 
-              {/* Row 2 - 3 items with center offset down */}
-              <div className="flex justify-center items-start gap-4 md:gap-8">
+              {/* Mobile: Row 2 - 3 items with center offset down */}
+              <div className="flex justify-center items-start gap-4 md:hidden">
                 {/* Figma */}
                 <motion.div 
-                  className="w-20 md:w-28"
-                variants={{
-                  hidden: { opacity: 0, y: 40, scale: 0.95 },
-                  visible: { 
-                    opacity: 1, y: 0, scale: 1,
-                    transition: { duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }
-                  }
-                }}
-              >
-                <MagneticElement strength={0.2}>
-                  <motion.div className="relative group flex flex-col items-center">
-                    <motion.div 
-                      className="aspect-square w-full bg-white rounded-[2rem] flex items-center justify-center p-5 cursor-pointer"
-                      whileHover={{ 
-                        scale: 1.08,
-                        boxShadow: '0 0 30px rgba(255, 255, 255, 0.6)'
-                      }}
-                    >
-                      <img src={image4} alt="Figma" className="w-full h-full object-contain" />
+                  className="w-20"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-white rounded-[2rem] flex items-center justify-center p-5 cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(255, 255, 255, 0.6)'
+                        }}
+                      >
+                        <img src={image4} alt="Figma" className="w-full h-full object-contain" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        Figma
+                      </span>
                     </motion.div>
-                    <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                      Figma
-                    </span>
-                  </motion.div>
-                </MagneticElement>
+                  </MagneticElement>
                 </motion.div>
 
                 {/* PostgreSQL - offset down */}
                 <motion.div 
-                  className="w-20 md:w-28 translate-y-6 md:translate-y-10"
+                  className="w-20 translate-y-6"
                   variants={{
                     hidden: { opacity: 0, y: 40, scale: 0.95 },
                     visible: { 
@@ -468,7 +468,184 @@ export default function Home() {
 
                 {/* Tailwind CSS */}
                 <motion.div 
-                  className="w-20 md:w-28"
+                  className="w-20"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-[#0F172A] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(56, 189, 248, 0.6)'
+                        }}
+                      >
+                        <img src={image5} alt="Tailwind CSS" className="w-full h-full object-cover" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        Tailwind CSS
+                      </span>
+                    </motion.div>
+                  </MagneticElement>
+                </motion.div>
+              </div>
+
+              {/* Desktop: All items in one row */}
+              <div className="hidden md:flex justify-center items-center gap-8">
+                {/* Affinity Designer */}
+                <motion.div 
+                  className="w-28"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-[#ccff00] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(204, 255, 0, 0.6)'
+                        }}
+                      >
+                        <img src={image1} alt="Affinity Designer" className="w-full h-full object-cover" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        Affinity Designer
+                      </span>
+                    </motion.div>
+                  </MagneticElement>
+                </motion.div>
+
+                {/* Adobe Illustrator */}
+                <motion.div 
+                  className="w-28"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-[#330000] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(255, 59, 48, 0.6)'
+                        }}
+                      >
+                        <img src={image3} alt="Adobe Illustrator" className="w-full h-full object-cover" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        Adobe Illustrator
+                      </span>
+                    </motion.div>
+                  </MagneticElement>
+                </motion.div>
+
+                {/* Adobe Photoshop */}
+                <motion.div 
+                  className="w-28"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-[#001e36] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(49, 168, 255, 0.6)'
+                        }}
+                      >
+                        <img src={image2} alt="Adobe Photoshop" className="w-full h-full object-cover" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        Adobe Photoshop
+                      </span>
+                    </motion.div>
+                  </MagneticElement>
+                </motion.div>
+
+                {/* Figma */}
+                <motion.div 
+                  className="w-28"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-white rounded-[2rem] flex items-center justify-center p-5 cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(255, 255, 255, 0.6)'
+                        }}
+                      >
+                        <img src={image4} alt="Figma" className="w-full h-full object-contain" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        Figma
+                      </span>
+                    </motion.div>
+                  </MagneticElement>
+                </motion.div>
+
+                {/* PostgreSQL */}
+                <motion.div 
+                  className="w-28"
+                  variants={{
+                    hidden: { opacity: 0, y: 40, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1,
+                      transition: { duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }
+                    }
+                  }}
+                >
+                  <MagneticElement strength={0.2}>
+                    <motion.div className="relative group flex flex-col items-center">
+                      <motion.div 
+                        className="aspect-square w-full bg-white rounded-[2rem] flex items-center justify-center p-5 cursor-pointer"
+                        whileHover={{ 
+                          scale: 1.08,
+                          boxShadow: '0 0 30px rgba(255, 255, 255, 0.6)'
+                        }}
+                      >
+                        <img src={image6} alt="PostgreSQL" className="w-full h-full object-contain" />
+                      </motion.div>
+                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        PostgreSQL
+                      </span>
+                    </motion.div>
+                  </MagneticElement>
+                </motion.div>
+
+                {/* Tailwind CSS */}
+                <motion.div 
+                  className="w-28"
                   variants={{
                     hidden: { opacity: 0, y: 40, scale: 0.95 },
                     visible: { 
