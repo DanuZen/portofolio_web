@@ -311,7 +311,7 @@ export default function Home() {
           {/* Icons Grid */}
           <FadeNearNav>
             <motion.div 
-              className="grid grid-cols-2 gap-4 max-w-xs mx-auto md:flex md:flex-row md:gap-6 md:max-w-none md:justify-center"
+              className="grid grid-cols-2 gap-4 max-w-xs mx-auto md:grid-cols-3 md:gap-8 md:max-w-2xl"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
