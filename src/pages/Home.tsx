@@ -722,12 +722,12 @@ export default function Home() {
           </BlurReveal>
           </FadeNearNav>
 
-          {/* Projects Stacked Layout */}
+          {/* Projects Stacked Layout - Cross Pattern */}
           <div className="w-full px-4 md:px-8 lg:px-16">
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
-              {/* Left: Stacked Cards */}
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
+              {/* Left: Stacked Cards in Cross Pattern */}
               <motion.div 
-                className="relative w-[280px] h-[350px] md:w-[360px] md:h-[420px] lg:w-[420px] lg:h-[480px]"
+                className="relative w-[300px] h-[400px] md:w-[380px] md:h-[480px] lg:w-[450px] lg:h-[550px]"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -735,36 +735,41 @@ export default function Home() {
               >
                 {featuredProjects.slice(0, 5).map((project, index) => {
                   const isActive = index === 2;
+                  // Cross pattern: top-left, top-right, center (active), bottom-left, bottom-right
                   const offsets = [
-                    { x: -40, y: -60, rotate: -8, scale: 0.75, zIndex: 1 },
-                    { x: -20, y: -30, rotate: -4, scale: 0.85, zIndex: 2 },
-                    { x: 0, y: 0, rotate: 0, scale: 1, zIndex: 5 },
-                    { x: -20, y: 30, rotate: 4, scale: 0.85, zIndex: 2 },
-                    { x: -40, y: 60, rotate: 8, scale: 0.75, zIndex: 1 },
+                    { x: -60, y: -80, rotate: 0, scale: 0.65, zIndex: 1 },  // top-left
+                    { x: 60, y: -40, rotate: 0, scale: 0.65, zIndex: 1 },   // top-right  
+                    { x: 0, y: 0, rotate: 0, scale: 1, zIndex: 5 },          // center (active)
+                    { x: -60, y: 40, rotate: 0, scale: 0.65, zIndex: 1 },   // bottom-left
+                    { x: 60, y: 80, rotate: 0, scale: 0.65, zIndex: 1 },    // bottom-right
                   ];
                   const offset = offsets[index];
                   
                   return (
                     <motion.div
                       key={project.id}
-                      className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl"
+                      className="absolute rounded-2xl overflow-hidden shadow-2xl"
                       style={{
+                        width: isActive ? '100%' : '55%',
+                        height: isActive ? '70%' : '40%',
+                        left: '50%',
+                        top: '50%',
                         zIndex: offset.zIndex,
                         filter: isActive ? 'none' : 'grayscale(100%)',
                       }}
                       initial={{ 
-                        x: offset.x, 
-                        y: offset.y, 
+                        x: `calc(-50% + ${offset.x}px)`, 
+                        y: `calc(-50% + ${offset.y}px)`, 
                         rotate: offset.rotate, 
                         scale: offset.scale,
                         opacity: 0 
                       }}
                       whileInView={{ 
-                        x: offset.x, 
-                        y: offset.y, 
+                        x: `calc(-50% + ${offset.x}px)`, 
+                        y: `calc(-50% + ${offset.y}px)`, 
                         rotate: offset.rotate, 
                         scale: offset.scale,
-                        opacity: isActive ? 1 : 0.6
+                        opacity: isActive ? 1 : 0.7
                       }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -782,18 +787,18 @@ export default function Home() {
                 })}
               </motion.div>
 
-              {/* Right: Info & Navigation */}
+              {/* Right: Navigation & Info */}
               <motion.div 
-                className="flex flex-col items-center lg:items-start gap-6"
+                className="flex flex-col items-center lg:items-start gap-8"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                {/* Navigation Arrows */}
+                {/* Navigation Arrows - Vertical */}
                 <div className="flex gap-4">
                   <motion.button 
-                    className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center text-white/60 hover:border-white hover:text-white transition-colors"
+                    className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/60 hover:border-white hover:text-white transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -802,7 +807,7 @@ export default function Home() {
                     </svg>
                   </motion.button>
                   <motion.button 
-                    className="w-12 h-12 rounded-full border border-[#FF3B30] flex items-center justify-center text-[#FF3B30] hover:bg-[#FF3B30]/10 transition-colors"
+                    className="w-12 h-12 rounded-full bg-[#FF3B30]/20 border border-[#FF3B30] flex items-center justify-center text-[#FF3B30] hover:bg-[#FF3B30]/30 transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -814,23 +819,25 @@ export default function Home() {
 
                 {/* Project Info */}
                 <div className="text-center lg:text-left">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white">
+                  <div className="flex items-center gap-4 mb-3">
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
                       {featuredProjects[2]?.title || 'Project Title'}
                     </h3>
-                    <div className="w-12 h-0.5 bg-[#FF3B30]" />
                   </div>
-                  <p className="text-white/60 uppercase tracking-widest text-sm">
-                    {featuredProjects[2]?.category || 'Category'}
-                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-16 h-0.5 bg-[#FF3B30]" />
+                    <p className="text-white/60 uppercase tracking-widest text-sm">
+                      {featuredProjects[2]?.category || 'Category'}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Decorative Lines */}
-                <div className="space-y-2 w-48">
-                  <div className="h-0.5 bg-[#FF3B30]/60 w-full" />
-                  <div className="h-0.5 bg-white/20 w-3/4" />
-                  <div className="h-0.5 bg-white/10 w-1/2" />
-                  <div className="h-0.5 bg-white/5 w-1/3" />
+                <div className="space-y-3 w-56">
+                  <div className="h-0.5 bg-[#FF3B30]/80 w-full" />
+                  <div className="h-0.5 bg-[#FF3B30]/40 w-4/5" />
+                  <div className="h-0.5 bg-white/20 w-3/5" />
+                  <div className="h-0.5 bg-white/10 w-2/5" />
                 </div>
               </motion.div>
             </div>
