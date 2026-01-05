@@ -735,41 +735,40 @@ export default function Home() {
               >
                 {featuredProjects.slice(0, 5).map((project, index) => {
                   const isActive = index === 2;
-                  // Cross pattern: top-left, top-right, center (active), bottom-left, bottom-right
+                  // Vertical stack: 2 cards behind at top, active center, 2 cards behind at bottom
                   const offsets = [
-                    { x: -60, y: -80, rotate: 0, scale: 0.65, zIndex: 1 },  // top-left
-                    { x: 60, y: -40, rotate: 0, scale: 0.65, zIndex: 1 },   // top-right  
-                    { x: 0, y: 0, rotate: 0, scale: 1, zIndex: 5 },          // center (active)
-                    { x: -60, y: 40, rotate: 0, scale: 0.65, zIndex: 1 },   // bottom-left
-                    { x: 60, y: 80, rotate: 0, scale: 0.65, zIndex: 1 },    // bottom-right
+                    { x: 0, y: -120, zIndex: 1 },  // top back
+                    { x: 0, y: -60, zIndex: 2 },   // top front
+                    { x: 0, y: 0, zIndex: 5 },     // center (active)
+                    { x: 0, y: 60, zIndex: 2 },    // bottom front
+                    { x: 0, y: 120, zIndex: 1 },   // bottom back
                   ];
                   const offset = offsets[index];
+                  const cardSize = isActive 
+                    ? { width: '85%', height: '60%' }
+                    : { width: '75%', height: '35%' };
                   
                   return (
                     <motion.div
                       key={project.id}
                       className="absolute rounded-2xl overflow-hidden shadow-2xl"
                       style={{
-                        width: isActive ? '100%' : '55%',
-                        height: isActive ? '70%' : '40%',
+                        width: cardSize.width,
+                        height: cardSize.height,
                         left: '50%',
                         top: '50%',
                         zIndex: offset.zIndex,
-                        filter: isActive ? 'none' : 'grayscale(100%)',
+                        filter: isActive ? 'none' : 'grayscale(100%) brightness(0.7)',
                       }}
                       initial={{ 
-                        x: `calc(-50% + ${offset.x}px)`, 
+                        x: '-50%', 
                         y: `calc(-50% + ${offset.y}px)`, 
-                        rotate: offset.rotate, 
-                        scale: offset.scale,
                         opacity: 0 
                       }}
                       whileInView={{ 
-                        x: `calc(-50% + ${offset.x}px)`, 
+                        x: '-50%', 
                         y: `calc(-50% + ${offset.y}px)`, 
-                        rotate: offset.rotate, 
-                        scale: offset.scale,
-                        opacity: isActive ? 1 : 0.7
+                        opacity: isActive ? 1 : 0.8
                       }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
