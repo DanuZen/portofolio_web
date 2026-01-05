@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { photographerInfo } from '@/data/photographer';
 import { getFeaturedProjects } from '@/data/projects';
 import { ProjectCard } from '@/components/portfolio/ProjectCard';
@@ -33,6 +33,15 @@ import { FadeContentSimple as FadeNearNav } from '@/components/ui/FadeContent';
 export default function Home() {
   const featuredProjects = getFeaturedProjects();
   const heroRef = useRef<HTMLDivElement>(null);
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  
+  const handlePrevProject = () => {
+    setActiveProjectIndex((prev) => (prev === 0 ? featuredProjects.length - 1 : prev - 1));
+  };
+  
+  const handleNextProject = () => {
+    setActiveProjectIndex((prev) => (prev === featuredProjects.length - 1 ? 0 : prev + 1));
+  };
   
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -733,57 +742,68 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                {featuredProjects.slice(0, 5).map((project, index) => {
-                  const isActive = index === 2;
-                  // Vertical stack: 2 cards behind at top, active center, 2 cards behind at bottom
-                  const offsets = [
-                    { x: 0, y: -120, zIndex: 1 },  // top back
-                    { x: 0, y: -60, zIndex: 2 },   // top front
-                    { x: 0, y: 0, zIndex: 5 },     // center (active)
-                    { x: 0, y: 60, zIndex: 2 },    // bottom front
-                    { x: 0, y: 120, zIndex: 1 },   // bottom back
-                  ];
-                  const offset = offsets[index];
-                  const cardSize = isActive 
-                    ? { width: '85%', height: '60%' }
-                    : { width: '75%', height: '35%' };
+                {(() => {
+                  // Get visible projects based on activeProjectIndex
+                  const getVisibleProjects = () => {
+                    const total = featuredProjects.length;
+                    const indices = [];
+                    for (let i = -2; i <= 2; i++) {
+                      let idx = activeProjectIndex + i;
+                      if (idx < 0) idx = total + idx;
+                      if (idx >= total) idx = idx - total;
+                      indices.push(idx);
+                    }
+                    return indices.map(idx => featuredProjects[idx]);
+                  };
                   
-                  return (
-                    <motion.div
-                      key={project.id}
-                      className="absolute rounded-2xl overflow-hidden shadow-2xl"
-                      style={{
-                        width: cardSize.width,
-                        height: cardSize.height,
-                        left: '50%',
-                        top: '50%',
-                        zIndex: offset.zIndex,
-                        filter: isActive ? 'none' : 'grayscale(100%) brightness(0.7)',
-                      }}
-                      initial={{ 
-                        x: '-50%', 
-                        y: `calc(-50% + ${offset.y}px)`, 
-                        opacity: 0 
-                      }}
-                      whileInView={{ 
-                        x: '-50%', 
-                        y: `calc(-50% + ${offset.y}px)`, 
-                        opacity: isActive ? 1 : 0.8
-                      }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      whileHover={isActive ? { scale: 1.02 } : {}}
-                    >
-                      <Link to={`/project/${project.slug}`}>
-                        <img
-                          src={project.coverImage}
-                          alt={project.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </Link>
-                    </motion.div>
-                  );
-                })}
+                  const visibleProjects = getVisibleProjects();
+                  
+                  return visibleProjects.map((project, index) => {
+                    const isActive = index === 2;
+                    // Vertical stack: 2 cards behind at top, active center, 2 cards behind at bottom
+                    const offsets = [
+                      { y: -120, zIndex: 1 },  // top back
+                      { y: -60, zIndex: 2 },   // top front
+                      { y: 0, zIndex: 5 },     // center (active)
+                      { y: 60, zIndex: 2 },    // bottom front
+                      { y: 120, zIndex: 1 },   // bottom back
+                    ];
+                    const offset = offsets[index];
+                    const cardSize = isActive 
+                      ? { width: '85%', height: '60%' }
+                      : { width: '75%', height: '35%' };
+                    
+                    return (
+                      <motion.div
+                        key={project.id}
+                        className="absolute rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+                        style={{
+                          width: cardSize.width,
+                          height: cardSize.height,
+                          left: '50%',
+                          top: '50%',
+                          zIndex: offset.zIndex,
+                          filter: isActive ? 'none' : 'grayscale(100%) brightness(0.7)',
+                        }}
+                        animate={{ 
+                          x: '-50%', 
+                          y: `calc(-50% + ${offset.y}px)`,
+                          opacity: isActive ? 1 : 0.8
+                        }}
+                        transition={{ duration: 0.5, ease: 'easeInOut' }}
+                        whileHover={isActive ? { scale: 1.02 } : {}}
+                      >
+                        <Link to={`/project/${project.slug}`}>
+                          <img
+                            src={project.coverImage}
+                            alt={project.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </Link>
+                      </motion.div>
+                    );
+                  });
+                })()}
               </motion.div>
 
               {/* Right: Navigation & Info */}
@@ -797,6 +817,7 @@ export default function Home() {
                 {/* Navigation Arrows - Vertical */}
                 <div className="flex gap-4">
                   <motion.button 
+                    onClick={handlePrevProject}
                     className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/60 hover:border-white hover:text-white transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
@@ -806,6 +827,7 @@ export default function Home() {
                     </svg>
                   </motion.button>
                   <motion.button 
+                    onClick={handleNextProject}
                     className="w-12 h-12 rounded-full bg-[#FF3B30]/20 border border-[#FF3B30] flex items-center justify-center text-[#FF3B30] hover:bg-[#FF3B30]/30 transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
@@ -817,19 +839,25 @@ export default function Home() {
                 </div>
 
                 {/* Project Info */}
-                <div className="text-center lg:text-left">
+                <motion.div 
+                  key={activeProjectIndex}
+                  className="text-center lg:text-left"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <div className="flex items-center gap-4 mb-3">
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
-                      {featuredProjects[2]?.title || 'Project Title'}
+                      {featuredProjects[activeProjectIndex]?.title || 'Project Title'}
                     </h3>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-16 h-0.5 bg-[#FF3B30]" />
                     <p className="text-white/60 uppercase tracking-widest text-sm">
-                      {featuredProjects[2]?.category || 'Category'}
+                      {featuredProjects[activeProjectIndex]?.category || 'Category'}
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Decorative Lines */}
                 <div className="space-y-3 w-56">
