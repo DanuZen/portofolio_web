@@ -722,47 +722,118 @@ export default function Home() {
           </BlurReveal>
           </FadeNearNav>
 
-          {/* Projects Grid - Responsive layout */}
-          <div className="w-full overflow-x-auto overflow-y-hidden pb-6 hide-scrollbar px-4 md:px-0">
-            <motion.div 
-              layout 
-              className="flex gap-3 md:gap-4 md:justify-center md:items-center md:flex-wrap lg:flex-nowrap"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {featuredProjects.map((project, index) => {
-                const widths = [140, 160, 145, 155, 150, 165, 148, 158];
-                const cardWidth = widths[index % widths.length];
-                return (
-                  <motion.div 
-                    key={project.id} 
-                    layout 
-                    initial={{ opacity: 0, x: 80, rotateY: -15 }}
-                    whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.6,
-                      delay: index * 0.1,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    whileHover={{ 
-                      y: -10,
-                      transition: { duration: 0.3 }
-                    }}
-                    className="h-[320px] md:h-[400px] lg:h-[450px] flex-shrink-0 w-[120px] md:w-auto"
+          {/* Projects Stacked Layout */}
+          <div className="w-full px-4 md:px-8 lg:px-16">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
+              {/* Left: Stacked Cards */}
+              <motion.div 
+                className="relative w-[280px] h-[350px] md:w-[360px] md:h-[420px] lg:w-[420px] lg:h-[480px]"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                {featuredProjects.slice(0, 5).map((project, index) => {
+                  const isActive = index === 2;
+                  const offsets = [
+                    { x: -40, y: -60, rotate: -8, scale: 0.75, zIndex: 1 },
+                    { x: -20, y: -30, rotate: -4, scale: 0.85, zIndex: 2 },
+                    { x: 0, y: 0, rotate: 0, scale: 1, zIndex: 5 },
+                    { x: -20, y: 30, rotate: 4, scale: 0.85, zIndex: 2 },
+                    { x: -40, y: 60, rotate: 8, scale: 0.75, zIndex: 1 },
+                  ];
+                  const offset = offsets[index];
+                  
+                  return (
+                    <motion.div
+                      key={project.id}
+                      className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl"
+                      style={{
+                        zIndex: offset.zIndex,
+                        filter: isActive ? 'none' : 'grayscale(100%)',
+                      }}
+                      initial={{ 
+                        x: offset.x, 
+                        y: offset.y, 
+                        rotate: offset.rotate, 
+                        scale: offset.scale,
+                        opacity: 0 
+                      }}
+                      whileInView={{ 
+                        x: offset.x, 
+                        y: offset.y, 
+                        rotate: offset.rotate, 
+                        scale: offset.scale,
+                        opacity: isActive ? 1 : 0.6
+                      }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      whileHover={isActive ? { scale: 1.02 } : {}}
+                    >
+                      <Link to={`/project/${project.slug}`}>
+                        <img
+                          src={project.coverImage}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+
+              {/* Right: Info & Navigation */}
+              <motion.div 
+                className="flex flex-col items-center lg:items-start gap-6"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                {/* Navigation Arrows */}
+                <div className="flex gap-4">
+                  <motion.button 
+                    className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center text-white/60 hover:border-white hover:text-white transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <ProjectCard 
-                      project={project} 
-                      showCategory={true} 
-                      index={index} 
-                      initialWidth={cardWidth} 
-                    />
-                  </motion.div>
-                );
-              })}
-            </motion.div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="m18 15-6-6-6 6"/>
+                    </svg>
+                  </motion.button>
+                  <motion.button 
+                    className="w-12 h-12 rounded-full border border-[#FF3B30] flex items-center justify-center text-[#FF3B30] hover:bg-[#FF3B30]/10 transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                  </motion.button>
+                </div>
+
+                {/* Project Info */}
+                <div className="text-center lg:text-left">
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white">
+                      {featuredProjects[2]?.title || 'Project Title'}
+                    </h3>
+                    <div className="w-12 h-0.5 bg-[#FF3B30]" />
+                  </div>
+                  <p className="text-white/60 uppercase tracking-widest text-sm">
+                    {featuredProjects[2]?.category || 'Category'}
+                  </p>
+                </div>
+
+                {/* Decorative Lines */}
+                <div className="space-y-2 w-48">
+                  <div className="h-0.5 bg-[#FF3B30]/60 w-full" />
+                  <div className="h-0.5 bg-white/20 w-3/4" />
+                  <div className="h-0.5 bg-white/10 w-1/2" />
+                  <div className="h-0.5 bg-white/5 w-1/3" />
+                </div>
+              </motion.div>
+            </div>
           </div>
 
           {/* View All Link */}
