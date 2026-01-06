@@ -695,48 +695,14 @@ export default function Home() {
       >
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           {/* Section Header - Split Layout */}
-          <FadeNearNav>
-          <BlurReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
-              {/* Left: Title */}
-              <div>
-                <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.9] font-akzidenz uppercase">
-                  <span className="text-white">
-                    <TextReveal text="PROYEK" delay={0.1} />
-                  </span> <br/>
-                  <span className="text-[#FF3B30]">
-                    <CharReveal text="UNGGULAN" delay={0.3} staggerDelay={0.04} />
-                  </span>
-                </h2>
-              </div>
-              
-              {/* Right: Description */}
-              <div className="lg:text-right pt-4">
-                <motion.p 
-                  className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold max-w-md ml-auto cursor-default"
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  whileHover={{ 
-                    scale: 1.02, 
-                    textShadow: "0 0 20px rgba(255,255,255,0.3)",
-                    transition: { duration: 0.2 }
-                  }}
-                >
-                  Koleksi karya fotografi terpilih yang menampilkan keahlian dalam editorial, komersial, dan portrait photography. Setiap proyek dirancang dengan perhatian detail dan visi kreatif yang kuat.
-                </motion.p>
-              </div>
-            </div>
-          </BlurReveal>
-          </FadeNearNav>
+
 
           {/* Projects Stacked Layout - Cross Pattern */}
           <div className="w-full px-4 md:px-8 lg:px-16">
             <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
               {/* Left: Stacked Cards in Cross Pattern */}
               <motion.div 
-                className="relative w-[300px] h-[400px] md:w-[380px] md:h-[480px] lg:w-[450px] lg:h-[550px]"
+                className="relative w-[300px] h-[400px] md:w-[500px] md:h-[600px] lg:w-[650px] lg:h-[750px]"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -808,12 +774,23 @@ export default function Home() {
 
               {/* Right: Navigation & Info */}
               <motion.div 
-                className="flex flex-col items-center lg:items-start gap-8"
+                className="flex flex-col items-center lg:items-end gap-8"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
+                {/* Title moved here */}
+                <div className="text-right mb-4">
+                  <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.9] font-akzidenz uppercase">
+                    <span className="text-white">
+                      <TextReveal text="PROYEK" delay={0.1} />
+                    </span> <br/>
+                    <span className="text-[#FF3B30]">
+                      <CharReveal text="UNGGULAN" delay={0.3} staggerDelay={0.04} />
+                    </span>
+                  </h2>
+                </div>
                 {/* Navigation Arrows - Vertical */}
                 <div className="flex gap-4">
                   <motion.button 
