@@ -23,8 +23,8 @@ export function SEOHead({
   const location = useLocation();
   
   const fullTitle = title 
-    ? `${title} | ${photographerInfo.name}` 
-    : `${photographerInfo.name} - ${photographerInfo.tagline}`;
+    ? `${title} | DANN` 
+    : `DANN - ${photographerInfo.tagline}`;
   
   const defaultDescription = photographerInfo.heroIntroduction;
   const fullDescription = description || defaultDescription;

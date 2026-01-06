@@ -15,6 +15,14 @@ import image3 from '@/assets/image3.png';
 import image4 from '@/assets/image4.png';
 import image5 from '@/assets/image5.png';
 import image6 from '@/assets/image6.png';
+import image7 from '@/assets/image7.png';
+import image8 from '@/assets/image8.png';
+import image9 from '@/assets/image9.png';
+import image10 from '@/assets/image10.png';
+import image11 from '@/assets/image11.png';
+import image12 from '@/assets/image12.png';
+import image13 from '@/assets/image13.png';
+import image14 from '@/assets/image14.png';
 
 // Animation components
 import { MagneticElement } from '@/components/ui/MagneticElement';
@@ -25,6 +33,7 @@ import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer'
 import { BlurReveal } from '@/components/ui/BlurReveal';
 import { ScaleReveal } from '@/components/ui/ScaleReveal';
 import { FadeContentSimple as FadeNearNav } from '@/components/ui/FadeContent';
+import { TypewriterText } from '@/components/ui/TypewriterText';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -34,6 +43,26 @@ export default function Home() {
   const featuredProjects = getFeaturedProjects();
   const heroRef = useRef<HTMLDivElement>(null);
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
+
+  const skills = [
+    // Row 1 (7 items)
+    { name: 'Affinity Designer', img: image1, bg: '#ccff00', shadow: 'rgba(204, 255, 0, 0.6)', fit: 'cover' },
+    { name: 'Adobe Photoshop', img: image2, bg: '#001e36', shadow: 'rgba(49, 168, 255, 0.6)', fit: 'cover' },
+    { name: 'Adobe Illustrator', img: image3, bg: '#330000', shadow: 'rgba(255, 59, 48, 0.6)', fit: 'cover' },
+    { name: 'Adobe Lightroom', img: image7, bg: '#001E36', shadow: 'rgba(49, 168, 255, 0.6)', fit: 'cover' },
+    { name: 'Adobe After Effect', img: image8, bg: '#00005b', shadow: 'rgba(153, 153, 255, 0.6)', fit: 'cover' },
+    { name: 'Adobe InDesain', img: image9, bg: '#49021f', shadow: 'rgba(255, 51, 102, 0.6)', fit: 'cover' },
+    { name: 'Canva', img: image10, bg: 'white', shadow: 'rgba(0, 196, 204, 0.6)', fit: 'contain', p: 'p-4' },
+    // Row 2 (7 items)
+    { name: 'Figma', img: image4, bg: 'white', shadow: 'rgba(255, 255, 255, 0.6)', fit: 'contain', p: 'p-5' },
+    { name: 'PostgreSQL', img: image6, bg: 'white', shadow: 'rgba(255, 255, 255, 0.6)', fit: 'contain', p: 'p-5' },
+    { name: 'Tailwind CSS', img: image5, bg: '#0F172A', shadow: 'rgba(56, 189, 248, 0.6)', fit: 'cover' },
+    { name: 'React JS', img: image11, bg: 'white', shadow: 'rgba(97, 218, 251, 0.6)', fit: 'contain', p: 'p-4' },
+    { name: 'Node JS', img: image12, bg: 'white', shadow: 'rgba(104, 160, 99, 0.6)', fit: 'contain', p: 'p-4' },
+    { name: 'Supabase', img: image13, bg: '#1C1C1C', shadow: 'rgba(62, 207, 142, 0.6)', fit: 'cover' },
+    { name: 'Git Hub', img: image14, bg: 'white', shadow: 'rgba(0, 0, 0, 0.6)', fit: 'contain', p: 'p-4' },
+  ];
   
   const handlePrevProject = () => {
     setActiveProjectIndex((prev) => (prev === 0 ? featuredProjects.length - 1 : prev - 1));
@@ -42,6 +71,14 @@ export default function Home() {
   const handleNextProject = () => {
     setActiveProjectIndex((prev) => (prev === featuredProjects.length - 1 ? 0 : prev + 1));
   };
+
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNextProject();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [activeProjectIndex]);
   
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -113,7 +150,7 @@ export default function Home() {
                 {/* Arrow Icon overlapping top-left of image */}
                 <MagneticElement strength={0.4}>
                   <motion.div 
-                    className="absolute -top-6 -left-2 md:-left-4 w-16 h-16 md:w-20 md:h-20 bg-black rounded-full flex items-center justify-center z-10 cursor-pointer"
+                    className="absolute -top-6 -left-2 md:-left-4 w-16 h-16 md:w-20 md:h-20 bg-[hsl(0,0%,8%)] rounded-full flex items-center justify-center z-10 cursor-pointer"
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ duration: 0.8, delay: 0.8, type: "spring", stiffness: 200 }}
@@ -200,10 +237,10 @@ export default function Home() {
                 <FadeNearNav>
                   <BlurReveal>
                     <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.9] font-akzidenz text-white">
-                      <TextReveal text="TENTANG" delay={0.1} /> 
+                      <TypewriterText text="TENTANG" delay={0.1} /> 
                       <br/> 
                       <span className="text-[#FF3B30]">
-                        <TextReveal text="SAYA" delay={0.3} />
+                        <TypewriterText text="SAYA" delay={0.5} />
                       </span>
                     </h2>
                   </BlurReveal>
@@ -277,7 +314,7 @@ export default function Home() {
       <section 
         id="skills" 
         data-section-theme="dark" 
-        className="min-h-screen flex items-center relative pt-32 md:pt-40 pb-64 md:pb-96 overflow-hidden text-slate-50" 
+        className="min-h-screen flex items-center relative pt-32 md:pt-40 pb-20 md:pb-24 overflow-hidden text-slate-50" 
         style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}
       >
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -288,10 +325,10 @@ export default function Home() {
                 {/* Left: Title */}
                 <div>
                   <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.9] font-akzidenz uppercase">
-                    <TextReveal text="MEMBANGUN" delay={0.1} /> <br/>
-                    <TextReveal text="SOLUSI DENGAN" delay={0.2} className="whitespace-nowrap" /> <br/>
-                    <span className="text-[#FF3B30]">
-                      <CharReveal text="SKILLS" delay={0.4} staggerDelay={0.05} />
+                    <TypewriterText text="MEMBANGUN" delay={0.1} /> <br/>
+                    <TypewriterText text="SOLUSI DENGAN" delay={0.6} className="whitespace-nowrap" /> <br/>
+                    <span className="text-[#FF3B30] whitespace-nowrap">
+                      <TypewriterText text="SKILLS & TOOLS" delay={1.5} />
                     </span>
                   </h2>
                 </div>
@@ -310,7 +347,7 @@ export default function Home() {
                       transition: { duration: 0.2 }
                     }}
                   >
-                    Presentations serve as versatile communication tools, utilized for demonstrations, lectures, speeches, reports, and more. Typically delivered before an audience, they fulfill various purposes, making presentations powerful tools for both persuasion and education.
+                    Mengombinasikan kemampuan desain grafis dan pemrograman dengan tools modern untuk menciptakan karya yang rapi, konsisten, dan bernilai guna, serta mampu menyampaikan pesan secara efektif melalui visual dan solusi digital yang terstruktur.
                   </motion.p>
               </div>
             </div>
@@ -505,184 +542,124 @@ export default function Home() {
                 </motion.div>
               </div>
 
-              {/* Desktop: All items in one row */}
-              <div className="hidden md:flex justify-center items-center gap-8">
-                {/* Affinity Designer */}
-                <motion.div 
-                  className="w-28"
-                  variants={{
-                    hidden: { opacity: 0, y: 40, scale: 0.95 },
-                    visible: { 
-                      opacity: 1, y: 0, scale: 1,
-                      transition: { duration: 0.5, delay: 0, ease: [0.22, 1, 0.36, 1] }
-                    }
-                  }}
-                >
-                  <MagneticElement strength={0.2}>
-                    <motion.div className="relative group flex flex-col items-center">
-                      <motion.div 
-                        className="aspect-square w-full bg-[#ccff00] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
-                        whileHover={{ 
-                          scale: 1.08,
-                          boxShadow: '0 0 30px rgba(204, 255, 0, 0.6)'
-                        }}
-                      >
-                        <img src={image1} alt="Affinity Designer" className="w-full h-full object-cover" />
-                      </motion.div>
-                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                        Affinity Designer
-                      </span>
-                    </motion.div>
-                  </MagneticElement>
-                </motion.div>
 
-                {/* Adobe Illustrator */}
-                <motion.div 
-                  className="w-28"
-                  variants={{
-                    hidden: { opacity: 0, y: 40, scale: 0.95 },
-                    visible: { 
-                      opacity: 1, y: 0, scale: 1,
-                      transition: { duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }
-                    }
-                  }}
-                >
-                  <MagneticElement strength={0.2}>
-                    <motion.div className="relative group flex flex-col items-center">
-                      <motion.div 
-                        className="aspect-square w-full bg-[#330000] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
-                        whileHover={{ 
-                          scale: 1.08,
-                          boxShadow: '0 0 30px rgba(255, 59, 48, 0.6)'
-                        }}
-                      >
-                        <img src={image3} alt="Adobe Illustrator" className="w-full h-full object-cover" />
-                      </motion.div>
-                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                        Adobe Illustrator
-                      </span>
-                    </motion.div>
-                  </MagneticElement>
-                </motion.div>
-
-                {/* Adobe Photoshop */}
-                <motion.div 
-                  className="w-28"
-                  variants={{
-                    hidden: { opacity: 0, y: 40, scale: 0.95 },
-                    visible: { 
-                      opacity: 1, y: 0, scale: 1,
-                      transition: { duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }
-                    }
-                  }}
-                >
-                  <MagneticElement strength={0.2}>
-                    <motion.div className="relative group flex flex-col items-center">
-                      <motion.div 
-                        className="aspect-square w-full bg-[#001e36] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
-                        whileHover={{ 
-                          scale: 1.08,
-                          boxShadow: '0 0 30px rgba(49, 168, 255, 0.6)'
-                        }}
-                      >
-                        <img src={image2} alt="Adobe Photoshop" className="w-full h-full object-cover" />
-                      </motion.div>
-                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                        Adobe Photoshop
-                      </span>
-                    </motion.div>
-                  </MagneticElement>
-                </motion.div>
-
-                {/* Figma */}
-                <motion.div 
-                  className="w-28"
-                  variants={{
-                    hidden: { opacity: 0, y: 40, scale: 0.95 },
-                    visible: { 
-                      opacity: 1, y: 0, scale: 1,
-                      transition: { duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }
-                    }
-                  }}
-                >
-                  <MagneticElement strength={0.2}>
-                    <motion.div className="relative group flex flex-col items-center">
-                      <motion.div 
-                        className="aspect-square w-full bg-white rounded-[2rem] flex items-center justify-center p-5 cursor-pointer"
-                        whileHover={{ 
-                          scale: 1.08,
-                          boxShadow: '0 0 30px rgba(255, 255, 255, 0.6)'
-                        }}
-                      >
-                        <img src={image4} alt="Figma" className="w-full h-full object-contain" />
-                      </motion.div>
-                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                        Figma
-                      </span>
-                    </motion.div>
-                  </MagneticElement>
-                </motion.div>
-
-                {/* PostgreSQL */}
-                <motion.div 
-                  className="w-28"
-                  variants={{
-                    hidden: { opacity: 0, y: 40, scale: 0.95 },
-                    visible: { 
-                      opacity: 1, y: 0, scale: 1,
-                      transition: { duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }
-                    }
-                  }}
-                >
-                  <MagneticElement strength={0.2}>
-                    <motion.div className="relative group flex flex-col items-center">
-                      <motion.div 
-                        className="aspect-square w-full bg-white rounded-[2rem] flex items-center justify-center p-5 cursor-pointer"
-                        whileHover={{ 
-                          scale: 1.08,
-                          boxShadow: '0 0 30px rgba(255, 255, 255, 0.6)'
-                        }}
-                      >
-                        <img src={image6} alt="PostgreSQL" className="w-full h-full object-contain" />
-                      </motion.div>
-                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                        PostgreSQL
-                      </span>
-                    </motion.div>
-                  </MagneticElement>
-                </motion.div>
-
-                {/* Tailwind CSS */}
-                <motion.div 
-                  className="w-28"
-                  variants={{
-                    hidden: { opacity: 0, y: 40, scale: 0.95 },
-                    visible: { 
-                      opacity: 1, y: 0, scale: 1,
-                      transition: { duration: 0.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }
-                    }
-                  }}
-                >
-                  <MagneticElement strength={0.2}>
-                    <motion.div className="relative group flex flex-col items-center">
-                      <motion.div 
-                        className="aspect-square w-full bg-[#0F172A] rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer"
-                        whileHover={{ 
-                          scale: 1.08,
-                          boxShadow: '0 0 30px rgba(56, 189, 248, 0.6)'
-                        }}
-                      >
-                        <img src={image5} alt="Tailwind CSS" className="w-full h-full object-cover" />
-                      </motion.div>
-                      <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
-                        Tailwind CSS
-                      </span>
-                    </motion.div>
-                  </MagneticElement>
-                </motion.div>
-              </div>
             </motion.div>
           </FadeNearNav>
+
+          {/* Skills Container - Desktop */}
+          <div className="w-full max-w-6xl mx-auto px-4 flex flex-col gap-16">
+                
+                {/* Design Tools */}
+                <FadeNearNav>
+                  <div className="flex flex-col gap-8">
+                    <h3 className="text-2xl md:text-3xl font-akzidenz-bold text-white text-center tracking-wide">
+                      <TypewriterText text="TOOL DESAIN GRAFIS" delay={0.1} />
+                    </h3>
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4 md:gap-6 justify-items-center">
+                      {skills.slice(0, 7).map((skill, index) => (
+                        <motion.div 
+                          key={index}
+                          className="w-28"
+                          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                          whileInView={{ 
+                            opacity: 1, y: 0, scale: 1,
+                            transition: { duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }
+                          }}
+                          viewport={{ once: true }}
+                        >
+                          <motion.div
+                            onMouseEnter={() => setHoveredSkill(index)}
+                            onMouseLeave={() => setHoveredSkill(null)}
+                            animate={{
+                              scale: hoveredSkill === index ? 1.5 : 1,
+                              opacity: hoveredSkill !== null && hoveredSkill !== index ? 0.1 : 1,
+                              filter: hoveredSkill !== null && hoveredSkill !== index ? 'blur(2px)' : 'blur(0px)'
+                            }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <MagneticElement strength={0.2}>
+                              <motion.div className="relative group flex flex-col items-center">
+                                <motion.div 
+                                  className={`aspect-square w-full rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer ${skill.bg === 'white' ? 'bg-white' : ''}`}
+                                  style={{ backgroundColor: skill.bg !== 'white' ? skill.bg : undefined }}
+                                  whileHover={{ 
+                                    boxShadow: `0 0 30px ${skill.shadow}`
+                                  }}
+                                >
+                                  <img 
+                                    src={skill.img} 
+                                    alt={skill.name} 
+                                    className={`w-full h-full object-${skill.fit} ${skill.p || ''}`} 
+                                  />
+                                </motion.div>
+                                <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                                  {skill.name}
+                                </span>
+                              </motion.div>
+                            </MagneticElement>
+                          </motion.div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </FadeNearNav>
+
+                {/* Programming Tools */}
+                <FadeNearNav>
+                  <div className="flex flex-col gap-8">
+                    <h3 className="text-2xl md:text-3xl font-akzidenz-bold text-white text-center tracking-wide">
+                      <TypewriterText text="TOOL PROGRAMING" delay={1.5} />
+                    </h3>
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4 md:gap-6 justify-items-center">
+                      {skills.slice(7, 14).map((skill, index) => (
+                        <motion.div 
+                          key={index + 7}
+                          className="w-28"
+                          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                          whileInView={{ 
+                            opacity: 1, y: 0, scale: 1,
+                            transition: { duration: 0.5, delay: (index + 7) * 0.1, ease: [0.22, 1, 0.36, 1] }
+                          }}
+                          viewport={{ once: true }}
+                        >
+                          <motion.div
+                            onMouseEnter={() => setHoveredSkill(index + 7)}
+                            onMouseLeave={() => setHoveredSkill(null)}
+                            animate={{
+                              scale: hoveredSkill === index + 7 ? 1.5 : 1,
+                              opacity: hoveredSkill !== null && hoveredSkill !== index + 7 ? 0.1 : 1,
+                              filter: hoveredSkill !== null && hoveredSkill !== index + 7 ? 'blur(2px)' : 'blur(0px)'
+                            }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <MagneticElement strength={0.2}>
+                              <motion.div className="relative group flex flex-col items-center">
+                                <motion.div 
+                                  className={`aspect-square w-full rounded-[2rem] flex items-center justify-center overflow-hidden cursor-pointer ${skill.bg === 'white' ? 'bg-white' : ''}`}
+                                  style={{ backgroundColor: skill.bg !== 'white' ? skill.bg : undefined }}
+                                  whileHover={{ 
+                                    boxShadow: `0 0 30px ${skill.shadow}`
+                                  }}
+                                >
+                                  <img 
+                                    src={skill.img} 
+                                    alt={skill.name} 
+                                    className={`w-full h-full object-${skill.fit} ${skill.p || ''}`} 
+                                  />
+                                </motion.div>
+                                <span className="mt-3 text-white text-sm font-akzidenz-bold whitespace-nowrap text-center pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                                  {skill.name}
+                                </span>
+                              </motion.div>
+                            </MagneticElement>
+                          </motion.div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </FadeNearNav>
+
+              </div>
         </div>
       </section>
 
@@ -751,6 +728,11 @@ export default function Home() {
                           zIndex: offset.zIndex,
                           filter: isActive ? 'none' : 'grayscale(100%) brightness(0.7)',
                         }}
+                        initial={{ 
+                          x: '-50%', 
+                          y: `calc(-50% + ${offset.y}px)`,
+                          opacity: 0 
+                        }}
                         animate={{ 
                           x: '-50%', 
                           y: `calc(-50% + ${offset.y}px)`,
@@ -758,6 +740,18 @@ export default function Home() {
                         }}
                         transition={{ duration: 0.5, ease: 'easeInOut' }}
                         whileHover={isActive ? { scale: 1.02 } : {}}
+                        drag={isActive ? "x" : false}
+                        dragConstraints={{ left: 0, right: 0 }}
+                        onDragEnd={(_, info) => {
+                          if (!isActive) return;
+                          const offset = info.offset.x;
+                          const velocity = info.velocity.x;
+                          if (offset < -50 || velocity < -500) {
+                            handleNextProject();
+                          } else if (offset > 50 || velocity > 500) {
+                            handlePrevProject();
+                          }
+                        }}
                       >
                         <Link to={`/project/${project.slug}`}>
                           <img
@@ -774,45 +768,38 @@ export default function Home() {
 
               {/* Right: Navigation & Info */}
               <motion.div 
-                className="flex flex-col items-center lg:items-end gap-8"
+                className="flex flex-col items-center lg:items-start gap-8"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 {/* Title moved here */}
-                <div className="text-right mb-4">
+                <div className="text-left mb-4">
                   <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.9] font-akzidenz uppercase">
                     <span className="text-white">
-                      <TextReveal text="PROYEK" delay={0.1} />
+                      <TypewriterText text="PROYEK" delay={0.1} />
                     </span> <br/>
                     <span className="text-[#FF3B30]">
-                      <CharReveal text="UNGGULAN" delay={0.3} staggerDelay={0.04} />
+                      <TypewriterText text="UNGGULAN" delay={0.5} />
                     </span>
                   </h2>
                 </div>
                 {/* Navigation Arrows - Vertical */}
-                <div className="flex gap-4">
-                  <motion.button 
-                    onClick={handlePrevProject}
-                    className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/60 hover:border-white hover:text-white transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="m18 15-6-6-6 6"/>
-                    </svg>
-                  </motion.button>
-                  <motion.button 
-                    onClick={handleNextProject}
-                    className="w-12 h-12 rounded-full bg-[#FF3B30]/20 border border-[#FF3B30] flex items-center justify-center text-[#FF3B30] hover:bg-[#FF3B30]/30 transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="m6 9 6 6 6-6"/>
-                    </svg>
-                  </motion.button>
+                {/* Navigation Indicators */}
+                <div className="flex gap-3 mt-4">
+                  {featuredProjects.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveProjectIndex(idx)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        idx === activeProjectIndex 
+                          ? 'w-8 bg-[#FF3B30]' 
+                          : 'w-2 bg-white/20 hover:bg-white/40'
+                      }`}
+                      aria-label={`Go to project ${idx + 1}`}
+                    />
+                  ))}
                 </div>
 
                 {/* Project Info */}
@@ -836,52 +823,18 @@ export default function Home() {
                   </div>
                 </motion.div>
 
-                {/* Decorative Lines */}
-                <div className="space-y-3 w-56">
-                  <div className="h-0.5 bg-[#FF3B30]/80 w-full" />
-                  <div className="h-0.5 bg-[#FF3B30]/40 w-4/5" />
-                  <div className="h-0.5 bg-white/20 w-3/5" />
-                  <div className="h-0.5 bg-white/10 w-2/5" />
+                {/* Project Description */}
+                <div className="w-full max-w-md h-32 flex flex-col justify-start">
+                  <p className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold line-clamp-4">
+                    {featuredProjects[activeProjectIndex]?.description}
+                  </p>
                 </div>
               </motion.div>
             </div>
           </div>
 
           {/* View All Link */}
-          <motion.div 
-            className="flex justify-center mt-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <MagneticElement strength={0.2}>
-              <Link 
-                to="/portfolio" 
-                className="inline-flex items-center gap-3 text-xl font-bold text-white hover:text-red-500 transition-colors group relative"
-              >
-                <motion.span
-                  whileHover={{ x: -5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  LIHAT SEMUA KARYA
-                </motion.span>
-                <motion.div
-                  whileHover={{ x: 10, scale: 1.2 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <ArrowRight className="size-6" />
-                </motion.div>
-                {/* Underline animation */}
-                <motion.div 
-                  className="absolute -bottom-2 left-0 h-0.5 bg-[#FF3B30]"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: '100%' }}
-                  transition={{ duration: 0.3 }}
-                />
-              </Link>
-            </MagneticElement>
-          </motion.div>
+
         </div>
       </section>
 

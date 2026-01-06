@@ -2,7 +2,7 @@ import type { PhotographerInfo } from '@/types';
 
 export const photographerInfo: PhotographerInfo = {
   name: 'DANN',
-  tagline: 'Fotografer Editorial & Komersial',
+  tagline: 'My Portofolio Website',
   heroIntroduction: 'Ngoding dulu, Jagonya belakangan.',
   biography: `DANN adalah fotografer pemenang penghargaan yang mengkhususkan diri dalam pekerjaan editorial dan komersial, dengan pengakuan termasuk International Photography Awards Editorial Photographer of the Year 2023 dan PDN Photo Annual Winner 2022. Dengan pengalaman lebih dari satu dekade, karyanya telah ditampilkan dalam berbagai publikasi dan pameran internasional, berkolaborasi dengan klien seperti Vogue, The New York Times, National Geographic, Adobe, Apple, Nike, dan Architectural Digest.
 

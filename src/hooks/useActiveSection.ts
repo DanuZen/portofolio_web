@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
  * Returns whether the current section has a light or dark background and the active section ID
  */
 export function useActiveSection() {
-  const [isLightSection, setIsLightSection] = useState(true);
+  const [isLightSection, setIsLightSection] = useState(false);
   const [activeSectionId, setActiveSectionId] = useState<string>('');
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export function useActiveSection() {
       const sections = document.querySelectorAll('[data-section-theme]');
       
       if (sections.length === 0) {
-        setIsLightSection(true);
+        setIsLightSection(false);
         setActiveSectionId('');
         return;
       }
@@ -41,7 +41,7 @@ export function useActiveSection() {
       
       // Default to light if no section found
       if (!foundActive) {
-        setIsLightSection(true);
+        setIsLightSection(false);
         // If we're at the very top, assume hero/first section
         if (window.scrollY < 100) {
             setActiveSectionId('hero');

@@ -58,7 +58,7 @@ All colors MUST be HSL.
 }
 
 .dark {
-  --background: 220 25% 3%;
+  --background: 0 0% 8%;
   --foreground: 210 40% 98%;
   --card: 220 30% 5%;
   --card-foreground: 210 40% 98%;
@@ -98,7 +98,7 @@ All colors MUST be HSL.
   --ds-gray-1000-h: hsl(210, 30%, 80%);
   --ds-gray-alpha-200: hsla(210, 100%, 80%, 0.09);
   --ds-gray-alpha-400: hsla(210, 100%, 80%, 0.14);
-  --ds-background-100: hsla(220, 25%, 2%, 1);
+  --ds-background-100: hsla(0, 0%, 8%, 1);
   --ds-shadow-border: 0 0 0 1px rgba(100, 150, 255, 0.1);
   --ds-shadow-small: 0px 1px 2px rgba(0, 0, 0, 0.3);
   --ds-shadow-border-small: var(--ds-shadow-border), var(--ds-shadow-small);
@@ -219,14 +219,14 @@ All colors MUST be HSL.
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(0 0% 5%);
+    background: hsl(0 0% 8%);
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, hsl(0 0% 25%), hsl(0 0% 15%));
     border-radius: 10px;
-    border: 2px solid hsl(0 0% 5%);
+    border: 2px solid hsl(0 0% 8%);
     transition: all 0.3s ease;
   }
 
@@ -240,13 +240,13 @@ All colors MUST be HSL.
   }
 
   ::-webkit-scrollbar-corner {
-    background: hsl(0 0% 5%);
+    background: hsl(0 0% 8%);
   }
 
   /* Firefox Scrollbar */
   * {
     scrollbar-width: thin;
-    scrollbar-color: hsl(0 0% 20%) hsl(0 0% 5%);
+    scrollbar-color: hsl(0 0% 20%) hsl(0 0% 8%);
   }
 }
 
