@@ -809,29 +809,6 @@ export default function Home() {
                     </span>
                   </h2>
                 </div>
-                {/* Navigation Arrows - Vertical */}
-                <div className="flex gap-4">
-                  <motion.button 
-                    onClick={handlePrevProject}
-                    className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/60 hover:border-white hover:text-white transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="m18 15-6-6-6 6"/>
-                    </svg>
-                  </motion.button>
-                  <motion.button 
-                    onClick={handleNextProject}
-                    className="w-12 h-12 rounded-full bg-[#FF3B30]/20 border border-[#FF3B30] flex items-center justify-center text-[#FF3B30] hover:bg-[#FF3B30]/30 transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="m6 9 6 6 6-6"/>
-                    </svg>
-                  </motion.button>
-                </div>
 
                 {/* Project Info */}
                 <motion.div 
@@ -865,41 +842,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* View All Link */}
-          <motion.div 
-            className="flex justify-center mt-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <MagneticElement strength={0.2}>
-              <Link 
-                to="/portfolio" 
-                className="inline-flex items-center gap-3 text-xl font-bold text-white hover:text-red-500 transition-colors group relative"
-              >
-                <motion.span
-                  whileHover={{ x: -5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  LIHAT SEMUA KARYA
-                </motion.span>
-                <motion.div
-                  whileHover={{ x: 10, scale: 1.2 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <ArrowRight className="size-6" />
-                </motion.div>
-                {/* Underline animation */}
-                <motion.div 
-                  className="absolute -bottom-2 left-0 h-0.5 bg-[#FF3B30]"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: '100%' }}
-                  transition={{ duration: 0.3 }}
-                />
-              </Link>
-            </MagneticElement>
-          </motion.div>
         </div>
       </section>
 
