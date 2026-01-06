@@ -741,16 +741,17 @@ export default function Home() {
                     <motion.div
                       key={project.id}
                       className="absolute rounded-2xl overflow-hidden cursor-pointer"
+                      initial={false}
                       style={{
                         width: '85%',
                         height: '55%',
                         left: '50%',
                         top: '50%',
+                        x: '-50%',
                         transformStyle: 'preserve-3d',
                         filter: isActive ? 'none' : `grayscale(${Math.abs(relativeIndex) * 40}%) brightness(${1 - Math.abs(relativeIndex) * 0.2})`,
                       }}
                       animate={{ 
-                        x: '-50%', 
                         y: `calc(-50% + ${yOffset}px)`,
                         z: zOffset,
                         scale: scaleValue,
