@@ -43,6 +43,14 @@ export default function Home() {
     setActiveProjectIndex((prev) => (prev === featuredProjects.length - 1 ? 0 : prev + 1));
   };
   
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveProjectIndex((prev) => (prev === featuredProjects.length - 1 ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [featuredProjects.length]);
+  
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start']
@@ -702,7 +710,8 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
               {/* Left: Stacked Cards in Cross Pattern */}
               <motion.div 
-                className="relative w-[300px] h-[400px] md:w-[500px] md:h-[600px] lg:w-[650px] lg:h-[750px]"
+                className="relative w-[350px] h-[450px] md:w-[550px] md:h-[650px] lg:w-[700px] lg:h-[800px]"
+                style={{ perspective: '1200px' }}
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -726,46 +735,67 @@ export default function Home() {
                   
                   return visibleProjects.map((project, index) => {
                     const isActive = index === 2;
-                    // Vertical stack: 2 cards behind at top, active center, 2 cards behind at bottom
+                    // 3D slide card offsets with rotation
                     const offsets = [
-                      { y: -120, zIndex: 1 },  // top back
-                      { y: -60, zIndex: 2 },   // top front
-                      { y: 0, zIndex: 5 },     // center (active)
-                      { y: 60, zIndex: 2 },    // bottom front
-                      { y: 120, zIndex: 1 },   // bottom back
+                      { y: -180, z: -200, rotateX: 35, scale: 0.7, zIndex: 1 },  // top far
+                      { y: -90, z: -100, rotateX: 20, scale: 0.85, zIndex: 2 },   // top near
+                      { y: 0, z: 0, rotateX: 0, scale: 1, zIndex: 5 },     // center (active)
+                      { y: 90, z: -100, rotateX: -20, scale: 0.85, zIndex: 2 },    // bottom near
+                      { y: 180, z: -200, rotateX: -35, scale: 0.7, zIndex: 1 },   // bottom far
                     ];
                     const offset = offsets[index];
-                    const cardSize = isActive 
-                      ? { width: '85%', height: '60%' }
-                      : { width: '75%', height: '35%' };
                     
                     return (
                       <motion.div
-                        key={project.id}
+                        key={`${project.id}-${index}`}
                         className="absolute rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
                         style={{
-                          width: cardSize.width,
-                          height: cardSize.height,
+                          width: '85%',
+                          height: '55%',
                           left: '50%',
                           top: '50%',
                           zIndex: offset.zIndex,
-                          filter: isActive ? 'none' : 'grayscale(100%) brightness(0.7)',
+                          transformStyle: 'preserve-3d',
+                          filter: isActive ? 'none' : 'grayscale(80%) brightness(0.6)',
+                          boxShadow: isActive 
+                            ? '0 25px 80px -20px rgba(255, 59, 48, 0.4), 0 10px 40px -10px rgba(0,0,0,0.5)' 
+                            : '0 10px 30px -10px rgba(0,0,0,0.3)',
                         }}
                         animate={{ 
                           x: '-50%', 
                           y: `calc(-50% + ${offset.y}px)`,
-                          opacity: isActive ? 1 : 0.8
+                          z: offset.z,
+                          rotateX: offset.rotateX,
+                          scale: offset.scale,
+                          opacity: isActive ? 1 : 0.7
                         }}
-                        transition={{ duration: 0.5, ease: 'easeInOut' }}
-                        whileHover={isActive ? { scale: 1.02 } : {}}
+                        transition={{ 
+                          duration: 0.7, 
+                          ease: [0.32, 0.72, 0, 1],
+                          type: 'spring',
+                          stiffness: 100,
+                          damping: 20
+                        }}
+                        whileHover={isActive ? { 
+                          scale: 1.03,
+                          boxShadow: '0 30px 100px -20px rgba(255, 59, 48, 0.5), 0 15px 50px -10px rgba(0,0,0,0.6)'
+                        } : {}}
                       >
-                        <Link to={`/project/${project.slug}`}>
+                        <div className="relative w-full h-full">
                           <img
                             src={project.coverImage}
                             alt={project.title}
                             className="w-full h-full object-cover"
                           />
-                        </Link>
+                          {isActive && (
+                            <motion.div 
+                              className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.3 }}
+                            />
+                          )}
+                        </div>
                       </motion.div>
                     );
                   });
