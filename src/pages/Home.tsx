@@ -711,95 +711,83 @@ export default function Home() {
               {/* Left: Stacked Cards in Cross Pattern */}
               <motion.div 
                 className="relative w-[350px] h-[450px] md:w-[550px] md:h-[650px] lg:w-[700px] lg:h-[800px]"
-                style={{ perspective: '1200px' }}
+                style={{ perspective: '1500px' }}
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                {(() => {
-                  // Get visible projects based on activeProjectIndex
-                  const getVisibleProjects = () => {
-                    const total = featuredProjects.length;
-                    const indices = [];
-                    for (let i = -2; i <= 2; i++) {
-                      let idx = activeProjectIndex + i;
-                      if (idx < 0) idx = total + idx;
-                      if (idx >= total) idx = idx - total;
-                      indices.push(idx);
-                    }
-                    return indices.map(idx => featuredProjects[idx]);
-                  };
+                {featuredProjects.map((project, index) => {
+                  // Calculate position relative to active index
+                  const total = featuredProjects.length;
+                  let relativeIndex = index - activeProjectIndex;
                   
-                  const visibleProjects = getVisibleProjects();
+                  // Handle wrapping for circular navigation
+                  if (relativeIndex > total / 2) relativeIndex -= total;
+                  if (relativeIndex < -total / 2) relativeIndex += total;
                   
-                  return visibleProjects.map((project, index) => {
-                    const isActive = index === 2;
-                    // 3D slide card offsets with rotation
-                    const offsets = [
-                      { y: -180, z: -200, rotateX: 35, scale: 0.7, zIndex: 1 },  // top far
-                      { y: -90, z: -100, rotateX: 20, scale: 0.85, zIndex: 2 },   // top near
-                      { y: 0, z: 0, rotateX: 0, scale: 1, zIndex: 5 },     // center (active)
-                      { y: 90, z: -100, rotateX: -20, scale: 0.85, zIndex: 2 },    // bottom near
-                      { y: 180, z: -200, rotateX: -35, scale: 0.7, zIndex: 1 },   // bottom far
-                    ];
-                    const offset = offsets[index];
-                    
-                    return (
-                      <motion.div
-                        key={`${project.id}-${index}`}
-                        className="absolute rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+                  const isActive = relativeIndex === 0;
+                  const isVisible = Math.abs(relativeIndex) <= 2;
+                  
+                  if (!isVisible) return null;
+                  
+                  // Smooth vertical slide with depth
+                  const yOffset = relativeIndex * 100;
+                  const zOffset = Math.abs(relativeIndex) * -120;
+                  const scaleValue = 1 - Math.abs(relativeIndex) * 0.12;
+                  const opacityValue = isActive ? 1 : Math.max(0.4, 1 - Math.abs(relativeIndex) * 0.3);
+                  
+                  return (
+                    <motion.div
+                      key={project.id}
+                      className="absolute rounded-2xl overflow-hidden cursor-pointer"
+                      style={{
+                        width: '85%',
+                        height: '55%',
+                        left: '50%',
+                        top: '50%',
+                        transformStyle: 'preserve-3d',
+                        filter: isActive ? 'none' : `grayscale(${Math.abs(relativeIndex) * 40}%) brightness(${1 - Math.abs(relativeIndex) * 0.2})`,
+                      }}
+                      animate={{ 
+                        x: '-50%', 
+                        y: `calc(-50% + ${yOffset}px)`,
+                        z: zOffset,
+                        scale: scaleValue,
+                        opacity: opacityValue,
+                        zIndex: 10 - Math.abs(relativeIndex),
+                      }}
+                      transition={{ 
+                        duration: 0.6, 
+                        ease: [0.25, 0.1, 0.25, 1],
+                      }}
+                      whileHover={isActive ? { scale: 1.02 } : {}}
+                    >
+                      <div 
+                        className="relative w-full h-full rounded-2xl overflow-hidden"
                         style={{
-                          width: '85%',
-                          height: '55%',
-                          left: '50%',
-                          top: '50%',
-                          zIndex: offset.zIndex,
-                          transformStyle: 'preserve-3d',
-                          filter: isActive ? 'none' : 'grayscale(80%) brightness(0.6)',
                           boxShadow: isActive 
-                            ? '0 25px 80px -20px rgba(255, 59, 48, 0.4), 0 10px 40px -10px rgba(0,0,0,0.5)' 
-                            : '0 10px 30px -10px rgba(0,0,0,0.3)',
+                            ? '0 30px 60px -15px rgba(0,0,0,0.5), 0 0 40px -10px rgba(255, 59, 48, 0.3)' 
+                            : '0 15px 35px -10px rgba(0,0,0,0.4)',
                         }}
-                        animate={{ 
-                          x: '-50%', 
-                          y: `calc(-50% + ${offset.y}px)`,
-                          z: offset.z,
-                          rotateX: offset.rotateX,
-                          scale: offset.scale,
-                          opacity: isActive ? 1 : 0.7
-                        }}
-                        transition={{ 
-                          duration: 0.7, 
-                          ease: [0.32, 0.72, 0, 1],
-                          type: 'spring',
-                          stiffness: 100,
-                          damping: 20
-                        }}
-                        whileHover={isActive ? { 
-                          scale: 1.03,
-                          boxShadow: '0 30px 100px -20px rgba(255, 59, 48, 0.5), 0 15px 50px -10px rgba(0,0,0,0.6)'
-                        } : {}}
                       >
-                        <div className="relative w-full h-full">
-                          <img
-                            src={project.coverImage}
-                            alt={project.title}
-                            className="w-full h-full object-cover"
+                        <img
+                          src={project.coverImage}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                        {isActive && (
+                          <motion.div 
+                            className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
                           />
-                          {isActive && (
-                            <motion.div 
-                              className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: 0.3 }}
-                            />
-                          )}
-                        </div>
-                      </motion.div>
-                    );
-                  });
-                })()}
+                        )}
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
 
               {/* Right: Navigation & Info */}
