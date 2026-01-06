@@ -80,6 +80,14 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [activeProjectIndex]);
   
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveProjectIndex((prev) => (prev === featuredProjects.length - 1 ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [featuredProjects.length]);
+  
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start']
@@ -679,91 +687,86 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
               {/* Left: Stacked Cards in Cross Pattern */}
               <motion.div 
-                className="relative w-[300px] h-[400px] md:w-[500px] md:h-[600px] lg:w-[650px] lg:h-[750px]"
+                className="relative w-[350px] h-[450px] md:w-[550px] md:h-[650px] lg:w-[700px] lg:h-[800px]"
+                style={{ perspective: '1500px' }}
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                {(() => {
-                  // Get visible projects based on activeProjectIndex
-                  const getVisibleProjects = () => {
-                    const total = featuredProjects.length;
-                    const indices = [];
-                    for (let i = -2; i <= 2; i++) {
-                      let idx = activeProjectIndex + i;
-                      if (idx < 0) idx = total + idx;
-                      if (idx >= total) idx = idx - total;
-                      indices.push(idx);
-                    }
-                    return indices.map(idx => featuredProjects[idx]);
-                  };
+                {featuredProjects.map((project, index) => {
+                  // Calculate position relative to active index
+                  const total = featuredProjects.length;
+                  let relativeIndex = index - activeProjectIndex;
                   
-                  const visibleProjects = getVisibleProjects();
+                  // Handle wrapping for circular navigation
+                  if (relativeIndex > total / 2) relativeIndex -= total;
+                  if (relativeIndex < -total / 2) relativeIndex += total;
                   
-                  return visibleProjects.map((project, index) => {
-                    const isActive = index === 2;
-                    // Vertical stack: 2 cards behind at top, active center, 2 cards behind at bottom
-                    const offsets = [
-                      { y: -120, zIndex: 1 },  // top back
-                      { y: -60, zIndex: 2 },   // top front
-                      { y: 0, zIndex: 5 },     // center (active)
-                      { y: 60, zIndex: 2 },    // bottom front
-                      { y: 120, zIndex: 1 },   // bottom back
-                    ];
-                    const offset = offsets[index];
-                    const cardSize = isActive 
-                      ? { width: '85%', height: '60%' }
-                      : { width: '75%', height: '35%' };
-                    
-                    return (
-                      <motion.div
-                        key={project.id}
-                        className="absolute rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+                  const isActive = relativeIndex === 0;
+                  const isVisible = Math.abs(relativeIndex) <= 2;
+                  
+                  if (!isVisible) return null;
+                  
+                  // Smooth vertical slide with depth
+                  const yOffset = relativeIndex * 100;
+                  const zOffset = Math.abs(relativeIndex) * -120;
+                  const scaleValue = 1 - Math.abs(relativeIndex) * 0.12;
+                  const opacityValue = isActive ? 1 : Math.max(0.4, 1 - Math.abs(relativeIndex) * 0.3);
+                  
+                  return (
+                    <motion.div
+                      key={project.id}
+                      className="absolute rounded-2xl overflow-hidden cursor-pointer"
+                      initial={false}
+                      style={{
+                        width: '85%',
+                        height: '55%',
+                        left: '50%',
+                        top: '50%',
+                        x: '-50%',
+                        transformStyle: 'preserve-3d',
+                        filter: isActive ? 'none' : `grayscale(${Math.abs(relativeIndex) * 40}%) brightness(${1 - Math.abs(relativeIndex) * 0.2})`,
+                      }}
+                      animate={{ 
+                        y: `calc(-50% + ${yOffset}px)`,
+                        z: zOffset,
+                        scale: scaleValue,
+                        opacity: opacityValue,
+                        zIndex: 10 - Math.abs(relativeIndex),
+                      }}
+                      transition={{ 
+                        duration: 0.6, 
+                        ease: [0.25, 0.1, 0.25, 1],
+                      }}
+                      whileHover={isActive ? { scale: 1.02 } : {}}
+                    >
+                      <div 
+                        className="relative w-full h-full rounded-2xl overflow-hidden"
                         style={{
-                          width: cardSize.width,
-                          height: cardSize.height,
-                          left: '50%',
-                          top: '50%',
-                          zIndex: offset.zIndex,
-                          filter: isActive ? 'none' : 'grayscale(100%) brightness(0.7)',
+                          boxShadow: isActive 
+                            ? '0 30px 60px -15px rgba(0,0,0,0.5), 0 0 40px -10px rgba(255, 59, 48, 0.3)' 
+                            : '0 15px 35px -10px rgba(0,0,0,0.4)',
                         }}
-                        initial={{ 
-                          x: '-50%', 
-                          y: `calc(-50% + ${offset.y}px)`,
-                          opacity: 0 
-                        }}
-                        animate={{ 
-                          x: '-50%', 
-                          y: `calc(-50% + ${offset.y}px)`,
-                          opacity: isActive ? 1 : 0.8
-                        }}
-                        transition={{ duration: 0.5, ease: 'easeInOut' }}
-                        whileHover={isActive ? { scale: 1.02 } : {}}
-                        drag={isActive ? "x" : false}
-                        dragConstraints={{ left: 0, right: 0 }}
-                        onDragEnd={(_, info) => {
-                          if (!isActive) return;
-                          const offset = info.offset.x;
-                          const velocity = info.velocity.x;
-                          if (offset < -50 || velocity < -500) {
-                            handleNextProject();
-                          } else if (offset > 50 || velocity > 500) {
-                            handlePrevProject();
-                          }
-                        }}
+
                       >
-                        <Link to={`/project/${project.slug}`}>
-                          <img
-                            src={project.coverImage}
-                            alt={project.title}
-                            className="w-full h-full object-cover"
+                        <img
+                          src={project.coverImage}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                        {isActive && (
+                          <motion.div 
+                            className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
                           />
-                        </Link>
-                      </motion.div>
-                    );
-                  });
-                })()}
+                        )}
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
 
               {/* Right: Navigation & Info */}
@@ -834,7 +837,6 @@ export default function Home() {
           </div>
 
           {/* View All Link */}
-
         </div>
       </section>
 

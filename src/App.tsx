@@ -19,10 +19,6 @@ import { lazy, Suspense } from "react";
 
 // Direct imports for main pages (no loading)
 import Index from "./pages/Index";
-import Portfolio from "./pages/Portfolio";
-import ProjectDetail from "./pages/ProjectDetail";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 // Admin pages (keep lazy loaded)
@@ -45,38 +41,6 @@ function AnimatedRoutes() {
           element={
             <PageTransition>
               <Index />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/portfolio"
-          element={
-            <PageTransition>
-              <Portfolio />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/project/:slug"
-          element={
-            <PageTransition>
-              <ProjectDetail />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <PageTransition>
-              <About />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <PageTransition>
-              <Contact />
             </PageTransition>
           }
         />
