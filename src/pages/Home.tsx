@@ -687,56 +687,69 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
               {/* Left: Stacked Cards in Cross Pattern */}
               <motion.div 
-                className="relative w-[350px] h-[450px] md:w-[550px] md:h-[650px] lg:w-[700px] lg:h-[800px]"
-                style={{ perspective: '1500px' }}
+                className="relative w-[280px] h-[380px] md:w-[320px] md:h-[420px] lg:w-[380px] lg:h-[480px]"
+                style={{ perspective: '1200px' }}
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.1}
+                onDragEnd={(_, info) => {
+                  const threshold = 50;
+                  if (info.offset.x > threshold) {
+                    setActiveProjectIndex((prev) => 
+                      prev === 0 ? featuredProjects.length - 1 : prev - 1
+                    );
+                  } else if (info.offset.x < -threshold) {
+                    setActiveProjectIndex((prev) => 
+                      prev === featuredProjects.length - 1 ? 0 : prev + 1
+                    );
+                  }
+                }}
               >
                 {featuredProjects.map((project, index) => {
-                  // Calculate position relative to active index
                   const total = featuredProjects.length;
                   let relativeIndex = index - activeProjectIndex;
                   
-                  // Handle wrapping for circular navigation
                   if (relativeIndex > total / 2) relativeIndex -= total;
                   if (relativeIndex < -total / 2) relativeIndex += total;
                   
                   const isActive = relativeIndex === 0;
-                  const isVisible = Math.abs(relativeIndex) <= 2;
+                  const isVisible = Math.abs(relativeIndex) <= 3;
                   
                   if (!isVisible) return null;
                   
-                  // Smooth vertical slide with depth
-                  const yOffset = relativeIndex * 100;
-                  const zOffset = Math.abs(relativeIndex) * -120;
-                  const scaleValue = 1 - Math.abs(relativeIndex) * 0.12;
-                  const opacityValue = isActive ? 1 : Math.max(0.4, 1 - Math.abs(relativeIndex) * 0.3);
+                  // Stacked card effect - cards behind offset to the right with rotation
+                  const xOffset = relativeIndex * 20;
+                  const yOffset = relativeIndex * 8;
+                  const rotateZ = relativeIndex * -3;
+                  const scaleValue = 1 - Math.abs(relativeIndex) * 0.05;
+                  const opacityValue = isActive ? 1 : Math.max(0.6, 1 - Math.abs(relativeIndex) * 0.2);
                   
                   return (
                     <motion.div
                       key={project.id}
-                      className="absolute rounded-2xl overflow-hidden cursor-pointer"
+                      className="absolute rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing"
                       initial={false}
                       style={{
-                        width: '85%',
-                        height: '55%',
-                        left: '50%',
-                        top: '50%',
-                        x: '-50%',
-                        transformStyle: 'preserve-3d',
-                        filter: isActive ? 'none' : `grayscale(${Math.abs(relativeIndex) * 40}%) brightness(${1 - Math.abs(relativeIndex) * 0.2})`,
+                        width: '100%',
+                        height: '100%',
+                        left: 0,
+                        top: 0,
+                        transformOrigin: 'center center',
                       }}
                       animate={{ 
-                        y: `calc(-50% + ${yOffset}px)`,
-                        z: zOffset,
+                        x: xOffset,
+                        y: yOffset,
+                        rotate: rotateZ,
                         scale: scaleValue,
                         opacity: opacityValue,
                         zIndex: 10 - Math.abs(relativeIndex),
                       }}
                       transition={{ 
-                        duration: 0.6, 
+                        duration: 0.4, 
                         ease: [0.25, 0.1, 0.25, 1],
                       }}
                       whileHover={isActive ? { scale: 1.02 } : {}}
@@ -745,23 +758,30 @@ export default function Home() {
                         className="relative w-full h-full rounded-2xl overflow-hidden"
                         style={{
                           boxShadow: isActive 
-                            ? '0 30px 60px -15px rgba(0,0,0,0.5), 0 0 40px -10px rgba(255, 59, 48, 0.3)' 
-                            : '0 15px 35px -10px rgba(0,0,0,0.4)',
+                            ? '0 25px 50px -12px rgba(0,0,0,0.6)' 
+                            : '0 10px 30px -10px rgba(0,0,0,0.4)',
                         }}
-
                       >
                         <img
                           src={project.coverImage}
                           alt={project.title}
                           className="w-full h-full object-cover"
                         />
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                        
+                        {/* Title at bottom */}
                         {isActive && (
                           <motion.div 
-                            className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
+                            className="absolute bottom-0 left-0 right-0 p-5"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                          />
+                          >
+                            <h3 className="text-white text-xl md:text-2xl font-bold">
+                              {project.title}
+                            </h3>
+                          </motion.div>
                         )}
                       </div>
                     </motion.div>
