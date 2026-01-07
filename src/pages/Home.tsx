@@ -722,46 +722,41 @@ export default function Home() {
                   if (!isVisible) return null;
                   
                   // 3D Stacked card effect - cards fan out to the RIGHT behind the front card
-                  const xOffset = relativeIndex * 25;
-                  const yOffset = relativeIndex * 5;
-                  const rotateZ = relativeIndex * 4;
-                  const scaleValue = 1 - relativeIndex * 0.04;
-                  const opacityValue = isActive ? 1 : Math.max(0.5, 1 - relativeIndex * 0.15);
+                  const xOffset = relativeIndex * 15;
+                  const yOffset = relativeIndex * 3;
+                  const rotateZ = relativeIndex * 3;
+                  const scaleValue = 1 - relativeIndex * 0.02;
                   const zIndex = 10 - relativeIndex;
                   
                   return (
                     <motion.div
                       key={project.id}
-                      className="absolute rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing"
+                      className="absolute rounded-3xl overflow-hidden cursor-grab active:cursor-grabbing"
                       initial={false}
                       style={{
                         width: '100%',
                         height: '100%',
                         left: 0,
                         top: 0,
-                        transformOrigin: 'left center',
-                        perspective: 1000,
+                        transformOrigin: 'center center',
                       }}
                       animate={{ 
                         x: xOffset,
                         y: yOffset,
                         rotate: rotateZ,
                         scale: scaleValue,
-                        opacity: opacityValue,
                         zIndex,
                       }}
                       transition={{ 
-                        duration: 0.5, 
+                        duration: 0.4, 
                         ease: [0.32, 0.72, 0, 1],
                       }}
                       whileHover={isActive ? { scale: 1.02, y: -5 } : {}}
                     >
                       <div 
-                        className="relative w-full h-full rounded-2xl overflow-hidden"
+                        className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10"
                         style={{
-                          boxShadow: isActive 
-                            ? '0 30px 60px -15px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.1)' 
-                            : `0 ${15 + relativeIndex * 5}px ${30 + relativeIndex * 10}px -${10 + relativeIndex * 3}px rgba(0,0,0,${0.5 - relativeIndex * 0.05})`,
+                          boxShadow: '0 20px 50px -15px rgba(0,0,0,0.5)',
                         }}
                       >
                         <img
