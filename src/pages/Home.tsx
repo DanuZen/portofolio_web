@@ -717,16 +717,17 @@ export default function Home() {
                   if (relativeIndex < -total / 2) relativeIndex += total;
                   
                   const isActive = relativeIndex === 0;
-                  const isVisible = Math.abs(relativeIndex) <= 3;
+                  const isVisible = relativeIndex >= 0 && relativeIndex <= 4;
                   
                   if (!isVisible) return null;
                   
-                  // Stacked card effect - cards behind offset to the right with rotation
-                  const xOffset = relativeIndex * 20;
-                  const yOffset = relativeIndex * 8;
-                  const rotateZ = relativeIndex * -3;
-                  const scaleValue = 1 - Math.abs(relativeIndex) * 0.05;
-                  const opacityValue = isActive ? 1 : Math.max(0.6, 1 - Math.abs(relativeIndex) * 0.2);
+                  // 3D Stacked card effect - cards fan out to the RIGHT behind the front card
+                  const xOffset = relativeIndex * 25;
+                  const yOffset = relativeIndex * 5;
+                  const rotateZ = relativeIndex * 4;
+                  const scaleValue = 1 - relativeIndex * 0.04;
+                  const opacityValue = isActive ? 1 : Math.max(0.5, 1 - relativeIndex * 0.15);
+                  const zIndex = 10 - relativeIndex;
                   
                   return (
                     <motion.div
@@ -738,7 +739,8 @@ export default function Home() {
                         height: '100%',
                         left: 0,
                         top: 0,
-                        transformOrigin: 'center center',
+                        transformOrigin: 'left center',
+                        perspective: 1000,
                       }}
                       animate={{ 
                         x: xOffset,
@@ -746,20 +748,20 @@ export default function Home() {
                         rotate: rotateZ,
                         scale: scaleValue,
                         opacity: opacityValue,
-                        zIndex: 10 - Math.abs(relativeIndex),
+                        zIndex,
                       }}
                       transition={{ 
-                        duration: 0.4, 
-                        ease: [0.25, 0.1, 0.25, 1],
+                        duration: 0.5, 
+                        ease: [0.32, 0.72, 0, 1],
                       }}
-                      whileHover={isActive ? { scale: 1.02 } : {}}
+                      whileHover={isActive ? { scale: 1.02, y: -5 } : {}}
                     >
                       <div 
                         className="relative w-full h-full rounded-2xl overflow-hidden"
                         style={{
                           boxShadow: isActive 
-                            ? '0 25px 50px -12px rgba(0,0,0,0.6)' 
-                            : '0 10px 30px -10px rgba(0,0,0,0.4)',
+                            ? '0 30px 60px -15px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.1)' 
+                            : `0 ${15 + relativeIndex * 5}px ${30 + relativeIndex * 10}px -${10 + relativeIndex * 3}px rgba(0,0,0,${0.5 - relativeIndex * 0.05})`,
                         }}
                       >
                         <img
@@ -768,7 +770,7 @@ export default function Home() {
                           className="w-full h-full object-cover"
                         />
                         {/* Gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         
                         {/* Title at bottom */}
                         {isActive && (
