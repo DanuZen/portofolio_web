@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { photographerInfo } from '@/data/photographer';
 import { getFeaturedProjects } from '@/data/projects';
@@ -23,6 +23,7 @@ import image11 from '@/assets/image11.png';
 import image12 from '@/assets/image12.png';
 import image13 from '@/assets/image13.png';
 import image14 from '@/assets/image14.png';
+import foto from '@/assets/foto.png';
 
 // Animation components
 import { MagneticElement } from '@/components/ui/MagneticElement';
@@ -96,110 +97,197 @@ export default function Home() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
   const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  return <>
-    <SEOHead />
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const textOptions = [
+    "Web Development",
+    "UI/UX Design",
+    "Desain Grafis"
+  ];
+
+  useEffect(() => {
+    const currentFullText = textOptions[currentTextIndex];
     
-    <div className="min-h-screen overflow-x-hidden">
-      {/* Hero Section - Modern Dark Design */}
-      <section 
-        ref={heroRef}
-        id="hero" 
-        data-section-theme="dark" 
-        className="relative min-h-screen w-full overflow-x-hidden" 
-        style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}
-      >
-        {/* Vertical Text - Right (Moved outside container for viewport edge positioning) */}
-        <div className="absolute -right-4 md:-right-8 top-0 bottom-0 hidden lg:flex flex-col justify-center z-10 overflow-hidden h-screen pointer-events-none">
-           <motion.div 
-             className="text-transparent font-black tracking-widest select-none whitespace-nowrap"
-             style={{ 
-               writingMode: 'vertical-rl',
-               textOrientation: 'mixed',
-               WebkitTextStroke: '3px #FFFFFF',
-               fontSize: '18vh',
-             }}
-             animate={{
-               y: [0, -1000]
-             }}
-             transition={{
-               repeat: Infinity,
-               ease: "linear",
-               duration: 20
-             }}
-           >
-              PROGRAMER - DESAINER - PROGRAMER - DESAINER
-           </motion.div>
-        </div>
+    const handleTyping = () => {
+      if (isDeleting) {
+        setDisplayedText(prev => prev.slice(0, -1));
+        if (displayedText === "") {
+          setIsDeleting(false);
+          setCurrentTextIndex(prev => (prev + 1) % textOptions.length);
+        }
+      } else {
+        setDisplayedText(currentFullText.slice(0, displayedText.length + 1));
+        if (displayedText === currentFullText) {
+          setTimeout(() => setIsDeleting(true), 2000); // Wait before deleting
+        }
+      }
+    };
 
-        <div className="container mx-auto px-6 lg:px-12 min-h-screen flex flex-col justify-center py-24 overflow-hidden">
-          {/* Full Width Neon Green Card */}
-          {/* Hero Section - Redesigned */}
-          <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
-            
+    const timer = setTimeout(handleTyping, isDeleting ? 50 : 100);
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, currentTextIndex]);
 
-
-            {/* Main Content */}
-            <div className="relative z-20 flex flex-col items-center justify-center w-full -mt-32 md:-mt-40">
-
-              
-              {/* Person Image */}
-              <motion.div
-                className="relative z-10 h-[70vh] md:h-[90vh] w-full flex items-end justify-center pointer-events-none"
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.2 }}
-              >
-                 <img 
-                   src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                   alt="Dann" 
-                   className="h-full w-auto object-contain object-bottom drop-shadow-2xl translate-x-12 md:translate-x-24"
-                 />
-              </motion.div>
-            </div>
-
-            {/* Floating Social Icons - Redesigned */}
-            <motion.div 
-              className="absolute bottom-12 z-30 flex justify-center"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              <div className="flex items-center gap-4 bg-[#FF3B30] px-6 py-3 rounded-full shadow-lg shadow-red-900/20">
-                {[
-                  { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
-                  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-                  { icon: Github, href: 'https://github.com', label: 'GitHub' },
-                  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' }
-                ].map((item, i) => (
-                  <a 
-                    key={i}
-                    href={item.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center gap-0 hover:gap-2 text-white transition-all duration-300 group"
-                  >
-                    <item.icon className="w-6 h-6 md:w-8 md:h-8 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
-                    <span className="max-w-0 overflow-hidden opacity-0 group-hover:max-w-xs group-hover:opacity-100 whitespace-nowrap font-medium text-base transition-all duration-300 ease-in-out">
-                      {item.label}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </motion.div>
-
+  return (
+    <>
+      <SEOHead />
+      
+      <div className="min-h-screen overflow-x-hidden">
+        {/* Hero Section - Modern Dark Design */}
+        <section 
+          ref={heroRef}
+          id="hero" 
+          data-section-theme="dark" 
+          className="relative min-h-screen w-full overflow-x-hidden" 
+          style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}
+        >
+          {/* Vertical Text - Right */}
+          <div className="absolute -right-4 md:-right-8 top-0 bottom-0 hidden lg:flex flex-col justify-center z-10 overflow-hidden h-screen pointer-events-none">
+             <motion.div 
+               className="text-transparent font-black tracking-widest select-none whitespace-nowrap"
+               style={{ 
+                 writingMode: 'vertical-rl',
+                 textOrientation: 'mixed',
+                 WebkitTextStroke: '3px #FFFFFF',
+                 fontSize: '18vh',
+               }}
+               animate={{
+                 y: [0, -1000]
+               }}
+               transition={{
+                 repeat: Infinity,
+                 ease: "linear",
+                 duration: 20
+               }}
+             >
+                PROGRAMER - DESAINER - PROGRAMER - DESAINER
+             </motion.div>
           </div>
 
-          {/* About Me Section - Redesigned */}
-          <div id="about" data-section-theme="dark" className="w-full pb-0 mt-24 md:mt-32 scroll-mt-32 md:scroll-mt-40">
-            {/* Grid Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
-              {/* Left Column: Title, Text & Tags */}
-              <div className="flex flex-col justify-center space-y-6">
+          <div className="container mx-auto px-6 lg:px-12 min-h-screen flex flex-col justify-center py-24 overflow-hidden">
+            {/* Hero Content - Split Layout */}
+            <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
+              
+              <div className="relative z-20 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center -mt-20 md:-mt-0">
+                
+                {/* Left Column: Text Content */}
+                <div className="flex flex-col items-start justify-center space-y-6 text-left order-2 lg:order-1 px-4 lg:px-0">
+                  <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="-mt-20 md:-mt-32"
+                  >
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-2xl md:text-3xl text-white/80 font-light">I'm</span>
+                      <div className="h-[40px] overflow-hidden flex items-center">
+                        <span className="text-2xl md:text-3xl font-bold text-[#FF3B30]">
+                          {displayedText}
+                          {displayedText !== textOptions[currentTextIndex] && (
+                            <span className="animate-pulse">|</span>
+                          )}
+                        </span>
+                      </div>
+                    </div>
+                    <h1 className="text-6xl md:text-8xl font-black text-white tracking-tight mt-2 mb-4 uppercase">
+                      Dann
+                    </h1>
+                    {/* Red Accent Line */}
+                    <div className="h-2 w-24 bg-[#FF3B30] rounded-full mb-6"></div>
+                    
+                    <p className="text-white/90 text-lg md:text-xl max-w-lg leading-relaxed text-justify font-akzidenz-bold">
+                      Coding today, debugging tomorrow, improving every day. True expertise is built through persistence, curiosity, and continuous learning.
+                    </p>
+
+                    {/* Social Icons */}
+                    <div className="pt-8 flex items-center gap-4">
+                      <div className="flex items-center gap-6">
+                        {[
+                          { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
+                          { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
+                          { icon: Github, href: 'https://github.com', label: 'GitHub' },
+                          { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' }
+                        ].map((item, i) => (
+                          <a 
+                            key={i}
+                            href={item.href} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="flex items-center gap-0 hover:gap-2 text-white hover:text-[#FF3B30] transition-all duration-300 group"
+                          >
+                            <item.icon className="w-6 h-6 md:w-8 md:h-8 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
+                            <span className="max-w-0 overflow-hidden opacity-0 group-hover:max-w-xs group-hover:opacity-100 whitespace-nowrap font-akzidenz-bold text-base transition-all duration-300 ease-in-out">
+                              {item.label}
+                            </span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Right Column: Image & Background Shape */}
+                <div className="relative flex items-center justify-center order-1 lg:order-2">
+                  {/* Dark Circle Background */}
+                  <div className="absolute z-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#1A1A1A] rounded-full blur-3xl opacity-50"></div>
+                  
+                  {/* Person Image */}
+                  <motion.div
+                    className="relative z-10 h-[50vh] md:h-[80vh] w-full flex items-center justify-center"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1 }}
+                  >
+                    <img 
+                      src={foto} 
+                      alt="Dann" 
+                      className="h-full w-auto object-contain drop-shadow-[0_-5px_5px_rgba(255,255,255,0.15)] scale-[1.7] -translate-y-80 -translate-x-12"
+                    />
+                  </motion.div>
+                </div>
+
+              </div>
+
+
+
+              {/* Info Bar */}
+              <motion.div 
+                className="absolute bottom-0 left-0 right-0 mx-auto w-full max-w-7xl px-6 lg:px-0 hidden md:flex justify-between items-end text-left z-30"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                <div>
+                  <h3 className="text-xs font-bold text-gray-500 tracking-widest mb-1">FULL NAME</h3>
+                  <p className="text-white font-bold tracking-wider">DANN</p>
+                </div>
+                <div>
+                  <h3 className="text-xs font-bold text-gray-500 tracking-widest mb-1">PHILOSOPHY</h3>
+                  <p className="text-white font-bold tracking-wider">UI/UX & CODE</p>
+                </div>
+                <div>
+                  <h3 className="text-xs font-bold text-gray-500 tracking-widest mb-1">FAVOURITE THING</h3>
+                  <p className="text-white font-bold tracking-wider">CREATING</p>
+                </div>
+                <div>
+                  <h3 className="text-xs font-bold text-gray-500 tracking-widest mb-1">CURRENT OCCUPATION</h3>
+                  <p className="text-white font-bold tracking-wider">FREELANCER</p>
+                </div>
+              </motion.div>
+
+            </div>
+
+            {/* About Me Section - Redesigned */}
+            <div id="about" data-section-theme="dark" className="w-full pb-0 mt-24 md:mt-32 scroll-mt-32 md:scroll-mt-40">
+              {/* Grid Layout */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+                {/* Left Column: Title, Text & Tags */}
+                <div className="flex flex-col justify-center space-y-6">
                 {/* Title */}
                 <FadeNearNav>
                   <BlurReveal>
@@ -809,5 +897,5 @@ export default function Home() {
       </section>
 
     </div>
-  </>;
+  </>);
 }
