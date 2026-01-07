@@ -113,127 +113,86 @@ export default function Home() {
         className="relative min-h-screen w-full overflow-x-hidden" 
         style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}
       >
+        {/* Vertical Text - Right (Moved outside container for viewport edge positioning) */}
+        <div className="absolute -right-4 md:-right-8 top-0 bottom-0 hidden lg:flex flex-col justify-center z-10 overflow-hidden h-screen pointer-events-none">
+           <motion.div 
+             className="text-transparent font-black tracking-widest select-none whitespace-nowrap"
+             style={{ 
+               writingMode: 'vertical-rl',
+               textOrientation: 'mixed',
+               WebkitTextStroke: '3px #FFFFFF',
+               fontSize: '18vh',
+             }}
+             animate={{
+               y: [0, -1000]
+             }}
+             transition={{
+               repeat: Infinity,
+               ease: "linear",
+               duration: 20
+             }}
+           >
+              PROGRAMER - DESAINER - PROGRAMER - DESAINER
+           </motion.div>
+        </div>
+
         <div className="container mx-auto px-6 lg:px-12 min-h-screen flex flex-col justify-center py-24 overflow-hidden">
           {/* Full Width Neon Green Card */}
-          <motion.div 
-            className="relative w-full bg-[#FF3B30] rounded-[2.5rem] px-8 pt-8 pb-16 md:px-12 md:pt-12 md:pb-20 lg:px-16 lg:pt-16 lg:pb-24 overflow-hidden mb-24"
-            style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
-          >
-            {/* Animated background patterns */}
-            <motion.div 
-              className="absolute inset-0 opacity-10"
-              animate={{
-                backgroundPosition: ['0% 0%', '100% 100%'],
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                repeatType: 'reverse',
-              }}
-              style={{
-                backgroundImage: 'radial-gradient(circle at 50% 50%, white 1px, transparent 1px)',
-                backgroundSize: '50px 50px',
-              }}
-            />
+          {/* Hero Section - Redesigned */}
+          <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
+            
 
-            {/* Large CREATIVE Title at Top */}
-            <motion.h1 
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-[12rem] xl:text-[14rem] font-black leading-[0.9] tracking-tight mb-8 font-akzidenz text-slate-50 relative z-10"
-              initial={{ opacity: 0, x: -100, rotateY: -15 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <CharReveal text="DANN" delay={0.3} staggerDelay={0.08} />
-            </motion.h1>
 
-            {/* Content Grid - Image Left, BRIEF Right */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start relative z-10">
-              {/* Left - Image with Arrow Icon */}
-              <motion.div 
-                className="relative"
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            {/* Main Content */}
+            <div className="relative z-20 flex flex-col items-center justify-center w-full -mt-32 md:-mt-40">
+
+              
+              {/* Person Image */}
+              <motion.div
+                className="relative z-10 h-[70vh] md:h-[90vh] w-full flex items-end justify-center pointer-events-none"
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.2 }}
               >
-                {/* Arrow Icon overlapping top-left of image */}
-                <MagneticElement strength={0.4}>
-                  <motion.div 
-                    className="absolute -top-6 -left-2 md:-left-4 w-16 h-16 md:w-20 md:h-20 bg-[hsl(0,0%,8%)] rounded-full flex items-center justify-center z-10 cursor-pointer"
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8, type: "spring", stiffness: 200 }}
-                    whileHover={{ scale: 1.2, rotate: 45 }}
-                  >
-                    <ArrowRight className="w-8 h-8 md:w-10 md:h-10 text-[#FF3B30] -rotate-45" />
-                  </motion.div>
-                </MagneticElement>
-
-                {/* Image Container with 3D hover */}
-                <GlowCard className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white">
-                  <img 
-                    src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                    alt="Creative Team" 
-                    className="absolute inset-0 w-full h-full object-center object-contain"
-                  />
-                </GlowCard>
-              </motion.div>
-
-              {/* Right - BRIEF Title and Description */}
-              <motion.div 
-                className="space-y-12"
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <BlurReveal delay={0.8}>
-                  <h2 className="text-4xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black leading-[0.9] tracking-tight font-akzidenz text-slate-50 xl:text-7xl">
-                    <TextReveal text="PROGRAMER" delay={0.9} />
-                    <br/>& <br/>
-                    <TextReveal text="DESAIN GRAFIS" delay={1.1} />
-                  </h2>
-                </BlurReveal>
-                
-                <motion.p 
-                  className="text-white/90 text-base md:text-lg lg:text-xl max-w-lg leading-relaxed text-justify mx-0 px-0 font-akzidenz-bold cursor-default transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.2 }}
-                  whileHover={{ 
-                    scale: 1.02, 
-                    textShadow: "0 0 20px rgba(255,255,255,0.3)",
-                    transition: { duration: 0.2 }
-                  }}
-                >
-                  Menciptakan produk digital yang estetis, fungsional, dan responsif. Menggabungkan kemampuan teknis dan kreativitas visual untuk menghadirkan solusi digital yang modern.
-                </motion.p>
-                
-                <StaggerContainer staggerDelay={0.1} className="flex gap-1 mt-12">
-                  {[Youtube, Instagram, Github, Linkedin].map((Icon, i) => (
-                    <StaggerItem key={i} direction="up">
-                      <MagneticElement strength={0.3}>
-                        <SocialIcon 
-                          icon={Icon} 
-                          name={['YouTube', 'Instagram', 'GitHub', 'LinkedIn'][i]} 
-                        />
-                      </MagneticElement>
-                    </StaggerItem>
-                  ))}
-                </StaggerContainer>
+                 <img 
+                   src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
+                   alt="Dann" 
+                   className="h-full w-auto object-contain object-bottom drop-shadow-2xl translate-x-12 md:translate-x-24"
+                 />
               </motion.div>
             </div>
 
-            {/* Scroll Indicator */}
+            {/* Floating Social Icons - Redesigned */}
             <motion.div 
-              className="flex justify-center pt-10 md:pt-14"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.5 }}
+              className="absolute bottom-12 z-30 flex justify-center"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <FloatingElement duration={2} distance={8}>
-                <ScrollIndicator className="text-white hover:text-white/70" />
-              </FloatingElement>
+              <div className="flex items-center gap-4 bg-[#FF3B30] px-6 py-3 rounded-full shadow-lg shadow-red-900/20">
+                {[
+                  { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
+                  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
+                  { icon: Github, href: 'https://github.com', label: 'GitHub' },
+                  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' }
+                ].map((item, i) => (
+                  <a 
+                    key={i}
+                    href={item.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center gap-0 hover:gap-2 text-white transition-all duration-300 group"
+                  >
+                    <item.icon className="w-6 h-6 md:w-8 md:h-8 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
+                    <span className="max-w-0 overflow-hidden opacity-0 group-hover:max-w-xs group-hover:opacity-100 whitespace-nowrap font-medium text-base transition-all duration-300 ease-in-out">
+                      {item.label}
+                    </span>
+                  </a>
+                ))}
+              </div>
             </motion.div>
-          </motion.div>
+
+          </div>
 
           {/* About Me Section - Redesigned */}
           <div id="about" data-section-theme="dark" className="w-full pb-0 mt-24 md:mt-32 scroll-mt-32 md:scroll-mt-40">
@@ -684,10 +643,10 @@ export default function Home() {
 
           {/* Projects Stacked Layout - Cross Pattern */}
           <div className="w-full px-4 md:px-8 lg:px-16">
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-40">
               {/* Left: Stacked Cards in Cross Pattern */}
               <motion.div 
-                className="relative w-[280px] h-[380px] md:w-[320px] md:h-[420px] lg:w-[380px] lg:h-[480px]"
+                className="relative w-[320px] h-[420px] md:w-[380px] md:h-[480px] lg:w-[450px] lg:h-[550px]"
                 style={{ perspective: '1200px' }}
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -717,16 +676,16 @@ export default function Home() {
                   if (relativeIndex < -total / 2) relativeIndex += total;
                   
                   const isActive = relativeIndex === 0;
-                  const isVisible = relativeIndex >= 0 && relativeIndex <= 4;
+                  const isVisible = Math.abs(relativeIndex) <= 2;
                   
                   if (!isVisible) return null;
                   
-                  // 3D Stacked card effect - cards fan out to the RIGHT behind the front card
-                  const xOffset = relativeIndex * 15;
-                  const yOffset = relativeIndex * 3;
-                  const rotateZ = relativeIndex * 3;
-                  const scaleValue = 1 - relativeIndex * 0.02;
-                  const zIndex = 10 - relativeIndex;
+                  // Symmetrical Stacked card effect
+                  const xOffset = relativeIndex * 25;
+                  const yOffset = 0;
+                  const rotateZ = relativeIndex * 5;
+                  const scaleValue = 1 - Math.abs(relativeIndex) * 0.1;
+                  const zIndex = 50 - Math.abs(relativeIndex);
                   
                   return (
                     <motion.div
@@ -753,34 +712,42 @@ export default function Home() {
                       }}
                       whileHover={isActive ? { scale: 1.02, y: -5 } : {}}
                     >
-                      <div 
-                        className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10"
-                        style={{
-                          boxShadow: '0 20px 50px -15px rgba(0,0,0,0.5)',
-                        }}
+                      <Link 
+                        to={`/project/${project.slug}`}
+                        className="block w-full h-full"
+                        draggable={false}
                       >
-                        <img
-                          src={project.coverImage}
-                          alt={project.title}
-                          className="w-full h-full object-cover"
-                        />
-                        {/* Gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                        
-                        {/* Title at bottom */}
-                        {isActive && (
-                          <motion.div 
-                            className="absolute bottom-0 left-0 right-0 p-5"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
-                          >
-                            <h3 className="text-white text-xl md:text-2xl font-bold">
-                              {project.title}
-                            </h3>
-                          </motion.div>
-                        )}
-                      </div>
+                        <div 
+                          className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10 transition-all duration-300"
+                          style={{
+                            boxShadow: isActive 
+                              ? '0 0 30px rgba(255, 59, 48, 0.3), 0 20px 50px -15px rgba(0,0,0,0.5)' 
+                              : '0 20px 50px -15px rgba(0,0,0,0.5)',
+                          }}
+                        >
+                          <img
+                            src={project.coverImage}
+                            alt={project.title}
+                            className="w-full h-full object-cover"
+                          />
+                          {/* Gradient overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                          
+                          {/* Title at bottom */}
+                          {isActive && (
+                            <motion.div 
+                              className="absolute bottom-0 left-0 right-0 p-5"
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.2 }}
+                            >
+                              <h3 className="text-white text-xl md:text-2xl font-bold">
+                                {project.title}
+                              </h3>
+                            </motion.div>
+                          )}
+                        </div>
+                      </Link>
                     </motion.div>
                   );
                 })}

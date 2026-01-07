@@ -27,6 +27,7 @@ const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
 const ProjectsManager = lazy(() => import("./pages/admin/ProjectsManager"));
 const ProjectForm = lazy(() => import("./pages/admin/ProjectForm"));
 const Settings = lazy(() => import("./pages/admin/Settings"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,14 @@ function AnimatedRoutes() {
           element={
             <PageTransition>
               <Index />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/project/:slug"
+          element={
+            <PageTransition>
+              <ProjectDetail />
             </PageTransition>
           }
         />
