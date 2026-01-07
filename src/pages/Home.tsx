@@ -810,22 +810,6 @@ export default function Home() {
                     </span>
                   </h2>
                 </div>
-                {/* Navigation Arrows - Vertical */}
-                {/* Navigation Indicators */}
-                <div className="flex gap-3 mt-4">
-                  {featuredProjects.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveProjectIndex(idx)}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        idx === activeProjectIndex 
-                          ? 'w-8 bg-[#FF3B30]' 
-                          : 'w-2 bg-white/20 hover:bg-white/40'
-                      }`}
-                      aria-label={`Go to project ${idx + 1}`}
-                    />
-                  ))}
-                </div>
 
                 {/* Project Info */}
                 <motion.div 
