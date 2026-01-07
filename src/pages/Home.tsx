@@ -717,16 +717,17 @@ export default function Home() {
                   if (relativeIndex < -total / 2) relativeIndex += total;
                   
                   const isActive = relativeIndex === 0;
-                  const isVisible = relativeIndex >= 0 && relativeIndex <= 4;
+                  const absIndex = Math.abs(relativeIndex);
+                  const isVisible = absIndex <= 3;
                   
                   if (!isVisible) return null;
                   
-                  // 3D Stacked card effect - cards fan out to the RIGHT behind the front card
-                  const xOffset = relativeIndex * 15;
-                  const yOffset = relativeIndex * 3;
-                  const rotateZ = relativeIndex * 3;
-                  const scaleValue = 1 - relativeIndex * 0.02;
-                  const zIndex = 10 - relativeIndex;
+                  // Cards fan out to BOTH sides - left cards go left, right cards go right
+                  const xOffset = relativeIndex * 18;
+                  const yOffset = absIndex * 4;
+                  const rotateZ = relativeIndex * -4; // negative = left cards rotate CCW, right cards rotate CW
+                  const scaleValue = 1 - absIndex * 0.03;
+                  const zIndex = 10 - absIndex;
                   
                   return (
                     <motion.div
@@ -738,7 +739,7 @@ export default function Home() {
                         height: '100%',
                         left: 0,
                         top: 0,
-                        transformOrigin: 'center center',
+                        transformOrigin: 'center bottom',
                       }}
                       animate={{ 
                         x: xOffset,
