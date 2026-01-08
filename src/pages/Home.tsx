@@ -296,14 +296,6 @@ export default function Home() {
                         {/* Gray Block */}
                         <div className="absolute bottom-10 right-0 w-3/4 h-64 bg-[#2A2A2A] rounded-3xl z-0 transform rotate-2"></div>
                         
-                        {/* Image Container */}
-                        <div className="absolute inset-4 z-20 overflow-hidden rounded-2xl">
-                           <img 
-                              src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                              alt="About Me" 
-                              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                           />
-                        </div>
 
                         {/* Floating Cursive Name */}
                         <div className="absolute top-[15%] right-[-20%] z-30 pointer-events-none">
