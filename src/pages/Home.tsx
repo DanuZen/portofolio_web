@@ -356,11 +356,24 @@ export default function Home() {
 
                   {/* Right Side: Content (8 cols) */}
                   <div className="lg:col-span-7 flex flex-col space-y-8 pl-0 lg:pl-12">
-                     <div>
-                        <h2 className="text-4xl md:text-5xl font-black text-white mb-2 uppercase tracking-tighter">
-                           I'M A WEB <span className="text-[#FF3B30]">DEVELOPER</span>
-                        </h2>
-                        <div className="h-1 w-20 bg-[#FF3B30]"></div>
+                     <div className="mb-6">
+                        {/* Section Title with Script Overlay */}
+                        <div className="relative mb-4">
+                           <h2 className="text-4xl md:text-6xl font-black text-white/40 uppercase tracking-tight">
+                              INTRODUCING, <span className="text-white/40">MYSELF</span>
+                           </h2>
+                           <span 
+                              className="absolute left-[45%] md:left-[40%] top-1/2 -translate-y-1/2 text-[#FF6B35] text-4xl md:text-6xl italic font-light"
+                              style={{ fontFamily: "'Brush Script MT', 'Segoe Script', cursive" }}
+                           >
+                              Dann
+                           </span>
+                        </div>
+                        {/* Subtitle */}
+                        <div className="flex items-center gap-4">
+                           <span className="text-white/60 text-sm uppercase tracking-widest">I'M A</span>
+                           <span className="text-[#FF3B30] text-sm uppercase tracking-widest font-bold">WEB DEVELOPER</span>
+                        </div>
                      </div>
 
                      <p className="text-gray-400 text-lg leading-relaxed text-justify">
