@@ -359,11 +359,11 @@ export default function Home() {
                      <div className="mb-6">
                         {/* Section Title with Script Overlay */}
                         <div className="relative mb-8">
-                           <h2 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black text-white uppercase tracking-tight italic leading-[0.95]">
+                           <h2 className="text-[12vw] md:text-[10vw] lg:text-[8vw] font-black text-white uppercase tracking-tight italic leading-[0.95]">
                               <span className="relative inline-block">
                                  INTRODUCING,
                                  <span 
-                                    className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 translate-x-full text-[#FF6B35] text-3xl md:text-5xl lg:text-6xl not-italic font-normal"
+                                    className="absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 translate-x-full text-[#FF6B35] text-[5vw] md:text-[4vw] lg:text-[3.5vw] not-italic font-normal"
                                     style={{ fontFamily: "'Brush Script MT', 'Segoe Script', cursive" }}
                                  >
                                     Dann
