@@ -358,19 +358,23 @@ export default function Home() {
                   <div className="lg:col-span-7 flex flex-col space-y-8 pl-0 lg:pl-12">
                      <div className="mb-6">
                         {/* Section Title with Script Overlay */}
-                        <div className="relative mb-4">
-                           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight">
-                              INTRODUCING, <span className="text-white">MYSELF</span>
+                        <div className="relative mb-8">
+                           <h2 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black text-white uppercase tracking-tight italic leading-[0.95]">
+                              <span className="relative inline-block">
+                                 INTRODUCING,
+                                 <span 
+                                    className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 translate-x-full text-[#FF6B35] text-3xl md:text-5xl lg:text-6xl not-italic font-normal"
+                                    style={{ fontFamily: "'Brush Script MT', 'Segoe Script', cursive" }}
+                                 >
+                                    Dann
+                                 </span>
+                              </span>
+                              <br />
+                              <span>MYSELF</span>
                            </h2>
-                           <span 
-                              className="absolute left-[45%] md:left-[40%] top-1/2 -translate-y-1/2 text-[#FF6B35] text-4xl md:text-6xl italic font-light"
-                              style={{ fontFamily: "'Brush Script MT', 'Segoe Script', cursive" }}
-                           >
-                              Dann
-                           </span>
                         </div>
                         {/* Subtitle */}
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-3">
                            <span className="text-white/60 text-sm uppercase tracking-widest">I'M A</span>
                            <span className="text-[#FF3B30] text-sm uppercase tracking-widest font-bold">WEB DEVELOPER</span>
                         </div>
