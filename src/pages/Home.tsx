@@ -359,8 +359,8 @@ export default function Home() {
                      <div className="mb-6">
                         {/* Section Title with Script Overlay */}
                         <div className="relative mb-4">
-                           <h2 className="text-4xl md:text-6xl font-black text-white/40 uppercase tracking-tight">
-                              INTRODUCING, <span className="text-white/40">MYSELF</span>
+                           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight">
+                              INTRODUCING, <span className="text-white">MYSELF</span>
                            </h2>
                            <span 
                               className="absolute left-[45%] md:left-[40%] top-1/2 -translate-y-1/2 text-[#FF6B35] text-4xl md:text-6xl italic font-light"
