@@ -120,12 +120,15 @@ All colors MUST be HSL.
   font-display: swap;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 @theme {
   --font-display: 'Oxanium', sans-serif;
   --font-sans: 'Oxanium', sans-serif;
   --font-akzidenz: 'AkzidenzGroteskBE-Super', sans-serif;
   --font-akzidenz-bold: 'AkzidenzGroteskBE-Bold', sans-serif;
   --font-bebas: 'Bebas Neue', sans-serif;
+  --font-cursive: 'Great Vibes', cursive;
   
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -201,6 +204,7 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
+    cursor: none !important;
   }
 
   body {
@@ -346,5 +350,18 @@ All colors MUST be HSL.
   }
   50% { 
     box-shadow: 0 0 40px rgba(255, 59, 48, 0.6), 0 0 60px rgba(255, 59, 48, 0.3);
+  }
+}
+
+@theme inline {
+  --animate-grid: grid 15s linear infinite;
+
+  @keyframes grid {
+    0% {
+      transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 }

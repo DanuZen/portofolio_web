@@ -20,6 +20,7 @@ import { lazy, Suspense } from "react";
 // Direct imports for main pages (no loading)
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 // Admin pages (keep lazy loaded)
 const Login = lazy(() => import("./pages/admin/Login"));
@@ -94,6 +95,7 @@ const App = () => (
       <ThemeProvider>
         <AuthProvider>
           <TooltipProvider>
+            <SmoothCursor />
             <Toaster />
             <Sonner />
             <BrowserRouter>

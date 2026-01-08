@@ -35,6 +35,9 @@ import { BlurReveal } from '@/components/ui/BlurReveal';
 import { ScaleReveal } from '@/components/ui/ScaleReveal';
 import { FadeContentSimple as FadeNearNav } from '@/components/ui/FadeContent';
 import { TypewriterText } from '@/components/ui/TypewriterText';
+import { RetroGrid } from '@/components/ui/retro-grid';
+import { HyperText } from '@/components/ui/hyper-text';
+import { cn } from '@/lib/utils';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -102,36 +105,21 @@ export default function Home() {
   }, []);
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
   
   const textOptions = [
-    "Web Development",
-    "UI/UX Design",
-    "Desain Grafis"
+    "WEB DEVELOPER",
+    "UI/UX DESIGNER",
+    "GRAPHIC DESIGNER"
   ];
 
   useEffect(() => {
-    const currentFullText = textOptions[currentTextIndex];
-    
-    const handleTyping = () => {
-      if (isDeleting) {
-        setDisplayedText(prev => prev.slice(0, -1));
-        if (displayedText === "") {
-          setIsDeleting(false);
-          setCurrentTextIndex(prev => (prev + 1) % textOptions.length);
-        }
-      } else {
-        setDisplayedText(currentFullText.slice(0, displayedText.length + 1));
-        if (displayedText === currentFullText) {
-          setTimeout(() => setIsDeleting(true), 2000); // Wait before deleting
-        }
-      }
-    };
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % textOptions.length);
+    }, 3000); // Change text every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
 
-    const timer = setTimeout(handleTyping, isDeleting ? 50 : 100);
-    return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, currentTextIndex]);
+
 
   return (
     <>
@@ -146,6 +134,8 @@ export default function Home() {
           className="relative min-h-screen w-full overflow-x-hidden" 
           style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}
         >
+          <RetroGrid />
+
           {/* Vertical Text - Right */}
           <div className="absolute -right-4 md:-right-8 top-0 bottom-0 hidden lg:flex flex-col justify-center z-10 overflow-hidden h-screen pointer-events-none">
              <motion.div 
@@ -185,13 +175,14 @@ export default function Home() {
                   >
                     <div className="flex items-baseline gap-3">
                       <span className="text-2xl md:text-3xl text-white/80 font-light">I'm</span>
-                      <div className="h-[40px] overflow-hidden flex items-center">
-                        <span className="text-2xl md:text-3xl font-bold text-[#FF3B30]">
-                          {displayedText}
-                          {displayedText !== textOptions[currentTextIndex] && (
-                            <span className="animate-pulse">|</span>
-                          )}
-                        </span>
+                      <div className="h-[40px] overflow-hidden flex items-center min-w-[300px]">
+                        <HyperText 
+                          key={textOptions[currentTextIndex]}
+                          className="text-2xl md:text-3xl font-bold text-[#FF3B30]" 
+                          duration={800}
+                        >
+                          {textOptions[currentTextIndex]}
+                        </HyperText>
                       </div>
                     </div>
                     <h1 className="text-6xl md:text-8xl font-black text-white tracking-tight mt-2 mb-4 uppercase">
@@ -281,89 +272,110 @@ export default function Home() {
               </motion.div>
 
             </div>
+          </div>
+        </section>
 
-            {/* About Me Section - Redesigned */}
-            <div id="about" data-section-theme="dark" className="w-full pb-0 mt-24 md:mt-32 scroll-mt-32 md:scroll-mt-40">
-              {/* Grid Layout */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
-                {/* Left Column: Title, Text & Tags */}
-                <div className="flex flex-col justify-center space-y-6">
-                {/* Title */}
-                <FadeNearNav>
-                  <BlurReveal>
-                    <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.9] font-akzidenz text-white">
-                      <TypewriterText text="TENTANG" delay={0.1} /> 
-                      <br/> 
-                      <span className="text-[#FF3B30]">
-                        <TypewriterText text="SAYA" delay={0.5} />
-                      </span>
-                    </h2>
-                  </BlurReveal>
-                </FadeNearNav>
-
-                {/* Text & Tags */}
-                <FadeNearNav>
-                  <BlurReveal delay={0.2} className="space-y-8">
-                    <motion.p 
-                      className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold cursor-default"
-                      whileHover={{ 
-                        scale: 1.02, 
-                        textShadow: "0 0 20px rgba(255,255,255,0.3)",
-                        transition: { duration: 0.2 }
-                      }}
-                    >
-                      Saya adalah programer sekaligus desainer yang menciptakan produk digital yang estetis, fungsional, dan responsif. Dengan menggabungkan kemampuan teknis dan kreativitas visual, saya merancang UI/UX yang nyaman digunakan dan mewujudkannya menjadi kode yang rapi, cepat, serta dapat diandalkan.
-                    </motion.p>
-                    
-                    {/* Tags */}
-                    <StaggerContainer staggerDelay={0.1} className="flex flex-wrap gap-4 pt-4">
-                      {['Web Development', 'UI/UX Design', 'Desain Grafis'].map((tag, i) => (
-                        <StaggerItem key={tag} direction="left">
-                          <motion.div 
-                            className="px-6 py-2 rounded-full border border-white/20 text-white text-sm md:text-base cursor-default shimmer"
-                            whileHover={{ 
-                              scale: 1.05, 
-                              borderColor: 'rgba(255, 59, 48, 0.5)',
-                              boxShadow: '0 0 20px rgba(255, 59, 48, 0.3)'
-                            }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            {tag}
-                          </motion.div>
-                        </StaggerItem>
-                      ))}
-                    </StaggerContainer>
-                  </BlurReveal>
-                </FadeNearNav>
+        {/* About Me Section - Redesigned */}
+        <section style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
+            <div id="about" data-section-theme="dark" className="w-full pb-0 mt-0 pt-20 md:pt-32 relative overflow-hidden">
+              {/* Background Text */}
+              <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none select-none z-0">
+                 <div className="absolute top-[-5%] left-[-10%] whitespace-nowrap opacity-[0.02] text-white text-[15vw] font-akzidenz leading-none">
+                    INTRODUCING, MYSELF
+                 </div>
               </div>
 
-              {/* Right Column: Image */}
-              <FadeNearNav>
-                <ScaleReveal delay={0.3} className="relative w-full h-full min-h-[500px] lg:min-h-0 rounded-[2.5rem] overflow-hidden bg-white">
-                  {/* Arrow Icon */}
-                  <MagneticElement strength={0.3}>
-                    <motion.div 
-                      className="absolute top-6 left-6 md:top-10 md:left-10 w-16 h-16 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center z-10 cursor-pointer"
-                      whileHover={{ scale: 1.2, rotate: 90 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <ArrowRight className="w-8 h-8 md:w-12 md:h-12 text-[#FF3B30] -rotate-45" />
-                    </motion.div>
-                  </MagneticElement>
+              <div className="container mx-auto px-6 lg:px-12 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                   
-                  <motion.img 
-                    src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
-                    alt="About Me" 
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </ScaleReveal>
-              </FadeNearNav>
+                  {/* Left Side: Visuals & Image (4 cols) */}
+                  <div className="lg:col-span-5 relative">
+                     <div className="relative w-full aspect-[4/5] md:aspect-square lg:aspect-[4/5] max-w-md mx-auto lg:max-w-none">
+                        {/* Orange Block */}
+                        <div className="absolute top-10 left-0 w-3/4 h-64 bg-[#FF3B30] rounded-3xl z-10 transform -rotate-2"></div>
+                        {/* Gray Block */}
+                        <div className="absolute bottom-10 right-0 w-3/4 h-64 bg-[#2A2A2A] rounded-3xl z-0 transform rotate-2"></div>
+                        
+                        {/* Image Container */}
+                        <div className="absolute inset-4 z-20 overflow-hidden rounded-2xl">
+                           <img 
+                              src="/lovable-uploads/33047453-4702-4be3-b274-e579545d50e1.png" 
+                              alt="About Me" 
+                              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                           />
+                        </div>
+
+                        {/* Floating Cursive Name */}
+                        <div className="absolute top-[15%] right-[-20%] z-30 pointer-events-none">
+                           <span className="font-cursive text-[#FF3B30] text-8xl md:text-9xl drop-shadow-lg transform -rotate-12 block">
+                              Dann
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+
+                  {/* Right Side: Content (8 cols) */}
+                  <div className="lg:col-span-7 flex flex-col space-y-8 pl-0 lg:pl-12">
+                     <div>
+                        <h2 className="text-4xl md:text-5xl font-black text-white mb-2 uppercase tracking-tighter">
+                           I'M A WEB <span className="text-[#FF3B30]">DEVELOPER</span>
+                        </h2>
+                        <div className="h-1 w-20 bg-[#FF3B30]"></div>
+                     </div>
+
+                     <p className="text-gray-400 text-lg leading-relaxed text-justify">
+                        Halo, nama saya Dann, seorang mahasiswa jurusan Informatika yang sedang menempuh pendidikan di perguruan tinggi. Saya memiliki minat mendalam terhadap dunia teknologi, khususnya dalam bidang pengembangan perangkat lunak, desain multimedia, dan sistem komputer. Selain itu, saya juga aktif berorganisasi sebagai bagian dari Tech Club kampus, di mana saya berkontribusi dalam divisi Multimedia untuk mendukung berbagai proyek kreatif dan inovatif.
+                     </p>
+
+                     {/* Roles List */}
+                     <div className="space-y-6 pt-4">
+                        {/* Design */}
+                        <div className="group">
+                           <div className="flex justify-between items-end mb-2">
+                              <span className="text-white font-bold text-xl">Design</span>
+                              <span className="text-gray-500 text-sm uppercase tracking-widest group-hover:text-[#FF3B30] transition-colors">Graphic Designer</span>
+                           </div>
+                           <div className="w-full h-[2px] bg-gray-800 relative overflow-hidden">
+                              <div className="absolute top-0 left-0 h-full w-full bg-[#FF3B30] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-in-out"></div>
+                           </div>
+                        </div>
+
+                        {/* Illustration */}
+                        <div className="group">
+                           <div className="flex justify-between items-end mb-2">
+                              <span className="text-white font-bold text-xl">Illustration</span>
+                              <span className="text-gray-500 text-sm uppercase tracking-widest group-hover:text-[#FF3B30] transition-colors">Illustrator</span>
+                           </div>
+                           <div className="w-full h-[2px] bg-gray-800 relative overflow-hidden">
+                              <div className="absolute top-0 left-0 h-full w-full bg-[#FF3B30] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-in-out"></div>
+                           </div>
+                        </div>
+
+                        {/* Website */}
+                        <div className="group">
+                           <div className="flex justify-between items-end mb-2">
+                              <span className="text-white font-bold text-xl">Website</span>
+                              <span className="text-gray-500 text-sm uppercase tracking-widest group-hover:text-[#FF3B30] transition-colors">Web Developer</span>
+                           </div>
+                           <div className="w-full h-[2px] bg-gray-800 relative overflow-hidden">
+                              <div className="absolute top-0 left-0 h-full w-full bg-[#FF3B30] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-in-out"></div>
+                           </div>
+                        </div>
+                     </div>
+
+                     {/* CTA Button */}
+                     <div className="pt-4">
+                        <button className="px-8 py-3 bg-[#FF3B30] text-white font-bold uppercase tracking-wider hover:bg-white hover:text-[#FF3B30] transition-all duration-300">
+                           KNOW MORE
+                        </button>
+                     </div>
+
+                  </div>
+
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
       {/* Skills, Tools & Approach Section */}
       <section 
