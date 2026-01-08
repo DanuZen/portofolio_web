@@ -5,7 +5,7 @@ import { getFeaturedProjects } from '@/data/projects';
 import { ProjectCard } from '@/components/portfolio/ProjectCard';
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 import { SEOHead } from '@/components/seo/SEOHead';
-import { ArrowRight, Youtube, Instagram, Github, Linkedin } from 'lucide-react';
+import { ArrowRight, Youtube, Instagram, Github, Linkedin, User, Palette, PenTool, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from '@/components/SocialIcon';
 import LogoDann from '@/assets/LogoDann.png';
@@ -38,6 +38,7 @@ import { TypewriterText } from '@/components/ui/TypewriterText';
 import { RetroGrid } from '@/components/ui/retro-grid';
 import { HyperText } from '@/components/ui/hyper-text';
 import { cn } from '@/lib/utils';
+import { BentoGrid, BentoCard } from '@/components/ui/bento-grid';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -187,13 +188,12 @@ export default function Home() {
   }, []);
   return <>
       <SEOHead />
-      
       <div className="min-h-screen overflow-x-hidden">
         {/* Hero Section - Modern Dark Design */}
         <section ref={heroRef} id="hero" data-section-theme="dark" className="relative min-h-screen w-full overflow-x-hidden" style={{
         backgroundColor: 'hsl(0, 0%, 8%)'
       }}>
-          <RetroGrid />
+          <RetroGrid className="-top-24" />
 
           {/* Vertical Text - Right */}
           <div className="absolute -right-4 md:-right-8 top-0 bottom-0 hidden lg:flex flex-col justify-center z-10 overflow-hidden h-screen pointer-events-none">
@@ -203,18 +203,17 @@ export default function Home() {
             WebkitTextStroke: '3px #FFFFFF',
             fontSize: '18vh'
           }} animate={{
-            y: [0, -1000]
+            y: ["0%", "-25%"]
           }} transition={{
             repeat: Infinity,
             ease: "linear",
             duration: 20
           }}>
-                PROGRAMER - DESAINER - PROGRAMER - DESAINER
+                PROGRAMER & DESAIN GRAFIS - PROGRAMER & DESAIN GRAFIS - PROGRAMER & DESAIN GRAFIS - PROGRAMER & DESAIN GRAFIS - 
              </motion.div>
           </div>
 
           <div className="container mx-auto px-6 lg:px-12 min-h-screen flex flex-col justify-center py-24 overflow-hidden">
-            {/* Hero Content - Split Layout */}
             <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
               
               <div className="relative z-20 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center -mt-20 md:-mt-0">
@@ -335,101 +334,62 @@ export default function Home() {
         </section>
 
         {/* About Me Section - Redesigned */}
-        <section style={{
-        backgroundColor: 'hsl(0, 0%, 8%)'
-      }}>
+        <section style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
             <div id="about" data-section-theme="dark" className="w-full pb-0 mt-0 pt-20 md:pt-32 relative overflow-hidden">
-              {/* Background Text */}
-              <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none select-none z-0">
-                 <div className="absolute top-[-5%] left-[-10%] whitespace-nowrap opacity-[0.02] text-white text-[15vw] font-akzidenz leading-none">
-                    INTRODUCING, MYSELF
-                 </div>
-              </div>
-
               <div className="container mx-auto px-6 lg:px-12 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                  
-                  {/* Left Side: Visuals & Image (4 cols) */}
-                  <div className="lg:col-span-5 relative">
-                     
-                  </div>
-
-                  {/* Right Side: Content (8 cols) */}
-                  <div className="lg:col-span-7 flex flex-col space-y-8 pl-0 lg:pl-12">
-                     <div className="mb-6">
-                        {/* Section Title with Script Overlay */}
-                        <div className="relative mb-8">
-                           <h2 className="text-[12vw] md:text-[10vw] lg:text-[8vw] font-black text-white uppercase tracking-tight italic leading-[0.95]">
-                              <span className="relative inline-block">
-                                 INTRODUCING,
-                                 <span 
-                                    className="absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 translate-x-full text-[#FF6B35] text-[5vw] md:text-[4vw] lg:text-[3.5vw] not-italic font-normal"
-                                    style={{ fontFamily: "'Brush Script MT', 'Segoe Script', cursive" }}
-                                 >
-                                    Dann
-                                 </span>
-                              </span>
-                              <br />
-                              <span>MYSELF</span>
-                           </h2>
-                        </div>
-                        {/* Subtitle */}
-                        <div className="flex items-center gap-3">
-                           <span className="text-white/60 text-sm uppercase tracking-widest">I'M A</span>
-                           <span className="text-[#FF3B30] text-sm uppercase tracking-widest font-bold">WEB DEVELOPER</span>
-                        </div>
-                     </div>
-
-                     <p className="text-gray-400 text-lg leading-relaxed text-justify">
-                        Halo, nama saya Dann, seorang mahasiswa jurusan Informatika yang sedang menempuh pendidikan di perguruan tinggi. Saya memiliki minat mendalam terhadap dunia teknologi, khususnya dalam bidang pengembangan perangkat lunak, desain multimedia, dan sistem komputer. Selain itu, saya juga aktif berorganisasi sebagai bagian dari Tech Club kampus, di mana saya berkontribusi dalam divisi Multimedia untuk mendukung berbagai proyek kreatif dan inovatif.
-                     </p>
-
-                     {/* Roles List */}
-                     <div className="space-y-6 pt-4">
-                        {/* Design */}
-                        <div className="group">
-                           <div className="flex justify-between items-end mb-2">
-                              <span className="text-white font-bold text-xl">Design</span>
-                              <span className="text-gray-500 text-sm uppercase tracking-widest group-hover:text-[#FF3B30] transition-colors">Graphic Designer</span>
-                           </div>
-                           <div className="w-full h-[2px] bg-gray-800 relative overflow-hidden">
-                              <div className="absolute top-0 left-0 h-full w-full bg-[#FF3B30] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-in-out"></div>
-                           </div>
-                        </div>
-
-                        {/* Illustration */}
-                        <div className="group">
-                           <div className="flex justify-between items-end mb-2">
-                              <span className="text-white font-bold text-xl">Illustration</span>
-                              <span className="text-gray-500 text-sm uppercase tracking-widest group-hover:text-[#FF3B30] transition-colors">Illustrator</span>
-                           </div>
-                           <div className="w-full h-[2px] bg-gray-800 relative overflow-hidden">
-                              <div className="absolute top-0 left-0 h-full w-full bg-[#FF3B30] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-in-out"></div>
-                           </div>
-                        </div>
-
-                        {/* Website */}
-                        <div className="group">
-                           <div className="flex justify-between items-end mb-2">
-                              <span className="text-white font-bold text-xl">Website</span>
-                              <span className="text-gray-500 text-sm uppercase tracking-widest group-hover:text-[#FF3B30] transition-colors">Web Developer</span>
-                           </div>
-                           <div className="w-full h-[2px] bg-gray-800 relative overflow-hidden">
-                              <div className="absolute top-0 left-0 h-full w-full bg-[#FF3B30] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-in-out"></div>
-                           </div>
-                        </div>
-                     </div>
-
-                     {/* CTA Button */}
-                     <div className="pt-4">
-                        <button className="px-8 py-3 bg-[#FF3B30] text-white font-bold uppercase tracking-wider hover:bg-white hover:text-[#FF3B30] transition-all duration-300">
-                           KNOW MORE
-                        </button>
-                     </div>
-
-                  </div>
-
+                
+                {/* Section Title with Script Overlay - Centered & Single Line */}
+                <div className="w-full text-center mb-12">
+                   <h2 className="text-[8vw] md:text-[7vw] lg:text-[6vw] font-black text-white uppercase tracking-tight italic leading-none relative inline-block">
+                      INTRODUCING,
+                      <span 
+                         className="absolute top-0 right-0 translate-x-[60%] -translate-y-[20%] text-[#FF6B35] text-[4vw] md:text-[3vw] lg:text-[2.5vw] not-italic font-normal"
+                         style={{ fontFamily: "'Brush Script MT', 'Segoe Script', cursive" }}
+                      >
+                         Dann
+                      </span>
+                      &nbsp;MYSELF
+                   </h2>
                 </div>
+
+                <BentoGrid className="lg:grid-rows-2">
+                  <BentoCard
+                    name="About Me"
+                    className="col-span-3 lg:col-span-3"
+                    background={<div className="absolute inset-0 bg-gradient-to-br from-neutral-900 to-neutral-800 opacity-50" />}
+                    Icon={User}
+                    description="Halo, nama saya Dann, seorang mahasiswa jurusan Informatika yang sedang menempuh pendidikan di perguruan tinggi. Saya memiliki minat mendalam terhadap dunia teknologi, khususnya dalam bidang pengembangan perangkat lunak, desain multimedia, dan sistem komputer. Selain itu, saya juga aktif berorganisasi sebagai bagian dari Tech Club kampus, di mana saya berkontribusi dalam divisi Multimedia untuk mendukung berbagai proyek kreatif dan inovatif."
+                    href="#"
+                    cta="Read more"
+                  />
+                  <BentoCard
+                    name="Design"
+                    className="col-span-3 lg:col-span-1"
+                    background={<div className="absolute inset-0 bg-gradient-to-br from-[#ccff00]/20 to-transparent opacity-50" />}
+                    Icon={Palette}
+                    description="Graphic Designer"
+                    href="#"
+                    cta="View works"
+                  />
+                  <BentoCard
+                    name="Illustration"
+                    className="col-span-3 lg:col-span-1"
+                    background={<div className="absolute inset-0 bg-gradient-to-br from-[#330000]/20 to-transparent opacity-50" />}
+                    Icon={PenTool}
+                    description="Illustrator"
+                    href="#"
+                    cta="View works"
+                  />
+                  <BentoCard
+                    name="Website"
+                    className="col-span-3 lg:col-span-1"
+                    background={<div className="absolute inset-0 bg-gradient-to-br from-[#0F172A]/20 to-transparent opacity-50" />}
+                    Icon={Globe}
+                    description="Web Developer"
+                    href="#"
+                    cta="View works"
+                  />
+                </BentoGrid>
               </div>
             </div>
         </section>

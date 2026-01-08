@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import LogoDann from '@/assets/LogoDann.png';
 import { useNavigation } from '@/contexts/NavigationContext';
+import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 
 const navLinks = [
   { name: 'Beranda', path: '#hero', index: 0 },
@@ -28,6 +29,7 @@ export function Header() {
   const { isScrolled } = useScrollPosition();
   const { isLightSection } = useActiveSection();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isNavHovered, setIsNavHovered] = useState(false);
   const { navigateWithDirection } = useNavigation();
   
   // Get current tab index
@@ -68,7 +70,11 @@ export function Header() {
           </motion.div>
 
           {/* Center - Desktop Navigation Pills */}
-          <nav className="hidden md:flex items-center gap-2 ml-64">
+          <nav 
+            className="hidden md:flex items-center gap-2 ml-64"
+            onMouseEnter={() => setIsNavHovered(true)}
+            onMouseLeave={() => setIsNavHovered(false)}
+          >
             {navLinks.map((link, index) => {
               // Check if link is active based on current section ID
               const activeSectionId = useActiveSection().activeSectionId;
@@ -81,7 +87,7 @@ export function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.1 * index }}
                 >
-                  <button
+                  <InteractiveHoverButton
                     onClick={() => {
                       if (link.path.startsWith('#')) {
                         const element = document.querySelector(link.path);
@@ -94,18 +100,16 @@ export function Header() {
                       }
                     }}
                     className={cn(
-                      "relative px-5 py-2.5 rounded-full text-sm font-black font-akzidenz tracking-wide transition-all duration-300",
-                      isActive
+                      "font-akzidenz tracking-wide border-none",
+                      isActive && !isNavHovered
                         ? "text-[#FF3B30]"
                         : (isLightBackground
-                            ? "bg-transparent text-black hover:bg-black/10"
-                            : "bg-transparent text-white hover:bg-white/10")
+                            ? "text-black"
+                            : "text-white")
                     )}
                   >
-                    <span className="flex items-center gap-2">
-                      {link.name}
-                    </span>
-                  </button>
+                    {link.name}
+                  </InteractiveHoverButton>
                 </motion.div>
               );
             })}
