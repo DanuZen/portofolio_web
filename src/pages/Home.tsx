@@ -5,7 +5,8 @@ import { getFeaturedProjects } from '@/data/projects';
 import { ProjectCard } from '@/components/portfolio/ProjectCard';
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 import { SEOHead } from '@/components/seo/SEOHead';
-import { ArrowRight, Youtube, Instagram, Github, Linkedin, User, Palette, PenTool, Globe } from 'lucide-react';
+import { ArrowRight, Youtube, Instagram, Github, Linkedin, User, Palette, PenTool } from 'lucide-react';
+import { Globe } from '@/components/ui/globe';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from '@/components/SocialIcon';
 import LogoDann from '@/assets/LogoDann.png';
@@ -408,8 +409,8 @@ export default function Home() {
                           <p className="text-neutral-400 text-sm">I'm based in Indonesia, and open to remote work worldwide.</p>
                       </div>
                       <div className="absolute -bottom-8 -right-8 w-32 h-32 md:w-40 md:h-40 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors duration-500"></div>
-                      <div className="absolute bottom-0 right-0 w-full h-32 overflow-hidden flex items-end justify-end opacity-50">
-                         <Globe className="w-32 h-32 md:w-48 md:h-48 text-neutral-700 -mb-10 -mr-10 opacity-20" />
+                      <div className="absolute bottom-0 right-0 w-48 h-48 md:w-64 md:h-64 -mb-16 -mr-16">
+                         <Globe className="w-full h-full" />
                       </div>
                   </BentoGridItem>
 
