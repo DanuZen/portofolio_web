@@ -8,6 +8,7 @@ import { SEOHead } from '@/components/seo/SEOHead';
 import { ArrowRight, Youtube, Instagram, Github, Linkedin, User, Palette, PenTool } from 'lucide-react';
 import { Globe } from '@/components/ui/globe';
 import { OrbitingCircles } from '@/components/ui/orbiting-circles';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Link } from 'react-router-dom';
 import { SocialIcon } from '@/components/SocialIcon';
 import LogoDann from '@/assets/LogoDann.png';
@@ -25,6 +26,7 @@ import image11 from '@/assets/image11.png';
 import image12 from '@/assets/image12.png';
 import image13 from '@/assets/image13.png';
 import image14 from '@/assets/image14.png';
+import Logo from '@/assets/Logo.png';
 import foto from '@/assets/foto.png';
 
 // Animation components
@@ -354,114 +356,107 @@ export default function Home() {
                    </h2>
                 </div>
 
-                <BentoGrid className="lg:grid-rows-3">
+                <BentoGrid className="gap-4 lg:grid-rows-[24rem_15rem]">
                   {/* Card 1: About Me / IDE (2x2) */}
-                  <BentoGridItem className="col-span-3 lg:col-span-2 lg:row-span-2 min-h-[500px] lg:min-h-auto flex flex-col justify-between p-0">
-                    {/* Mock IDE Header */}
-                    <div className="w-full bg-[#1e1e1e] p-3 flex items-center gap-2 border-b border-white/10 rounded-t-xl">
-                       <div className="flex gap-1.5">
-                          <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-                          <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-                          <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-                       </div>
-                       <div className="text-xs text-white/50 ml-4 font-mono">cvv-final.cs</div>
-                    </div>
-                    {/* Mock IDE Content */}
-                    <div className="flex-1 bg-[#1e1e1e] p-6 font-mono text-sm overflow-hidden relative group">
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1e1e1e]/90 z-10"></div>
-                        <div className="text-blue-400">using <span className="text-white">AutoMapper;</span></div>
-                        <div className="text-blue-400">using <span className="text-white">Contracts;</span></div>
-                        <div className="text-blue-400">using <span className="text-white">Service.Contracts;</span></div>
-                        <div className="text-blue-400">using <span className="text-white">Shared.DataTransferObjects;</span></div>
-                        <br/>
-                        <div className="text-blue-400">namespace <span className="text-white">Service;</span></div>
-                        <br/>
-                        <div className="text-blue-400">public scaled class <span className="text-yellow-400">ServiceManager</span> <span className="text-white">{`{`}</span></div>
-                        <div className="pl-4 text-white">private readonly <span className="text-green-400">IRepositoryManager</span> _repositoryManager;</div>
-                        <div className="pl-4 text-white">private readonly <span className="text-green-400">ILoggerManager</span> _logger;</div>
-                        <div className="pl-4 text-white">private readonly <span className="text-green-400">IMapper</span> _mapper;</div>
-                        <div className="pl-4 text-white">private readonly <span className="text-green-400">IDataShaper&lt;EmployeeDto&gt;</span> _dataShaper;</div>
-                        <br/>
-                        <div className="pl-4 text-white">public <span className="text-yellow-400">ServiceManager</span>(</div>
-                        <div className="pl-8 text-green-400">IRepositoryManager repositoryManager,</div>
-                        <div className="pl-8 text-green-400">ILoggerManager logger,</div>
-                        <div className="pl-8 text-green-400">IMapper mapper,</div>
-                        <div className="pl-8 text-green-400">IDataShaper&lt;EmployeeDto&gt; dataShaper)</div>
-                        <div className="pl-4 text-white">{`{`}</div>
-                        <div className="pl-8 text-white">_repositoryManager = repositoryManager;</div>
-                        <div className="pl-8 text-white">_logger = logger;</div>
-                        <div className="pl-4 text-white">{`}`}</div>
-                        <div className="text-white">{`}`}</div>
-                    </div>
+                  <BentoGridItem className="col-span-3 lg:col-span-2 relative p-0 overflow-hidden transform transition-all duration-300 hover:shadow-xl group h-full">
+                    {/* Background Image */}
+                    <img 
+                      src={foto} 
+                      alt="Dann" 
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                     
-                    <div className="p-6 md:p-8 bg-[#1e1e1e] z-20 border-t border-white/5">
-                       <h3 className="text-2xl font-bold text-white mb-2">Hi, I'm Dann</h3>
-                       <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
-                          Over the last 4 years, I developed my frontend and backend dev skills to deliver dynamic and responsive software and web applications.
-                       </p>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10 transition-opacity duration-300" />
+
+                    {/* Content Overlay */}
+                    <div className="relative z-20 h-full flex flex-col justify-end p-6">
+                       <h3 className="text-xl font-bold text-white mb-1 drop-shadow-md">Hi, I'm Dann</h3>
+                       <div className="relative overflow-hidden">
+                           <p className="block group-hover:hidden text-neutral-200 text-xs leading-relaxed transform transition-all duration-300 drop-shadow-sm">
+                              Front-end & Back-end Developer building dynamic web apps for 4+ years.
+                           </p>
+                           <p className="hidden group-hover:block text-white text-xs leading-relaxed animate-in fade-in zoom-in-95 duration-300 drop-shadow-sm">
+                              Over the last 4 years, I developed my frontend and backend dev skills to deliver dynamic and responsive software and web applications.
+                           </p>
+                       </div>
                     </div>
                   </BentoGridItem>
 
-
                   {/* Card 3: Time Zone */}
-                  <BentoGridItem className="col-span-3 lg:col-span-1 min-h-[220px] bg-neutral-900 flex flex-col p-6 relative overflow-hidden group">
+                  <BentoGridItem className="col-span-3 lg:col-span-1 min-h-[180px] bg-neutral-900 flex flex-col p-4 relative overflow-hidden group transform transition-all duration-300 hover:shadow-xl">
                       <div className="relative z-10">
-                          <h3 className="text-xl font-bold text-white mb-2">Time Zone</h3>
-                          <p className="text-neutral-400 text-sm">I'm based in Indonesia, and open to remote work worldwide.</p>
+                          <h3 className="text-lg font-bold text-white mb-1">Time Zone</h3>
+                          <p className="text-neutral-400 text-xs">Based in Indonesia, open worldwide.</p>
                       </div>
-                      <div className="absolute inset-0 flex items-center justify-center opacity-60">
-                         <div className="w-40 h-40 md:w-56 md:h-56 relative">
+                      <div className="absolute inset-0 flex items-center justify-end opacity-60">
+                         <div className="w-64 h-64 md:w-80 md:h-80 relative translate-x-12 md:translate-x-16">
                            <Globe className="w-full h-full" />
                          </div>
                       </div>
                   </BentoGridItem>
 
-                  {/* Card 4: Contact */}
-                  <BentoGridItem className="col-span-3 lg:col-span-1 bg-[#6a5acd] bg-gradient-to-br from-[#7b68ee] to-[#5143a0] p-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
-                      <div className="relative z-10 flex flex-col items-center gap-4">
-                          <h3 className="text-xl font-bold text-white leading-tight">Do you want to start a project together?</h3>
-                          <button className="bg-black/80 hover:bg-black text-white text-xs px-4 py-2 rounded flex items-center gap-2 transition-colors duration-300 border border-white/10">
-                              <span onClick={() => navigator.clipboard.writeText('your.email@example.com')} className="cursor-pointer">Copy Email Address</span>
-                          </button>
-                      </div>
-                  </BentoGridItem>
-
                   {/* Card 5: Tech Stack */}
-                  <BentoGridItem className="col-span-3 lg:col-span-2 bg-[#0f0f1b] p-6 flex flex-row items-center justify-between overflow-hidden relative">
+                    <BentoGridItem className="col-span-3 lg:col-span-1 bg-[#0f0f1b] p-4 flex flex-row items-center justify-between overflow-hidden relative transform transition-all duration-300 hover:shadow-xl">
                       <div className="relative z-10 max-w-[50%]">
-                          <h3 className="text-xl font-bold text-white mb-2">Tech Stack</h3>
-                          <p className="text-neutral-400 text-sm mb-4">I specialize in a variety of languages, frameworks, and tools that allow me to build robust and scalable applications</p>
+                          <h3 className="text-lg font-bold text-white mb-1">Tech Stack</h3>
+                          <p className="text-neutral-400 text-xs mb-2">I specialize in a variety of languages, frameworks, and tools.</p>
                       </div>
                       
-                      {/* Tech Stack Visuals - Orbiting Circles */}
-                      <div className="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-center overflow-hidden">
-                           <div className="relative flex h-full w-full items-center justify-center">
-                              {/* Inner orbit */}
-                              <OrbitingCircles iconSize={32} radius={60} duration={25} speed={1}>
-                                <img src={image1} alt="Tech 1" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                                <img src={image2} alt="Tech 2" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                                <img src={image3} alt="Tech 3" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                                <img src={image4} alt="Tech 4" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                                <img src={image5} alt="Tech 5" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                              </OrbitingCircles>
-                              
-                              {/* Outer orbit - reverse */}
-                              <OrbitingCircles iconSize={32} radius={110} duration={30} speed={1} reverse>
-                                <img src={image6} alt="Tech 6" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                                <img src={image7} alt="Tech 7" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                                <img src={image8} alt="Tech 8" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                                <img src={image9} alt="Tech 9" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                                <img src={image10} alt="Tech 10" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                              </OrbitingCircles>
-                              
-                              {/* Outermost orbit */}
-                              <OrbitingCircles iconSize={32} radius={160} duration={35} speed={1}>
-                                <img src={image11} alt="Tech 11" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                                <img src={image12} alt="Tech 12" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                                <img src={image13} alt="Tech 13" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                                <img src={image14} alt="Tech 14" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
-                              </OrbitingCircles>
-                           </div>
+                       {/* Tech Stack Visuals - Orbiting Circles */}
+                       <div className="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-center overflow-hidden">
+                            <div className="relative flex h-full w-full items-center justify-center">
+                               {/* Center Logo */}
+                               <img src={Logo} alt="Logo" className="absolute w-12 h-12 rounded-full object-contain z-10" />
+                               
+                               {/* Inner orbit - 7 icons (image8 - image14) */}
+                               <OrbitingCircles iconSize={24} radius={50} duration={25} speed={1}>
+                                 <img src={image8} alt="Tech 8" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image9} alt="Tech 9" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image10} alt="Tech 10" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image11} alt="Tech 11" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image12} alt="Tech 12" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image13} alt="Tech 13" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image14} alt="Tech 14" className="w-6 h-6 rounded object-contain" />
+                               </OrbitingCircles>
+                               
+                               {/* Outer orbit - 7 icons (image1 - image7) - reverse */}
+                               <OrbitingCircles iconSize={24} radius={90} duration={35} speed={1} reverse>
+                                 <img src={image1} alt="Tech 1" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image2} alt="Tech 2" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image3} alt="Tech 3" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image4} alt="Tech 4" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image5} alt="Tech 5" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image6} alt="Tech 6" className="w-6 h-6 rounded object-contain" />
+                                 <img src={image7} alt="Tech 7" className="w-6 h-6 rounded object-contain" />
+                               </OrbitingCircles>
+                            </div>
+                       </div>
+                   </BentoGridItem>
+
+                  {/* Card 4: FAQ / Accordion */}
+                  <BentoGridItem className="col-span-3 lg:col-span-2 bg-[#0f0f1b] p-4 flex flex-col justify-start relative overflow-hidden transform transition-all duration-300 hover:shadow-xl">
+                      <div className="w-full h-full overflow-y-auto pr-2">
+                        <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-1" className="border-b-white/10">
+                            <AccordionTrigger className="text-white hover:no-underline hover:text-purple-400 text-sm py-3">How do I start a project?</AccordionTrigger>
+                            <AccordionContent className="text-neutral-400 text-xs">
+                              You can simply reach out to me via email or LinkedIn to discuss your project requirements.
+                            </AccordionContent>
+                          </AccordionItem>
+                          <AccordionItem value="item-2" className="border-b-white/10">
+                            <AccordionTrigger className="text-white hover:no-underline hover:text-purple-400 text-sm py-3">What is your tech stack?</AccordionTrigger>
+                            <AccordionContent className="text-neutral-400 text-xs">
+                              I specialize in React, TypeScript, Node.js, and modern CSS frameworks like Tailwind.
+                            </AccordionContent>
+                          </AccordionItem>
+                          <AccordionItem value="item-3" className="border-b-white/10">
+                            <AccordionTrigger className="text-white hover:no-underline hover:text-purple-400 text-sm py-3">Do you offer freelance?</AccordionTrigger>
+                            <AccordionContent className="text-neutral-400 text-xs">
+                              Yes, I am available for freelance commissions and full-time roles.
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
                       </div>
                   </BentoGridItem>
                 </BentoGrid>

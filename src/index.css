@@ -379,3 +379,8 @@ All colors MUST be HSL.
     }
   }
 }
+
+/* Ensure orbit animation is available as a standard utility class */
+.animate-orbit {
+  animation: orbit calc(var(--duration) * 1s) linear infinite;
+}
