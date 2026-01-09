@@ -38,7 +38,7 @@ import { TypewriterText } from '@/components/ui/TypewriterText';
 import { RetroGrid } from '@/components/ui/retro-grid';
 import { HyperText } from '@/components/ui/hyper-text';
 import { cn } from '@/lib/utils';
-import { BentoGrid, BentoCard } from '@/components/ui/bento-grid';
+import { BentoGrid, BentoCard, BentoGridItem } from '@/components/ui/bento-grid';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -352,43 +352,117 @@ export default function Home() {
                    </h2>
                 </div>
 
-                <BentoGrid className="lg:grid-rows-2">
-                  <BentoCard
-                    name="About Me"
-                    className="col-span-3 lg:col-span-3"
-                    background={<div className="absolute inset-0 bg-gradient-to-br from-neutral-900 to-neutral-800 opacity-50" />}
-                    Icon={User}
-                    description="Halo, nama saya Dann, seorang mahasiswa jurusan Informatika yang sedang menempuh pendidikan di perguruan tinggi. Saya memiliki minat mendalam terhadap dunia teknologi, khususnya dalam bidang pengembangan perangkat lunak, desain multimedia, dan sistem komputer. Selain itu, saya juga aktif berorganisasi sebagai bagian dari Tech Club kampus, di mana saya berkontribusi dalam divisi Multimedia untuk mendukung berbagai proyek kreatif dan inovatif."
-                    href="#"
-                    cta="Read more"
-                  />
-                  <BentoCard
-                    name="Design"
-                    className="col-span-3 lg:col-span-1"
-                    background={<div className="absolute inset-0 bg-gradient-to-br from-[#ccff00]/20 to-transparent opacity-50" />}
-                    Icon={Palette}
-                    description="Graphic Designer"
-                    href="#"
-                    cta="View works"
-                  />
-                  <BentoCard
-                    name="Illustration"
-                    className="col-span-3 lg:col-span-1"
-                    background={<div className="absolute inset-0 bg-gradient-to-br from-[#330000]/20 to-transparent opacity-50" />}
-                    Icon={PenTool}
-                    description="Illustrator"
-                    href="#"
-                    cta="View works"
-                  />
-                  <BentoCard
-                    name="Website"
-                    className="col-span-3 lg:col-span-1"
-                    background={<div className="absolute inset-0 bg-gradient-to-br from-[#0F172A]/20 to-transparent opacity-50" />}
-                    Icon={Globe}
-                    description="Web Developer"
-                    href="#"
-                    cta="View works"
-                  />
+                <BentoGrid className="lg:grid-rows-3">
+                  {/* Card 1: About Me / IDE (2x2) */}
+                  <BentoGridItem className="col-span-3 lg:col-span-2 lg:row-span-2 min-h-[500px] lg:min-h-auto flex flex-col justify-between p-0">
+                    {/* Mock IDE Header */}
+                    <div className="w-full bg-[#1e1e1e] p-3 flex items-center gap-2 border-b border-white/10 rounded-t-xl">
+                       <div className="flex gap-1.5">
+                          <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                          <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                          <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                       </div>
+                       <div className="text-xs text-white/50 ml-4 font-mono">cvv-final.cs</div>
+                    </div>
+                    {/* Mock IDE Content */}
+                    <div className="flex-1 bg-[#1e1e1e] p-6 font-mono text-sm overflow-hidden relative group">
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1e1e1e]/90 z-10"></div>
+                        <div className="text-blue-400">using <span className="text-white">AutoMapper;</span></div>
+                        <div className="text-blue-400">using <span className="text-white">Contracts;</span></div>
+                        <div className="text-blue-400">using <span className="text-white">Service.Contracts;</span></div>
+                        <div className="text-blue-400">using <span className="text-white">Shared.DataTransferObjects;</span></div>
+                        <br/>
+                        <div className="text-blue-400">namespace <span className="text-white">Service;</span></div>
+                        <br/>
+                        <div className="text-blue-400">public scaled class <span className="text-yellow-400">ServiceManager</span> <span className="text-white">{`{`}</span></div>
+                        <div className="pl-4 text-white">private readonly <span className="text-green-400">IRepositoryManager</span> _repositoryManager;</div>
+                        <div className="pl-4 text-white">private readonly <span className="text-green-400">ILoggerManager</span> _logger;</div>
+                        <div className="pl-4 text-white">private readonly <span className="text-green-400">IMapper</span> _mapper;</div>
+                        <div className="pl-4 text-white">private readonly <span className="text-green-400">IDataShaper&lt;EmployeeDto&gt;</span> _dataShaper;</div>
+                        <br/>
+                        <div className="pl-4 text-white">public <span className="text-yellow-400">ServiceManager</span>(</div>
+                        <div className="pl-8 text-green-400">IRepositoryManager repositoryManager,</div>
+                        <div className="pl-8 text-green-400">ILoggerManager logger,</div>
+                        <div className="pl-8 text-green-400">IMapper mapper,</div>
+                        <div className="pl-8 text-green-400">IDataShaper&lt;EmployeeDto&gt; dataShaper)</div>
+                        <div className="pl-4 text-white">{`{`}</div>
+                        <div className="pl-8 text-white">_repositoryManager = repositoryManager;</div>
+                        <div className="pl-8 text-white">_logger = logger;</div>
+                        <div className="pl-4 text-white">{`}`}</div>
+                        <div className="text-white">{`}`}</div>
+                    </div>
+                    
+                    <div className="p-6 md:p-8 bg-[#1e1e1e] z-20 border-t border-white/5">
+                       <h3 className="text-2xl font-bold text-white mb-2">Hi, I'm Dann</h3>
+                       <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
+                          Over the last 4 years, I developed my frontend and backend dev skills to deliver dynamic and responsive software and web applications.
+                       </p>
+                    </div>
+                  </BentoGridItem>
+
+                  {/* Card 2: Design Principles */}
+                  <BentoGridItem className="col-span-3 lg:col-span-1 min-h-[220px] bg-[#1a1a2e] relative overflow-hidden flex items-center justify-center">
+                      <div className="absolute inset-0 bg-[#0f0f1b]" />
+                      
+                      {/* Floating Pills - Static Layout for now due to complexity, can animate later */}
+                      <div className="relative w-full h-full p-4">
+                          <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-xs text-white transform -rotate-12 border border-white/10">Desing Principles</div>
+                          <div className="absolute top-10 right-8 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-xs text-white transform rotate-12 border border-white/10">SRP</div>
+                          <div className="absolute bottom-12 left-8 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-xs text-white transform -rotate-6 border border-white/10">SOLID</div>
+                          <div className="absolute bottom-8 right-4 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-xs text-white transform rotate-6 border border-white/10">GRASP</div>
+                          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[80%] text-center">
+                              <h3 className="text-4xl font-black text-white/5 uppercase tracking-widest break-words leading-none">IS CRAFT</h3>
+                          </div>
+                          
+                          <div className="absolute top-4 right-4 text-purple-500"><Palette size={20} /></div>
+                          <div className="absolute bottom-4 right-8 bg-[#68217a] p-1.5 rounded-full"><div className="text-xs font-bold text-white">C#</div></div>
+                          <div className="absolute bottom-12 left-4 bg-[#512bd4] p-1.5 rounded-full"><span className="text-[10px] font-bold text-white">.NET</span></div>
+                      </div>
+                  </BentoGridItem>
+
+                  {/* Card 3: Time Zone */}
+                  <BentoGridItem className="col-span-3 lg:col-span-1 min-h-[220px] bg-neutral-900 flex flex-col p-6 relative overflow-hidden group">
+                      <div className="relative z-10">
+                          <h3 className="text-xl font-bold text-white mb-2">Time Zone</h3>
+                          <p className="text-neutral-400 text-sm">I'm based in Indonesia, and open to remote work worldwide.</p>
+                      </div>
+                      <div className="absolute -bottom-8 -right-8 w-32 h-32 md:w-40 md:h-40 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors duration-500"></div>
+                      <div className="absolute bottom-0 right-0 w-full h-32 overflow-hidden flex items-end justify-end opacity-50">
+                         <Globe className="w-32 h-32 md:w-48 md:h-48 text-neutral-700 -mb-10 -mr-10 opacity-20" />
+                      </div>
+                  </BentoGridItem>
+
+                  {/* Card 4: Contact */}
+                  <BentoGridItem className="col-span-3 lg:col-span-1 bg-[#6a5acd] bg-gradient-to-br from-[#7b68ee] to-[#5143a0] p-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
+                      <div className="relative z-10 flex flex-col items-center gap-4">
+                          <h3 className="text-xl font-bold text-white leading-tight">Do you want to start a project together?</h3>
+                          <button className="bg-black/80 hover:bg-black text-white text-xs px-4 py-2 rounded flex items-center gap-2 transition-colors duration-300 border border-white/10">
+                              <span onClick={() => navigator.clipboard.writeText('your.email@example.com')} className="cursor-pointer">Copy Email Address</span>
+                          </button>
+                      </div>
+                  </BentoGridItem>
+
+                  {/* Card 5: Tech Stack */}
+                  <BentoGridItem className="col-span-3 lg:col-span-2 bg-[#0f0f1b] p-6 flex flex-row items-center justify-between overflow-hidden relative">
+                      <div className="relative z-10 max-w-[50%]">
+                          <h3 className="text-xl font-bold text-white mb-2">Tech Stack</h3>
+                          <p className="text-neutral-400 text-sm mb-4">I specialize in a variety of languages, frameworks, and tools that allow me to build robust and scalable applications</p>
+                      </div>
+                      
+                      {/* Tech Stack Visuals - Right side */}
+                      <div className="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-center overflow-hidden">
+                           {/* Orbiting Icons Mockup */}
+                           <div className="relative w-full h-full">
+                              <div className="absolute top-1/2 right-10 transform -translate-y-1/2">
+                                  <div className="flex flex-col gap-4 items-end">
+                                      <div className="bg-[#1e1e2e] p-2 rounded-lg border border-white/10 animate-bounce delay-100"><div className="w-6 h-6 bg-[#68217a] rounded text-[10px] flex items-center justify-center text-white font-bold">C#</div></div>
+                                      <div className="bg-[#1e1e2e] p-2 rounded-lg border border-white/10 animate-bounce delay-300"><div className="w-6 h-6 bg-[#007acc] rounded text-[10px] flex items-center justify-center text-white font-bold">TS</div></div>
+                                      <div className="bg-[#1e1e2e] p-2 rounded-lg border border-white/10 animate-bounce delay-500"><div className="w-6 h-6 bg-[#61dafb] rounded text-[10px] flex items-center justify-center text-black font-bold">R</div></div>
+                                  </div>
+                              </div>
+                           </div>
+                      </div>
+                  </BentoGridItem>
                 </BentoGrid>
               </div>
             </div>

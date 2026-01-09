@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
@@ -120,7 +121,7 @@ All colors MUST be HSL.
   font-display: swap;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 
 @theme {
   --font-display: 'Oxanium', sans-serif;
