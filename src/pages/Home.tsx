@@ -7,6 +7,7 @@ import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { ArrowRight, Youtube, Instagram, Github, Linkedin, User, Palette, PenTool } from 'lucide-react';
 import { Globe } from '@/components/ui/globe';
+import { OrbitingCircles } from '@/components/ui/orbiting-circles';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from '@/components/SocialIcon';
 import LogoDann from '@/assets/LogoDann.png';
@@ -432,17 +433,34 @@ export default function Home() {
                           <p className="text-neutral-400 text-sm mb-4">I specialize in a variety of languages, frameworks, and tools that allow me to build robust and scalable applications</p>
                       </div>
                       
-                      {/* Tech Stack Visuals - Right side */}
+                      {/* Tech Stack Visuals - Orbiting Circles */}
                       <div className="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-center overflow-hidden">
-                           {/* Orbiting Icons Mockup */}
-                           <div className="relative w-full h-full">
-                              <div className="absolute top-1/2 right-10 transform -translate-y-1/2">
-                                  <div className="flex flex-col gap-4 items-end">
-                                      <div className="bg-[#1e1e2e] p-2 rounded-lg border border-white/10 animate-bounce delay-100"><div className="w-6 h-6 bg-[#68217a] rounded text-[10px] flex items-center justify-center text-white font-bold">C#</div></div>
-                                      <div className="bg-[#1e1e2e] p-2 rounded-lg border border-white/10 animate-bounce delay-300"><div className="w-6 h-6 bg-[#007acc] rounded text-[10px] flex items-center justify-center text-white font-bold">TS</div></div>
-                                      <div className="bg-[#1e1e2e] p-2 rounded-lg border border-white/10 animate-bounce delay-500"><div className="w-6 h-6 bg-[#61dafb] rounded text-[10px] flex items-center justify-center text-black font-bold">R</div></div>
-                                  </div>
-                              </div>
+                           <div className="relative flex h-full w-full items-center justify-center">
+                              {/* Inner orbit */}
+                              <OrbitingCircles iconSize={32} radius={60} duration={25} speed={1}>
+                                <img src={image1} alt="Tech 1" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                                <img src={image2} alt="Tech 2" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                                <img src={image3} alt="Tech 3" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                                <img src={image4} alt="Tech 4" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                                <img src={image5} alt="Tech 5" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                              </OrbitingCircles>
+                              
+                              {/* Outer orbit - reverse */}
+                              <OrbitingCircles iconSize={32} radius={110} duration={30} speed={1} reverse>
+                                <img src={image6} alt="Tech 6" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                                <img src={image7} alt="Tech 7" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                                <img src={image8} alt="Tech 8" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                                <img src={image9} alt="Tech 9" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                                <img src={image10} alt="Tech 10" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                              </OrbitingCircles>
+                              
+                              {/* Outermost orbit */}
+                              <OrbitingCircles iconSize={32} radius={160} duration={35} speed={1}>
+                                <img src={image11} alt="Tech 11" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                                <img src={image12} alt="Tech 12" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                                <img src={image13} alt="Tech 13" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                                <img src={image14} alt="Tech 14" className="w-8 h-8 rounded-lg object-contain bg-white/10 p-1" />
+                              </OrbitingCircles>
                            </div>
                       </div>
                   </BentoGridItem>
