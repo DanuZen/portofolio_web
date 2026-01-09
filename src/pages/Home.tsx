@@ -400,25 +400,6 @@ export default function Home() {
                     </div>
                   </BentoGridItem>
 
-                  {/* Card 2: Design Principles */}
-                  <BentoGridItem className="col-span-3 lg:col-span-1 min-h-[220px] bg-[#1a1a2e] relative overflow-hidden flex items-center justify-center">
-                      <div className="absolute inset-0 bg-[#0f0f1b]" />
-                      
-                      {/* Floating Pills - Static Layout for now due to complexity, can animate later */}
-                      <div className="relative w-full h-full p-4">
-                          <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-xs text-white transform -rotate-12 border border-white/10">Desing Principles</div>
-                          <div className="absolute top-10 right-8 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-xs text-white transform rotate-12 border border-white/10">SRP</div>
-                          <div className="absolute bottom-12 left-8 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-xs text-white transform -rotate-6 border border-white/10">SOLID</div>
-                          <div className="absolute bottom-8 right-4 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-xs text-white transform rotate-6 border border-white/10">GRASP</div>
-                          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[80%] text-center">
-                              <h3 className="text-4xl font-black text-white/5 uppercase tracking-widest break-words leading-none">IS CRAFT</h3>
-                          </div>
-                          
-                          <div className="absolute top-4 right-4 text-purple-500"><Palette size={20} /></div>
-                          <div className="absolute bottom-4 right-8 bg-[#68217a] p-1.5 rounded-full"><div className="text-xs font-bold text-white">C#</div></div>
-                          <div className="absolute bottom-12 left-4 bg-[#512bd4] p-1.5 rounded-full"><span className="text-[10px] font-bold text-white">.NET</span></div>
-                      </div>
-                  </BentoGridItem>
 
                   {/* Card 3: Time Zone */}
                   <BentoGridItem className="col-span-3 lg:col-span-1 min-h-[220px] bg-neutral-900 flex flex-col p-6 relative overflow-hidden group">
