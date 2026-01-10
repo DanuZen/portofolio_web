@@ -352,153 +352,139 @@ export default function Home() {
                    </h2>
                 </div>
 
-                <BentoGrid className="gap-4 lg:grid-rows-[18rem_6rem_15rem]">
-                  {/* Card 1: About Me / IDE (2x2) */}
-                  <AnimatedBentoCard className="col-span-3 lg:col-span-2 lg:row-span-2 relative p-0 overflow-hidden h-full">
-                    {/* Background Image */}
-                    <img src={foto} alt="Dann" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10 transition-opacity duration-300" />
+                <StaggerContainer className="w-full" staggerDelay={0.15} direction="up">
+                  <BentoGrid className="gap-4 lg:grid-rows-[18rem_6rem_15rem]">
+                    {/* Card 1: About Me / IDE (2x2) */}
+                    <StaggerItem direction="up" className="col-span-3 lg:col-span-2 lg:row-span-2">
+                      <AnimatedBentoCard className="relative p-0 overflow-hidden h-full">
+                        {/* Background Image */}
+                        <img src={foto} alt="Dann" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10 transition-opacity duration-300" />
 
-                    {/* Content Overlay */}
-                    <div className="relative z-20 h-full flex flex-col justify-end p-6">
-                       <h3 className="text-xl font-bold text-white mb-1 drop-shadow-md">Hi, I'm Dann</h3>
-                       <div className="relative overflow-hidden">
-                           <p className="block group-hover:hidden text-neutral-200 text-xs leading-relaxed transform transition-all duration-300 drop-shadow-sm">
-                              Front-End Developer & UI/UX Designer crafting intuitive user experiences.
-                           </p>
-                           <p className="hidden group-hover:block text-white text-xs leading-relaxed animate-in fade-in zoom-in-95 duration-300 drop-shadow-sm">
-                              As a Front-End Developer & UI/UX Designer, I design and develop user-centered web interfaces by combining strong UI/UX principles with clean, modern front-end code. I focus on creating intuitive layouts, clear visual hierarchies, and responsive designs that adapt seamlessly across devices. My goal is to build digital products that not only look visually appealing, but also prioritize usability, accessibility, and consistency to deliver meaningful and enjoyable user experiences.
-                           </p>
-                       </div>
-                    </div>
-                  </AnimatedBentoCard>
+                        {/* Content Overlay */}
+                        <div className="relative z-20 h-full flex flex-col justify-end p-6">
+                           <h3 className="text-xl font-bold text-white mb-1 drop-shadow-md">Hi, I'm Dann</h3>
+                           <div className="relative overflow-hidden">
+                               <p className="block group-hover:hidden text-neutral-200 text-xs leading-relaxed transform transition-all duration-300 drop-shadow-sm">
+                                  Front-End Developer & UI/UX Designer crafting intuitive user experiences.
+                               </p>
+                               <p className="hidden group-hover:block text-white text-xs leading-relaxed animate-in fade-in zoom-in-95 duration-300 drop-shadow-sm">
+                                  As a Front-End Developer & UI/UX Designer, I design and develop user-centered web interfaces by combining strong UI/UX principles with clean, modern front-end code. I focus on creating intuitive layouts, clear visual hierarchies, and responsive designs that adapt seamlessly across devices. My goal is to build digital products that not only look visually appealing, but also prioritize usability, accessibility, and consistency to deliver meaningful and enjoyable user experiences.
+                               </p>
+                           </div>
+                        </div>
+                      </AnimatedBentoCard>
+                    </StaggerItem>
 
-                  {/* Card 3: Time Zone */}
-                  <AnimatedBentoCard className="col-span-3 lg:col-span-1 flex flex-col p-4 relative overflow-hidden">
-                      <div className="relative z-10">
-                          <h3 className="text-lg font-bold text-white mb-1">Time Zone</h3>
-                          <p className="text-neutral-400 text-xs">Based in Indonesia, open worldwide.</p>
-                      </div>
-                      <div className="absolute inset-0 flex items-center justify-end opacity-60">
-                         <div className="w-64 h-64 md:w-80 md:h-80 relative translate-x-12 md:translate-x-16">
-                           <Globe className="w-full h-full" />
-                         </div>
-                      </div>
-                  </AnimatedBentoCard>
-
-                  {/* Card 4: FAQ / Accordion - Moved here and spans 2 rows */}
-                  <AnimatedBentoCard className="col-span-3 lg:col-span-1 lg:row-span-2 p-4 flex flex-col justify-start relative overflow-hidden">
-                      <div className="w-full h-full overflow-y-auto pr-2">
-                        <Accordion type="single" collapsible className="w-full">
-                          <AccordionItem value="item-1" className="border-b-white/10">
-                            <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">How do I start a project?</AccordionTrigger>
-                            <AccordionContent className="text-neutral-400 text-xs">
-                              You can simply reach out to me via email or LinkedIn to discuss your project requirements.
-                            </AccordionContent>
-                          </AccordionItem>
-                          <AccordionItem value="item-2" className="border-b-white/10">
-                            <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">What is your tech stack?</AccordionTrigger>
-                            <AccordionContent className="text-neutral-400 text-xs">
-                              I specialize in React, TypeScript, Node.js, and modern CSS frameworks like Tailwind.
-                            </AccordionContent>
-                          </AccordionItem>
-                          <AccordionItem value="item-3" className="border-b-white/10">
-                            <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">Do you offer freelance?</AccordionTrigger>
-                            <AccordionContent className="text-neutral-400 text-xs">
-                              Yes, I am available for freelance commissions and full-time roles.
-                            </AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
-                      </div>
-                  </AnimatedBentoCard>
-
-                  {/* Card 5: Tech Stack */}
-                    <AnimatedBentoCard className="col-span-3 lg:col-span-1 p-4 flex flex-row items-center justify-between overflow-hidden relative">
-                      <div className="relative z-10 max-w-[50%]">
-                          <h3 className="text-lg font-bold text-white mb-1">Tech Stack</h3>
-                          <p className="text-neutral-400 text-xs mb-2">I specialize in a variety of languages, frameworks, and tools.</p>
-                      </div>
-                      
-                       {/* Tech Stack Visuals - Orbiting Circles */}
-                       <div className="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-center overflow-hidden">
-                            <div className="relative flex h-full w-full items-center justify-center">
-                               {/* Center Logo */}
-                               <img src={Logo} alt="Logo" className="absolute w-12 h-12 rounded-full object-contain z-10" />
-                               
-                               {/* Inner orbit - 7 icons (image8 - image14) */}
-                               <OrbitingCircles iconSize={24} radius={50} duration={25} speed={1}>
-                                 <img src={image8} alt="Tech 8" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image9} alt="Tech 9" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image10} alt="Tech 10" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image11} alt="Tech 11" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image12} alt="Tech 12" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image13} alt="Tech 13" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image14} alt="Tech 14" className="w-6 h-6 rounded object-contain" />
-                               </OrbitingCircles>
-                               
-                               {/* Outer orbit - 7 icons (image1 - image7) - reverse */}
-                               <OrbitingCircles iconSize={24} radius={90} duration={35} speed={1} reverse>
-                                 <img src={image1} alt="Tech 1" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image2} alt="Tech 2" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image3} alt="Tech 3" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image4} alt="Tech 4" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image5} alt="Tech 5" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image6} alt="Tech 6" className="w-6 h-6 rounded object-contain" />
-                                 <img src={image7} alt="Tech 7" className="w-6 h-6 rounded object-contain" />
-                               </OrbitingCircles>
-                            </div>
-                       </div>
-                   </AnimatedBentoCard>
-
-                  {/* Card: Hire Me */}
-                  <AnimatedBentoCard className="col-span-3 lg:col-span-1 p-4 flex flex-col justify-between relative overflow-hidden">
-                      <div className="relative z-10">
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="p-2 bg-white/5 rounded-lg group-hover:bg-[#FF3B30]/20 transition-colors duration-300">
-                                <Mail className="w-5 h-5 text-white group-hover:text-[#FF3B30] transition-colors duration-300" />
-                            </div>
-                            <div className="h-2 w-2 rounded-full bg-[#FF3B30] animate-pulse" />
+                    {/* Card 3: Time Zone */}
+                    <StaggerItem direction="up" className="col-span-3 lg:col-span-1">
+                      <AnimatedBentoCard className="flex flex-col p-4 relative overflow-hidden h-full">
+                          <div className="relative z-10">
+                              <h3 className="text-lg font-bold text-white mb-1">Time Zone</h3>
+                              <p className="text-neutral-400 text-xs">Based in Indonesia, open worldwide.</p>
                           </div>
-                          <h3 className="text-lg font-bold text-white mb-1">Hire Me</h3>
-                          <p className="text-neutral-400 text-xs mb-4">Have a project in mind? Let's build something amazing together.</p>
+                          <div className="absolute inset-0 flex items-center justify-end opacity-60">
+                             <div className="w-64 h-64 md:w-80 md:h-80 relative translate-x-12 md:translate-x-16">
+                               <Globe className="w-full h-full" />
+                             </div>
+                          </div>
+                      </AnimatedBentoCard>
+                    </StaggerItem>
+
+                    {/* Card 4: FAQ / Accordion - Moved here and spans 2 rows */}
+                    <StaggerItem direction="right" className="col-span-3 lg:col-span-1 lg:row-span-2">
+                      <AnimatedBentoCard className="p-4 flex flex-col justify-start relative overflow-hidden h-full">
+                          <div className="w-full h-full overflow-y-auto pr-2">
+                            <Accordion type="single" collapsible className="w-full">
+                              <AccordionItem value="item-1" className="border-b-white/10">
+                                <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">How do I start a project?</AccordionTrigger>
+                                <AccordionContent className="text-neutral-400 text-xs">
+                                  You can simply reach out to me via email or LinkedIn to discuss your project requirements.
+                                </AccordionContent>
+                              </AccordionItem>
+                              <AccordionItem value="item-2" className="border-b-white/10">
+                                <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">What is your tech stack?</AccordionTrigger>
+                                <AccordionContent className="text-neutral-400 text-xs">
+                                  I specialize in React, TypeScript, Node.js, and modern CSS frameworks like Tailwind.
+                                </AccordionContent>
+                              </AccordionItem>
+                              <AccordionItem value="item-3" className="border-b-white/10">
+                                <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">Do you offer freelance?</AccordionTrigger>
+                                <AccordionContent className="text-neutral-400 text-xs">
+                                  Yes, I am available for freelance commissions and full-time roles.
+                                </AccordionContent>
+                              </AccordionItem>
+                            </Accordion>
+                          </div>
+                      </AnimatedBentoCard>
+                    </StaggerItem>
+
+                    {/* Card 5: Tech Stack */}
+                    <StaggerItem direction="up" className="col-span-3 lg:col-span-1">
+                      <AnimatedBentoCard className="p-4 flex flex-row items-center justify-between overflow-hidden relative h-full">
+                          <div className="relative z-10 max-w-[50%]">
+                              <h3 className="text-lg font-bold text-white mb-1">Tech Stack</h3>
+                              <p className="text-neutral-400 text-xs mb-2">I specialize in a variety of languages, frameworks, and tools.</p>
+                          </div>
                           
-                          <a href="mailto:your.email@example.com" className="inline-flex items-center justify-center w-full py-2 px-4 bg-white text-black text-xs font-bold rounded-lg hover:bg-[#FF3B30] hover:text-white transition-all duration-300 group-hover:translate-y-0 translate-y-1">
-                              Get in Touch
-                          </a>
-                      </div>
-                      
-                      {/* Background Gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#FF3B30]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </AnimatedBentoCard>
+                           {/* Tech Stack Visuals - Orbiting Circles */}
+                           <div className="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-center overflow-hidden">
+                                <div className="relative flex h-full w-full items-center justify-center">
+                                   {/* Center Logo */}
+                                   <img src={Logo} alt="Logo" className="absolute w-12 h-12 rounded-full object-contain z-10" />
+                                   
+                                   {/* Inner orbit - 7 icons (image8 - image14) */}
+                                   <OrbitingCircles iconSize={24} radius={50} duration={25} speed={1}>
+                                     <img src={image8} alt="Tech 8" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image9} alt="Tech 9" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image10} alt="Tech 10" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image11} alt="Tech 11" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image12} alt="Tech 12" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image13} alt="Tech 13" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image14} alt="Tech 14" className="w-6 h-6 rounded object-contain" />
+                                   </OrbitingCircles>
+                                   
+                                   {/* Outer orbit - 7 icons (image1 - image7) - reverse */}
+                                   <OrbitingCircles iconSize={24} radius={90} duration={35} speed={1} reverse>
+                                     <img src={image1} alt="Tech 1" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image2} alt="Tech 2" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image3} alt="Tech 3" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image4} alt="Tech 4" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image5} alt="Tech 5" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image6} alt="Tech 6" className="w-6 h-6 rounded object-contain" />
+                                     <img src={image7} alt="Tech 7" className="w-6 h-6 rounded object-contain" />
+                                   </OrbitingCircles>
+                                </div>
+                           </div>
+                      </AnimatedBentoCard>
+                    </StaggerItem>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </BentoGrid>
+                    {/* Card: Hire Me */}
+                    <StaggerItem direction="up" className="col-span-3 lg:col-span-1">
+                      <AnimatedBentoCard className="p-4 flex flex-col justify-between relative overflow-hidden h-full">
+                          <div className="relative z-10">
+                              <div className="flex items-center justify-between mb-2">
+                                <div className="p-2 bg-white/5 rounded-lg group-hover:bg-[#FF3B30]/20 transition-colors duration-300">
+                                    <Mail className="w-5 h-5 text-white group-hover:text-[#FF3B30] transition-colors duration-300" />
+                                </div>
+                                <div className="h-2 w-2 rounded-full bg-[#FF3B30] animate-pulse" />
+                              </div>
+                              <h3 className="text-lg font-bold text-white mb-1">Hire Me</h3>
+                              <p className="text-neutral-400 text-xs mb-4">Have a project in mind? Let's build something amazing together.</p>
+                              
+                              <a href="mailto:your.email@example.com" className="inline-flex items-center justify-center w-full py-2 px-4 bg-white text-black text-xs font-bold rounded-lg hover:bg-[#FF3B30] hover:text-white transition-all duration-300 group-hover:translate-y-0 translate-y-1">
+                                  Get in Touch
+                              </a>
+                          </div>
+                          
+                          {/* Background Gradient */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-[#FF3B30]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </AnimatedBentoCard>
+                    </StaggerItem>
+                  </BentoGrid>
+                </StaggerContainer>
               </div>
             </div>
         </section>
