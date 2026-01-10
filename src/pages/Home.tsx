@@ -5,7 +5,7 @@ import { getFeaturedProjects } from '@/data/projects';
 import { ProjectCard } from '@/components/portfolio/ProjectCard';
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 import { SEOHead } from '@/components/seo/SEOHead';
-import { ArrowRight, Youtube, Instagram, Github, Linkedin, User, Palette, PenTool } from 'lucide-react';
+import { ArrowRight, Youtube, Instagram, Github, Linkedin, User, Palette, PenTool, Mail } from 'lucide-react';
 import { Globe } from '@/components/ui/globe';
 import { OrbitingCircles } from '@/components/ui/orbiting-circles';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -356,9 +356,9 @@ export default function Home() {
                    </h2>
                 </div>
 
-                <BentoGrid className="gap-4 lg:grid-rows-[24rem_15rem]">
+                <BentoGrid className="gap-4 lg:grid-rows-[18rem_6rem_15rem]">
                   {/* Card 1: About Me / IDE (2x2) */}
-                  <BentoGridItem className="col-span-3 lg:col-span-2 relative p-0 overflow-hidden transform transition-all duration-300 hover:shadow-xl group h-full">
+                  <BentoGridItem className="col-span-3 lg:col-span-2 lg:row-span-2 relative p-0 overflow-hidden transform transition-all duration-300 hover:shadow-xl group h-full">
                     {/* Background Image */}
                     <img 
                       src={foto} 
@@ -374,17 +374,17 @@ export default function Home() {
                        <h3 className="text-xl font-bold text-white mb-1 drop-shadow-md">Hi, I'm Dann</h3>
                        <div className="relative overflow-hidden">
                            <p className="block group-hover:hidden text-neutral-200 text-xs leading-relaxed transform transition-all duration-300 drop-shadow-sm">
-                              Front-end & Back-end Developer building dynamic web apps for 4+ years.
+                              Front-End Developer & UI/UX Designer crafting intuitive user experiences.
                            </p>
                            <p className="hidden group-hover:block text-white text-xs leading-relaxed animate-in fade-in zoom-in-95 duration-300 drop-shadow-sm">
-                              Over the last 4 years, I developed my frontend and backend dev skills to deliver dynamic and responsive software and web applications.
+                              As a Front-End Developer & UI/UX Designer, I design and develop user-centered web interfaces by combining strong UI/UX principles with clean, modern front-end code. I focus on creating intuitive layouts, clear visual hierarchies, and responsive designs that adapt seamlessly across devices. My goal is to build digital products that not only look visually appealing, but also prioritize usability, accessibility, and consistency to deliver meaningful and enjoyable user experiences.
                            </p>
                        </div>
                     </div>
                   </BentoGridItem>
 
                   {/* Card 3: Time Zone */}
-                  <BentoGridItem className="col-span-3 lg:col-span-1 min-h-[180px] bg-neutral-900 flex flex-col p-4 relative overflow-hidden group transform transition-all duration-300 hover:shadow-xl">
+                  <BentoGridItem className="col-span-3 lg:col-span-1 bg-neutral-900 flex flex-col p-4 relative overflow-hidden group transform transition-all duration-300 hover:shadow-xl">
                       <div className="relative z-10">
                           <h3 className="text-lg font-bold text-white mb-1">Time Zone</h3>
                           <p className="text-neutral-400 text-xs">Based in Indonesia, open worldwide.</p>
@@ -396,8 +396,34 @@ export default function Home() {
                       </div>
                   </BentoGridItem>
 
+                  {/* Card 4: FAQ / Accordion - Moved here and spans 2 rows */}
+                  <BentoGridItem className="col-span-3 lg:col-span-1 lg:row-span-2 bg-neutral-900 p-4 flex flex-col justify-start relative overflow-hidden transform transition-all duration-300 hover:shadow-xl">
+                      <div className="w-full h-full overflow-y-auto pr-2">
+                        <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-1" className="border-b-white/10">
+                            <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">How do I start a project?</AccordionTrigger>
+                            <AccordionContent className="text-neutral-400 text-xs">
+                              You can simply reach out to me via email or LinkedIn to discuss your project requirements.
+                            </AccordionContent>
+                          </AccordionItem>
+                          <AccordionItem value="item-2" className="border-b-white/10">
+                            <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">What is your tech stack?</AccordionTrigger>
+                            <AccordionContent className="text-neutral-400 text-xs">
+                              I specialize in React, TypeScript, Node.js, and modern CSS frameworks like Tailwind.
+                            </AccordionContent>
+                          </AccordionItem>
+                          <AccordionItem value="item-3" className="border-b-white/10">
+                            <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">Do you offer freelance?</AccordionTrigger>
+                            <AccordionContent className="text-neutral-400 text-xs">
+                              Yes, I am available for freelance commissions and full-time roles.
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+                      </div>
+                  </BentoGridItem>
+
                   {/* Card 5: Tech Stack */}
-                    <BentoGridItem className="col-span-3 lg:col-span-1 bg-[#0f0f1b] p-4 flex flex-row items-center justify-between overflow-hidden relative transform transition-all duration-300 hover:shadow-xl">
+                    <BentoGridItem className="col-span-3 lg:col-span-1 bg-neutral-900 p-4 flex flex-row items-center justify-between overflow-hidden relative transform transition-all duration-300 hover:shadow-xl">
                       <div className="relative z-10 max-w-[50%]">
                           <h3 className="text-lg font-bold text-white mb-1">Tech Stack</h3>
                           <p className="text-neutral-400 text-xs mb-2">I specialize in a variety of languages, frameworks, and tools.</p>
@@ -434,31 +460,52 @@ export default function Home() {
                        </div>
                    </BentoGridItem>
 
-                  {/* Card 4: FAQ / Accordion */}
-                  <BentoGridItem className="col-span-3 lg:col-span-2 bg-[#0f0f1b] p-4 flex flex-col justify-start relative overflow-hidden transform transition-all duration-300 hover:shadow-xl">
-                      <div className="w-full h-full overflow-y-auto pr-2">
-                        <Accordion type="single" collapsible className="w-full">
-                          <AccordionItem value="item-1" className="border-b-white/10">
-                            <AccordionTrigger className="text-white hover:no-underline hover:text-purple-400 text-sm py-3">How do I start a project?</AccordionTrigger>
-                            <AccordionContent className="text-neutral-400 text-xs">
-                              You can simply reach out to me via email or LinkedIn to discuss your project requirements.
-                            </AccordionContent>
-                          </AccordionItem>
-                          <AccordionItem value="item-2" className="border-b-white/10">
-                            <AccordionTrigger className="text-white hover:no-underline hover:text-purple-400 text-sm py-3">What is your tech stack?</AccordionTrigger>
-                            <AccordionContent className="text-neutral-400 text-xs">
-                              I specialize in React, TypeScript, Node.js, and modern CSS frameworks like Tailwind.
-                            </AccordionContent>
-                          </AccordionItem>
-                          <AccordionItem value="item-3" className="border-b-white/10">
-                            <AccordionTrigger className="text-white hover:no-underline hover:text-purple-400 text-sm py-3">Do you offer freelance?</AccordionTrigger>
-                            <AccordionContent className="text-neutral-400 text-xs">
-                              Yes, I am available for freelance commissions and full-time roles.
-                            </AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
+                  {/* Card: Hire Me */}
+                  <BentoGridItem className="col-span-3 lg:col-span-1 bg-neutral-900 p-4 flex flex-col justify-between relative overflow-hidden transform transition-all duration-300 hover:shadow-xl group">
+                      <div className="relative z-10">
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="p-2 bg-white/5 rounded-lg group-hover:bg-[#FF3B30]/20 transition-colors duration-300">
+                                <Mail className="w-5 h-5 text-white group-hover:text-[#FF3B30] transition-colors duration-300" />
+                            </div>
+                            <div className="h-2 w-2 rounded-full bg-[#FF3B30] animate-pulse" />
+                          </div>
+                          <h3 className="text-lg font-bold text-white mb-1">Hire Me</h3>
+                          <p className="text-neutral-400 text-xs mb-4">Have a project in mind? Let's build something amazing together.</p>
+                          
+                          <a href="mailto:your.email@example.com" className="inline-flex items-center justify-center w-full py-2 px-4 bg-white text-black text-xs font-bold rounded-lg hover:bg-[#FF3B30] hover:text-white transition-all duration-300 group-hover:translate-y-0 translate-y-1">
+                              Get in Touch
+                          </a>
                       </div>
+                      
+                      {/* Background Gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#FF3B30]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </BentoGridItem>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </BentoGrid>
               </div>
             </div>
