@@ -338,7 +338,9 @@ export default function Home() {
         </section>
 
         {/* About Me Section - Redesigned */}
-        <section style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
+        <section style={{
+        backgroundColor: 'hsl(0, 0%, 8%)'
+      }}>
             <div id="about" data-section-theme="dark" className="w-full pb-0 mt-0 pt-20 md:pt-32 relative overflow-hidden">
               <div className="container mx-auto px-6 lg:px-12 relative z-10">
                 
@@ -346,12 +348,7 @@ export default function Home() {
                 <div className="w-full text-center mb-12">
                    <h2 className="text-[8vw] md:text-[7vw] lg:text-[6vw] font-black text-white uppercase tracking-tight italic leading-none relative inline-block">
                       INTRODUCING,
-                      <span 
-                         className="absolute top-0 right-0 translate-x-[60%] -translate-y-[20%] text-[#FF6B35] text-[4vw] md:text-[3vw] lg:text-[2.5vw] not-italic font-normal"
-                         style={{ fontFamily: "'Brush Script MT', 'Segoe Script', cursive" }}
-                      >
-                         Dann
-                      </span>
+                      
                       &nbsp;MYSELF
                    </h2>
                 </div>
@@ -360,11 +357,7 @@ export default function Home() {
                   {/* Card 1: About Me / IDE (2x2) */}
                   <BentoGridItem className="col-span-3 lg:col-span-2 lg:row-span-2 relative p-0 overflow-hidden transform transition-all duration-300 hover:shadow-xl group h-full">
                     {/* Background Image */}
-                    <img 
-                      src={foto} 
-                      alt="Dann" 
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                    <img src={foto} alt="Dann" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10 transition-opacity duration-300" />
