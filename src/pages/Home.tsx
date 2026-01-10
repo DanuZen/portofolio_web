@@ -346,10 +346,8 @@ export default function Home() {
                 
                 {/* Section Title with Script Overlay - Centered & Single Line */}
                 <div className="w-full text-center mb-12">
-                   <h2 className="text-[8vw] md:text-[7vw] lg:text-[6vw] font-black text-white uppercase tracking-tight italic leading-none relative inline-block">
-                      INTRODUCING,
-                      
-                      &nbsp;MYSELF
+                   <h2 className="text-[8vw] md:text-[7vw] text-white uppercase tracking-tight italic leading-none relative inline-block lg:text-9xl text-center font-extrabold font-sans">
+                      INTRODUCING  MYSELF
                    </h2>
                 </div>
 
