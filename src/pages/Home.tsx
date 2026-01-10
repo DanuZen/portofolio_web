@@ -44,6 +44,7 @@ import { HyperText } from '@/components/ui/hyper-text';
 import { cn } from '@/lib/utils';
 import { BentoGrid, BentoCard, BentoGridItem } from '@/components/ui/bento-grid';
 import { AnimatedBentoCard } from '@/components/ui/animated-bento-card';
+import { ScrollVelocityContainer, ScrollVelocityRow } from '@/components/ui/scroll-based-velocity';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -369,7 +370,7 @@ export default function Home() {
                            <div className="relative overflow-hidden">
                                <p className="block group-hover:hidden text-neutral-200 text-xs leading-relaxed transform transition-all duration-300 drop-shadow-sm">
                                   Front-End Developer & UI/UX Designer crafting intuitive user experiences.
-                               </p>
+                                </p>
                                <p className="hidden group-hover:block text-white text-xs leading-relaxed animate-in fade-in zoom-in-95 duration-300 drop-shadow-sm">
                                   As a Front-End Developer & UI/UX Designer, I design and develop user-centered web interfaces by combining strong UI/UX principles with clean, modern front-end code. I focus on creating intuitive layouts, clear visual hierarchies, and responsive designs that adapt seamlessly across devices. My goal is to build digital products that not only look visually appealing, but also prioritize usability, accessibility, and consistency to deliver meaningful and enjoyable user experiences.
                                </p>
@@ -487,6 +488,18 @@ export default function Home() {
                 </StaggerContainer>
               </div>
             </div>
+        </section>
+
+        {/* Scroll Based Velocity Section */}
+        <section className="py-10 overflow-hidden" style={{ backgroundColor: 'hsl(0, 0%, 8%)' }}>
+           <ScrollVelocityContainer className="text-4xl font-black md:text-7xl text-transparent font-sans tracking-widest flex flex-col gap-2" style={{ WebkitTextStroke: '1px rgba(255, 255, 255, 0.5)' }}>
+             <ScrollVelocityRow baseVelocity={2} direction={1}>
+               <span className="mr-8">WELCOME TO OUR PORTOFOLIO</span>
+             </ScrollVelocityRow>
+             <ScrollVelocityRow baseVelocity={2} direction={-1}>
+               <span className="mr-8">WELCOME TO OUR PORTOFOLIO</span>
+             </ScrollVelocityRow>
+           </ScrollVelocityContainer>
         </section>
 
       {/* Skills, Tools & Approach Section */}
