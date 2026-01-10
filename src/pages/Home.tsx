@@ -43,6 +43,7 @@ import { RetroGrid } from '@/components/ui/retro-grid';
 import { HyperText } from '@/components/ui/hyper-text';
 import { cn } from '@/lib/utils';
 import { BentoGrid, BentoCard, BentoGridItem } from '@/components/ui/bento-grid';
+import { AnimatedBentoCard } from '@/components/ui/animated-bento-card';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -353,7 +354,7 @@ export default function Home() {
 
                 <BentoGrid className="gap-4 lg:grid-rows-[18rem_6rem_15rem]">
                   {/* Card 1: About Me / IDE (2x2) */}
-                  <BentoGridItem className="col-span-3 lg:col-span-2 lg:row-span-2 relative p-0 overflow-hidden transform transition-all duration-300 hover:shadow-xl group h-full">
+                  <AnimatedBentoCard className="col-span-3 lg:col-span-2 lg:row-span-2 relative p-0 overflow-hidden h-full">
                     {/* Background Image */}
                     <img src={foto} alt="Dann" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     
@@ -372,10 +373,10 @@ export default function Home() {
                            </p>
                        </div>
                     </div>
-                  </BentoGridItem>
+                  </AnimatedBentoCard>
 
                   {/* Card 3: Time Zone */}
-                  <BentoGridItem className="col-span-3 lg:col-span-1 bg-neutral-900 flex flex-col p-4 relative overflow-hidden group transform transition-all duration-300 hover:shadow-xl">
+                  <AnimatedBentoCard className="col-span-3 lg:col-span-1 flex flex-col p-4 relative overflow-hidden">
                       <div className="relative z-10">
                           <h3 className="text-lg font-bold text-white mb-1">Time Zone</h3>
                           <p className="text-neutral-400 text-xs">Based in Indonesia, open worldwide.</p>
@@ -385,10 +386,10 @@ export default function Home() {
                            <Globe className="w-full h-full" />
                          </div>
                       </div>
-                  </BentoGridItem>
+                  </AnimatedBentoCard>
 
                   {/* Card 4: FAQ / Accordion - Moved here and spans 2 rows */}
-                  <BentoGridItem className="col-span-3 lg:col-span-1 lg:row-span-2 bg-neutral-900 p-4 flex flex-col justify-start relative overflow-hidden transform transition-all duration-300 hover:shadow-xl">
+                  <AnimatedBentoCard className="col-span-3 lg:col-span-1 lg:row-span-2 p-4 flex flex-col justify-start relative overflow-hidden">
                       <div className="w-full h-full overflow-y-auto pr-2">
                         <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1" className="border-b-white/10">
@@ -411,10 +412,10 @@ export default function Home() {
                           </AccordionItem>
                         </Accordion>
                       </div>
-                  </BentoGridItem>
+                  </AnimatedBentoCard>
 
                   {/* Card 5: Tech Stack */}
-                    <BentoGridItem className="col-span-3 lg:col-span-1 bg-neutral-900 p-4 flex flex-row items-center justify-between overflow-hidden relative transform transition-all duration-300 hover:shadow-xl">
+                    <AnimatedBentoCard className="col-span-3 lg:col-span-1 p-4 flex flex-row items-center justify-between overflow-hidden relative">
                       <div className="relative z-10 max-w-[50%]">
                           <h3 className="text-lg font-bold text-white mb-1">Tech Stack</h3>
                           <p className="text-neutral-400 text-xs mb-2">I specialize in a variety of languages, frameworks, and tools.</p>
@@ -449,10 +450,10 @@ export default function Home() {
                                </OrbitingCircles>
                             </div>
                        </div>
-                   </BentoGridItem>
+                   </AnimatedBentoCard>
 
                   {/* Card: Hire Me */}
-                  <BentoGridItem className="col-span-3 lg:col-span-1 bg-neutral-900 p-4 flex flex-col justify-between relative overflow-hidden transform transition-all duration-300 hover:shadow-xl group">
+                  <AnimatedBentoCard className="col-span-3 lg:col-span-1 p-4 flex flex-col justify-between relative overflow-hidden">
                       <div className="relative z-10">
                           <div className="flex items-center justify-between mb-2">
                             <div className="p-2 bg-white/5 rounded-lg group-hover:bg-[#FF3B30]/20 transition-colors duration-300">
@@ -470,7 +471,7 @@ export default function Home() {
                       
                       {/* Background Gradient */}
                       <div className="absolute inset-0 bg-gradient-to-br from-[#FF3B30]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </BentoGridItem>
+                  </AnimatedBentoCard>
 
 
 
