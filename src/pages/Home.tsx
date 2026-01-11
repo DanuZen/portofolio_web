@@ -870,162 +870,235 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects Section - Bold Header + Gallery */}
-      <section id="projects" data-section-theme="dark" className="min-h-screen flex items-center py-32 md:py-40" style={{
+      {/* Featured Projects Section - Bento Grid Layout */}
+      <section id="projects" data-section-theme="dark" className="min-h-screen py-20 md:py-32" style={{
         backgroundColor: 'hsl(0, 0%, 8%)'
       }}>
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          {/* Section Header - Split Layout */}
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <div className="flex gap-6 lg:gap-10">
+            {/* Left: Vertical "PROJECTS" Text */}
+            <motion.div 
+              className="hidden md:flex items-center justify-center"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 
+                className="text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight font-akzidenz uppercase text-white"
+                style={{ 
+                  writingMode: 'vertical-rl',
+                  textOrientation: 'mixed',
+                  transform: 'rotate(180deg)',
+                  letterSpacing: '0.1em'
+                }}
+              >
+                PROJECTS
+              </h2>
+            </motion.div>
 
+            {/* Mobile Title */}
+            <motion.h2 
+              className="md:hidden text-4xl font-black tracking-tight font-akzidenz uppercase text-white mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              PROJECTS
+            </motion.h2>
 
-          {/* Projects Stacked Layout - Cross Pattern */}
-          <div className="w-full px-4 md:px-8 lg:px-16">
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-40">
-              {/* Left: Stacked Cards in Cross Pattern */}
-              <motion.div className="relative w-[320px] h-[420px] md:w-[380px] md:h-[480px] lg:w-[450px] lg:h-[550px]" style={{
-                perspective: '1200px'
-              }} initial={{
-                opacity: 0,
-                x: -50
-              }} whileInView={{
-                opacity: 1,
-                x: 0
-              }} viewport={{
-                once: true
-              }} transition={{
-                duration: 0.8
-              }} drag="x" dragConstraints={{
-                left: 0,
-                right: 0
-              }} dragElastic={0.1} onDragEnd={(_, info) => {
-                const threshold = 50;
-                if (info.offset.x > threshold) {
-                  setActiveProjectIndex(prev => prev === 0 ? featuredProjects.length - 1 : prev - 1);
-                } else if (info.offset.x < -threshold) {
-                  setActiveProjectIndex(prev => prev === featuredProjects.length - 1 ? 0 : prev + 1);
-                }
-              }}>
-                {featuredProjects.map((project, index) => {
-                  const total = featuredProjects.length;
-                  let relativeIndex = index - activeProjectIndex;
-                  if (relativeIndex > total / 2) relativeIndex -= total;
-                  if (relativeIndex < -total / 2) relativeIndex += total;
-                  const isActive = relativeIndex === 0;
-                  const isVisible = Math.abs(relativeIndex) <= 2;
-                  if (!isVisible) return null;
-
-                  // Symmetrical Stacked card effect
-                  const xOffset = relativeIndex * 25;
-                  const yOffset = 0;
-                  const rotateZ = relativeIndex * 5;
-                  const scaleValue = 1 - Math.abs(relativeIndex) * 0.1;
-                  const zIndex = 50 - Math.abs(relativeIndex);
-                  return <motion.div key={project.id} className="absolute rounded-3xl overflow-hidden cursor-grab active:cursor-grabbing" initial={false} style={{
-                    width: '100%',
-                    height: '100%',
-                    left: 0,
-                    top: 0,
-                    transformOrigin: 'center center'
-                  }} animate={{
-                    x: xOffset,
-                    y: yOffset,
-                    rotate: rotateZ,
-                    scale: scaleValue,
-                    zIndex
-                  }} transition={{
-                    duration: 0.4,
-                    ease: [0.32, 0.72, 0, 1]
-                  }} whileHover={isActive ? {
-                    scale: 1.02,
-                    y: -5
-                  } : {}}>
-                      <Link to={`/project/${project.slug}`} className="block w-full h-full" draggable={false}>
-                        <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10 transition-all duration-300" style={{
-                        boxShadow: isActive ? '0 0 30px rgba(255, 59, 48, 0.3), 0 20px 50px -15px rgba(0,0,0,0.5)' : '0 20px 50px -15px rgba(0,0,0,0.5)'
-                      }}>
-                          <img src={project.coverImage} alt={project.title} className="w-full h-full object-cover" />
-                          {/* Gradient overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                          
-                          {/* Title at bottom */}
-                          {isActive && <motion.div className="absolute bottom-0 left-0 right-0 p-5" initial={{
-                          opacity: 0,
-                          y: 10
-                        }} animate={{
-                          opacity: 1,
-                          y: 0
-                        }} transition={{
-                          delay: 0.2
-                        }}>
-                              <h3 className="text-white text-xl md:text-2xl font-bold">
-                                {project.title}
-                              </h3>
-                            </motion.div>}
-                        </div>
-                      </Link>
-                    </motion.div>;
-                })}
-              </motion.div>
-
-              {/* Right: Navigation & Info */}
-              <motion.div className="flex flex-col items-center lg:items-start gap-8" initial={{
-                opacity: 0,
-                x: 50
-              }} whileInView={{
-                opacity: 1,
-                x: 0
-              }} viewport={{
-                once: true
-              }} transition={{
-                duration: 0.8,
-                delay: 0.3
-              }}>
-                {/* Title moved here */}
-                <div className="text-left mb-4">
-                  <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.9] font-akzidenz uppercase">
-                    <span className="text-white">
-                      <TypewriterText text="PROYEK" delay={0.1} />
-                    </span> <br />
-                    <span className="text-[#FF3B30]">
-                      <TypewriterText text="UNGGULAN" delay={0.5} />
-                    </span>
-                  </h2>
-                </div>
-
-                {/* Project Info */}
-                <motion.div key={activeProjectIndex} className="text-center lg:text-left" initial={{
-                  opacity: 0,
-                  y: 10
-                }} animate={{
-                  opacity: 1,
-                  y: 0
-                }} transition={{
-                  duration: 0.3
-                }}>
-                  <div className="flex items-center gap-4 mb-3">
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
-                      {featuredProjects[activeProjectIndex]?.title || 'Project Title'}
-                    </h3>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-16 h-0.5 bg-[#FF3B30]" />
-                    <p className="text-white/60 uppercase tracking-widest text-sm">
-                      {featuredProjects[activeProjectIndex]?.category || 'Category'}
-                    </p>
-                  </div>
+            {/* Right: Bento Grid */}
+            <div className="flex-1">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+                {/* Featured Project - Large Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="md:col-span-1 md:row-span-1"
+                >
+                  <Link to={`/project/${featuredProjects[0]?.slug}`}>
+                    <motion.div 
+                      className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50"
+                      whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img 
+                        src={featuredProjects[0]?.coverImage} 
+                        alt={featuredProjects[0]?.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-5">
+                        <p className="text-white/60 text-xs uppercase tracking-widest mb-1">{featuredProjects[0]?.category}</p>
+                        <h3 className="text-white text-xl font-bold">{featuredProjects[0]?.title}</h3>
+                      </div>
+                    </motion.div>
+                  </Link>
                 </motion.div>
 
-                {/* Project Description */}
-                <div className="w-full max-w-md h-32 flex flex-col justify-start">
-                  <p className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed text-justify font-akzidenz-bold line-clamp-4">
-                    {featuredProjects[activeProjectIndex]?.description}
-                  </p>
-                </div>
+                {/* Project 2 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                >
+                  <Link to={`/project/${featuredProjects[1]?.slug}`}>
+                    <motion.div 
+                      className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50"
+                      whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img 
+                        src={featuredProjects[1]?.coverImage} 
+                        alt={featuredProjects[1]?.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-5">
+                        <p className="text-white/60 text-xs uppercase tracking-widest mb-1">{featuredProjects[1]?.category}</p>
+                        <h3 className="text-white text-xl font-bold">{featuredProjects[1]?.title}</h3>
+                        <p className="text-white/70 text-sm mt-2 line-clamp-2">{featuredProjects[1]?.description}</p>
+                      </div>
+                    </motion.div>
+                  </Link>
+                </motion.div>
+
+                {/* Project 3 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <Link to={`/project/${featuredProjects[2]?.slug}`}>
+                    <motion.div 
+                      className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50"
+                      whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img 
+                        src={featuredProjects[2]?.coverImage} 
+                        alt={featuredProjects[2]?.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-5">
+                        <p className="text-white/60 text-xs uppercase tracking-widest mb-1">{featuredProjects[2]?.category}</p>
+                        <h3 className="text-white text-xl font-bold">{featuredProjects[2]?.title}</h3>
+                        <p className="text-white/70 text-sm mt-2 line-clamp-2">{featuredProjects[2]?.description}</p>
+                      </div>
+                    </motion.div>
+                  </Link>
+                </motion.div>
+
+                {/* Project 4 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <Link to={`/project/${featuredProjects[3]?.slug}`}>
+                    <motion.div 
+                      className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50"
+                      whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img 
+                        src={featuredProjects[3]?.coverImage} 
+                        alt={featuredProjects[3]?.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-5">
+                        <p className="text-white/60 text-xs uppercase tracking-widest mb-1">{featuredProjects[3]?.category}</p>
+                        <h3 className="text-white text-xl font-bold">{featuredProjects[3]?.title}</h3>
+                        <p className="text-white/70 text-sm mt-2 line-clamp-2">{featuredProjects[3]?.description}</p>
+                      </div>
+                    </motion.div>
+                  </Link>
+                </motion.div>
+
+                {/* Project 5 - Bottom Left */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <Link to={`/project/${featuredProjects[4]?.slug}`}>
+                    <motion.div 
+                      className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50"
+                      whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img 
+                        src={featuredProjects[4]?.coverImage} 
+                        alt={featuredProjects[4]?.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-5">
+                        <p className="text-white/60 text-xs uppercase tracking-widest mb-1">{featuredProjects[4]?.category}</p>
+                        <h3 className="text-white text-xl font-bold">{featuredProjects[4]?.title}</h3>
+                        <p className="text-white/70 text-sm mt-2 line-clamp-2">{featuredProjects[4]?.description}</p>
+                      </div>
+                    </motion.div>
+                  </Link>
+                </motion.div>
+
+                {/* Project 6 - Bottom Right */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                >
+                  <Link to={`/project/${featuredProjects[5]?.slug}`}>
+                    <motion.div 
+                      className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50"
+                      whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img 
+                        src={featuredProjects[5]?.coverImage} 
+                        alt={featuredProjects[5]?.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-5">
+                        <p className="text-white/60 text-xs uppercase tracking-widest mb-1">{featuredProjects[5]?.category}</p>
+                        <h3 className="text-white text-xl font-bold">{featuredProjects[5]?.title}</h3>
+                        <p className="text-white/70 text-sm mt-2 line-clamp-2">{featuredProjects[5]?.description}</p>
+                      </div>
+                    </motion.div>
+                  </Link>
+                </motion.div>
+              </div>
+
+              {/* View All Projects Link */}
+              <motion.div 
+                className="mt-8 flex justify-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <Link to="/portfolio">
+                  <motion.button 
+                    className="px-8 py-3 bg-[#FF3B30] text-white font-bold uppercase tracking-widest text-sm rounded-lg"
+                    whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255, 59, 48, 0.5)' }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Lihat Semua Proyek
+                  </motion.button>
+                </Link>
               </motion.div>
             </div>
           </div>
-
-          {/* View All Link */}
         </div>
       </section>
 
