@@ -45,7 +45,7 @@ const TimelineItem = ({
       <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
         <button 
           onClick={onDotClick}
-          className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-[hsl(0,0%,8%)] flex items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-200"
+          className="h-10 absolute left-[11px] md:left-[11px] w-10 rounded-full bg-[hsl(0,0%,8%)] flex items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-200"
           aria-label={`Scroll to ${item.title}`}
         >
           <motion.div 
@@ -166,7 +166,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           style={{
             height: height + "px",
           }}
-          className="absolute left-[31px] md:left-[31px] top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-white/20 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+          className="absolute left-[30px] md:left-[30px] top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-white/20 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
         >
           <motion.div
             style={{
