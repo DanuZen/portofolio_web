@@ -46,6 +46,7 @@ import { BentoGrid, BentoCard, BentoGridItem } from '@/components/ui/bento-grid'
 import { AnimatedBentoCard } from '@/components/ui/animated-bento-card';
 import { ScrollVelocityContainer, ScrollVelocityRow } from '@/components/ui/scroll-based-velocity';
 import { ToolsBeamSection } from '@/components/ui/tools-beam-section';
+import { Timeline } from '@/components/ui/timeline';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -664,6 +665,102 @@ export default function Home() {
               </motion.div>
             </div>
         </div>
+      </section>
+
+      {/* Journey Timeline Section */}
+      <section id="journey" data-section-theme="dark" className="py-20 md:py-32 relative overflow-hidden" style={{
+        backgroundColor: 'hsl(0, 0%, 8%)'
+      }}>
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          {/* Section Header */}
+          <div className="w-full text-center mb-8">
+            <h2 className="text-[8vw] md:text-[7vw] text-white uppercase tracking-tight italic leading-none relative inline-block lg:text-9xl text-center font-extrabold font-sans">
+              MY JOURNEY
+            </h2>
+          </div>
+        </div>
+        
+        <Timeline data={[
+          {
+            title: "2024",
+            content: (
+              <div>
+                <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
+                  Started focusing on full-stack development and expanded my expertise in React, TypeScript, and modern web technologies.
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                    <h4 className="text-[#FF3B30] font-bold mb-2">React & TypeScript</h4>
+                    <p className="text-white/70 text-sm">Mastered component architecture and type-safe development</p>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                    <h4 className="text-[#FF3B30] font-bold mb-2">Tailwind CSS</h4>
+                    <p className="text-white/70 text-sm">Built responsive, modern UI with utility-first approach</p>
+                  </div>
+                </div>
+              </div>
+            ),
+          },
+          {
+            title: "2023",
+            content: (
+              <div>
+                <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
+                  Expanded into UI/UX design and started building complete digital products from design to deployment.
+                </p>
+                <div className="mb-4">
+                  <div className="flex flex-wrap gap-2">
+                    {['Figma', 'Adobe XD', 'Prototyping', 'User Research'].map((skill) => (
+                      <span key={skill} className="px-3 py-1 bg-[#FF3B30]/20 text-[#FF3B30] rounded-full text-sm font-medium">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-white/70 text-sm">
+                  Completed multiple freelance projects focusing on user-centered design principles and seamless experiences.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "2022",
+            content: (
+              <div>
+                <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
+                  Began my journey as a graphic designer, learning the fundamentals of visual communication.
+                </p>
+                <ul className="space-y-2">
+                  {[
+                    '✅ Mastered Adobe Creative Suite',
+                    '✅ Created brand identities for local businesses',
+                    '✅ Developed strong typography skills',
+                    '✅ Started learning web development basics',
+                  ].map((item, i) => (
+                    <li key={i} className="text-white/80 text-sm flex items-center gap-2">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ),
+          },
+          {
+            title: "The Beginning",
+            content: (
+              <div>
+                <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
+                  Discovered my passion for design and technology. Started experimenting with creative tools and building small projects.
+                </p>
+                <div className="bg-gradient-to-r from-[#FF3B30]/20 to-transparent p-4 rounded-lg border-l-4 border-[#FF3B30]">
+                  <p className="text-white/80 text-sm italic">
+                    "Every expert was once a beginner. The key is to start, stay curious, and never stop learning."
+                  </p>
+                </div>
+              </div>
+            ),
+          },
+        ]} />
       </section>
 
     </div>
