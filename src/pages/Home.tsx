@@ -202,23 +202,6 @@ export default function Home() {
       }}>
           <RetroGrid className="-top-24" />
 
-          {/* Vertical Text - Right */}
-          <div className="absolute -right-4 md:-right-8 top-0 bottom-0 hidden lg:flex flex-col justify-center z-10 overflow-hidden h-screen pointer-events-none">
-             <motion.div className="text-transparent font-black tracking-widest select-none whitespace-nowrap" style={{
-            writingMode: 'vertical-rl',
-            textOrientation: 'mixed',
-            WebkitTextStroke: '3px #FFFFFF',
-            fontSize: '18vh'
-          }} animate={{
-            y: ["0%", "-25%"]
-          }} transition={{
-            repeat: Infinity,
-            ease: "linear",
-            duration: 20
-          }}>
-                PROGRAMER & DESAIN GRAFIS - PROGRAMER & DESAIN GRAFIS - PROGRAMER & DESAIN GRAFIS - PROGRAMER & DESAIN GRAFIS - 
-             </motion.div>
-          </div>
 
           <div className="container mx-auto px-6 lg:px-12 min-h-screen flex flex-col justify-center py-24 overflow-hidden">
             <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
