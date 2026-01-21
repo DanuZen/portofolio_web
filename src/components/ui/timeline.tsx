@@ -136,11 +136,73 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
+  const scrollToItem = (index: number) => {
+    itemRefs.current[index]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+  };
+
   return (
     <div
-      className="w-full bg-transparent font-sans md:px-10"
+      className="w-full bg-transparent font-sans md:px-10 relative"
       ref={containerRef}
     >
+      {/* Mini Navigation Sidebar */}
+      <div className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-1 bg-black/40 backdrop-blur-md rounded-full py-3 px-2 border border-white/10">
+        {data.map((item, index) => (
+          <button
+            key={index}
+            onClick={() => scrollToItem(index)}
+            className="group relative flex items-center justify-center"
+            aria-label={`Navigate to ${item.title}`}
+          >
+            {/* Year label on hover */}
+            <span className="absolute right-full mr-3 px-2 py-1 text-xs font-medium bg-black/80 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+              {item.title}
+            </span>
+            
+            {/* Dot indicator */}
+            <motion.div
+              className="w-2.5 h-2.5 rounded-full transition-all duration-300"
+              animate={{
+                backgroundColor: activeIndex === index ? "#FF3B30" : "rgba(255,255,255,0.3)",
+                scale: activeIndex === index ? 1.3 : 1,
+                boxShadow: activeIndex === index ? "0 0 8px rgba(255,59,48,0.6)" : "none"
+              }}
+              whileHover={{ scale: 1.5, backgroundColor: "#FF3B30" }}
+            />
+          </button>
+        ))}
+      </div>
+
+      {/* Mobile Mini Navigation - Bottom fixed */}
+      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden flex items-center gap-2 bg-black/60 backdrop-blur-md rounded-full py-2 px-4 border border-white/10">
+        {data.map((item, index) => (
+          <button
+            key={index}
+            onClick={() => scrollToItem(index)}
+            className="flex flex-col items-center gap-1"
+            aria-label={`Navigate to ${item.title}`}
+          >
+            <motion.div
+              className="w-2 h-2 rounded-full transition-all duration-300"
+              animate={{
+                backgroundColor: activeIndex === index ? "#FF3B30" : "rgba(255,255,255,0.3)",
+                scale: activeIndex === index ? 1.3 : 1,
+              }}
+            />
+            <span 
+              className={`text-[10px] font-medium transition-colors duration-300 ${
+                activeIndex === index ? "text-[#FF3B30]" : "text-white/50"
+              }`}
+            >
+              {item.title}
+            </span>
+          </button>
+        ))}
+      </div>
+
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
           <div 
@@ -151,12 +213,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               item={item} 
               index={index} 
               isActive={activeIndex === index}
-              onDotClick={() => {
-                itemRefs.current[index]?.scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'center'
-                });
-              }}
+              onDotClick={() => scrollToItem(index)}
             />
           </div>
         ))}
