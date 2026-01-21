@@ -3,8 +3,69 @@ import {
   useScroll,
   useTransform,
   motion,
+  useInView,
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+
+const TimelineItem = ({ item, index }: { item: TimelineEntry; index: number }) => {
+  const itemRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(itemRef, { 
+    margin: "-40% 0px -40% 0px",
+    once: false 
+  });
+
+  return (
+    <motion.div
+      ref={itemRef}
+      key={index}
+      className="flex justify-start pt-10 md:pt-40 md:gap-10"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ 
+        duration: 0.6, 
+        delay: index * 0.1,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
+    >
+      <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+        <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-[hsl(0,0%,8%)] flex items-center justify-center">
+          <motion.div 
+            className="h-4 w-4 rounded-full border-2"
+            animate={{
+              backgroundColor: isInView ? "#FF3B30" : "transparent",
+              borderColor: isInView ? "#FF3B30" : "rgba(255,255,255,0.2)",
+              boxShadow: isInView ? "0 0 12px rgba(255,59,48,0.6)" : "none"
+            }}
+            transition={{ duration: 0.3 }}
+          />
+        </div>
+        <motion.h3 
+          className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold"
+          animate={{
+            color: isInView ? "#FF3B30" : "rgba(255,255,255,0.6)"
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          {item.title}
+        </motion.h3>
+      </div>
+
+      <div className="relative pl-20 pr-4 md:pl-4 w-full">
+        <motion.h3 
+          className="md:hidden block text-2xl mb-4 text-left font-bold"
+          animate={{
+            color: isInView ? "#FF3B30" : "rgba(255,255,255,0.6)"
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          {item.title}
+        </motion.h3>
+        {item.content}
+      </div>
+    </motion.div>
+  );
+};
 
 interface TimelineEntry {
   title: string;
@@ -39,34 +100,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
-          <motion.div
-            key={index}
-            className="flex justify-start pt-10 md:pt-40 md:gap-10"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ 
-              duration: 0.6, 
-              delay: index * 0.1,
-              ease: [0.25, 0.46, 0.45, 0.94]
-            }}
-          >
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-[hsl(0,0%,8%)] flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-[#FF3B30] border-2 border-white/20" />
-              </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-white/60">
-                {item.title}
-              </h3>
-            </div>
-
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-white/60">
-                {item.title}
-              </h3>
-              {item.content}
-            </div>
-          </motion.div>
+          <TimelineItem key={index} item={item} index={index} />
         ))}
         <div
           style={{
