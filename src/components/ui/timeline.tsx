@@ -3,21 +3,25 @@ import {
   useScroll,
   useTransform,
   motion,
-  useInView,
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
-const TimelineItem = ({ item, index }: { item: TimelineEntry; index: number }) => {
-  const itemRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(itemRef, { 
-    margin: "-40% 0px -40% 0px",
-    once: false 
-  });
+interface TimelineEntry {
+  title: string;
+  content: React.ReactNode;
+}
 
+const TimelineItem = ({ 
+  item, 
+  index, 
+  isActive 
+}: { 
+  item: TimelineEntry; 
+  index: number;
+  isActive: boolean;
+}) => {
   return (
     <motion.div
-      ref={itemRef}
-      key={index}
       className="flex justify-start pt-10 md:pt-40 md:gap-10"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -28,12 +32,12 @@ const TimelineItem = ({ item, index }: { item: TimelineEntry; index: number }) =
         ease: [0.25, 0.46, 0.45, 0.94]
       }}
       animate={{
-        filter: isInView ? "blur(0px)" : "blur(4px)",
-        opacity: isInView ? 1 : 0.4,
-        scale: isInView ? 1 : 0.98,
+        filter: isActive ? "blur(0px)" : "blur(3px)",
+        opacity: isActive ? 1 : 0.3,
+        scale: isActive ? 1 : 0.97,
       }}
       style={{
-        transition: "filter 0.4s ease-out, opacity 0.4s ease-out, scale 0.4s ease-out"
+        transition: "filter 0.5s ease-out, opacity 0.5s ease-out, transform 0.5s ease-out"
       }}
     >
       <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
@@ -41,9 +45,9 @@ const TimelineItem = ({ item, index }: { item: TimelineEntry; index: number }) =
           <motion.div 
             className="h-4 w-4 rounded-full border-2"
             animate={{
-              backgroundColor: isInView ? "#FF3B30" : "transparent",
-              borderColor: isInView ? "#FF3B30" : "rgba(255,255,255,0.2)",
-              boxShadow: isInView ? "0 0 12px rgba(255,59,48,0.6)" : "none"
+              backgroundColor: isActive ? "#FF3B30" : "transparent",
+              borderColor: isActive ? "#FF3B30" : "rgba(255,255,255,0.2)",
+              boxShadow: isActive ? "0 0 12px rgba(255,59,48,0.6)" : "none"
             }}
             transition={{ duration: 0.3 }}
           />
@@ -51,7 +55,7 @@ const TimelineItem = ({ item, index }: { item: TimelineEntry; index: number }) =
         <motion.h3 
           className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold"
           animate={{
-            color: isInView ? "#FF3B30" : "rgba(255,255,255,0.6)"
+            color: isActive ? "#FF3B30" : "rgba(255,255,255,0.4)"
           }}
           transition={{ duration: 0.3 }}
         >
@@ -63,7 +67,7 @@ const TimelineItem = ({ item, index }: { item: TimelineEntry; index: number }) =
         <motion.h3 
           className="md:hidden block text-2xl mb-4 text-left font-bold"
           animate={{
-            color: isInView ? "#FF3B30" : "rgba(255,255,255,0.6)"
+            color: isActive ? "#FF3B30" : "rgba(255,255,255,0.4)"
           }}
           transition={{ duration: 0.3 }}
         >
@@ -75,15 +79,12 @@ const TimelineItem = ({ item, index }: { item: TimelineEntry; index: number }) =
   );
 };
 
-interface TimelineEntry {
-  title: string;
-  content: React.ReactNode;
-}
-
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [height, setHeight] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     if (ref.current) {
@@ -91,6 +92,35 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       setHeight(rect.height);
     }
   }, [ref]);
+
+  // Track which item is closest to center of viewport
+  useEffect(() => {
+    const handleScroll = () => {
+      const viewportCenter = window.innerHeight / 2;
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      itemRefs.current.forEach((itemRef, index) => {
+        if (itemRef) {
+          const rect = itemRef.getBoundingClientRect();
+          const itemCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(itemCenter - viewportCenter);
+          
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        }
+      });
+
+      setActiveIndex(closestIndex);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [data.length]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -105,10 +135,18 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full bg-transparent font-sans md:px-10"
       ref={containerRef}
     >
-
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
-          <TimelineItem key={index} item={item} index={index} />
+          <div 
+            key={index} 
+            ref={(el) => { itemRefs.current[index] = el; }}
+          >
+            <TimelineItem 
+              item={item} 
+              index={index} 
+              isActive={activeIndex === index}
+            />
+          </div>
         ))}
         <div
           style={{
