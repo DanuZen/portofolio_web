@@ -340,11 +340,9 @@ export default function Home() {
 
 
                 {/* Timeline in Introduce Myself */}
-                <Timeline data={[
-                  {
-                    title: "About Me",
-                    content: (
-                      <div className="space-y-4">
+                <Timeline data={[{
+              title: "About Me",
+              content: <div className="space-y-4">
                         {/* About Me Card with Photo */}
                         <div className="relative rounded-xl overflow-hidden h-64 md:h-80 group">
                           <img src={foto} alt="Dann" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -365,35 +363,11 @@ export default function Home() {
                         </div>
                         
                         {/* Time Zone & Hire Me */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 relative overflow-hidden">
-                            <h4 className="text-[#FF3B30] font-bold mb-1">Time Zone</h4>
-                            <p className="text-white/70 text-sm">Based in Indonesia, open worldwide.</p>
-                            <div className="absolute right-0 top-0 bottom-0 w-24 flex items-center justify-center opacity-40">
-                              <Globe className="w-20 h-20" />
-                            </div>
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                            <div className="flex items-center justify-between mb-2">
-                              <div className="p-2 bg-white/5 rounded-lg">
-                                <Mail className="w-5 h-5 text-[#FF3B30]" />
-                              </div>
-                              <div className="h-2 w-2 rounded-full bg-[#FF3B30] animate-pulse" />
-                            </div>
-                            <h4 className="text-[#FF3B30] font-bold mb-1">Hire Me</h4>
-                            <p className="text-white/70 text-xs mb-3">Have a project in mind? Let's build something amazing together.</p>
-                            <a href="mailto:your.email@example.com" className="inline-flex items-center justify-center w-full py-2 px-4 bg-white text-black text-xs font-bold rounded-lg hover:bg-[#FF3B30] hover:text-white transition-all duration-300">
-                              Get in Touch
-                            </a>
-                          </div>
-                        </div>
+                        
                       </div>
-                    ),
-                  },
-                  {
-                    title: "Tech Stack",
-                    content: (
-                      <div className="space-y-4">
+            }, {
+              title: "Tech Stack",
+              content: <div className="space-y-4">
                         <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
                           I specialize in a variety of languages, frameworks, and tools to build modern web applications.
                         </p>
@@ -468,12 +442,9 @@ export default function Home() {
                           </Accordion>
                         </div>
                       </div>
-                    ),
-                  },
-                  {
-                    title: "2024",
-                    content: (
-                      <div>
+            }, {
+              title: "2024",
+              content: <div>
                         <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
                           Started focusing on full-stack development and expanded my expertise in React, TypeScript, and modern web technologies.
                         </p>
@@ -488,56 +459,38 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                    ),
-                  },
-                  {
-                    title: "2023",
-                    content: (
-                      <div>
+            }, {
+              title: "2023",
+              content: <div>
                         <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
                           Expanded into UI/UX design and started building complete digital products from design to deployment.
                         </p>
                         <div className="mb-4">
                           <div className="flex flex-wrap gap-2">
-                            {['Figma', 'Adobe XD', 'Prototyping', 'User Research'].map((skill) => (
-                              <span key={skill} className="px-3 py-1 bg-[#FF3B30]/20 text-[#FF3B30] rounded-full text-sm font-medium">
+                            {['Figma', 'Adobe XD', 'Prototyping', 'User Research'].map(skill => <span key={skill} className="px-3 py-1 bg-[#FF3B30]/20 text-[#FF3B30] rounded-full text-sm font-medium">
                                 {skill}
-                              </span>
-                            ))}
+                              </span>)}
                           </div>
                         </div>
                         <p className="text-white/70 text-sm">
                           Completed multiple freelance projects focusing on user-centered design principles and seamless experiences.
                         </p>
                       </div>
-                    ),
-                  },
-                  {
-                    title: "2022",
-                    content: (
-                      <div>
+            }, {
+              title: "2022",
+              content: <div>
                         <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
                           Began my journey as a graphic designer, learning the fundamentals of visual communication.
                         </p>
                         <ul className="space-y-2">
-                          {[
-                            '✅ Mastered Adobe Creative Suite',
-                            '✅ Created brand identities for local businesses',
-                            '✅ Developed strong typography skills',
-                            '✅ Started learning web development basics',
-                          ].map((item, i) => (
-                            <li key={i} className="text-white/80 text-sm flex items-center gap-2">
+                          {['✅ Mastered Adobe Creative Suite', '✅ Created brand identities for local businesses', '✅ Developed strong typography skills', '✅ Started learning web development basics'].map((item, i) => <li key={i} className="text-white/80 text-sm flex items-center gap-2">
                               {item}
-                            </li>
-                          ))}
+                            </li>)}
                         </ul>
                       </div>
-                    ),
-                  },
-                  {
-                    title: "The Beginning",
-                    content: (
-                      <div>
+            }, {
+              title: "The Beginning",
+              content: <div>
                         <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
                           Discovered my passion for design and technology. Started experimenting with creative tools and building small projects.
                         </p>
@@ -547,9 +500,7 @@ export default function Home() {
                           </p>
                         </div>
                       </div>
-                    ),
-                  },
-                ]} />
+            }]} />
               </div>
             </div>
         </section>
@@ -631,23 +582,38 @@ export default function Home() {
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
             <motion.h2 className="md:hidden text-4xl font-black tracking-tight font-akzidenz uppercase text-white mb-8" initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }}>
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }}>
               PROJECTS
             </motion.h2>
 
             {/* Bento Grid */}
             <div className="w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="md:col-span-1 md:row-span-1">
+                <motion.div initial={{
+                opacity: 0,
+                y: 30
+              }} whileInView={{
+                opacity: 1,
+                y: 0
+              }} viewport={{
+                once: true
+              }} transition={{
+                duration: 0.5
+              }} className="md:col-span-1 md:row-span-1">
                   <Link to={`/project/${featuredProjects[0]?.slug}`}>
-                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }} transition={{ duration: 0.3 }}>
+                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{
+                    scale: 1.02,
+                    borderColor: 'rgba(255,255,255,0.4)'
+                  }} transition={{
+                    duration: 0.3
+                  }}>
                       <img src={featuredProjects[0]?.coverImage} alt={featuredProjects[0]?.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -659,9 +625,25 @@ export default function Home() {
                 </motion.div>
 
                 {/* Project 2 */}
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+                <motion.div initial={{
+                opacity: 0,
+                y: 30
+              }} whileInView={{
+                opacity: 1,
+                y: 0
+              }} viewport={{
+                once: true
+              }} transition={{
+                duration: 0.5,
+                delay: 0.1
+              }}>
                   <Link to={`/project/${featuredProjects[1]?.slug}`}>
-                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }} transition={{ duration: 0.3 }}>
+                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{
+                    scale: 1.02,
+                    borderColor: 'rgba(255,255,255,0.4)'
+                  }} transition={{
+                    duration: 0.3
+                  }}>
                       <img src={featuredProjects[1]?.coverImage} alt={featuredProjects[1]?.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -674,9 +656,25 @@ export default function Home() {
                 </motion.div>
 
                 {/* Project 3 */}
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
+                <motion.div initial={{
+                opacity: 0,
+                y: 30
+              }} whileInView={{
+                opacity: 1,
+                y: 0
+              }} viewport={{
+                once: true
+              }} transition={{
+                duration: 0.5,
+                delay: 0.2
+              }}>
                   <Link to={`/project/${featuredProjects[2]?.slug}`}>
-                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }} transition={{ duration: 0.3 }}>
+                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{
+                    scale: 1.02,
+                    borderColor: 'rgba(255,255,255,0.4)'
+                  }} transition={{
+                    duration: 0.3
+                  }}>
                       <img src={featuredProjects[2]?.coverImage} alt={featuredProjects[2]?.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -689,9 +687,25 @@ export default function Home() {
                 </motion.div>
 
                 {/* Project 4 */}
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
+                <motion.div initial={{
+                opacity: 0,
+                y: 30
+              }} whileInView={{
+                opacity: 1,
+                y: 0
+              }} viewport={{
+                once: true
+              }} transition={{
+                duration: 0.5,
+                delay: 0.3
+              }}>
                   <Link to={`/project/${featuredProjects[3]?.slug}`}>
-                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }} transition={{ duration: 0.3 }}>
+                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{
+                    scale: 1.02,
+                    borderColor: 'rgba(255,255,255,0.4)'
+                  }} transition={{
+                    duration: 0.3
+                  }}>
                       <img src={featuredProjects[3]?.coverImage} alt={featuredProjects[3]?.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -704,9 +718,25 @@ export default function Home() {
                 </motion.div>
 
                 {/* Project 5 */}
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}>
+                <motion.div initial={{
+                opacity: 0,
+                y: 30
+              }} whileInView={{
+                opacity: 1,
+                y: 0
+              }} viewport={{
+                once: true
+              }} transition={{
+                duration: 0.5,
+                delay: 0.4
+              }}>
                   <Link to={`/project/${featuredProjects[4]?.slug}`}>
-                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }} transition={{ duration: 0.3 }}>
+                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{
+                    scale: 1.02,
+                    borderColor: 'rgba(255,255,255,0.4)'
+                  }} transition={{
+                    duration: 0.3
+                  }}>
                       <img src={featuredProjects[4]?.coverImage} alt={featuredProjects[4]?.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -719,9 +749,25 @@ export default function Home() {
                 </motion.div>
 
                 {/* Project 6 */}
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.5 }}>
+                <motion.div initial={{
+                opacity: 0,
+                y: 30
+              }} whileInView={{
+                opacity: 1,
+                y: 0
+              }} viewport={{
+                once: true
+              }} transition={{
+                duration: 0.5,
+                delay: 0.5
+              }}>
                   <Link to={`/project/${featuredProjects[5]?.slug}`}>
-                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.4)' }} transition={{ duration: 0.3 }}>
+                    <motion.div className="group relative h-[280px] md:h-[320px] rounded-2xl border border-white/20 overflow-hidden bg-neutral-900/50" whileHover={{
+                    scale: 1.02,
+                    borderColor: 'rgba(255,255,255,0.4)'
+                  }} transition={{
+                    duration: 0.3
+                  }}>
                       <img src={featuredProjects[5]?.coverImage} alt={featuredProjects[5]?.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -735,9 +781,25 @@ export default function Home() {
               </div>
 
               {/* View All Projects Link */}
-              <motion.div className="mt-8 flex justify-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.6 }}>
+              <motion.div className="mt-8 flex justify-center" initial={{
+              opacity: 0,
+              y: 20
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              duration: 0.5,
+              delay: 0.6
+            }}>
                 <Link to="/portfolio">
-                  <motion.button className="px-8 py-3 bg-[#FF3B30] text-white font-bold uppercase tracking-widest text-sm rounded-lg" whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255, 59, 48, 0.5)' }} whileTap={{ scale: 0.95 }}>
+                  <motion.button className="px-8 py-3 bg-[#FF3B30] text-white font-bold uppercase tracking-widest text-sm rounded-lg" whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 0 30px rgba(255, 59, 48, 0.5)'
+                }} whileTap={{
+                  scale: 0.95
+                }}>
                     Lihat Semua Proyek
                   </motion.button>
                 </Link>
