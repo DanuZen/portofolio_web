@@ -14,11 +14,13 @@ interface TimelineEntry {
 const TimelineItem = ({ 
   item, 
   index, 
-  isActive 
+  isActive,
+  onDotClick
 }: { 
   item: TimelineEntry; 
   index: number;
   isActive: boolean;
+  onDotClick: () => void;
 }) => {
   return (
     <motion.div
@@ -41,7 +43,11 @@ const TimelineItem = ({
       }}
     >
       <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-        <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-[hsl(0,0%,8%)] flex items-center justify-center">
+        <button 
+          onClick={onDotClick}
+          className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-[hsl(0,0%,8%)] flex items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-200"
+          aria-label={`Scroll to ${item.title}`}
+        >
           <motion.div 
             className="h-4 w-4 rounded-full border-2"
             animate={{
@@ -51,7 +57,7 @@ const TimelineItem = ({
             }}
             transition={{ duration: 0.3 }}
           />
-        </div>
+        </button>
         <motion.h3 
           className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold"
           animate={{
@@ -145,6 +151,12 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               item={item} 
               index={index} 
               isActive={activeIndex === index}
+              onDotClick={() => {
+                itemRefs.current[index]?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'center'
+                });
+              }}
             />
           </div>
         ))}
