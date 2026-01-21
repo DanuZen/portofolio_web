@@ -338,224 +338,218 @@ export default function Home() {
                    </h2>
                 </div>
 
-                <StaggerContainer className="w-full" staggerDelay={0.15} direction="up">
-                  <BentoGrid className="gap-4 lg:grid-rows-[18rem_6rem_15rem]">
-                    {/* Card 1: About Me / IDE (2x2) */}
-                    <StaggerItem direction="up" className="col-span-3 lg:col-span-2 lg:row-span-2">
-                      <AnimatedBentoCard className="relative p-0 overflow-hidden h-full">
-                        {/* Background Image */}
-                        <img src={foto} alt="Dann" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                        
-                        {/* Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10 transition-opacity duration-300" />
-
-                        {/* Content Overlay */}
-                        <div className="relative z-20 h-full flex flex-col justify-end p-6">
-                           <h3 className="text-xl font-bold text-white mb-1 drop-shadow-md">Hi, I'm Dann</h3>
-                           <div className="relative overflow-hidden">
-                               <p className="block group-hover:hidden text-neutral-200 text-xs leading-relaxed transform transition-all duration-300 drop-shadow-sm">
-                                  Front-End Developer & UI/UX Designer crafting intuitive user experiences.
-                                </p>
-                               <p className="hidden group-hover:block text-white text-xs leading-relaxed animate-in fade-in zoom-in-95 duration-300 drop-shadow-sm">
-                                  As a Front-End Developer & UI/UX Designer, I design and develop user-centered web interfaces by combining strong UI/UX principles with clean, modern front-end code. I focus on creating intuitive layouts, clear visual hierarchies, and responsive designs that adapt seamlessly across devices. My goal is to build digital products that not only look visually appealing, but also prioritize usability, accessibility, and consistency to deliver meaningful and enjoyable user experiences.
-                               </p>
-                           </div>
-                        </div>
-                      </AnimatedBentoCard>
-                    </StaggerItem>
-
-                    {/* Card 3: Time Zone */}
-                    <StaggerItem direction="up" className="col-span-3 lg:col-span-1">
-                      <AnimatedBentoCard className="flex flex-col p-4 relative overflow-hidden h-full">
-                          <div className="relative z-10">
-                              <h3 className="text-lg font-bold text-white mb-1">Time Zone</h3>
-                              <p className="text-neutral-400 text-xs">Based in Indonesia, open worldwide.</p>
-                          </div>
-                          <div className="absolute inset-0 flex items-center justify-end opacity-60">
-                             <div className="w-64 h-64 md:w-80 md:h-80 relative translate-x-12 md:translate-x-16">
-                               <Globe className="w-full h-full" />
-                             </div>
-                          </div>
-                      </AnimatedBentoCard>
-                    </StaggerItem>
-
-                    {/* Card 4: FAQ / Accordion - Moved here and spans 2 rows */}
-                    <StaggerItem direction="right" className="col-span-3 lg:col-span-1 lg:row-span-2">
-                      <AnimatedBentoCard className="p-4 flex flex-col justify-start relative overflow-hidden h-full">
-                          <div className="w-full h-full overflow-y-auto pr-2">
-                            <Accordion type="single" collapsible className="w-full">
-                              <AccordionItem value="item-1" className="border-b-white/10">
-                                <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">How do I start a project?</AccordionTrigger>
-                                <AccordionContent className="text-neutral-400 text-xs">
-                                  You can simply reach out to me via email or LinkedIn to discuss your project requirements.
-                                </AccordionContent>
-                              </AccordionItem>
-                              <AccordionItem value="item-2" className="border-b-white/10">
-                                <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">What is your tech stack?</AccordionTrigger>
-                                <AccordionContent className="text-neutral-400 text-xs">
-                                  I specialize in React, TypeScript, Node.js, and modern CSS frameworks like Tailwind.
-                                </AccordionContent>
-                              </AccordionItem>
-                              <AccordionItem value="item-3" className="border-b-white/10">
-                                <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">Do you offer freelance?</AccordionTrigger>
-                                <AccordionContent className="text-neutral-400 text-xs">
-                                  Yes, I am available for freelance commissions and full-time roles.
-                                </AccordionContent>
-                              </AccordionItem>
-                            </Accordion>
-                          </div>
-                      </AnimatedBentoCard>
-                    </StaggerItem>
-
-                    {/* Card 5: Tech Stack */}
-                    <StaggerItem direction="up" className="col-span-3 lg:col-span-1">
-                      <AnimatedBentoCard className="p-4 flex flex-row items-center justify-between overflow-hidden relative h-full">
-                          <div className="relative z-10 max-w-[50%]">
-                              <h3 className="text-lg font-bold text-white mb-1">Tech Stack</h3>
-                              <p className="text-neutral-400 text-xs mb-2">I specialize in a variety of languages, frameworks, and tools.</p>
-                          </div>
-                          
-                           {/* Tech Stack Visuals - Orbiting Circles */}
-                           <div className="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-center overflow-hidden">
-                                <div className="relative flex h-full w-full items-center justify-center">
-                                   {/* Center Logo */}
-                                   <img src={Logo} alt="Logo" className="absolute w-12 h-12 rounded-full object-contain z-10" />
-                                   
-                                   {/* Inner orbit - 7 icons (image8 - image14) */}
-                                   <OrbitingCircles iconSize={24} radius={50} duration={25} speed={1}>
-                                     <img src={image8} alt="Tech 8" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image9} alt="Tech 9" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image10} alt="Tech 10" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image11} alt="Tech 11" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image12} alt="Tech 12" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image13} alt="Tech 13" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image14} alt="Tech 14" className="w-6 h-6 rounded object-contain" />
-                                   </OrbitingCircles>
-                                   
-                                   {/* Outer orbit - 7 icons (image1 - image7) - reverse */}
-                                   <OrbitingCircles iconSize={24} radius={90} duration={35} speed={1} reverse>
-                                     <img src={image1} alt="Tech 1" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image2} alt="Tech 2" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image3} alt="Tech 3" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image4} alt="Tech 4" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image5} alt="Tech 5" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image6} alt="Tech 6" className="w-6 h-6 rounded object-contain" />
-                                     <img src={image7} alt="Tech 7" className="w-6 h-6 rounded object-contain" />
-                                   </OrbitingCircles>
-                                </div>
-                           </div>
-                      </AnimatedBentoCard>
-                    </StaggerItem>
-
-                    {/* Card: Hire Me */}
-                    <StaggerItem direction="up" className="col-span-3 lg:col-span-1">
-                      <AnimatedBentoCard className="p-4 flex flex-col justify-between relative overflow-hidden h-full">
-                          <div className="relative z-10">
-                              <div className="flex items-center justify-between mb-2">
-                                <div className="p-2 bg-white/5 rounded-lg group-hover:bg-[#FF3B30]/20 transition-colors duration-300">
-                                    <Mail className="w-5 h-5 text-white group-hover:text-[#FF3B30] transition-colors duration-300" />
-                                </div>
-                                <div className="h-2 w-2 rounded-full bg-[#FF3B30] animate-pulse" />
-                              </div>
-                              <h3 className="text-lg font-bold text-white mb-1">Hire Me</h3>
-                              <p className="text-neutral-400 text-xs mb-4">Have a project in mind? Let's build something amazing together.</p>
-                              
-                              <a href="mailto:your.email@example.com" className="inline-flex items-center justify-center w-full py-2 px-4 bg-white text-black text-xs font-bold rounded-lg hover:bg-[#FF3B30] hover:text-white transition-all duration-300 group-hover:translate-y-0 translate-y-1">
-                                  Get in Touch
-                              </a>
-                          </div>
-                          
-                          {/* Background Gradient */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-[#FF3B30]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      </AnimatedBentoCard>
-                    </StaggerItem>
-                  </BentoGrid>
-                </StaggerContainer>
 
                 {/* Timeline in Introduce Myself */}
-                <div className="mt-16">
-                  <Timeline data={[
-                    {
-                      title: "2024",
-                      content: (
-                        <div>
-                          <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
-                            Started focusing on full-stack development and expanded my expertise in React, TypeScript, and modern web technologies.
-                          </p>
-                          <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                              <h4 className="text-[#FF3B30] font-bold mb-2">React & TypeScript</h4>
-                              <p className="text-white/70 text-sm">Mastered component architecture and type-safe development</p>
-                            </div>
-                            <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                              <h4 className="text-[#FF3B30] font-bold mb-2">Tailwind CSS</h4>
-                              <p className="text-white/70 text-sm">Built responsive, modern UI with utility-first approach</p>
-                            </div>
-                          </div>
-                        </div>
-                      ),
-                    },
-                    {
-                      title: "2023",
-                      content: (
-                        <div>
-                          <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
-                            Expanded into UI/UX design and started building complete digital products from design to deployment.
-                          </p>
-                          <div className="mb-4">
-                            <div className="flex flex-wrap gap-2">
-                              {['Figma', 'Adobe XD', 'Prototyping', 'User Research'].map((skill) => (
-                                <span key={skill} className="px-3 py-1 bg-[#FF3B30]/20 text-[#FF3B30] rounded-full text-sm font-medium">
-                                  {skill}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                          <p className="text-white/70 text-sm">
-                            Completed multiple freelance projects focusing on user-centered design principles and seamless experiences.
-                          </p>
-                        </div>
-                      ),
-                    },
-                    {
-                      title: "2022",
-                      content: (
-                        <div>
-                          <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
-                            Began my journey as a graphic designer, learning the fundamentals of visual communication.
-                          </p>
-                          <ul className="space-y-2">
-                            {[
-                              '✅ Mastered Adobe Creative Suite',
-                              '✅ Created brand identities for local businesses',
-                              '✅ Developed strong typography skills',
-                              '✅ Started learning web development basics',
-                            ].map((item, i) => (
-                              <li key={i} className="text-white/80 text-sm flex items-center gap-2">
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ),
-                    },
-                    {
-                      title: "The Beginning",
-                      content: (
-                        <div>
-                          <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
-                            Discovered my passion for design and technology. Started experimenting with creative tools and building small projects.
-                          </p>
-                          <div className="bg-gradient-to-r from-[#FF3B30]/20 to-transparent p-4 rounded-lg border-l-4 border-[#FF3B30]">
-                            <p className="text-white/80 text-sm italic">
-                              "Every expert was once a beginner. The key is to start, stay curious, and never stop learning."
+                <Timeline data={[
+                  {
+                    title: "About Me",
+                    content: (
+                      <div className="space-y-4">
+                        {/* About Me Card with Photo */}
+                        <div className="relative rounded-xl overflow-hidden h-64 md:h-80 group">
+                          <img src={foto} alt="Dann" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
+                          <div className="relative z-20 h-full flex flex-col justify-end p-6">
+                            <h3 className="text-xl font-bold text-white mb-1 drop-shadow-md">Hi, I'm Dann</h3>
+                            <p className="text-neutral-200 text-sm leading-relaxed drop-shadow-sm">
+                              Front-End Developer & UI/UX Designer crafting intuitive user experiences.
                             </p>
                           </div>
                         </div>
-                      ),
-                    },
-                  ]} />
-                </div>
+                        
+                        {/* Description */}
+                        <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                          <p className="text-white/80 text-sm leading-relaxed">
+                            As a Front-End Developer & UI/UX Designer, I design and develop user-centered web interfaces by combining strong UI/UX principles with clean, modern front-end code. I focus on creating intuitive layouts, clear visual hierarchies, and responsive designs that adapt seamlessly across devices.
+                          </p>
+                        </div>
+                        
+                        {/* Time Zone & Hire Me */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 relative overflow-hidden">
+                            <h4 className="text-[#FF3B30] font-bold mb-1">Time Zone</h4>
+                            <p className="text-white/70 text-sm">Based in Indonesia, open worldwide.</p>
+                            <div className="absolute right-0 top-0 bottom-0 w-24 flex items-center justify-center opacity-40">
+                              <Globe className="w-20 h-20" />
+                            </div>
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="p-2 bg-white/5 rounded-lg">
+                                <Mail className="w-5 h-5 text-[#FF3B30]" />
+                              </div>
+                              <div className="h-2 w-2 rounded-full bg-[#FF3B30] animate-pulse" />
+                            </div>
+                            <h4 className="text-[#FF3B30] font-bold mb-1">Hire Me</h4>
+                            <p className="text-white/70 text-xs mb-3">Have a project in mind? Let's build something amazing together.</p>
+                            <a href="mailto:your.email@example.com" className="inline-flex items-center justify-center w-full py-2 px-4 bg-white text-black text-xs font-bold rounded-lg hover:bg-[#FF3B30] hover:text-white transition-all duration-300">
+                              Get in Touch
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "Tech Stack",
+                    content: (
+                      <div className="space-y-4">
+                        <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
+                          I specialize in a variety of languages, frameworks, and tools to build modern web applications.
+                        </p>
+                        
+                        {/* Tech Stack Grid */}
+                        <div className="grid grid-cols-4 md:grid-cols-7 gap-3">
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image1} alt="Tech 1" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image2} alt="Tech 2" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image3} alt="Tech 3" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image4} alt="Tech 4" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image5} alt="Tech 5" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image6} alt="Tech 6" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image7} alt="Tech 7" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image8} alt="Tech 8" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image9} alt="Tech 9" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image10} alt="Tech 10" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image11} alt="Tech 11" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image12} alt="Tech 12" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image13} alt="Tech 13" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
+                            <img src={image14} alt="Tech 14" className="w-8 h-8 rounded object-contain" />
+                          </div>
+                        </div>
+                        
+                        {/* FAQ Section */}
+                        <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 mt-4">
+                          <Accordion type="single" collapsible className="w-full">
+                            <AccordionItem value="item-1" className="border-b-white/10">
+                              <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">How do I start a project?</AccordionTrigger>
+                              <AccordionContent className="text-neutral-400 text-xs">
+                                You can simply reach out to me via email or LinkedIn to discuss your project requirements.
+                              </AccordionContent>
+                            </AccordionItem>
+                            <AccordionItem value="item-2" className="border-b-white/10">
+                              <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">What is your tech stack?</AccordionTrigger>
+                              <AccordionContent className="text-neutral-400 text-xs">
+                                I specialize in React, TypeScript, Node.js, and modern CSS frameworks like Tailwind.
+                              </AccordionContent>
+                            </AccordionItem>
+                            <AccordionItem value="item-3" className="border-b-white/10">
+                              <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">Do you offer freelance?</AccordionTrigger>
+                              <AccordionContent className="text-neutral-400 text-xs">
+                                Yes, I am available for freelance commissions and full-time roles.
+                              </AccordionContent>
+                            </AccordionItem>
+                          </Accordion>
+                        </div>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "2024",
+                    content: (
+                      <div>
+                        <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
+                          Started focusing on full-stack development and expanded my expertise in React, TypeScript, and modern web technologies.
+                        </p>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                            <h4 className="text-[#FF3B30] font-bold mb-2">React & TypeScript</h4>
+                            <p className="text-white/70 text-sm">Mastered component architecture and type-safe development</p>
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                            <h4 className="text-[#FF3B30] font-bold mb-2">Tailwind CSS</h4>
+                            <p className="text-white/70 text-sm">Built responsive, modern UI with utility-first approach</p>
+                          </div>
+                        </div>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "2023",
+                    content: (
+                      <div>
+                        <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
+                          Expanded into UI/UX design and started building complete digital products from design to deployment.
+                        </p>
+                        <div className="mb-4">
+                          <div className="flex flex-wrap gap-2">
+                            {['Figma', 'Adobe XD', 'Prototyping', 'User Research'].map((skill) => (
+                              <span key={skill} className="px-3 py-1 bg-[#FF3B30]/20 text-[#FF3B30] rounded-full text-sm font-medium">
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <p className="text-white/70 text-sm">
+                          Completed multiple freelance projects focusing on user-centered design principles and seamless experiences.
+                        </p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "2022",
+                    content: (
+                      <div>
+                        <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
+                          Began my journey as a graphic designer, learning the fundamentals of visual communication.
+                        </p>
+                        <ul className="space-y-2">
+                          {[
+                            '✅ Mastered Adobe Creative Suite',
+                            '✅ Created brand identities for local businesses',
+                            '✅ Developed strong typography skills',
+                            '✅ Started learning web development basics',
+                          ].map((item, i) => (
+                            <li key={i} className="text-white/80 text-sm flex items-center gap-2">
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "The Beginning",
+                    content: (
+                      <div>
+                        <p className="text-white/90 text-base md:text-lg font-akzidenz-bold mb-4">
+                          Discovered my passion for design and technology. Started experimenting with creative tools and building small projects.
+                        </p>
+                        <div className="bg-gradient-to-r from-[#FF3B30]/20 to-transparent p-4 rounded-lg border-l-4 border-[#FF3B30]">
+                          <p className="text-white/80 text-sm italic">
+                            "Every expert was once a beginner. The key is to start, stay curious, and never stop learning."
+                          </p>
+                        </div>
+                      </div>
+                    ),
+                  },
+                ]} />
               </div>
             </div>
         </section>
