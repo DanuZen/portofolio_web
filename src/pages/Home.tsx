@@ -435,28 +435,7 @@ export default function Home() {
                         </div>
                         
                         {/* FAQ Section */}
-                        <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 mt-4">
-                          <Accordion type="single" collapsible className="w-full">
-                            <AccordionItem value="item-1" className="border-b-white/10">
-                              <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">How do I start a project?</AccordionTrigger>
-                              <AccordionContent className="text-neutral-400 text-xs">
-                                You can simply reach out to me via email or LinkedIn to discuss your project requirements.
-                              </AccordionContent>
-                            </AccordionItem>
-                            <AccordionItem value="item-2" className="border-b-white/10">
-                              <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">What is your tech stack?</AccordionTrigger>
-                              <AccordionContent className="text-neutral-400 text-xs">
-                                I specialize in React, TypeScript, Node.js, and modern CSS frameworks like Tailwind.
-                              </AccordionContent>
-                            </AccordionItem>
-                            <AccordionItem value="item-3" className="border-b-white/10">
-                              <AccordionTrigger className="text-white hover:no-underline hover:text-[#FF3B30] data-[state=open]:text-[#FF3B30] text-sm py-3">Do you offer freelance?</AccordionTrigger>
-                              <AccordionContent className="text-neutral-400 text-xs">
-                                Yes, I am available for freelance commissions and full-time roles.
-                              </AccordionContent>
-                            </AccordionItem>
-                          </Accordion>
-                        </div>
+                        
                       </div>
             }, {
               title: "2024",
