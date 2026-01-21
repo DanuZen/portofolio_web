@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 import { photographerInfo } from '@/data/photographer';
 import { getFeaturedProjects } from '@/data/projects';
 import { ProjectCard } from '@/components/portfolio/ProjectCard';
@@ -46,7 +46,6 @@ import { BentoGrid, BentoCard, BentoGridItem } from '@/components/ui/bento-grid'
 import { AnimatedBentoCard } from '@/components/ui/animated-bento-card';
 import { ScrollVelocityContainer, ScrollVelocityRow } from '@/components/ui/scroll-based-velocity';
 import { ToolsBeamSection } from '@/components/ui/tools-beam-section';
-import { HeroScrollVideo } from '@/components/ui/scroll-animated-video';
 
 /**
  * Homepage with immersive hero section and featured projects grid
@@ -54,6 +53,7 @@ import { HeroScrollVideo } from '@/components/ui/scroll-animated-video';
  */
 export default function Home() {
   const featuredProjects = getFeaturedProjects();
+  const heroRef = useRef<HTMLDivElement>(null);
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
   const skills = [
@@ -173,6 +173,15 @@ export default function Home() {
     }, 4000);
     return () => clearInterval(interval);
   }, [featuredProjects.length]);
+  const {
+    scrollYProgress
+  } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start']
+  });
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -187,61 +196,132 @@ export default function Home() {
   return <>
       <SEOHead />
       <div className="min-h-screen overflow-x-hidden">
-        {/* Hero Section with Scroll Animation */}
-        <HeroScrollVideo
-          title="Dann"
-          subtitle="Front-End Developer & UI/UX Designer"
-          meta="2025"
-          credits={
-            <div className="flex items-center gap-4 justify-center mt-4">
-              {[
-                { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
-                { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-                { icon: Github, href: 'https://github.com', label: 'GitHub' },
-                { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-              ].map((item, i) => (
-                <a
-                  key={i}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-[#FF3B30] transition-colors duration-300"
-                >
-                  <item.icon className="w-5 h-5" strokeWidth={1.5} />
-                </a>
-              ))}
-            </div>
-          }
-          media={foto}
-          mediaType="image"
-          overlay={{
-            caption: "PORTFOLIO • 2025",
-            heading: "Crafting Digital Experiences",
-            paragraphs: [
-              "Coding today, debugging tomorrow, improving every day.",
-              "True expertise is built through persistence, curiosity, and continuous learning.",
-            ],
-            extra: (
-              <div className="flex gap-4 mt-4 justify-center">
-                <a
-                  href="#about"
-                  className="px-6 py-2 bg-[#FF3B30] text-white text-sm font-bold rounded-full hover:bg-white hover:text-black transition-all duration-300"
-                >
-                  Explore More
-                </a>
-                <a
-                  href="#contact"
-                  className="px-6 py-2 border border-white/30 text-white text-sm font-bold rounded-full hover:bg-white hover:text-black transition-all duration-300"
-                >
-                  Contact Me
-                </a>
+        {/* Hero Section - Modern Dark Design */}
+        <section ref={heroRef} id="hero" data-section-theme="dark" className="relative min-h-screen w-full overflow-x-hidden" style={{
+        backgroundColor: 'hsl(0, 0%, 8%)'
+      }}>
+          <RetroGrid className="-top-24" />
+
+
+          <div className="container mx-auto px-6 lg:px-12 min-h-screen flex flex-col justify-center py-24 overflow-hidden">
+            <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
+              
+              <div className="relative z-20 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center -mt-20 md:-mt-0">
+                
+                {/* Left Column: Text Content */}
+                <div className="flex flex-col items-start justify-center space-y-6 text-left order-2 lg:order-1 px-4 lg:px-0">
+                  <motion.div initial={{
+                  opacity: 0,
+                  x: -50
+                }} animate={{
+                  opacity: 1,
+                  x: 0
+                }} transition={{
+                  duration: 0.8
+                }} className="-mt-20 md:-mt-32">
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-2xl md:text-3xl text-white/80 font-light">I'm</span>
+                      <div className="h-[40px] overflow-hidden flex items-center min-w-[300px]">
+                        <HyperText key={textOptions[currentTextIndex]} className="text-2xl md:text-3xl font-bold text-[#FF3B30]" duration={800}>
+                          {textOptions[currentTextIndex]}
+                        </HyperText>
+                      </div>
+                    </div>
+                    <h1 className="text-6xl md:text-8xl font-black text-white tracking-tight mt-2 mb-4 uppercase">
+                      Dann
+                    </h1>
+                    {/* Red Accent Line */}
+                    <div className="h-2 w-24 bg-[#FF3B30] rounded-full mb-6"></div>
+                    
+                    <p className="text-white/90 text-lg md:text-xl max-w-lg leading-relaxed text-justify font-akzidenz-bold">
+                      Coding today, debugging tomorrow, improving every day. True expertise is built through persistence, curiosity, and continuous learning.
+                    </p>
+
+                    {/* Social Icons */}
+                    <div className="pt-8 flex items-center gap-4">
+                      <div className="flex items-center gap-6">
+                        {[{
+                        icon: Youtube,
+                        href: 'https://youtube.com',
+                        label: 'YouTube'
+                      }, {
+                        icon: Instagram,
+                        href: 'https://instagram.com',
+                        label: 'Instagram'
+                      }, {
+                        icon: Github,
+                        href: 'https://github.com',
+                        label: 'GitHub'
+                      }, {
+                        icon: Linkedin,
+                        href: 'https://linkedin.com',
+                        label: 'LinkedIn'
+                      }].map((item, i) => <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-0 hover:gap-2 text-white hover:text-[#FF3B30] transition-all duration-300 group">
+                            <item.icon className="w-6 h-6 md:w-8 md:h-8 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
+                            <span className="max-w-0 overflow-hidden opacity-0 group-hover:max-w-xs group-hover:opacity-100 whitespace-nowrap font-akzidenz-bold text-base transition-all duration-300 ease-in-out">
+                              {item.label}
+                            </span>
+                          </a>)}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Right Column: Image & Background Shape */}
+                <div className="relative flex items-center justify-center order-1 lg:order-2">
+                  {/* Dark Circle Background */}
+                  <div className="absolute z-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#1A1A1A] rounded-full blur-3xl opacity-50"></div>
+                  
+                  {/* Person Image */}
+                  <motion.div className="relative z-10 h-[50vh] md:h-[80vh] w-full flex items-center justify-center" initial={{
+                  opacity: 0,
+                  scale: 0.9
+                }} animate={{
+                  opacity: 1,
+                  scale: 1
+                }} transition={{
+                  duration: 1
+                }}>
+                    <img src={foto} alt="Dann" className="h-full w-auto object-contain drop-shadow-[0_-5px_5px_rgba(255,255,255,0.15)] scale-[1.7] -translate-y-80 -translate-x-12" />
+                  </motion.div>
+                </div>
+
               </div>
-            ),
-          }}
-          initialBoxSize={320}
-          scrollHeightVh={250}
-          smoothScroll={false}
-        />
+
+
+
+              {/* Info Bar */}
+              <motion.div className="absolute bottom-0 left-0 right-0 mx-auto w-full max-w-7xl px-6 lg:px-0 hidden md:flex justify-between items-end text-left z-30" initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.8,
+              delay: 0.8
+            }}>
+                <div>
+                  <h3 className="text-xs font-bold text-gray-500 tracking-widest mb-1">FULL NAME</h3>
+                  <p className="text-white font-bold tracking-wider">DANN</p>
+                </div>
+                <div>
+                  <h3 className="text-xs font-bold text-gray-500 tracking-widest mb-1">PHILOSOPHY</h3>
+                  <p className="text-white font-bold tracking-wider">UI/UX & CODE</p>
+                </div>
+                <div>
+                  <h3 className="text-xs font-bold text-gray-500 tracking-widest mb-1">FAVOURITE THING</h3>
+                  <p className="text-white font-bold tracking-wider">CREATING</p>
+                </div>
+                <div>
+                  <h3 className="text-xs font-bold text-gray-500 tracking-widest mb-1">CURRENT OCCUPATION</h3>
+                  <p className="text-white font-bold tracking-wider">FREELANCER</p>
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
 
         {/* About Me Section - Redesigned */}
         <section style={{
