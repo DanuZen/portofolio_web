@@ -372,50 +372,66 @@ export default function Home() {
                           I specialize in a variety of languages, frameworks, and tools to build modern web applications.
                         </p>
                         
-                        {/* Tech Stack Grid */}
-                        <div className="grid grid-cols-4 md:grid-cols-7 gap-3">
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image1} alt="Tech 1" className="w-8 h-8 rounded object-contain" />
+                        {/* Orbiting Circles Tech Stack */}
+                        <div className="relative flex h-[400px] w-full flex-col items-center justify-center overflow-hidden">
+                          {/* Center Logo */}
+                          <div className="z-10 flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-sm shadow-[0_0_20px_rgba(255,59,48,0.3)]">
+                            <img src={LogoDann} alt="Dann Logo" className="h-12 w-12 object-contain" />
                           </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image2} alt="Tech 2" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image3} alt="Tech 3" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image4} alt="Tech 4" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image5} alt="Tech 5" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image6} alt="Tech 6" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image7} alt="Tech 7" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image8} alt="Tech 8" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image9} alt="Tech 9" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image10} alt="Tech 10" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image11} alt="Tech 11" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image12} alt="Tech 12" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image13} alt="Tech 13" className="w-8 h-8 rounded object-contain" />
-                          </div>
-                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex flex-col items-center gap-2">
-                            <img src={image14} alt="Tech 14" className="w-8 h-8 rounded object-contain" />
-                          </div>
+                          
+                          {/* Inner Orbit - Design Tools */}
+                          <OrbitingCircles radius={80} duration={25} path={true}>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#ccff00] shadow-lg">
+                              <img src={image1} alt="Affinity Designer" className="h-6 w-6 object-contain" />
+                            </div>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#001e36] shadow-lg">
+                              <img src={image2} alt="Photoshop" className="h-6 w-6 object-contain" />
+                            </div>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#330000] shadow-lg">
+                              <img src={image3} alt="Illustrator" className="h-6 w-6 object-contain" />
+                            </div>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg">
+                              <img src={image4} alt="Figma" className="h-6 w-6 object-contain" />
+                            </div>
+                          </OrbitingCircles>
+                          
+                          {/* Middle Orbit - Web Dev Tools */}
+                          <OrbitingCircles radius={130} duration={35} reverse={true} path={true}>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0F172A] shadow-lg">
+                              <img src={image5} alt="Tailwind CSS" className="h-6 w-6 object-contain" />
+                            </div>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg">
+                              <img src={image6} alt="PostgreSQL" className="h-6 w-6 object-contain" />
+                            </div>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg">
+                              <img src={image11} alt="React JS" className="h-6 w-6 object-contain" />
+                            </div>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg">
+                              <img src={image12} alt="Node JS" className="h-6 w-6 object-contain" />
+                            </div>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1C1C1C] shadow-lg">
+                              <img src={image13} alt="Supabase" className="h-6 w-6 object-contain" />
+                            </div>
+                          </OrbitingCircles>
+                          
+                          {/* Outer Orbit - Additional Tools */}
+                          <OrbitingCircles radius={180} duration={45} path={true}>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#001E36] shadow-lg">
+                              <img src={image7} alt="Lightroom" className="h-6 w-6 object-contain" />
+                            </div>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#00005b] shadow-lg">
+                              <img src={image8} alt="After Effects" className="h-6 w-6 object-contain" />
+                            </div>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#49021f] shadow-lg">
+                              <img src={image9} alt="InDesign" className="h-6 w-6 object-contain" />
+                            </div>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg">
+                              <img src={image10} alt="Canva" className="h-6 w-6 object-contain" />
+                            </div>
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg">
+                              <img src={image14} alt="GitHub" className="h-6 w-6 object-contain" />
+                            </div>
+                          </OrbitingCircles>
                         </div>
                         
                         {/* FAQ Section */}
