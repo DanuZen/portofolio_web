@@ -27,6 +27,14 @@ const TimelineItem = ({ item, index }: { item: TimelineEntry; index: number }) =
         delay: index * 0.1,
         ease: [0.25, 0.46, 0.45, 0.94]
       }}
+      animate={{
+        filter: isInView ? "blur(0px)" : "blur(4px)",
+        opacity: isInView ? 1 : 0.4,
+        scale: isInView ? 1 : 0.98,
+      }}
+      style={{
+        transition: "filter 0.4s ease-out, opacity 0.4s ease-out, scale 0.4s ease-out"
+      }}
     >
       <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
         <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-[hsl(0,0%,8%)] flex items-center justify-center">
