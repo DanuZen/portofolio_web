@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { photographerInfo } from '@/data/photographer';
 import { getFeaturedProjects } from '@/data/projects';
 import { ProjectCard } from '@/components/portfolio/ProjectCard';
@@ -54,7 +54,6 @@ import { HeroScrollVideo } from '@/components/ui/scroll-animated-video';
  */
 export default function Home() {
   const featuredProjects = getFeaturedProjects();
-  const heroRef = useRef<HTMLDivElement>(null);
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
   const skills = [
@@ -174,15 +173,6 @@ export default function Home() {
     }, 4000);
     return () => clearInterval(interval);
   }, [featuredProjects.length]);
-  const {
-    scrollYProgress
-  } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start']
-  });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
-  const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
